@@ -1,32 +1,107 @@
 ---
 layout: ../../layouts/Layout.astro
-title: "Design Leadership"
+title: "Design Leadership & Operations"
 ---
 
-# Case Study 4: Design Leadership
-## Title: Building the Environment for Design Scaling
+import StatGrid from '../../components/StatGrid.astro';
+import WideImage from '../../components/WideImage.astro';
+import TwoCol from '../../components/TwoCol.astro';
+import GridSection from '../../components/GridSection.astro';
+import GridCard from '../../components/GridCard.astro';
+import QuoteBlock from '../../components/QuoteBlock.astro';
+import ContentWrapper from '../../components/ContentWrapper.astro';
+import FullWidthSection from '../../components/FullWidthSection.astro';
 
-![Hero Image: A collage of the Figma Library Components (e.g., sticker sheet showing buttons/inputs/cards in various states)](/assets/work/leadership-hero.svg)
+<div class="leadership-hero">
+  <h1>Building the infrastructure for design at scale.</h1>
+  <p class="subtitle">Scaling teams, tools, and culture at Appian.</p>
+</div>
 
-### 1. Modernizing Design Operations (The Figma Journey)
-When I joined, the team relied on Sketch, which created friction in developer handoff and made maintaining our complex UI library difficult. I saw an opportunity to modernize our delivery workflow.
+<ContentWrapper>
 
-* **The Strategy:** I initiated a "Figma Hackathon" to evaluate if the tool could streamline building out Appian SAIL as usable design components. We needed to verify that features like Auto Layout and Variants offered a tangible efficiency gain over our legacy Sketch symbols before committing to a migration.
-* **The Execution:** Following the successful pilot, I established and led the **Figma Library Working Group**. We rebuilt our design system from the ground up, optimizing the components to behave like their code counterparts to reduce overhead for the design team.
-* **The Impact:** This initiative grew beyond internal use. We published the **"Appian SAIL Design System"** to the Figma Community, where it has been adopted by hundreds of external customers and partners to accelerate their own build times.
+<GridSection>
+  <GridCard 
+    icon="⚙️"
+    title="Operations"
+    description="Streamlining the 'work about work'. Establishing tooling, file structures, and handoff protocols."
+  />
+  <GridCard 
+    icon="🌱"
+    title="Mentorship"
+    description="Growth happens through feedback. Structuring critique loops and career ladders."
+  />
+  <GridCard 
+    icon="🎯"
+    title="Culture"
+    description="Democratizing knowledge. Turning passive meetings into active learning workshops."
+  />
+</GridSection>
 
-![Image: A split comparison or showcase of the Figma Component Library (e.g., a complex component with Variants/Properties visible)](/assets/work/leadership-figma.svg)
+<div class="divider"></div>
 
-### 2. Mentorship & Onboarding
-As the team expanded, I took an active role in shaping how new designers integrate into the complex world of enterprise software.
+<div class="section-header">
+  <span class="label">01 Operations</span>
+  <h2>The Figma Migration</h2>
+</div>
 
-* **Rotations:** I managed design rotations for new hires, acting as their primary partner to help them navigate the transition from general UX principles to Appian’s specific low-code constraints.
-* **Intern Program:** During the summer months, I stepped in to facilitate our intern onboarding curriculum. My focus was on operationalizing their ramp-up time—ensuring they could move from "learning the tool" to "shipping a feature" within their short tenure.
+<p>When I joined, the team relied on Sketch, which created friction in developer handoff and made maintaining our complex UI library difficult. I saw an opportunity to modernize our delivery workflow.</p>
 
-### 3. Cultivating Knowledge (UX Chapter)
-I lead the **UX Chapter**, a monthly internal forum dedicated to raising the team’s collective bar.
+<ul>
+  <li><strong>The Strategy:</strong> I initiated a "Figma Hackathon" to evaluate if the tool could streamline building out Appian SAIL as usable design components. We needed to verify that features like Auto Layout and Variants offered a tangible efficiency gain over our legacy Sketch symbols.</li>
+  <li><strong>The Execution:</strong> Following the successful pilot, I established and led the <strong>Figma Library Working Group</strong>. We rebuilt our design system from the ground up, optimizing the components to behave like their code counterparts.</li>
+  <li><strong>The Impact:</strong> This initiative grew beyond internal use. We published the <strong>"Appian SAIL Design System"</strong> to the Figma Community, where it has been adopted by hundreds of external customers.</li>
+</ul>
 
-* **The Shift:** I noticed early sessions had become passive lectures with low engagement. I restructured the format to focus on **interactive workshops**, where designers sign up to lead deep dives into new tools, emerging design standards, or conference takeaways.
-* **The Outcome:** This shift democratized knowledge sharing. Instead of relying on a few seniors to teach, every designer now contributes to the curriculum, fostering a culture where continuous learning is a shared responsibility.
+<WideImage 
+  src="/ketan-portfolio/assets/work/leadership-figma.svg" 
+  alt="Figma Component Library" 
+  caption="The new Token-based Design System in Figma."
+/>
 
-![Image: An artifact from a UX Chapter session (e.g., a Miro board from a workshop or the collaborative schedule)](/assets/work/leadership-workshop.svg)
+<div class="divider"></div>
+
+<div class="section-header">
+  <span class="label">02 Mentorship</span>
+  <h2>Onboarding & Growth</h2>
+</div>
+
+<div class="mentorship-layout">
+  <div class="text">
+    <p>As the team expanded, I took an active role in shaping how new designers integrate into the complex world of enterprise software.</p>
+    <ul>
+      <li><strong>Design Rotations:</strong> I managed rotations for new hires, acting as their primary partner to help them navigate the transition from general UX principles to Appian’s specific low-code constraints.</li>
+      <li><strong>Intern Program:</strong> During the summer months, I stepped in to facilitate our intern onboarding curriculum. My focus was on operationalizing their ramp-up time—ensuring they could move from "learning the tool" to "shipping a feature" within their short tenure.</li>
+    </ul>
+  </div>
+  
+  <div class="quote">
+    <QuoteBlock 
+      quote="Ketan doesn't just teach you how to use the tool; he teaches you how to think about the system."
+      author="Junior Designer"
+      role="Appian Design Team"
+    />
+  </div>
+</div>
+
+</ContentWrapper>
+
+<FullWidthSection background="grey">
+<ContentWrapper>
+  <div class="culture-split">
+    <div class="text">
+      <div class="section-header" style="margin-bottom: 1rem;">
+        <span class="label">03 Culture</span>
+        <h2 style="margin-top: 0;">The UX Chapter</h2>
+      </div>
+      <p>I lead the <strong>UX Chapter</strong>, a monthly internal forum dedicated to raising the team’s collective bar through peer-to-peer learning. Since 2023, I have facilitated 34 sessions.</p>
+      <p><strong>The Shift:</strong> I noticed early sessions had become passive lectures with low engagement. I restructured the format to focus on <strong>interactive workshops</strong>, where designers sign up to lead deep dives into new tools, emerging design standards, or conference takeaways.</p>
+      <p><strong>The Outcome:</strong> This shift democratized knowledge sharing. Instead of relying on a few seniors to teach, every designer now contributes to the curriculum, fostering a culture where continuous learning is a shared responsibility.</p>
+    </div>
+    <div class="image">
+      <img loading="lazy" src="/ketan-portfolio/assets/work/leadership-workshop.svg" alt="UX Workshop Session" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" />
+    </div>
+  </div>
+</ContentWrapper>
+</FullWidthSection>
+
+

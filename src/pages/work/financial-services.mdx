@@ -3,45 +3,105 @@ layout: ../../layouts/Layout.astro
 title: "Connected Onboarding"
 ---
 
-# Case Study 3: Financial Services Solutions
-## Title: Designing for High-Stakes Compliance: Connected Onboarding & Servicing
+import CaseHero from '../../components/CaseHero.astro';
+import StatGrid from '../../components/StatGrid.astro';
+import WideImage from '../../components/WideImage.astro';
+import TwoCol from '../../components/TwoCol.astro';
+import StepHeader from '../../components/StepHeader.astro';
+import FullWidthSection from '../../components/FullWidthSection.astro';
 
-![Hero Image: The Customer Record '360 View' showing Customer Details + Active Onboardings + Products + Tasks](/assets/work/fs-hero.svg)
+<CaseHero 
+  title="Connected Onboarding"
+  subtitle="Simplifying a 300-step compliance workflow by aligning the system with the user's mental model."
+  timeline="1 Year"
+  team="2 PMs, 6 Engineers"
+  image="/ketan-portfolio/assets/work/fs-hero.svg"
+/>
 
-### 1. The Impact: Visibility & Velocity
-Institutional Onboarding is a high-stakes domain where speed is revenue, but accuracy is the law. This suite of applications replaced fragmented legacy processes with a unified system.
+<div class="centered-intro">
+  <h2>The Impact</h2>
+  <p style="font-size: 1.25rem; color: #475569;">Institutional Onboarding is a high-stakes domain where speed is revenue, but accuracy is the law. This suite of applications replaced fragmented legacy processes with a unified system.</p>
+</div>
 
+<StatGrid stats={[
+  { value: "100%", label: "Usability Success" },
+  { value: "Tier 1", label: "Client Adoption" }
+]} />
+
+### Visibility & Velocity
 * **Unified Data Architecture:** By interlinking **Customer, Onboarding, Product, and Service Request** records, the solution broke down data silos. Operations teams could finally navigate from a high-level Customer record down to a specific Product fee structure without losing context.
-* **Operational Efficiency:** The redesign of the "Tasking Engine" aligned the configuration UI with the user's mental model, reducing the cognitive load required to build complex, compliant workflows involving 300+ steps.
 * **Client Validation:** The robust architecture allowed major institutions like **T. Rowe Price and Vanguard** to adopt the solution with significantly fewer customizations, as the core product successfully handled their complex requirements out of the box.
 
-### 2. The Challenge: Inheriting a Monolith
-**The Context:** This was my first project at Appian. I inherited a massive, highly regulated application suite that had grown into a monolith. The system was powerful but suffered from deep usability debt accumulated over years of feature additions.
+<FullWidthSection background="grey">
+  <div class="centered-intro">
+    <h2>The Challenge</h2>
+  </div>
 
-* **The Logic Problem (Mental Models):** Configuring workflows was error-prone. Usability studies revealed that the legacy "Precedents" model (defining what came *before*) forced users to think backward. **100% of participants** failed to configure conditional logic correctly in early tests because the UI didn't match their sequential "flowchart" thinking.
-* **The Data Problem (Silos):** In legacy systems, "Customer Data," "Product Data," and "Process Data" lived in different worlds. Users had to manually cross-reference spreadsheets to know if a specific "Hedge Fund" customer had provided the necessary "KYC Documents" for a specific "Derivatives Product."
+  <TwoCol>
+    <div slot="text">
+      <h3>Inheriting a Monolith</h3>
+      <p>I inherited a massive, highly regulated application suite that had grown into a monolith. The system was powerful but suffered from deep usability debt.</p>
+      <p><strong>The Logic Problem:</strong> Configuring workflows was error-prone. Usability studies revealed that the legacy "Precedents" model (defining what came <em>before</em>) forced users to think backward. <strong>100% of participants</strong> failed to configure conditional logic correctly in early tests because the UI didn't match their sequential "flowchart" thinking.</p>
+      <p><strong>The Data Problem:</strong> Users had to manually cross-reference spreadsheets to know if a specific "Hedge Fund" customer had provided the necessary "KYC Documents" for a specific "Derivatives Product."</p>
+    </div>
+    <div slot="media">
+      <img loading="lazy" src="/ketan-portfolio/assets/work/fs-mental-model.svg" alt="Diagram comparing the user's mental model (Sequential) vs. the legacy system model (Retroactive/Precedents)" />
+    </div>
+  </TwoCol>
+</FullWidthSection>
 
-![Image: A diagram comparing the user's mental model (Sequential) vs. the legacy system model (Retroactive/Precedents)](/assets/work/fs-mental-model.svg)
+<div class="centered-intro" style="margin-top: 4rem;">
+  <h2>The Solution</h2>
+</div>
 
-### 3. The Solution: Simplifying the Ecosystem
+<FullWidthSection>
+  <StepHeader number="01" title="Interconnected Record Views" subtitle="Context Everywhere" />
+  
+  <TwoCol reverse={true} frame={true}>
+    <div slot="text">
+      <p>I designed a system of connected Record Views to ensure users always had context, regardless of where they entered the application.</p>
+      <ul>
+        <li><strong>The Customer Record:</strong> A master view aggregating all relationships. A user can land on "Acme Corp" and instantly see active Onboardings, open Service Requests, and existing Products.</li>
+        <li><strong>The Onboarding Dashboard:</strong> A specialized view for the active lifecycle. It aggregates the Summary (health and funding status), Products (fee structures), and Documents (tracking "Missing" vs. "Approved" status) into a single location.</li>
+      </ul>
+    </div>
+    <div slot="media">
+      <img loading="lazy" src="/ketan-portfolio/assets/work/fs-customer-record.svg" alt="The 'Customer Record' showing the aggregation of Onboardings, Products, and Service Requests" />
+    </div>
+  </TwoCol>
+</FullWidthSection>
 
-#### A. Interconnected Record Views
-I designed a system of connected Record Views to ensure users always had context, regardless of where they entered the application.
-* **The Customer Record:** A master view aggregating all relationships. A user can land on "Acme Corp" and instantly see active Onboardings, open Service Requests, and existing Products.
-* **The Onboarding Dashboard:** A specialized view for the active lifecycle. It aggregates the Summary (health and funding status), Products (fee structures), and Documents (tracking "Missing" vs. "Approved" status) into a single location.
+<FullWidthSection background="grey">
+  <StepHeader number="02" title="The Logic Engine" subtitle="Redesigning Task Configuration" />
 
-![Image: The 'Customer Record' showing the aggregation of Onboardings, Products, and Service Requests](/assets/work/fs-customer-record.svg)
+  <TwoCol frame={true}>
+    <div slot="text">
+      <p>To handle the complexity of compliance workflows (KYC/AML), I led the redesign of the configuration experience to match the user's mental model.</p>
+      <ul>
+        <li><strong>From Precedents to Dependents:</strong> We flipped the interaction model. Instead of asking "What allows this task to start?", the UI now asks "What happens <em>after</em> this task finishes?" This aligned with the user's natural sequential thinking.</li>
+        <li><strong>Visualizing Complexity:</strong> We moved "Conditional Logic" out of hidden menus and into the primary grid. Users can now visualize branching paths (e.g., "If Risk = High, Trigger Enhanced Due Diligence") directly in the setup wizard.</li>
+      </ul>
+    </div>
+    <div slot="media">
+      <img loading="lazy" src="/ketan-portfolio/assets/work/fs-grid.svg" alt="The new Task Configuration Grid showing Conditional Logic columns clearly visible" />
+      <img loading="lazy" src="/ketan-portfolio/assets/work/fs-dependency-graph.svg" alt="The 'Dependency View' graph showing the visual flow of the onboarding tasks" />
+    </div>
+  </TwoCol>
+</FullWidthSection>
 
-#### B. The Logic Engine: Redesigning Task Configuration
-To handle the complexity of compliance workflows (KYC/AML), I led the redesign of the configuration experience to match the user's mental model.
-* **From Precedents to Dependents:** We flipped the interaction model. Instead of asking "What allows this task to start?", the UI now asks "What happens *after* this task finishes?" This aligned with the user's natural sequential thinking.
-* **Visualizing Complexity:** We moved "Conditional Logic" out of hidden menus and into the primary grid. Users can now visualize branching paths (e.g., "If Risk = High, Trigger Enhanced Due Diligence") directly in the setup wizard.
-* **The "Dependency View":** Designed a visual graph that renders the relationship between tasks, statuses, and milestones, giving managers an instant visual check of the workflow's critical path.
+<FullWidthSection>
+  <StepHeader number="03" title="The Guided Intake Experience" subtitle="Data Integrity from Day 1" />
 
-![Image: The new Task Configuration Grid showing Conditional Logic columns clearly visible](/assets/work/fs-grid.svg)
-![Image: The 'Dependency View' graph showing the visual flow of the onboarding tasks](/assets/work/fs-dependency-graph.svg)
-
-#### C. The Guided Intake Experience
-To ensure data integrity from Day 1, I designed a wizard-driven "Create New Onboarding" flow.
-* **Compliance & Accessibility:** I advocated for and implemented strict **accessibility standards (WCAG 2.1 AA)** across the intake wizards. Given the regulatory nature of financial services, ensuring the software was usable by all employees and auditable for compliance was non-negotiable.
-* **Dynamic Requirements:** The system automatically calculates required documents and tasks based on the data entered (e.g., selecting a "UK Region" automatically requires "GDPR Checks"), reducing manual error.
+  <TwoCol reverse={true} frame={true}>
+    <div slot="text">
+      <p>To ensure data integrity, I designed a wizard-driven "Create New Onboarding" flow.</p>
+      <ul>
+        <li><strong>Dynamic Requirements:</strong> The system automatically calculates required documents and tasks based on the data entered (e.g., selecting a "UK Region" automatically requires "GDPR Checks"), reducing manual error.</li>
+        <li><strong>Compliance & Accessibility:</strong> I advocated for and implemented strict <strong>WCAG 2.1 AA standards</strong> across the intake wizards. Given the regulatory nature of financial services, ensuring the software was usable by all employees and auditable for compliance was non-negotiable.</li>
+      </ul>
+    </div>
+    <div slot="media">
+      <img loading="lazy" src="/ketan-portfolio/assets/work/fs-hero.svg" alt="Guided Intake Wizard" />
+    </div>
+  </TwoCol>
+</FullWidthSection>

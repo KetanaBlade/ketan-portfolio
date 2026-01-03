@@ -1,0 +1,55 @@
+---
+const { quote, author, role } = Astro.props;
+---
+
+<div class="quote-block">
+  <div class="content">
+    <span class="icon">❝</span>
+    <blockquote>{quote}</blockquote>
+    <div class="author">
+      <strong>{author}</strong>
+      <span>{role}</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .quote-block {
+    background-color: #f0f9ff; /* Very light blue tint */
+    border-left: 4px solid #1e3a8a; /* Accent blue bar */
+    padding: 3rem;
+    margin: 4rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .icon {
+    font-size: 4rem;
+    color: #1e3a8a;
+    opacity: 0.2;
+    line-height: 0;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  blockquote {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #1e293b;
+    margin: 0 0 2rem 0;
+    padding: 0;
+    border: none;
+    line-height: 1.4;
+  }
+
+  .author {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    color: #64748b;
+  }
+
+  .author strong {
+    color: #1e293b;
+    font-size: 1rem;
+  }
+</style>

@@ -38,6 +38,12 @@ const { reverse = false, frame = false } = Astro.props;
     font-size: 1.1rem;
   }
 
+  .col-media {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between stacked images */
+  }
+
   /* Ensure images in the media slot fit well */
   .col-media :global(img) {
     width: 100%;

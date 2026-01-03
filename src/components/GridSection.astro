@@ -1,0 +1,23 @@
+---
+// GridSection.astro
+// Expects slot content to be divs or GridCards
+---
+
+<div class="grid-section">
+  <slot />
+</div>
+
+<style>
+  .grid-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 4rem 0;
+  }
+
+  @media (min-width: 768px) {
+    .grid-section {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
