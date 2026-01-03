@@ -6,5 +6,7 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://KetanaBlade.github.io',
+  base: 'ketan-portfolio',
   integrations: [react(), mdx()]
 });

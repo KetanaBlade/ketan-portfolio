@@ -1,0 +1,43 @@
+---
+const { number, title, subtitle } = Astro.props;
+---
+
+<div class="step-header">
+  <div class="number">{number}</div>
+  <div class="content">
+    <h3>{title}</h3>
+    {subtitle && <p class="subtitle">{subtitle}</p>}
+  </div>
+</div>
+
+<style>
+  .step-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .number {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 0.8;
+    color: var(--color-text-light); /* Darker than border color */
+    font-family: var(--font-heading);
+    opacity: 0.3; /* Slight transparency for style */
+  }
+
+  .content h3 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    margin: 0.25rem 0 0 0;
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+  }
+</style>

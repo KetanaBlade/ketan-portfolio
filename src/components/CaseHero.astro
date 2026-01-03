@@ -47,6 +47,7 @@ const { title, subtitle, role, timeline, team, image } = Astro.props;
     margin-bottom: 4rem;
     position: relative;
     overflow: hidden;
+    border-radius: 8px; /* Added rounded corners */
   }
 
   .hero-inner {
@@ -58,13 +59,13 @@ const { title, subtitle, role, timeline, team, image } = Astro.props;
 
   @media (min-width: 900px) {
     .hero-inner {
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      grid-template-columns: 0.8fr 1.2fr; /* Image gets 60% of the space */
+      gap: 5rem; /* Increased gap for better balance */
     }
   }
 
   .hero-content {
-    max-width: 600px;
+    max-width: 500px; /* Tighter text column for better alignment with larger image */
   }
 
   .title {

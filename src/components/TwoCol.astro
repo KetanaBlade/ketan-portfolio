@@ -1,8 +1,8 @@
 ---
-const { reverse = false } = Astro.props;
+const { reverse = false, frame = false } = Astro.props;
 ---
 
-<div class:list={["two-col", { "reverse": reverse }]}>
+<div class:list={["two-col", { "reverse": reverse, "framed": frame }]}>
   <div class="col-text">
     <slot name="text" />
   </div>
@@ -44,5 +44,13 @@ const { reverse = false } = Astro.props;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+  }
+
+  /* Browser Frame Style */
+  .two-col.framed .col-media :global(img) {
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+    border-radius: 8px;
   }
 </style>
