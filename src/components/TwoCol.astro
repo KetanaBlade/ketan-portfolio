@@ -1,8 +1,8 @@
 ---
-const { reverse = false, frame = false } = Astro.props;
+const { reverse = false, frame = false, style } = Astro.props;
 ---
 
-<div class:list={["two-col", { "reverse": reverse, "framed": frame }]}>
+<div class:list={["two-col", { "reverse": reverse, "framed": frame }]} style={style}>
   <div class="col-text">
     <slot name="text" />
   </div>

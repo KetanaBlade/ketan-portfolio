@@ -91,7 +91,70 @@ body:has(.hero-wrapper) .site-header .nav-link:hover {
   margin-bottom: 2rem;
 }
 
-/* Design Leadership Page Styles */
+/* About Page Styles */
+.resume-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 768px) {
+  .resume-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.resume-title {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #1e3a8a;
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.resume-item {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-item strong {
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+.resume-item span {
+  color: var(--color-text-light);
+}
+
+.resume-item .detail {
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.tool-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tool-list li {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.offline-section {
+  margin-top: 4rem;
+  text-align: center;
+  max-width: 60ch;
+  margin-inline: auto;
+}
+
+.offline-section h2 {
+  margin-bottom: 2rem;
+}
 .leadership-hero {
   text-align: center;
   padding: 6rem 0 4rem 0;
