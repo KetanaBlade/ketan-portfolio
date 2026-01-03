@@ -1,6 +1,7 @@
 ---
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import Lightbox from '../components/Lightbox.astro';
 import '../styles/global.css';
 
 const { title, description = "Portfolio of Ketan Pandya, a Product Designer specializing in complex systems.", isHome = false, headerStyle = "default" } = Astro.props;
@@ -35,5 +36,6 @@ const effectiveHeaderStyle = isHome || headerStyle === 'blue' ? 'blue' : 'defaul
       <slot />
     </main>
     <Footer />
+    <Lightbox />
   </body>
 </html>
