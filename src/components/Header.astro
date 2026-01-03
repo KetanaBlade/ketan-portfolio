@@ -8,15 +8,15 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.replace(/\/$/, "");
 
 const links = [
-  { href: '/ketan-portfolio', label: 'Home' },
-  { href: '/ketan-portfolio/about', label: 'About' },
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
 ];
 
 function isActive(href) {
   const normalizedHref = href.replace(/\/$/, "");
   // Check if it's the home link
-  if (normalizedHref === '/ketan-portfolio') {
-    return currentPath === '/ketan-portfolio' || currentPath === '/ketan-portfolio/';
+  if (normalizedHref === '') {
+    return currentPath === '' || currentPath === '/';
   }
   return currentPath.startsWith(normalizedHref);
 }
@@ -24,7 +24,7 @@ function isActive(href) {
 
 <header class:list={["site-header", { "blue-header": isBlue }]}>
   <div class="container header-inner">
-    <a href="/ketan-portfolio/" class="site-title">Ketan Pandya</a>
+    <a href="/" class="site-title">Ketan Pandya</a>
     <nav aria-label="Main Navigation">
       <ul class="nav-list">
         {links.map(link => (
@@ -38,7 +38,7 @@ function isActive(href) {
             </a>
           </li>
         ))}
-        <li><a href="/ketan-portfolio/assets/resume.pdf" target="_blank" class="nav-link">Resume</a></li>
+        <li><a href="/assets/resume.pdf" target="_blank" class="nav-link">Resume</a></li>
       </ul>
     </nav>
   </div>
