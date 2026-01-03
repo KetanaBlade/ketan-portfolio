@@ -8,5 +8,8 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ketanbpandya.com',
-  integrations: [react(), mdx(), sitemap()]
+  integrations: [react(), mdx(), sitemap()],
+  build: {
+    inlineStylesheets: 'always'
+  }
 });
