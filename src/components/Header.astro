@@ -3,14 +3,14 @@ const { style = "default" } = Astro.props;
 const isBlue = style === 'blue';
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
+  { href: '/ketan-portfolio/', label: 'Home' },
+  { href: '/ketan-portfolio/about', label: 'About' },
 ];
 ---
 
 <header class:list={["site-header", { "blue-header": isBlue }]}>
   <div class="container header-inner">
-    <a href="/" class="site-title">Ketan Pandya</a>
+    <a href="/ketan-portfolio/" class="site-title">Ketan Pandya</a>
     <nav>
       <ul class="nav-list">
         {links.map(link => (
