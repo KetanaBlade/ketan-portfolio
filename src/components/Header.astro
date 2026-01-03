@@ -1,0 +1,110 @@
+---
+const { style = "default" } = Astro.props;
+const isBlue = style === 'blue';
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+];
+---
+
+<header class:list={["site-header", { "blue-header": isBlue }]}>
+  <div class="container header-inner">
+    <a href="/" class="site-title">Ketan Pandya</a>
+    <nav>
+      <ul class="nav-list">
+        {links.map(link => (
+          <li><a href={link.href} class="nav-link">{link.label}</a></li>
+        ))}
+        <li><a href="/assets/resume.pdf" target="_blank" class="nav-link">Resume</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    padding: var(--spacing-md) 0;
+    /* Default (White) Header - Seamless with Body */
+    background-color: #fff;
+    background-image: radial-gradient(#e5e7eb 1px, transparent 1px); /* Match global body dots */
+    background-size: 24px 24px;
+    background-attachment: fixed; /* Lock to viewport for seamless alignment */
+    border-bottom: 1px solid transparent; /* No visible border */
+    margin-bottom: var(--spacing-md);
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+
+  /* Blue Header Styles (Homepage) */
+  .blue-header {
+    background-color: #1e3a8a !important; 
+    background-image: radial-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px) !important;
+    background-size: 24px 24px !important;
+    background-attachment: fixed !important;
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .site-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--color-text);
+    border-bottom: none;
+  }
+
+  .blue-header .site-title {
+    color: white !important;
+  }
+
+  .site-title:hover {
+    color: var(--color-accent);
+  }
+  
+  .blue-header .site-title:hover {
+    color: #cbd5e1 !important;
+  }
+
+  .nav-list {
+    display: flex;
+    gap: var(--spacing-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    border-bottom: none;
+  }
+
+  .blue-header .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .nav-link:hover {
+    color: var(--color-text);
+  }
+
+  .blue-header .nav-link:hover {
+    color: white !important;
+  }
+
+  /* Mobile adjustment */
+  @media (max-width: 600px) {
+    .header-inner {
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    
+    .nav-list {
+      gap: var(--spacing-md);
+    }
+  }
+</style>

@@ -1,16 +1,215 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Ketan Pandya - Product Designer" isHome={true}>
+  
+  <div slot="hero" class="hero-wrapper">
+    <div class="hero-container">
+      <h1 class="hero-headline">Design grounded in logic and insight.</h1>
+      <p class="hero-sub">
+        I am <strong>Ketan Pandya</strong>, a Product Designer. I specialize in internalizing complex requirements quickly and translating them into clear, scalable systems.
+      </p>
+    </div>
+  </div>
+
+  <section class="work-section">
+    <!-- Group 1: Appian Case Management Studio (Full Width) -->
+    <div class="work-group">
+      <div class="group-header">
+        <h2>Appian Case Management Studio</h2>
+        <span class="group-desc">A unified platform for building and managing workflows.</span>
+      </div>
+
+      <div class="grid-2">
+        <ProjectCard
+          title="The Studio Experience"
+          subtitle="Visualizing Abstract Logic"
+          href="/work/studio-experience"
+          image="/assets/work/studio-thumb.svg"
+          tags={['Platform Design', 'Complex States', 'Low-Code']}
+          loading="eager"
+        >
+          <strong>Designing the tool that builds the tools.</strong> Replacing a manual, error-prone configuration process with a visual environment, enabling analysts to define complex logic without code.
+        </ProjectCard>
+
+        <ProjectCard
+          title="The Workspace Experience"
+          subtitle="Dynamic Interfaces & AI"
+          href="/work/workspace-experience"
+          image="/assets/work/workspace-thumb.svg"
+          tags={['Product Design', 'AI Integration', 'Accessibility']}
+          loading="eager"
+        >
+          <strong>Turning backend complexity into frontend clarity.</strong> A dynamic interface system that aggregates massive amounts of data into a focused, accessible view.
+        </ProjectCard>
+      </div>
+    </div>
+
+    <hr class="separator" />
+
+    <!-- Split Group: Financial Services & Leadership -->
+    <div class="split-groups-container">
+      
+      <!-- Left Column: Financial Services -->
+      <div class="work-group split-group">
+        <div class="group-header">
+          <h2>Financial Services</h2>
+          <span class="group-desc">Modernizing legacy compliance workflows.</span>
+        </div>
+        <div class="single-card-wrapper">
+          <ProjectCard
+            title="Connected Onboarding"
+            subtitle="Information Architecture & Efficiency"
+            href="/work/financial-services"
+            image="/assets/work/fs-thumb.svg"
+            tags={['Legacy Modernization', 'FinTech', 'System Architecture']}
+          >
+            <strong>Inheriting a monolith.</strong> Redesigning a 300-step compliance workflow by aligning the system’s logic with the user's natural sequential thinking.
+          </ProjectCard>
+        </div>
+      </div>
+
+      <!-- Right Column: Leadership -->
+      <div class="work-group split-group">
+        <div class="group-header">
+          <h2>Leadership & Process</h2>
+          <span class="group-desc">Enabling scale and operational excellence.</span>
+        </div>
+        <div class="single-card-wrapper">
+          <ProjectCard
+            title="Design Leadership"
+            subtitle="Enabling Scale"
+            href="/work/design-leadership"
+            image="/assets/work/leadership-thumb.svg"
+            tags={['Design Ops', 'Mentorship', 'Strategy']}
+          >
+            <strong>Building infrastructure.</strong> Leading the migration to Figma and restructuring knowledge-sharing chapters to establish operational standards.
+          </ProjectCard>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+</Layout>
+
+<style>
+  /* Hero styles moved to global.css to fix scoping issues */
+
+  .hero-headline {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.03em;
+    max-width: 100%;
+    margin-inline: auto;
+    color: white; /* Ensure white text */
+  }
+
+  .hero-sub {
+    font-size: 1.25rem;
+    color: #f8fafc; /* Brighter off-white */
+    max-width: 800px;
+    line-height: 1.6;
+    margin-bottom: 0;
+    margin-inline: auto;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  .hero-sub strong {
+    color: white;
+  }
+
+  .section-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-light);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    max-width: none;
+  }
+
+  .work-section {
+    margin-bottom: 6rem;
+  }
+
+  .work-group {
+    margin-bottom: 3rem;
+  }
+  
+  .group-header {
+    margin-bottom: 1.5rem;
+    min-height: 3.5rem;
+    text-align: center;
+  }
+
+  .group-header h2 {
+    margin: 0 auto;
+    font-size: 1.5rem;
+    border-bottom: none;
+    padding-bottom: 0;
+    line-height: 1.2;
+    max-width: 40ch;
+  }
+
+  .group-desc {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--color-text-light);
+    font-size: 1rem;
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+
+  .separator {
+    border: 0;
+    border-top: 1px solid var(--color-border);
+    margin: 3rem 0;
+    opacity: 0.5;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Split Groups Styling */
+  .split-groups-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .grid-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .split-groups-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .split-group {
+      padding: 0 1.5rem;
+      margin-bottom: 0;
+    }
+
+    .split-group:first-child {
+      padding-left: 0;
+      border-right: 1px solid var(--color-border);
+      padding-right: 1.5rem;
+    }
+
+    .split-group:last-child {
+      padding-right: 0;
+      padding-left: 1.5rem;
+    }
+  }
+</style>

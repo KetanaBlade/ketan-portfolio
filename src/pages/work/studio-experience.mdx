@@ -1,0 +1,112 @@
+---
+layout: ../../layouts/Layout.astro
+title: "The Studio Experience"
+---
+
+import CaseHero from '../../components/CaseHero.astro';
+import StatGrid from '../../components/StatGrid.astro';
+import WideImage from '../../components/WideImage.astro';
+import TwoCol from '../../components/TwoCol.astro';
+
+<CaseHero 
+  title="The Studio Experience"
+  subtitle="Replacing a manual configuration nightmare with a visual, intuitive workflow builder."
+  timeline="2.5 Years"
+  team="2 PMs, 5 Engineers"
+  image="/assets/work/studio-hero.svg"
+/>
+
+<div class="centered-intro">
+  <h2>The Impact</h2>
+  <p>Studio is the configuration environment where business analysts define the data, workflows, and rules for their applications.</p>
+</div>
+
+<StatGrid stats={[
+  { value: "50%", label: "Faster Implementation" },
+  { value: "92", label: "Enterprise Customers" }
+]} />
+
+### Speed and Flexibility
+* **Trusted by Industry Leaders:** The platform is currently used in production by major global enterprises, including **Porsche, Pfizer, Vanguard, T. Rowe Price, and the Australian Government**.
+* **Reduced Engineering Dependency:** Implementation teams can now deliver functional apps in as little as **4 weeks (a 50% reduction)**. By enabling analysts to build intake forms and workflows visually in Studio, the solution eliminated the need for custom backend coding.
+* **Scalable Architecture:** The hierarchical logic model allowed the system to scale to **92 enterprise customers**. The architecture proved flexible enough to handle complexities across vastly different industries, from university admissions to government permitting.
+
+---
+
+<div class="centered-intro">
+  <h2>The Challenge</h2>
+</div>
+
+<TwoCol>
+  <div slot="text">
+    <h3>Disconnected Task Lists</h3>
+    <p>In previous solutions, configuring a business process was restricted to linear checklists. While this worked for simple to-do lists, it failed for actual case management.</p>
+    <p><strong>The Mismatch:</strong> A case isn't a linear list; it’s a lifecycle. It moves through stages, branches based on data, and triggers automated side-effects.</p>
+    <p><strong>The Friction:</strong> User research revealed that users struggled to understand this lifecycle when looking at a simple grid. They had to mentally track dependencies. One wrong number in a "Precedents" column could break the flow, and there was no way to "see" the error until runtime.</p>
+  </div>
+  <div slot="media">
+    <img src="/assets/work/studio-legacy.svg" alt="Legacy Interface showing complex grid" />
+    <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The legacy 'Task Grid' interface. Notice the cognitive load of tracking precedents by ID number.</p>
+  </div>
+</TwoCol>
+
+---
+
+<div class="centered-intro">
+  <h2>The Solution</h2>
+</div>
+
+### 1. The Hybrid Workflow Builder
+
+<TwoCol reverse={true}>
+  <div slot="text">
+    <h3>Speed + Validation</h3>
+    <p>To solve the visualization problem without sacrificing data entry speed, the solution utilizes a three-pane configuration interface that bridges the gap between a spreadsheet and a flowchart:</p>
+    <ul>
+      <li><strong>Input (Left & Middle):</strong> A list-based input allows for rapid data entry of task details.</li>
+      <li><strong>Logic (Middle):</strong> A dedicated configuration area for defining milestones, SLAs, and—crucially—dependents.</li>
+      <li><strong>Validation (Right):</strong> As the user configures logic, the right pane updates in real-time to visualize the workflow graph.</li>
+    </ul>
+    <p><strong>The UX Win:</strong> Users could work quickly in a list format, but the instant visualization allowed them to verify complex paths immediately.</p>
+  </div>
+  <div slot="media">
+    <img src="/assets/work/studio-builder.svg" alt="Studio Builder Interface" />
+  </div>
+</TwoCol>
+
+
+### 2. Systemic Automation: Hierarchy & Inheritance
+
+<TwoCol>
+  <div slot="text">
+    <h3>Cascading Logic</h3>
+    <p>Automation isn't one-size-fits-all. User feedback highlighted that some rules are global, while others are hyper-specific.</p>
+    <p><strong>The Strategy:</strong> A hierarchical automation engine supports cascading logic: <em>Global Level (All Cases) → Category Level (Permits) → Case Type Level (Plumbing Permit)</em>.</p>
+    <p><strong>Execution Logic:</strong> To handle conflicts, the system executes from the highest level down to the lowest level. This ensures global compliance is respected while allowing specific case types to define "exceptions" that take precedence.</p>
+  </div>
+  <div slot="media">
+    <img src="/assets/work/studio-hierarchy.svg" alt="Inheritance Diagram" />
+  </div>
+</TwoCol>
+
+### 3. Integrated Data & Form Designer
+
+<TwoCol reverse={true}>
+  <div slot="text">
+    <h3>No-Code Modeling</h3>
+    <p>A workflow requires data inputs. Previously, adding a form field required an IT ticket to modify the database. The no-code form builder puts this power in the hands of the business analyst.</p>
+    <ul>
+      <li><strong>Implicit Data Modeling:</strong> When a user adds a field to a form, the system automatically creates the backend data structure.</li>
+      <li><strong>AI Acceleration:</strong> AI integration speeds up data creation. Users can prompt the system (e.g., "Create a dropdown for US States"), and the AI generates the data type and all options automatically.</li>
+      <li><strong>Accessibility by Default:</strong> All components automatically meet <strong>WCAG 2.1 AA standards</strong>.</li>
+    </ul>
+  </div>
+  <div slot="media">
+    <img src="/assets/work/studio-forms.svg" alt="Form Builder" />
+  </div>
+</TwoCol>
+
+#### 4. Built for Extensibility
+**The Platform Mindset:** To support diverse customer needs, the Studio design is agnostic and extensible. The architecture supports custom task types, email templates, and automation rules. Customers can plug in their own specialized logic (like a "Fraud Check" rule) and have it render natively within the Studio UI alongside standard features.
+
+

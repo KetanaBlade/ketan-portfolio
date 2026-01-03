@@ -1,0 +1,48 @@
+---
+const { reverse = false } = Astro.props;
+---
+
+<div class:list={["two-col", { "reverse": reverse }]}>
+  <div class="col-text">
+    <slot name="text" />
+  </div>
+  <div class="col-media">
+    <slot name="media" />
+  </div>
+</div>
+
+<style>
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin: 4rem 0;
+  }
+
+  @media (min-width: 900px) {
+    .two-col {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .two-col.reverse .col-text {
+      order: 2;
+    }
+    
+    .two-col.reverse .col-media {
+      order: 1;
+    }
+  }
+
+  .col-text {
+    font-size: 1.1rem;
+  }
+
+  /* Ensure images in the media slot fit well */
+  .col-media :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  }
+</style>

@@ -1,0 +1,54 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="copyright">
+      &copy; {currentYear} Ketan Pandya
+    </div>
+    <div class="social-links">
+      <a href="mailto:your.email@example.com">Email</a>
+      <a href="https://linkedin.com/in/ketanpandya">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: auto; /* Pushes footer to bottom if content is short */
+    padding: var(--spacing-xl) 0;
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--spacing-xl);
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .social-links {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  .social-links a {
+    color: var(--color-text-light);
+    border-bottom: none;
+  }
+
+  .social-links a:hover {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 600px) {
+    .footer-inner {
+      flex-direction: column;
+      gap: var(--spacing-md);
+      text-align: center;
+    }
+  }
+</style>

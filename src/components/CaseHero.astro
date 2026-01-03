@@ -1,0 +1,132 @@
+---
+const { title, subtitle, role, timeline, team, image } = Astro.props;
+---
+
+<div class="case-hero full-bleed">
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <h1 class="title">{title}</h1>
+      <p class="subtitle">{subtitle}</p>
+      
+      <div class="meta-grid">
+        {role && (
+          <div class="meta-item">
+            <span class="label">Role</span>
+            <span class="value">{role}</span>
+          </div>
+        )}
+        {timeline && (
+          <div class="meta-item">
+            <span class="label">Timeline</span>
+            <span class="value">{timeline}</span>
+          </div>
+        )}
+        {team && (
+          <div class="meta-item">
+            <span class="label">Team</span>
+            <span class="value">{team}</span>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <div class="hero-image-wrapper">
+      <img src={image} alt={title} class="hero-image" width="800" height="600" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .case-hero {
+    background-color: #1e3a8a; /* Deep Blue to match homepage */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-attachment: fixed;
+    color: white;
+    padding: 6rem 0 4rem 0;
+    margin-bottom: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+  }
+
+  .hero-content {
+    max-width: 600px;
+  }
+
+  .title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: white;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: #f8fafc; /* Brighter off-white matching homepage */
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .meta-grid {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 3rem; /* Increased horizontal gap for better separation */
+    row-gap: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 1.5rem;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #cbd5e1; /* Lighter grey for better contrast on blue */
+    margin-bottom: 0.5rem; /* Increased spacing */
+  }
+
+  .value {
+    font-size: 1rem; /* Slightly larger */
+    font-weight: 600;
+    color: white;
+  }
+
+  .hero-image-wrapper {
+    position: relative;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+    transition: transform 0.3s ease;
+  }
+
+  .hero-image:hover {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+  }
+</style>

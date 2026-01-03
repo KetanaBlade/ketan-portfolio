@@ -1,0 +1,28 @@
+---
+const { src, alt, caption } = Astro.props;
+---
+
+<div class="wide-image full-width">
+  <img src={src} alt={alt} loading="lazy" />
+  {caption && <p class="caption">{caption}</p>}
+</div>
+
+<style>
+  .wide-image {
+    margin: 4rem 0;
+    text-align: center;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+
+  .caption {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-style: italic;
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+layout: ../../layouts/Layout.astro
+title: "Connected Onboarding"
+---
+
+# Case Study 3: Financial Services Solutions
+## Title: Designing for High-Stakes Compliance: Connected Onboarding & Servicing
+
+![Hero Image: The Customer Record '360 View' showing Customer Details + Active Onboardings + Products + Tasks](/assets/work/fs-hero.svg)
+
+### 1. The Impact: Visibility & Velocity
+Institutional Onboarding is a high-stakes domain where speed is revenue, but accuracy is the law. This suite of applications replaced fragmented legacy processes with a unified system.
+
+* **Unified Data Architecture:** By interlinking **Customer, Onboarding, Product, and Service Request** records, the solution broke down data silos. Operations teams could finally navigate from a high-level Customer record down to a specific Product fee structure without losing context.
+* **Operational Efficiency:** The redesign of the "Tasking Engine" aligned the configuration UI with the user's mental model, reducing the cognitive load required to build complex, compliant workflows involving 300+ steps.
+* **Client Validation:** The robust architecture allowed major institutions like **T. Rowe Price and Vanguard** to adopt the solution with significantly fewer customizations, as the core product successfully handled their complex requirements out of the box.
+
+### 2. The Challenge: Inheriting a Monolith
+**The Context:** This was my first project at Appian. I inherited a massive, highly regulated application suite that had grown into a monolith. The system was powerful but suffered from deep usability debt accumulated over years of feature additions.
+
+* **The Logic Problem (Mental Models):** Configuring workflows was error-prone. Usability studies revealed that the legacy "Precedents" model (defining what came *before*) forced users to think backward. **100% of participants** failed to configure conditional logic correctly in early tests because the UI didn't match their sequential "flowchart" thinking.
+* **The Data Problem (Silos):** In legacy systems, "Customer Data," "Product Data," and "Process Data" lived in different worlds. Users had to manually cross-reference spreadsheets to know if a specific "Hedge Fund" customer had provided the necessary "KYC Documents" for a specific "Derivatives Product."
+
+![Image: A diagram comparing the user's mental model (Sequential) vs. the legacy system model (Retroactive/Precedents)](/assets/work/fs-mental-model.svg)
+
+### 3. The Solution: Simplifying the Ecosystem
+
+#### A. Interconnected Record Views
+I designed a system of connected Record Views to ensure users always had context, regardless of where they entered the application.
+* **The Customer Record:** A master view aggregating all relationships. A user can land on "Acme Corp" and instantly see active Onboardings, open Service Requests, and existing Products.
+* **The Onboarding Dashboard:** A specialized view for the active lifecycle. It aggregates the Summary (health and funding status), Products (fee structures), and Documents (tracking "Missing" vs. "Approved" status) into a single location.
+
+![Image: The 'Customer Record' showing the aggregation of Onboardings, Products, and Service Requests](/assets/work/fs-customer-record.svg)
+
+#### B. The Logic Engine: Redesigning Task Configuration
+To handle the complexity of compliance workflows (KYC/AML), I led the redesign of the configuration experience to match the user's mental model.
+* **From Precedents to Dependents:** We flipped the interaction model. Instead of asking "What allows this task to start?", the UI now asks "What happens *after* this task finishes?" This aligned with the user's natural sequential thinking.
+* **Visualizing Complexity:** We moved "Conditional Logic" out of hidden menus and into the primary grid. Users can now visualize branching paths (e.g., "If Risk = High, Trigger Enhanced Due Diligence") directly in the setup wizard.
+* **The "Dependency View":** Designed a visual graph that renders the relationship between tasks, statuses, and milestones, giving managers an instant visual check of the workflow's critical path.
+
+![Image: The new Task Configuration Grid showing Conditional Logic columns clearly visible](/assets/work/fs-grid.svg)
+![Image: The 'Dependency View' graph showing the visual flow of the onboarding tasks](/assets/work/fs-dependency-graph.svg)
+
+#### C. The Guided Intake Experience
+To ensure data integrity from Day 1, I designed a wizard-driven "Create New Onboarding" flow.
+* **Compliance & Accessibility:** I advocated for and implemented strict **accessibility standards (WCAG 2.1 AA)** across the intake wizards. Given the regulatory nature of financial services, ensuring the software was usable by all employees and auditable for compliance was non-negotiable.
+* **Dynamic Requirements:** The system automatically calculates required documents and tasks based on the data entered (e.g., selecting a "UK Region" automatically requires "GDPR Checks"), reducing manual error.
