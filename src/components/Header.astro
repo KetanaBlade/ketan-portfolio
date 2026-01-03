@@ -2,19 +2,41 @@
 const { style = "default" } = Astro.props;
 const isBlue = style === 'blue';
 
+// Get current path to highlight active link
+const pathname = new URL(Astro.request.url).pathname;
+// Normalize path by removing trailing slashes and handling the base path
+const currentPath = pathname.replace(/\/$/, "");
+
 const links = [
-  { href: '/ketan-portfolio/', label: 'Home' },
+  { href: '/ketan-portfolio', label: 'Home' },
   { href: '/ketan-portfolio/about', label: 'About' },
 ];
+
+function isActive(href) {
+  const normalizedHref = href.replace(/\/$/, "");
+  // Check if it's the home link
+  if (normalizedHref === '/ketan-portfolio') {
+    return currentPath === '/ketan-portfolio' || currentPath === '/ketan-portfolio/';
+  }
+  return currentPath.startsWith(normalizedHref);
+}
 ---
 
 <header class:list={["site-header", { "blue-header": isBlue }]}>
   <div class="container header-inner">
     <a href="/ketan-portfolio/" class="site-title">Ketan Pandya</a>
-    <nav>
+    <nav aria-label="Main Navigation">
       <ul class="nav-list">
         {links.map(link => (
-          <li><a href={link.href} class="nav-link">{link.label}</a></li>
+          <li>
+            <a 
+              href={link.href} 
+              class:list={["nav-link", { "active": isActive(link.href) }]}
+              aria-current={isActive(link.href) ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          </li>
         ))}
         <li><a href="/ketan-portfolio/assets/resume.pdf" target="_blank" class="nav-link">Resume</a></li>
       </ul>
@@ -25,17 +47,15 @@ const links = [
 <style>
   .site-header {
     padding: var(--spacing-md) 0;
-    /* Default (White) Header - Seamless with Body */
     background-color: #fff;
-    background-image: radial-gradient(#e5e7eb 1px, transparent 1px); /* Match global body dots */
+    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
     background-size: 24px 24px;
-    background-attachment: fixed; /* Lock to viewport for seamless alignment */
-    border-bottom: 1px solid transparent; /* No visible border */
+    background-attachment: fixed;
+    border-bottom: 1px solid transparent;
     margin-bottom: var(--spacing-md);
     transition: background-color 0.2s, border-color 0.2s;
   }
 
-  /* Blue Header Styles (Homepage) */
   .blue-header {
     background-color: #1e3a8a !important; 
     background-image: radial-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px) !important;
@@ -62,14 +82,6 @@ const links = [
     color: white !important;
   }
 
-  .site-title:hover {
-    color: var(--color-accent);
-  }
-  
-  .blue-header .site-title:hover {
-    color: #cbd5e1 !important;
-  }
-
   .nav-list {
     display: flex;
     gap: var(--spacing-lg);
@@ -81,22 +93,25 @@ const links = [
   .nav-link {
     font-size: 0.95rem;
     color: var(--color-text-light);
-    border-bottom: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: var(--color-text);
+    border-color: var(--color-accent);
   }
 
   .blue-header .nav-link {
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
   }
 
-  .nav-link:hover {
-    color: var(--color-text);
-  }
-
-  .blue-header .nav-link:hover {
+  .blue-header .nav-link:hover, .blue-header .nav-link.active {
     color: white !important;
+    border-color: white;
   }
 
-  /* Mobile adjustment */
   @media (max-width: 600px) {
     .header-inner {
       flex-direction: column;

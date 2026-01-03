@@ -127,6 +127,13 @@ const { title, subtitle, role, timeline, team, image } = Astro.props;
     transition: transform 0.3s ease;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .hero-image {
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
   .hero-image:hover {
     transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
   }

@@ -295,6 +295,12 @@ img {
   padding: 0 var(--spacing-lg);
 }
 
+@media (max-width: 600px) {
+  .container {
+    padding: 0 var(--spacing-md); /* Use smaller 1rem padding on mobile */
+  }
+}
+
 /* Specific MDX Content Styling */
 main ul, main ol {
   margin-bottom: 1.5em;
