@@ -71,13 +71,14 @@ const { href, title, subtitle, image, tags = [], loading = "lazy" } = Astro.prop
     border-bottom: none;
   }
 
-  .title a:focus {
+  .project-card:focus-within {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
     outline: none;
   }
-  
-  .project-card:focus-within {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 4px;
+
+  .title a:focus {
+    outline: none;
   }
 
   .image-container {
