@@ -2,13 +2,15 @@
 const { href, title, subtitle, image, tags = [], loading = "lazy" } = Astro.props;
 ---
 
-<a href={href} class="project-card">
+<div class="project-card">
   <div class="image-container">
     <img src={image} alt={title} loading={loading} width="800" height="450" />
   </div>
   <div class="content">
     <div class="header">
-      <h3 class="title">{title}</h3>
+      <h3 class="title">
+        <a href={href} class="stretched-link">{title}</a>
+      </h3>
       <span class="subtitle">{subtitle}</span>
     </div>
     
@@ -24,7 +26,7 @@ const { href, title, subtitle, image, tags = [], loading = "lazy" } = Astro.prop
       </div>
     )}
   </div>
-</a>
+</div>
 
 <style>
   .project-card {
@@ -39,13 +41,37 @@ const { href, title, subtitle, image, tags = [], loading = "lazy" } = Astro.prop
     height: 100%; /* For grid layouts */
     display: flex;
     flex-direction: column;
+    position: relative; /* Added for stretched link */
   }
 
   .project-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     border-color: var(--color-accent);
-    color: inherit; /* Prevent global link hover color change on the whole card */
+  }
+
+  .stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+  }
+
+  .title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .title a:focus {
+    outline: none;
+  }
+  
+  .project-card:focus-within {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
   }
 
   .image-container {
