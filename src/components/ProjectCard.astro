@@ -63,6 +63,12 @@ const { href, title, subtitle, image, tags = [], loading = "lazy" } = Astro.prop
   .title a {
     color: inherit;
     text-decoration: none;
+    border-bottom: none;
+  }
+
+  .title a:hover {
+    color: inherit;
+    border-bottom: none;
   }
 
   .title a:focus {
