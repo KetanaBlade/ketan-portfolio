@@ -13,11 +13,10 @@
   const dialog = document.querySelector('#lightbox') as HTMLDialogElement;
   const lightboxImg = document.querySelector('#lightbox-img') as HTMLImageElement;
 
-  // Find all images within main content, excluding hero and UI components
+  // Find all images within main content, excluding UI components like project cards, header, and footer
   const allImages = document.querySelectorAll('main img');
   const images = Array.from(allImages).filter(img => {
-    return !img.classList.contains('hero-image') && 
-           !img.closest('.project-card') &&
+    return !img.closest('.project-card') &&
            !img.closest('.site-header') &&
            !img.closest('.footer');
   });
