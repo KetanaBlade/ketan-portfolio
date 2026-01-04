@@ -3,6 +3,7 @@ layout: ../../layouts/Layout.astro
 title: "The Workspace Experience"
 ---
 
+import { Image } from 'astro:assets';
 import CaseHero from '../../components/CaseHero.astro';
 import StatGrid from '../../components/StatGrid.astro';
 import WideImage from '../../components/WideImage.astro';
@@ -10,12 +11,24 @@ import TwoCol from '../../components/TwoCol.astro';
 import StepHeader from '../../components/StepHeader.astro';
 import FullWidthSection from '../../components/FullWidthSection.astro';
 
+import heroImage from '../../assets/work/workspace-experience-main.jpg';
+import challengeImage from '../../assets/work/workspace-challenge.svg';
+import workspaceThumb from '../../assets/work/workspace-thumb.svg';
+import studioForms from '../../assets/work/studio-forms.svg';
+import caseRecord from '../../assets/work/workspace-case-record.jpg';
+import aiChat from '../../assets/work/workspace-ai-chat.jpg';
+import aiComments from '../../assets/work/workspace-ai-comments.jpg';
+import aiDocs from '../../assets/work/workspace-ai-docs.png';
+import portalHome from '../../assets/work/workspace-portal-home.jpg';
+import portalDashboard from '../../assets/work/workspace-portal-dashboard.jpg';
+import portalSummary from '../../assets/work/workspace-portal-summary.jpg';
+
 <CaseHero 
   title="The Workspace Experience"
   subtitle="A unified, intelligent front-end that turns complex backend logic into clarity for case workers."
   timeline="2.5 Years"
   team="1 PM, 3 Engineers"
-  image="/assets/work/workspace-hero.svg"
+  image={heroImage}
 />
 
 <div class="centered-intro">
@@ -46,7 +59,7 @@ import FullWidthSection from '../../components/FullWidthSection.astro';
       <p><strong>The Goal:</strong> Design a unified workspace site that centralizes all case information, enforces business logic defined in Studio, and uses AI to accelerate decision-making.</p>
     </div>
     <div slot="media">
-      <img loading="lazy" src="/assets/work/workspace-challenge.svg" alt="Diagram showing fragmented data sources" />
+      <Image src={challengeImage} alt="Diagram showing fragmented data sources" />
     </div>
   </TwoCol>
 </FullWidthSection>
@@ -58,7 +71,7 @@ import FullWidthSection from '../../components/FullWidthSection.astro';
 <FullWidthSection>
   <StepHeader number="01" title="Centralized Information" subtitle="The Single Source of Truth" />
   
-  <TwoCol reverse={true} frame={true}>
+  <TwoCol reverse={true} frame={true} sticky={true}>
     <div slot="text">
       <p>To solve the fragmentation issue, the case record aggregates all necessary context into one view.</p>
       <ul>
@@ -68,7 +81,14 @@ import FullWidthSection from '../../components/FullWidthSection.astro';
       <p><strong>Inclusive & Accessible:</strong> I ensured the entire workspace experience was fully responsive and compliant with <strong>WCAG 2.1 AA standards</strong>, supporting screen readers and keyboard navigation.</p>
     </div>
     <div slot="media">
-      <img loading="lazy" src="/assets/work/workspace-hero.svg" alt="Centralized Case Record View" />
+      <figure style="margin: 0;">
+        <Image src={heroImage} alt="Workspace Landing Page" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The Case Workspace landing page.</figcaption>
+      </figure>
+      <figure style="margin: 2rem 0 0 0;">
+        <Image src={caseRecord} alt="Full Case Record View" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">A unified Case Record view, aggregating all case data.</figcaption>
+      </figure>
     </div>
   </TwoCol>
 </FullWidthSection>
@@ -76,32 +96,58 @@ import FullWidthSection from '../../components/FullWidthSection.astro';
 <FullWidthSection background="grey">
   <StepHeader number="02" title="AI-Powered Assistance" subtitle="Accelerating Decisions" />
 
-  <TwoCol frame={true}>
+  <TwoCol frame={true} sticky={true}>
     <div slot="text">
       <p>We integrated Private AI to help case workers process large volumes of information without leaving the context of the case.</p>
       <ul>
-        <li><strong>Document Summarization:</strong> Instead of reading 50-page PDFs, users can ask the AI to "Summarize the key claims in this document," receiving an instant, citation-backed answer.</li>
-        <li><strong>Contextual Chat:</strong> A secure AI chat panel allows users to query the case history (e.g., "Has this customer requested a refund before?") to make faster, evidence-based decisions.</li>
+        <li><strong>Contextual Chat & Discovery:</strong> A secure AI chat panel allows users to query case history and automatically surfaces similar past cases to suggest potential resolutions.</li>
+        <li><strong>Intelligent Summarization:</strong> Users can instantly summarize lengthy comment threads or complex PDF documents, extracting key points without manual review.</li>
+        <li><strong>Prompt Engineering:</strong> I architected the underlying prompt strategies, iteratively refining system instructions to ensure the AI generated summaries that were concise, citation-backed, and structured specifically for rapid decision-making.</li>
       </ul>
     </div>
     <div slot="media">
-      <img loading="lazy" src="/assets/work/workspace-thumb.svg" alt="AI Chat Panel Integration" />
-      <img loading="lazy" src="/assets/work/studio-forms.svg" alt="Document Summarization Interface" />
+      <figure style="margin: 0;">
+        <Image src={aiChat} alt="AI Chat Panel and Related Cases" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">Contextual AI chat suggesting related cases.</figcaption>
+      </figure>
+      <figure style="margin: 2rem 0 0 0;">
+        <Image src={aiComments} alt="AI Comment Summary" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">Instant summarization of long comment threads.</figcaption>
+      </figure>
+      <figure style="margin: 2rem 0 0 0;">
+        <Image src={aiDocs} alt="AI Document Summary" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">Citation-backed summaries of attached documents.</figcaption>
+      </figure>
     </div>
   </TwoCol>
 </FullWidthSection>
 
 <FullWidthSection>
-  <StepHeader number="03" title="External Portals" subtitle="Self-Service for Citizens" />
+  <StepHeader number="03" title="Empowering Public Users" subtitle="Public Portals & Authenticated Self-Service" />
 
-  <TwoCol reverse={true} frame={true}>
+  <TwoCol reverse={true} frame={true} sticky={true}>
     <div slot="text">
-      <p>Case management isn't just internal. We extended the Workspace to external users via secure, authenticated portals.</p>
-      <p><strong>"My Cases" Site:</strong> This self-service portal allows citizens or customers to log in, view the status of their requests, upload missing documents, and communicate directly with case workers.</p>
-      <p><strong>The Result:</strong> This direct access drastically reduced the volume of "What is my status?" emails, freeing up case workers to focus on resolution.</p>
+      <p>Case management isn't just for internal users. I led the design of the external experience, ensuring that public interaction with government and enterprise services was seamless, secure, and accessible on any device.</p>
+      <ul>
+        <li><strong>Public Portals:</strong> A mobile-first entry point for anonymous users to discover services, find information, and begin the application process.</li>
+        <li><strong>Secure Intake:</strong> A guided "no-login" submission flow that allows users to submit cases quickly while ensuring data integrity.</li>
+        <li><strong>Authenticated Self-Service:</strong> Once signed up, the "My Cases" dashboard allows users to track their progress, upload missing documents, and communicate directly with case workers.</li>
+      </ul>
+      <p><strong>Mobile-First Accessibility:</strong> Since external users often access these services via mobile devices, I prioritized a responsive design that met <strong>WCAG 2.1 AA standards</strong>. This ensured that critical services were usable for everyone, regardless of their device or ability.</p>
     </div>
     <div slot="media">
-      <img loading="lazy" src="/assets/work/workspace-hero.svg" alt="External Customer Portal" />
+      <figure style="margin: 0;">
+        <Image src={portalHome} alt="Public Portal Landing Page" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The Public Portal: A mobile-first entry point for citizens.</figcaption>
+      </figure>
+      <figure style="margin: 2rem 0 0 0;">
+        <Image src={portalDashboard} alt="My Cases Dashboard" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The authenticated 'My Cases' dashboard.</figcaption>
+      </figure>
+      <figure style="margin: 2rem 0 0 0;">
+        <Image src={portalSummary} alt="Case Summary View" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">Detailed status tracking for external users.</figcaption>
+      </figure>
     </div>
   </TwoCol>
 </FullWidthSection>

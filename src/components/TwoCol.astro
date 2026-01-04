@@ -1,8 +1,8 @@
 ---
-const { reverse = false, frame = false, style } = Astro.props;
+const { reverse = false, frame = false, sticky = false, style } = Astro.props;
 ---
 
-<div class:list={["two-col", { "reverse": reverse, "framed": frame }]} style={style}>
+<div class:list={["two-col", { "reverse": reverse, "framed": frame, "sticky": sticky }]} style={style}>
   <div class="col-text">
     <slot name="text" />
   </div>
@@ -20,6 +20,11 @@ const { reverse = false, frame = false, style } = Astro.props;
     margin: 4rem 0;
   }
 
+  /* Sticky Variant: Aligns to top so sticky text can travel down */
+  .two-col.sticky {
+    align-items: start;
+  }
+
   @media (min-width: 900px) {
     .two-col {
       grid-template-columns: 1fr 1fr;
@@ -31,6 +36,13 @@ const { reverse = false, frame = false, style } = Astro.props;
     
     .two-col.reverse .col-media {
       order: 1;
+    }
+
+    /* Only apply sticky on desktop where columns exist */
+    .two-col.sticky .col-text {
+      position: sticky;
+      top: 6rem; /* 6rem ensures it doesn't hit the header/top edge */
+      align-self: start;
     }
   }
 

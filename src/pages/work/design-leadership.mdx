@@ -3,6 +3,7 @@ layout: ../../layouts/Layout.astro
 title: "Design Leadership & Operations"
 ---
 
+import { Image } from 'astro:assets';
 import StatGrid from '../../components/StatGrid.astro';
 import WideImage from '../../components/WideImage.astro';
 import TwoCol from '../../components/TwoCol.astro';
@@ -11,6 +12,9 @@ import GridCard from '../../components/GridCard.astro';
 import QuoteBlock from '../../components/QuoteBlock.astro';
 import ContentWrapper from '../../components/ContentWrapper.astro';
 import FullWidthSection from '../../components/FullWidthSection.astro';
+
+import figmaImage from '../../assets/work/leadership-figma.svg';
+import workshopImage from '../../assets/work/leadership-workshop.svg';
 
 <div class="leadership-hero">
   <h1>Building the infrastructure for design at scale.</h1>
@@ -54,7 +58,7 @@ import FullWidthSection from '../../components/FullWidthSection.astro';
     </ul>
   </div>
   <div slot="media">
-    <img loading="lazy" src="/assets/work/leadership-figma.svg" alt="Figma Component Library" />
+    <Image src={figmaImage} alt="Figma Component Library" />
   </div>
 </TwoCol>
 
@@ -97,7 +101,7 @@ import FullWidthSection from '../../components/FullWidthSection.astro';
     <p><strong>The Outcome:</strong> This shift democratized knowledge sharing. Instead of relying on a few seniors to teach, every designer now contributes to the curriculum, fostering a culture where continuous learning is a shared responsibility.</p>
   </div>
   <div class="image">
-    <img loading="lazy" src="/assets/work/leadership-workshop.svg" alt="UX Workshop Session" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" />
+    <Image src={workshopImage} alt="UX Workshop Session" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" />
   </div>
 </div>
 

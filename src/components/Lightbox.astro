@@ -13,8 +13,14 @@
   const dialog = document.querySelector('#lightbox') as HTMLDialogElement;
   const lightboxImg = document.querySelector('#lightbox-img') as HTMLImageElement;
 
-  // Find all images within case study content
-  const images = document.querySelectorAll('.case-study-content img');
+  // Find all images within main content, excluding hero and UI components
+  const allImages = document.querySelectorAll('main img');
+  const images = Array.from(allImages).filter(img => {
+    return !img.classList.contains('hero-image') && 
+           !img.closest('.project-card') &&
+           !img.closest('.site-header') &&
+           !img.closest('.footer');
+  });
 
   images.forEach(img => {
     // Make them look clickable

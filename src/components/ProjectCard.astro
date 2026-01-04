@@ -1,10 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 const { href, title, subtitle, image, tags = [], loading = "lazy" } = Astro.props;
 ---
 
 <div class="project-card">
   <div class="image-container">
-    <img src={image} alt={title} loading={loading} width="800" height="450" />
+    <Image src={image} alt={title} loading={loading} />
   </div>
   <div class="content">
     <div class="header">

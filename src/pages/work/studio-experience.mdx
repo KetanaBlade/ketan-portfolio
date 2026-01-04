@@ -3,6 +3,7 @@ layout: ../../layouts/Layout.astro
 title: "The Studio Experience"
 ---
 
+import { Image } from 'astro:assets';
 import CaseHero from '../../components/CaseHero.astro';
 import StatGrid from '../../components/StatGrid.astro';
 import WideImage from '../../components/WideImage.astro';
@@ -10,17 +11,27 @@ import TwoCol from '../../components/TwoCol.astro';
 import StepHeader from '../../components/StepHeader.astro';
 import FullWidthSection from '../../components/FullWidthSection.astro';
 
+import heroImage from '../../assets/work/studio-experience-main.jpg';
+import legacyImage from '../../assets/work/studio-legacy.svg';
+import workflowConfigured from '../../assets/work/studio-workflow-configured.jpg';
+import workflowConfiguring from '../../assets/work/studio-workflow-configuring.jpg';
+import automationList from '../../assets/work/studio-automation-list.png';
+import automationConfig from '../../assets/work/studio-automation-config.png';
+import formsList from '../../assets/work/studio-forms-list.png';
+import formsBuilder from '../../assets/work/studio-forms-builder.png';
+import formsAi from '../../assets/work/studio-forms-ai.png';
+
 <CaseHero 
   title="The Studio Experience"
   subtitle="Replacing a manual configuration nightmare with a visual, intuitive workflow builder."
   timeline="2.5 Years"
   team="2 PMs, 5 Engineers"
-  image="/assets/work/studio-hero.svg"
+  image={heroImage}
 />
 
 <div class="centered-intro">
   <h2>The Impact</h2>
-  <p style="font-size: 1.25rem; color: #475569;">Studio is the configuration environment where business analysts define the data, workflows, and rules for their applications.</p>
+  <p style="font-size: 1.25rem; color: #475569;">Studio is the configuration environment where business admins define the data, workflows, and rules for their applications.</p>
 </div>
 
 <StatGrid stats={[
@@ -30,7 +41,7 @@ import FullWidthSection from '../../components/FullWidthSection.astro';
 
 ### Speed and Flexibility
 * **Trusted by Industry Leaders:** The platform is currently used in production by major global enterprises, including **Porsche, Pfizer, Vanguard, T. Rowe Price, and the Australian Government**.
-* **Reduced Engineering Dependency:** Implementation teams can now deliver functional apps in as little as **4 weeks (a 50% reduction)**. By enabling analysts to build intake forms and workflows visually in Studio, the solution eliminated the need for custom backend coding.
+* **Reduced Engineering Dependency:** Implementation teams can now deliver functional apps in as little as **4 weeks (a 50% reduction)**. By enabling business admins to build intake forms and workflows visually in Studio, the solution eliminated the need for custom backend coding.
 * **Scalable Architecture:** The hierarchical logic model allowed the system to scale to **92 enterprise customers**. The architecture proved flexible enough to handle complexities across vastly different industries, from university admissions to government permitting.
 
 <FullWidthSection background="grey">
@@ -46,7 +57,7 @@ import FullWidthSection from '../../components/FullWidthSection.astro';
       <p><strong>The Friction:</strong> User research revealed that users struggled to understand this lifecycle when looking at a simple grid. They had to mentally track dependencies. One wrong number in a "Precedents" column could break the flow, and there was no way to "see" the error until runtime.</p>
     </div>
     <div slot="media">
-      <img loading="lazy" src="/assets/work/studio-legacy.svg" alt="Legacy Interface showing complex grid" />
+      <Image src={legacyImage} alt="Legacy Interface showing complex grid" />
       <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The legacy 'Task Grid' interface. Notice the cognitive load of tracking precedents by ID number.</p>
     </div>
   </TwoCol>
@@ -59,7 +70,7 @@ import FullWidthSection from '../../components/FullWidthSection.astro';
 <FullWidthSection>
   <StepHeader number="01" title="The Hybrid Workflow Builder" subtitle="Speed + Validation" />
   
-  <TwoCol reverse={true} frame={true}>
+  <TwoCol reverse={true} frame={true} sticky={true}>
     <div slot="text">
       <p>To solve the visualization problem without sacrificing data entry speed, the solution utilizes a three-pane configuration interface that bridges the gap between a spreadsheet and a flowchart:</p>
       <ul>
@@ -70,7 +81,14 @@ import FullWidthSection from '../../components/FullWidthSection.astro';
       <p><strong>The UX Win:</strong> Users could work quickly in a list format, but the instant visualization allowed them to verify complex paths immediately.</p>
     </div>
     <div slot="media">
-      <img loading="lazy" src="/assets/work/studio-builder.svg" alt="Studio Builder Interface" />
+      <figure style="margin: 0;">
+        <Image src={workflowConfigured} alt="Configured workflow template" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">A fully configured workflow template.</figcaption>
+      </figure>
+      <figure style="margin: 2rem 0 0 0;">
+        <Image src={workflowConfiguring} alt="Workflow configuration in progress" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">Defining logic within a workflow step.</figcaption>
+      </figure>
     </div>
   </TwoCol>
 </FullWidthSection>
@@ -78,14 +96,21 @@ import FullWidthSection from '../../components/FullWidthSection.astro';
 <FullWidthSection background="grey">
   <StepHeader number="02" title="Systemic Automation" subtitle="Hierarchy & Inheritance" />
 
-  <TwoCol frame={true}>
+  <TwoCol frame={true} sticky={true}>
     <div slot="text">
       <p>Automation isn't one-size-fits-all. User feedback highlighted that some rules are global, while others are hyper-specific.</p>
       <p><strong>The Strategy:</strong> A hierarchical automation engine supports cascading logic: <em>Global Level (All Cases) → Category Level (Permits) → Case Type Level (Plumbing Permit)</em>.</p>
       <p><strong>Execution Logic:</strong> To handle conflicts, the system executes from the highest level down to the lowest level. This ensures global compliance is respected while allowing specific case types to define "exceptions" that take precedence.</p>
     </div>
     <div slot="media">
-      <img loading="lazy" src="/assets/work/studio-hierarchy.svg" alt="Inheritance Diagram" />
+      <figure style="margin: 0;">
+        <Image src={automationList} alt="Automation rules at different hierarchies" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The high-level view of automated rules across the system hierarchy.</figcaption>
+      </figure>
+      <figure style="margin: 2rem 0 0 0;">
+        <Image src={automationConfig} alt="Configuring an automation rule action" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">Configuring a specific action within an automation rule.</figcaption>
+      </figure>
     </div>
   </TwoCol>
 </FullWidthSection>
@@ -93,9 +118,9 @@ import FullWidthSection from '../../components/FullWidthSection.astro';
 <FullWidthSection>
   <StepHeader number="03" title="Integrated Data & Form Designer" subtitle="No-Code Modeling" />
 
-  <TwoCol reverse={true} frame={true}>
+  <TwoCol reverse={true} frame={true} sticky={true}>
     <div slot="text">
-      <p>A workflow requires data inputs. Previously, adding a form field required an IT ticket to modify the database. The no-code form builder puts this power in the hands of the business analyst.</p>
+      <p>A workflow requires data inputs. Previously, adding a form field required an IT ticket to modify the database. The no-code form builder puts this power in the hands of the business admin.</p>
       <ul>
         <li><strong>Implicit Data Modeling:</strong> When a user adds a field to a form, the system automatically creates the backend data structure.</li>
         <li><strong>AI Acceleration:</strong> AI integration speeds up data creation. Users can prompt the system (e.g., "Create a dropdown for US States"), and the AI generates the data type and all options automatically.</li>
@@ -103,7 +128,18 @@ import FullWidthSection from '../../components/FullWidthSection.astro';
       </ul>
     </div>
     <div slot="media">
-      <img loading="lazy" src="/assets/work/studio-forms.svg" alt="Form Builder" />
+      <figure style="margin: 0;">
+        <Image src={formsList} alt="Configured forms for a Case Type" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The Case Type view showing configured forms.</figcaption>
+      </figure>
+      <figure style="margin: 2rem 0 0 0;">
+        <Image src={formsBuilder} alt="Form creation interface" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The form creation interface.</figcaption>
+      </figure>
+      <figure style="margin: 2rem 0 0 0;">
+        <Image src={formsAi} alt="AI-assisted data capture" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">AI-assisted data field capture.</figcaption>
+      </figure>
     </div>
   </TwoCol>
 </FullWidthSection>

@@ -22,6 +22,7 @@ html {
   box-sizing: border-box;
   font-size: 16px;
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 *, *:before, *:after {
@@ -40,7 +41,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  overflow-x: hidden; /* Prevent horizontal scroll from full-width sections */
 }
 
 /* Failsafe: If hero wrapper exists, force header to be blue */
