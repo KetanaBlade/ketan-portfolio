@@ -319,6 +319,22 @@ blockquote {
   color: var(--color-text-light);
 }
 
+/* Contact & Connect Utilities */
+.contact-link, .contact-item.link {
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+
+.contact-link:hover .link-text {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent) !important;
+}
+
+.link-text {
+  border-bottom: 1px solid rgba(30, 58, 138, 0.1);
+  transition: border-color 0.2s, color 0.2s;
+}
+
 code {
   background-color: var(--color-bg-subtle);
   padding: 0.2em 0.4em;

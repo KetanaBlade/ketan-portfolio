@@ -8,8 +8,14 @@ const currentYear = new Date().getFullYear();
       &copy; {currentYear} Ketan Pandya
     </div>
     <div class="social-links">
-      <a href="mailto:your.email@example.com">Email</a>
-      <a href="https://linkedin.com/in/ketanpandya">LinkedIn</a>
+      <div class="contact-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <span class="contact-text">kbp_1<span>@</span>live.com</span>
+      </div>
+      <a href="https://www.linkedin.com/in/ketan-pandya-b76832155/" target="_blank" class="contact-item link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        <span class="contact-text link-text">Ketan Pandya</span>
+      </a>
     </div>
   </div>
 </footer>
@@ -32,16 +38,46 @@ const currentYear = new Date().getFullYear();
 
   .social-links {
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
   }
 
-  .social-links a {
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     color: var(--color-text-light);
-    border-bottom: none;
+    text-decoration: none;
+    line-height: 1;
   }
 
-  .social-links a:hover {
+  .contact-item.link {
+    border-bottom: 1px solid rgba(30, 58, 138, 0.2);
+    text-decoration: none;
+  }
+
+  .contact-item.link:hover {
     color: var(--color-text);
+  }
+
+  .contact-item.link:hover .link-text {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  .contact-icon {
+    color: #1e3a8a;
+    display: block;
+    flex-shrink: 0;
+    transform: translateY(1px); /* Optical centering with lowercase text */
+  }
+
+  .contact-text {
+    display: inline-block;
+  }
+
+  .link-text {
+    border-bottom: 1px solid rgba(30, 58, 138, 0.1);
+    transition: border-color 0.2s, color 0.2s;
   }
 
   @media (max-width: 600px) {

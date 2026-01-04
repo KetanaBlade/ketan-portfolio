@@ -1,0 +1,41 @@
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#f8fafc"/>
+  
+  <!-- Subtle Grid Base -->
+  <defs>
+    <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid-pattern)" />
+
+  <g transform="translate(400, 225)">
+    <!-- Pulsating Background Waves -->
+    <circle r="60" fill="#1e3a8a" opacity="0.05">
+      <animate attributeName="r" values="60;120;60" dur="4s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.05;0;0.05" dur="4s" repeatCount="indefinite" />
+    </circle>
+    <circle r="30" fill="#1e3a8a" opacity="0.1">
+      <animate attributeName="r" values="30;80;30" dur="4s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.1;0;0.1" dur="4s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Connecting Structure (Process) -->
+    <g stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 4">
+      <line x1="0" y1="0" x2="-180" y2="-80" />
+      <line x1="0" y1="0" x2="180" y2="-80" />
+      <line x1="0" y1="0" x2="-180" y2="80" />
+      <line x1="0" y1="0" x2="180" y2="80" />
+    </g>
+
+    <!-- Peripheral Nodes (Scale/Infrastructure) -->
+    <circle cx="-180" cy="-80" r="12" fill="#3b82f6" />
+    <circle cx="180" cy="-80" r="12" fill="#3b82f6" />
+    <circle cx="-180" cy="80" r="12" fill="#3b82f6" />
+    <circle cx="180" cy="80" r="12" fill="#3b82f6" />
+    
+    <!-- Central Node (Leadership) -->
+    <rect x="-25" y="-25" width="50" height="50" rx="6" fill="#1e3a8a" transform="rotate(45)" />
+    <rect x="-12" y="-12" width="24" height="24" rx="2" fill="#93c5fd" transform="rotate(45)" />
+  </g>
+</svg>
