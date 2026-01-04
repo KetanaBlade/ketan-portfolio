@@ -4,11 +4,14 @@ title: "About Ketan Pandya"
 description: "Product Designer specializing in Human-Computer Interaction Design and complex systems."
 ---
 
+import { Image } from 'astro:assets';
 import TwoCol from '../components/TwoCol.astro';
 import GridSection from '../components/GridSection.astro';
 import GridCard from '../components/GridCard.astro';
 import ContentWrapper from '../components/ContentWrapper.astro';
 import FullWidthSection from '../components/FullWidthSection.astro';
+
+import headshot from '../assets/ketan-headshot.jpg';
 
 <div style="margin-top: 4rem;"></div>
 
@@ -17,18 +20,18 @@ import FullWidthSection from '../components/FullWidthSection.astro';
 <TwoCol reverse={true} style={{ alignItems: 'flex-start' }}>
   <div slot="text">
     <h1 style="margin-top: 0; font-size: 2.5rem; line-height: 1.1; margin-bottom: 1.5rem;">I design with logic, insight, and an innate curiosity.</h1>
-    <p class="lead" style="font-size: 1.25rem; color: #475569; margin-bottom: 2rem;">I am a <strong>Product Designer</strong> with a background in Information Science and Human-Computer Interaction. I specialize in untangling complex systems and designing tools that empower users to handle data, compliance, and heavy workflows.</p>
-    <p>Currently, I design enterprise-grade software at <strong>Appian</strong>, focusing on the Case Management platform. My work involves taking abstract technical requirements—often in high-compliance industries like Financial Services—and translating them into clear, usable interfaces.</p>
+    <p class="lead" style="font-size: 1.25rem; color: #475569; margin-bottom: 2rem;">I am a <strong>Product Designer</strong> who thrives on complexity. My background in Information Science drives me to deconstruct messy problems, but my passion for craft ensures I rebuild them into interfaces that feel <strong>simple, modern, and human</strong>.</p>
+    <p>At <strong>Appian</strong>, I design the <strong>Case Management Studio</strong>, a platform that turns abstract business logic into visual tools. My work centers on <strong>extensibility and scale</strong>—building foundational patterns that allow our customers to launch distinct, high-quality applications without reinventing the wheel.</p>
     
     <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e2e8f0;">
       <h3 style="font-size: 1rem; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.05em; margin-bottom: 1rem;">Offline</h3>
-      <p>When I'm not in Figma, you can find me [Insert Hobby Here]. I believe that staying curious about the world outside of tech makes me a better designer inside of it.</p>
+      <p>When I'm not designing, you can find me hiking, traveling, reading, or diving down a deep Wikipedia rabbit hole. I believe that <strong>curiosity is a muscle</strong>, and I try to exercise it every day—whether that leads to a new skill, a new perspective, or just a really good story.</p>
       <p style="margin-top: 1.5rem;"><strong>Connect:</strong> <a href="mailto:your.email@example.com">Email</a> • <a href="https://linkedin.com/in/ketanpandya">LinkedIn</a> • <a href="/assets/resume.pdf" target="_blank">Resume</a></p>
     </div>
   </div>
 
   <div slot="media">
-    <img src="/assets/ketan-headshot.svg" alt="Ketan Pandya" style="border-radius: 12px; width: 100%; aspect-ratio: 3/4; object-fit: cover;" />
+    <Image src={headshot} alt="Ketan Pandya" style="border-radius: 12px; width: 100%; aspect-ratio: 3/4; object-fit: cover;" />
   </div>
 </TwoCol>
 
