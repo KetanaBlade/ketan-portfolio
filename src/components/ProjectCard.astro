@@ -1,11 +1,18 @@
 ---
 import { Image } from 'astro:assets';
-const { href, title, subtitle, image, tags = [], loading = "lazy" } = Astro.props;
+const { href, title, subtitle, image, tags = [], loading = "lazy", fetchpriority = "auto" } = Astro.props;
 ---
 
 <div class="project-card">
   <div class="image-container">
-    <Image src={image} alt={title} loading={loading} />
+    <Image 
+      src={image} 
+      alt={title} 
+      loading={loading} 
+      fetchpriority={fetchpriority}
+      width={1200}
+      height={675}
+    />
   </div>
   <div class="content">
     <div class="header">

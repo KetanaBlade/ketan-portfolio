@@ -32,7 +32,14 @@ const { title, subtitle, role, timeline, team, image } = Astro.props;
     </div>
 
     <div class="hero-image-wrapper">
-      <Image src={image} alt={title} class="hero-image" loading="eager" />
+      <Image 
+        src={image} 
+        alt={title} 
+        class="hero-image" 
+        loading="eager" 
+        fetchpriority="high"
+        width={1600}
+      />
     </div>
   </div>
 </div>
