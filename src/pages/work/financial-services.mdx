@@ -11,11 +11,15 @@ import TwoCol from '../../components/TwoCol.astro';
 import StepHeader from '../../components/StepHeader.astro';
 import FullWidthSection from '../../components/FullWidthSection.astro';
 
-import heroImage from '../../assets/work/fs-hero.svg';
+import heroImage from '../../assets/work/fs-onboarding-dashboard.png';
 import mentalModel from '../../assets/work/fs-mental-model.svg';
-import customerRecord from '../../assets/work/fs-customer-record.svg';
-import gridImage from '../../assets/work/fs-grid.svg';
-import graphImage from '../../assets/work/fs-dependency-graph.svg';
+import tasksBefore from '../../assets/work/fs-tasks-grid-before.png';
+import tasksAfter from '../../assets/work/fs-tasks-grid-after.png';
+import conditionalConfig from '../../assets/work/fs-conditional-config.png';
+import conditionalLive from '../../assets/work/fs-conditional-live.png';
+import customerTasks from '../../assets/work/fs-customer-tasks.png';
+import onboardingDashboard from '../../assets/work/fs-onboarding-dashboard.png';
+import addDocuments from '../../assets/work/fs-add-documents.png';
 
 <CaseHero 
   title="Connected Onboarding"
@@ -38,6 +42,7 @@ import graphImage from '../../assets/work/fs-dependency-graph.svg';
 ### Visibility & Velocity
 * **Unified Data Architecture:** By interlinking **Customer, Onboarding, Product, and Service Request** records, the solution broke down data silos. Operations teams could finally navigate from a high-level Customer record down to a specific Product fee structure without losing context.
 * **Client Validation:** The robust architecture allowed major institutions like **T. Rowe Price and Vanguard** to adopt the solution with significantly fewer customizations, as the core product successfully handled their complex requirements out of the box.
+* **Compliance & Accessibility:** I advocated for and implemented strict **WCAG 2.1 AA standards** across the platform. Given the regulatory nature of financial services, ensuring the software was usable by all employees and auditable for compliance was non-negotiable.
 
 <FullWidthSection background="grey">
   <div class="centered-intro">
@@ -62,18 +67,25 @@ import graphImage from '../../assets/work/fs-dependency-graph.svg';
 </div>
 
 <FullWidthSection>
-  <StepHeader number="01" title="Interconnected Record Views" subtitle="Context Everywhere" />
+  <StepHeader number="01" title="The Onboarding Dashboard" subtitle="Compliance & Visibility" />
   
-  <TwoCol reverse={true} frame={true}>
+  <TwoCol reverse={true} frame={true} sticky={true}>
     <div slot="text">
-      <p>I designed a system of connected Record Views to ensure users always had context, regardless of where they entered the application.</p>
+      <p>Financial institutions need a command center that balances high-level status with deep compliance tracking. I designed the Onboarding Dashboard to act as this single source of truth.</p>
       <ul>
-        <li><strong>The Customer Record:</strong> A master view aggregating all relationships. A user can land on "Acme Corp" and instantly see active Onboardings, open Service Requests, and existing Products.</li>
-        <li><strong>The Onboarding Dashboard:</strong> A specialized view for the active lifecycle. It aggregates the Summary (health and funding status), Products (fee structures), and Documents (tracking "Missing" vs. "Approved" status) into a single location.</li>
+        <li><strong>Unified Health & Funding:</strong> The dashboard aggregates critical indicators—overall health, funding status, and milestone progress—into a "at-a-glance" summary, allowing managers to instantly identify at-risk onboardings.</li>
+        <li><strong>Specialized Document Handling:</strong> Compliance relies on documentation. The system treats documents as first-class citizens, allowing users to upload, tag, and verify KYC/AML documents directly within the context of the onboarding, complete with version control and audit trails.</li>
       </ul>
     </div>
     <div slot="media">
-      <Image src={customerRecord} alt="The 'Customer Record' showing the aggregation of Onboardings, Products, and Service Requests" />
+      <figure style="margin: 0;">
+        <Image src={onboardingDashboard} alt="The Onboarding Dashboard showing status and details" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The Onboarding Dashboard acts as the command center for the entire lifecycle.</figcaption>
+      </figure>
+      <figure style="margin: 2rem 0 0 0;">
+        <Image src={addDocuments} alt="The Document Upload interface" />
+        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">Specialized document handling ensures compliance data is captured accurately.</figcaption>
+      </figure>
     </div>
   </TwoCol>
 </FullWidthSection>
@@ -81,34 +93,63 @@ import graphImage from '../../assets/work/fs-dependency-graph.svg';
 <FullWidthSection background="grey">
   <StepHeader number="02" title="The Logic Engine" subtitle="Redesigning Task Configuration" />
 
-  <TwoCol frame={true}>
+  <TwoCol frame={true} sticky={true}>
     <div slot="text">
       <p>To handle the complexity of compliance workflows (KYC/AML), I led the redesign of the configuration experience to match the user's mental model.</p>
       <ul>
-        <li><strong>From Precedents to Dependents:</strong> We flipped the interaction model. Instead of asking "What allows this task to start?", the UI now asks "What happens <em>after</em> this task finishes?" This aligned with the user's natural sequential thinking.</li>
-        <li><strong>Visualizing Complexity:</strong> We moved "Conditional Logic" out of hidden menus and into the primary grid. Users can now visualize branching paths (e.g., "If Risk = High, Trigger Enhanced Due Diligence") directly in the setup wizard.</li>
+        <li><strong>From Precedents to Dependents:</strong> We flipped the interaction model. Instead of asking "What allows this task to start?", the UI now asks "What happens <em>after</em> this task finishes?" We also completely overhauled validations, moving from generic error messages to precise, targeted feedback located directly on the affected field.</li>
+        <li><strong>Intuitive Branching:</strong> Complex logic like loops and conditional branches were previously hidden in deep menus. We surfaced these as primary actions, allowing users to easily configure "If/Then" scenarios (like loopbacks for missing documents) without needing to understand the underlying code structure.</li>
       </ul>
     </div>
     <div slot="media">
-      <Image src={gridImage} alt="The new Task Configuration Grid showing Conditional Logic columns clearly visible" />
-      <Image src={graphImage} alt="The 'Dependency View' graph showing the visual flow of the onboarding tasks" />
+      {/* Pair 1: Before/After */}
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; align-items: start;">
+         <figure style="margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; background: white; line-height: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+               <Image src={tasksBefore} alt="Legacy Task Grid interface" />
+            </div>
+            <figcaption style="font-size: 0.85rem; color: #64748b; font-style: italic; text-align: center; line-height: 1.4;">The legacy task configuration grid using an unintuitive precedent model.</figcaption>
+         </figure>
+         <figure style="margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; background: white; line-height: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+               <Image src={tasksAfter} alt="Redesigned Task Grid interface" />
+            </div>
+            <figcaption style="font-size: 0.85rem; color: #64748b; font-style: italic; text-align: center; line-height: 1.4;">The task configuration grid redesigned with user feedback.</figcaption>
+         </figure>
+      </div>
+
+      {/* Pair 2: Config/Live */}
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;">
+         <figure style="margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; background: white; line-height: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+               <Image src={conditionalConfig} alt="Configuring a conditional task" />
+            </div>
+            <figcaption style="font-size: 0.85rem; color: #64748b; font-style: italic; text-align: center; line-height: 1.4;">Configuring a branching path.</figcaption>
+         </figure>
+         <figure style="margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; background: white; line-height: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+               <Image src={conditionalLive} alt="Live conditional task summary" />
+            </div>
+            <figcaption style="font-size: 0.85rem; color: #64748b; font-style: italic; text-align: center; line-height: 1.4;">The resulting runtime experience.</figcaption>
+         </figure>
+      </div>
     </div>
   </TwoCol>
 </FullWidthSection>
 
 <FullWidthSection>
-  <StepHeader number="03" title="The Guided Intake Experience" subtitle="Data Integrity from Day 1" />
+  <StepHeader number="03" title="The Customer Experience" subtitle="Clarity & Action" />
 
   <TwoCol reverse={true} frame={true}>
     <div slot="text">
-      <p>To ensure data integrity, I designed a wizard-driven "Create New Onboarding" flow.</p>
+      <p>The onboarding process often stalls when waiting for customer input. To reduce friction, I designed a dedicated Customer Portal that gives external users a clear, actionable view of their responsibilities.</p>
       <ul>
-        <li><strong>Dynamic Requirements:</strong> The system automatically calculates required documents and tasks based on the data entered (e.g., selecting a "UK Region" automatically requires "GDPR Checks"), reducing manual error.</li>
-        <li><strong>Compliance & Accessibility:</strong> I advocated for and implemented strict <strong>WCAG 2.1 AA standards</strong> across the intake wizards. Given the regulatory nature of financial services, ensuring the software was usable by all employees and auditable for compliance was non-negotiable.</li>
+        <li><strong>Transparency:</strong> Instead of relying on email chains, customers can log in to see exactly where they stand in the process. The dashboard highlights outstanding tasks and provides a clear timeline of next steps.</li>
+        <li><strong>Streamlined Action:</strong> Complex requirements are broken down into bite-sized tasks. Whether it's uploading a proof of address or digitally signing a contract, users can complete actions directly within the secure portal without navigating confusing menus.</li>
       </ul>
     </div>
     <div slot="media">
-      <Image src={heroImage} alt="Guided Intake Wizard" />
+      <Image src={customerTasks} alt="Customer Portal Dashboard showing outstanding tasks" />
     </div>
   </TwoCol>
 </FullWidthSection>

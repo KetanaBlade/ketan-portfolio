@@ -50,6 +50,10 @@ const { reverse = false, frame = false, sticky = false, style } = Astro.props;
     font-size: 1.1rem;
   }
 
+  .col-text > :first-child {
+    margin-top: 0;
+  }
+
   .col-media {
     display: flex;
     flex-direction: column;
