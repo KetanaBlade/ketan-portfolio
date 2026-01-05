@@ -42,7 +42,7 @@ import Layout from '../layouts/Layout.astro';
             margin: 2rem auto;
             padding: 0.75in; /* Standard margins */
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            min-height: 11in;
+            min-height: 11in; /* This is for web view to look like paper */
         }
 
         /* Header */
@@ -187,25 +187,76 @@ import Layout from '../layouts/Layout.astro';
             font-weight: 700;
             margin-right: 0.5rem;
         }
-
+        
         /* Print Overrides */
         @media print {
-            body {
-                background: white;
+            @page {
+                margin: 0;
+                size: letter;
             }
-            .page {
-                width: 100%;
+            body {
                 margin: 0;
                 padding: 0;
-                box-shadow: none;
+                width: 100%;
+                height: 100%;
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                overflow: hidden; /* Prevent body from scrolling/page-breaking */
             }
-            /* Hide web-only elements if we add them later */
+            .page {
+                width: 7.5in !important; 
+                max-width: 7.5in !important;
+                margin: 0.5in auto !important;
+                padding: 0 !important;
+                box-shadow: none;
+                border: none;
+                min-height: 0 !important; /* Kill the 11in requirement for print */
+                height: auto !important;
+                overflow: hidden;
+            }
+            
+            /* TIGHTEN SPACING FOR PRINT */
+            header {
+                margin-bottom: 1.5rem !important; /* Reduced from 2.5rem */
+            }
+            .contact-info {
+                margin-top: 0.5rem !important; /* Reduced from 0.75rem */
+                gap: 1rem !important;
+            }
+            section {
+                margin-bottom: 1.25rem !important; /* Reduced from 2rem */
+            }
+            h2 {
+                margin: 0 0 0.75rem 0 !important; /* Reduced bottom margin */
+                padding-bottom: 0.25rem !important;
+            }
+            .job-item {
+                margin-bottom: 1rem !important; /* Reduced from 1.5rem */
+            }
+            .edu-item {
+                margin-bottom: 1rem !important;
+            }
+            .grid-section {
+                gap: 1rem !important;
+            }
+
+            html {
+                font-size: 9pt; 
+            }
+            /* Hide web-only elements */
             .no-print {
-                display: none;
+                display: none !important;
             }
             a {
                 text-decoration: none;
                 color: black;
+            }
+            a[href^="http"]:after {
+                content: ""; 
+            }
+            ::-webkit-scrollbar {
+                display: none;
             }
         }
     </style>
