@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+
+const { src, alt, caption, frame = false, shadow = false, loading = "lazy" } = Astro.props;
+---
+
+<figure class:list={["figure-block", { "framed": frame, "shadow": shadow }]}>
+  <div class="image-wrapper">
+    <Image src={src} alt={alt} loading={loading} />
+  </div>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .figure-block {
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .image-wrapper {
+    border-radius: 8px;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .image-wrapper :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Variants */
+  .figure-block.framed .image-wrapper {
+    border: 1px solid var(--color-border);
+  }
+
+  .figure-block.shadow .image-wrapper {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+
+  figcaption {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-top: 0.75rem;
+    font-style: italic;
+    line-height: 1.4;
+  }
+</style>

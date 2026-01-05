@@ -10,6 +10,7 @@ import WideImage from '../../components/WideImage.astro';
 import TwoCol from '../../components/TwoCol.astro';
 import StepHeader from '../../components/StepHeader.astro';
 import FullWidthSection from '../../components/FullWidthSection.astro';
+import Figure from '../../components/Figure.astro';
 
 import heroImage from '../../assets/work/studio-experience-main.jpg';
 import legacyImage from '../../assets/work/fs-tasks-grid-before.png';
@@ -31,7 +32,7 @@ import formsAi from '../../assets/work/studio-forms-ai.png';
 
 <div class="centered-intro">
   <h2>The Impact</h2>
-  <p style="font-size: 1.25rem; color: #475569;">Studio is the configuration environment where business admins define the data, workflows, and rules for their applications.</p>
+  <p style="font-size: 1.25rem; color: var(--color-text-muted);">Studio is the configuration environment where business admins define the data, workflows, and rules for their applications.</p>
 </div>
 
 <StatGrid stats={[
@@ -57,8 +58,12 @@ import formsAi from '../../assets/work/studio-forms-ai.png';
       <p><strong>The Friction:</strong> User research revealed that users struggled to understand this lifecycle when looking at a simple grid. They had to mentally track dependencies. One wrong number in a "Precedents" column could break the flow, and there was no way to "see" the error until runtime.</p>
     </div>
     <div slot="media">
-      <Image src={legacyImage} alt="Legacy Interface showing complex grid" />
-      <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The legacy 'Task Grid' interface. Notice the cognitive load of tracking precedents by ID number.</p>
+      <Figure 
+        src={legacyImage} 
+        alt="Legacy Interface showing complex grid" 
+        caption="The legacy 'Task Grid' interface. Notice the cognitive load of tracking precedents by ID number."
+        loading="lazy"
+      />
     </div>
   </TwoCol>
 </FullWidthSection>
@@ -81,14 +86,16 @@ import formsAi from '../../assets/work/studio-forms-ai.png';
       <p><strong>The UX Win:</strong> Users could work quickly in a list format, but the instant visualization allowed them to verify complex paths immediately.</p>
     </div>
     <div slot="media">
-      <figure style="margin: 0;">
-        <Image src={workflowConfigured} alt="Configured workflow template" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">A fully configured workflow template.</figcaption>
-      </figure>
-      <figure style="margin: 2rem 0 0 0;">
-        <Image src={workflowConfiguring} alt="Workflow configuration in progress" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">Defining logic within a workflow step.</figcaption>
-      </figure>
+      <Figure 
+        src={workflowConfigured} 
+        alt="Configured workflow template" 
+        caption="A fully configured workflow template."
+      />
+      <Figure 
+        src={workflowConfiguring} 
+        alt="Workflow configuration in progress" 
+        caption="Defining logic within a workflow step."
+      />
     </div>
   </TwoCol>
 </FullWidthSection>
@@ -103,14 +110,16 @@ import formsAi from '../../assets/work/studio-forms-ai.png';
       <p><strong>Execution Logic:</strong> To handle conflicts, the system executes from the highest level down to the lowest level. This ensures global compliance is respected while allowing specific case types to define "exceptions" that take precedence.</p>
     </div>
     <div slot="media">
-      <figure style="margin: 0;">
-        <Image src={automationList} alt="Automation rules at different hierarchies" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The high-level view of automated rules across the system hierarchy.</figcaption>
-      </figure>
-      <figure style="margin: 2rem 0 0 0;">
-        <Image src={automationConfig} alt="Configuring an automation rule action" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">Configuring a specific action within an automation rule.</figcaption>
-      </figure>
+      <Figure 
+        src={automationList} 
+        alt="Automation rules at different hierarchies" 
+        caption="The high-level view of automated rules across the system hierarchy."
+      />
+      <Figure 
+        src={automationConfig} 
+        alt="Configuring an automation rule action" 
+        caption="Configuring an automation rule action."
+      />
     </div>
   </TwoCol>
 </FullWidthSection>
@@ -128,18 +137,21 @@ import formsAi from '../../assets/work/studio-forms-ai.png';
       </ul>
     </div>
     <div slot="media">
-      <figure style="margin: 0;">
-        <Image src={formsList} alt="Configured forms for a Case Type" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The Case Type view showing configured forms.</figcaption>
-      </figure>
-      <figure style="margin: 2rem 0 0 0;">
-        <Image src={formsBuilder} alt="Form creation interface" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The form creation interface.</figcaption>
-      </figure>
-      <figure style="margin: 2rem 0 0 0;">
-        <Image src={formsAi} alt="AI-assisted data capture" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">AI-assisted data field capture.</figcaption>
-      </figure>
+      <Figure 
+        src={formsList} 
+        alt="Configured forms for a Case Type" 
+        caption="The Case Type view showing configured forms."
+      />
+      <Figure 
+        src={formsBuilder} 
+        alt="Form creation interface" 
+        caption="The form creation interface."
+      />
+      <Figure 
+        src={formsAi} 
+        alt="AI-assisted data capture" 
+        caption="AI-assisted data field capture."
+      />
     </div>
   </TwoCol>
 </FullWidthSection>

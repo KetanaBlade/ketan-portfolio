@@ -10,6 +10,7 @@ import WideImage from '../../components/WideImage.astro';
 import TwoCol from '../../components/TwoCol.astro';
 import StepHeader from '../../components/StepHeader.astro';
 import FullWidthSection from '../../components/FullWidthSection.astro';
+import Figure from '../../components/Figure.astro';
 
 import heroImage from '../../assets/work/workspace-experience-main.jpg';
 import challengeImage from '../../assets/work/workspace-challenge.svg';
@@ -33,7 +34,7 @@ import portalSummary from '../../assets/work/workspace-portal-summary.jpg';
 
 <div class="centered-intro">
   <h2>The Impact</h2>
-  <p style="font-size: 1.25rem; color: #475569;">The Workspace is the front-end interface where case workers review information, make decisions, and interact with external users.</p>
+  <p style="font-size: 1.25rem; color: var(--color-text-muted);">The Workspace is the front-end interface where case workers review information, make decisions, and interact with external users.</p>
 </div>
 
 <StatGrid stats={[
@@ -59,7 +60,7 @@ import portalSummary from '../../assets/work/workspace-portal-summary.jpg';
       <p><strong>The Goal:</strong> Design a unified workspace site that centralizes all case information, enforces business logic defined in Studio, and uses AI to accelerate decision-making.</p>
     </div>
     <div slot="media">
-      <Image src={challengeImage} alt="Diagram showing fragmented data sources" />
+      <Image src={challengeImage} alt="Diagram showing fragmented data sources" loading="lazy" />
     </div>
   </TwoCol>
 </FullWidthSection>
@@ -82,14 +83,16 @@ import portalSummary from '../../assets/work/workspace-portal-summary.jpg';
       <p><strong>Inclusive & Accessible:</strong> The entire workspace experience is fully responsive and compliant with <strong>WCAG 2.1 AA standards</strong>, supporting screen readers and keyboard navigation.</p>
     </div>
     <div slot="media">
-      <figure style="margin: 0;">
-        <Image src={heroImage} alt="Workspace Landing Page" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The Case Workspace landing page.</figcaption>
-      </figure>
-      <figure style="margin: 2rem 0 0 0;">
-        <Image src={caseRecord} alt="Full Case Record View" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">A unified Case Record view, aggregating all case data.</figcaption>
-      </figure>
+      <Figure 
+        src={heroImage} 
+        alt="Workspace Landing Page" 
+        caption="The Case Workspace landing page."
+      />
+      <Figure 
+        src={caseRecord} 
+        alt="Full Case Record View" 
+        caption="A unified Case Record view, aggregating all case data."
+      />
     </div>
   </TwoCol>
 </FullWidthSection>
@@ -107,18 +110,21 @@ import portalSummary from '../../assets/work/workspace-portal-summary.jpg';
       </ul>
     </div>
     <div slot="media">
-      <figure style="margin: 0;">
-        <Image src={aiChat} alt="AI Chat Panel and Related Cases" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">Contextual AI chat suggesting related cases.</figcaption>
-      </figure>
-      <figure style="margin: 2rem 0 0 0;">
-        <Image src={aiComments} alt="AI Comment Summary" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">Instant summarization of long comment threads.</figcaption>
-      </figure>
-      <figure style="margin: 2rem 0 0 0;">
-        <Image src={aiDocs} alt="AI Document Summary" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">Citation-backed summaries of attached documents.</figcaption>
-      </figure>
+      <Figure 
+        src={aiChat} 
+        alt="AI Chat Panel and Related Cases" 
+        caption="Contextual AI chat suggesting related cases."
+      />
+      <Figure 
+        src={aiComments} 
+        alt="AI Comment Summary" 
+        caption="Instant summarization of long comment threads."
+      />
+      <Figure 
+        src={aiDocs} 
+        alt="AI Document Summary" 
+        caption="Citation-backed summaries of attached documents."
+      />
     </div>
   </TwoCol>
 </FullWidthSection>
@@ -137,18 +143,21 @@ import portalSummary from '../../assets/work/workspace-portal-summary.jpg';
       <p><strong>Mobile-First Accessibility:</strong> Since external users often access these services via mobile devices, a responsive design that met <strong>WCAG 2.1 AA standards</strong> was prioritized. This ensured that critical services were usable for everyone, regardless of their device or ability.</p>
     </div>
     <div slot="media">
-      <figure style="margin: 0;">
-        <Image src={portalHome} alt="Public Portal Landing Page" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The Public Portal: A mobile-first entry point for citizens.</figcaption>
-      </figure>
-      <figure style="margin: 2rem 0 0 0;">
-        <Image src={portalDashboard} alt="My Cases Dashboard" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The authenticated 'My Cases' dashboard.</figcaption>
-      </figure>
-      <figure style="margin: 2rem 0 0 0;">
-        <Image src={portalSummary} alt="Case Summary View" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">Detailed status tracking for external users.</figcaption>
-      </figure>
+      <Figure 
+        src={portalHome} 
+        alt="Public Portal Landing Page" 
+        caption="The Public Portal: A mobile-first entry point for citizens."
+      />
+      <Figure 
+        src={portalDashboard} 
+        alt="My Cases Dashboard" 
+        caption="The authenticated 'My Cases' dashboard."
+      />
+      <Figure 
+        src={portalSummary} 
+        alt="Case Summary View" 
+        caption="Detailed status tracking for external users."
+      />
     </div>
   </TwoCol>
 </FullWidthSection>

@@ -49,7 +49,7 @@ function isActive(href) {
   .site-header {
     padding: var(--spacing-md) 0;
     background-color: #fff;
-    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+    background-image: radial-gradient(var(--color-bg-pattern) 1px, transparent 1px);
     background-size: 24px 24px;
     background-attachment: fixed;
     border-bottom: 1px solid transparent;
@@ -58,7 +58,7 @@ function isActive(href) {
   }
 
   .blue-header {
-    background-color: #1e3a8a !important; 
+    background-color: var(--color-brand-blue) !important; 
     background-image: radial-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px) !important;
     background-size: 24px 24px !important;
     background-attachment: fixed !important;
@@ -105,12 +105,14 @@ function isActive(href) {
   }
 
   .blue-header .nav-link {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: var(--color-text-inverse) !important;
+    opacity: 0.8;
   }
 
   .blue-header .nav-link:hover, .blue-header .nav-link.active {
-    color: white !important;
-    border-color: white;
+    color: var(--color-text-inverse) !important;
+    opacity: 1;
+    border-color: var(--color-text-inverse);
   }
 
   @media (max-width: 600px) {

@@ -10,6 +10,7 @@ import WideImage from '../../components/WideImage.astro';
 import TwoCol from '../../components/TwoCol.astro';
 import StepHeader from '../../components/StepHeader.astro';
 import FullWidthSection from '../../components/FullWidthSection.astro';
+import Figure from '../../components/Figure.astro';
 
 import heroImage from '../../assets/work/fs-onboarding-dashboard.png';
 import mentalModel from '../../assets/work/fs-mental-model.svg';
@@ -31,7 +32,7 @@ import addDocuments from '../../assets/work/fs-add-documents.png';
 
 <div class="centered-intro">
   <h2>The Impact</h2>
-  <p style="font-size: 1.25rem; color: #475569;">Institutional Onboarding is a high-stakes domain where <strong>speed is revenue, but accuracy is the law</strong>. This suite of applications replaced fragmented legacy processes with a unified system.</p>
+  <p style="font-size: 1.25rem; color: var(--color-text-muted);">Institutional Onboarding is a high-stakes domain where <strong>speed is revenue, but accuracy is the law</strong>. This suite of applications replaced fragmented legacy processes with a unified system.</p>
 </div>
 
 <StatGrid stats={[
@@ -57,7 +58,7 @@ import addDocuments from '../../assets/work/fs-add-documents.png';
       <p><strong>The Data Problem:</strong> Users had to manually cross-reference spreadsheets to know if a specific "Hedge Fund" customer had provided the necessary "KYC Documents" for a specific "Derivatives Product."</p>
     </div>
     <div slot="media">
-      <Image src={mentalModel} alt="Diagram comparing the user's mental model vs. the legacy system model" />
+      <Image src={mentalModel} alt="Diagram comparing the user's mental model vs. the legacy system model" loading="lazy" />
     </div>
   </TwoCol>
 </FullWidthSection>
@@ -78,14 +79,16 @@ import addDocuments from '../../assets/work/fs-add-documents.png';
       </ul>
     </div>
     <div slot="media">
-      <figure style="margin: 0;">
-        <Image src={onboardingDashboard} alt="The Onboarding Dashboard showing status and details" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">The Onboarding Dashboard acts as the command center for the entire lifecycle.</figcaption>
-      </figure>
-      <figure style="margin: 2rem 0 0 0;">
-        <Image src={addDocuments} alt="The Document Upload interface" />
-        <figcaption style="text-align: center; font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; font-style: italic;">Specialized document handling ensures compliance data is captured accurately.</figcaption>
-      </figure>
+      <Figure 
+        src={onboardingDashboard} 
+        alt="The Onboarding Dashboard showing status and details" 
+        caption="The Onboarding Dashboard acts as the command center for the entire lifecycle."
+      />
+      <Figure 
+        src={addDocuments} 
+        alt="The Document Upload interface" 
+        caption="Specialized document handling ensures compliance data is captured accurately."
+      />
     </div>
   </TwoCol>
 </FullWidthSection>
@@ -104,34 +107,38 @@ import addDocuments from '../../assets/work/fs-add-documents.png';
     <div slot="media">
       {/* Pair 1: Before/After */}
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; align-items: start;">
-         <figure style="margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
-            <div style="border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; background: white; line-height: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-               <Image src={tasksBefore} alt="Legacy Task Grid interface" />
-            </div>
-            <figcaption style="font-size: 0.85rem; color: #64748b; font-style: italic; text-align: center; line-height: 1.4;">The legacy task configuration grid using an unintuitive precedent model.</figcaption>
-         </figure>
-         <figure style="margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
-            <div style="border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; background: white; line-height: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-               <Image src={tasksAfter} alt="Redesigned Task Grid interface" />
-            </div>
-            <figcaption style="font-size: 0.85rem; color: #64748b; font-style: italic; text-align: center; line-height: 1.4;">The task configuration grid redesigned with user feedback.</figcaption>
-         </figure>
+         <Figure 
+           src={tasksBefore} 
+           alt="Legacy Task Grid interface" 
+           caption="The legacy task configuration grid using an unintuitive precedent model."
+           frame={true}
+           shadow={true}
+         />
+         <Figure 
+           src={tasksAfter} 
+           alt="Redesigned Task Grid interface" 
+           caption="The task configuration grid redesigned with user feedback."
+           frame={true}
+           shadow={true}
+         />
       </div>
 
       {/* Pair 2: Config/Live */}
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;">
-         <figure style="margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
-            <div style="border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; background: white; line-height: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-               <Image src={conditionalConfig} alt="Configuring a conditional task" />
-            </div>
-            <figcaption style="font-size: 0.85rem; color: #64748b; font-style: italic; text-align: center; line-height: 1.4;">Configuring a branching path.</figcaption>
-         </figure>
-         <figure style="margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
-            <div style="border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; background: white; line-height: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-               <Image src={conditionalLive} alt="Live conditional task summary" />
-            </div>
-            <figcaption style="font-size: 0.85rem; color: #64748b; font-style: italic; text-align: center; line-height: 1.4;">The resulting runtime experience.</figcaption>
-         </figure>
+         <Figure 
+           src={conditionalConfig} 
+           alt="Configuring a conditional task" 
+           caption="Configuring a branching path."
+           frame={true}
+           shadow={true}
+         />
+         <Figure 
+           src={conditionalLive} 
+           alt="Live conditional task summary" 
+           caption="The resulting runtime experience."
+           frame={true}
+           shadow={true}
+         />
       </div>
     </div>
   </TwoCol>
@@ -149,7 +156,7 @@ import addDocuments from '../../assets/work/fs-add-documents.png';
       </ul>
     </div>
     <div slot="media">
-      <Image src={customerTasks} alt="Customer Portal Dashboard showing outstanding tasks" />
+      <Image src={customerTasks} alt="Customer Portal Dashboard showing outstanding tasks" loading="lazy" />
     </div>
   </TwoCol>
 </FullWidthSection>

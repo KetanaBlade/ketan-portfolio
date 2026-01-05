@@ -3,7 +3,6 @@ layout: ../../layouts/Layout.astro
 title: "Design Leadership & Operations"
 ---
 
-import { Image } from 'astro:assets';
 import StatGrid from '../../components/StatGrid.astro';
 import WideImage from '../../components/WideImage.astro';
 import TwoCol from '../../components/TwoCol.astro';
@@ -12,6 +11,7 @@ import GridCard from '../../components/GridCard.astro';
 import QuoteBlock from '../../components/QuoteBlock.astro';
 import ContentWrapper from '../../components/ContentWrapper.astro';
 import FullWidthSection from '../../components/FullWidthSection.astro';
+import Figure from '../../components/Figure.astro';
 
 import figmaImage from '../../assets/work/leadership-figma-library.jpg';
 import workshopImage from '../../assets/work/leadership-community-v2.svg';
@@ -59,7 +59,11 @@ import growthImage from '../../assets/work/leadership-growth.svg';
     </ul>
   </div>
   <div slot="media">
-    <Image src={figmaImage} alt="Figma Component Library" loading="eager" />
+    <Figure 
+      src={figmaImage} 
+      alt="Figma Component Library" 
+      loading="eager"
+    />
   </div>
 </TwoCol>
 
@@ -80,7 +84,11 @@ import growthImage from '../../assets/work/leadership-growth.svg';
   </div>
   
   <div class="media">
-    <Image src={growthImage} alt="Diagram showing career growth trajectory supported by infrastructure" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" />
+    <Figure 
+      src={growthImage} 
+      alt="Diagram showing career growth trajectory supported by infrastructure" 
+      shadow={true}
+    />
   </div>
 </div>
 
@@ -98,7 +106,11 @@ import growthImage from '../../assets/work/leadership-growth.svg';
     <p><strong>The Outcome:</strong> This shift democratized knowledge sharing. Instead of relying on a few seniors to teach, every designer now contributes to the curriculum, fostering a culture where continuous learning is a shared responsibility.</p>
   </div>
   <div class="image">
-    <Image src={workshopImage} alt="UX Workshop Session" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" />
+    <Figure 
+      src={workshopImage} 
+      alt="UX Workshop Session" 
+      shadow={true}
+    />
   </div>
 </div>
 

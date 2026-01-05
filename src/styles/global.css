@@ -5,12 +5,21 @@
   --color-bg: #ffffff;
   --color-text: #1a1a1a;
   --color-text-light: #666666;
-  --color-text-muted: #4b5563; /* High-contrast accessible grey */
+  --color-text-muted: #475569; /* Slate 600 - Standard secondary text */
+  
+  --color-text-inverse: #ffffff;
+  --color-text-inverse-subtle: #f8fafc;
+  
   --color-brand-blue: #1e3a8a; /* Deep Navy Brand Color */
   --color-accent: #2563eb; /* Bright Interaction Blue */
   --color-accent-hover: #1d4ed8;
-  --color-border: #e5e5e5;
+  --color-border: #e2e8f0; /* Slate 200 - Crisper borders */
+  --color-border-strong: #cbd5e1; /* Slate 300 for stronger dividers */
+  --color-border-link-subtle: rgba(30, 58, 138, 0.1);
+  
   --color-bg-subtle: #f9fafb;
+  --color-bg-accent-subtle: #f0f9ff;
+  --color-bg-pattern: #e5e5e5; /* Subtle dots */
 
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
@@ -34,7 +43,7 @@ html {
 body {
   font-family: var(--font-body);
   background-color: #ffffff;
-  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+  background-image: radial-gradient(var(--color-bg-pattern) 1px, transparent 1px);
   background-size: 24px 24px;
   background-attachment: fixed;
   color: var(--color-text);
@@ -210,7 +219,7 @@ body:has(.hero-wrapper) .site-header .nav-link:hover {
 
 .divider {
   height: 1px;
-  background: var(--color-border);
+  background: var(--color-border-strong);
   margin: 4rem 0;
   width: 100%;
 }

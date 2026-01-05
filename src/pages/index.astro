@@ -13,12 +13,12 @@ import leadershipThumb from '../assets/work/leadership-main-thumb-v2.svg';
     <div class="hero-container">
       <h1 class="hero-headline">Building clarity from complexity.</h1>
       <p class="hero-sub">
-        I'm <strong>Ketan Pandya</strong>, a <strong>Product Designer</strong> specializing in internalizing complex requirements quickly and translating them into <strong>logical</strong> systems driven by user <strong>insight</strong>.
+        I'm <strong>Ketan Pandya</strong>, a <strong>Product Designer</strong> who works to understand complex user problems and insights to design <strong>logical</strong> intuitive, accessible solutions. <strong>insight</strong>.
       </p>
     </div>
   </div>
 
-  <section id="work" class="work-section">
+  <section id="work" style="padding: 6rem 0;">
     <!-- Group 1: Appian Case Management Studio (Full Width) -->
     <div class="work-group">
       <div class="group-header">
@@ -71,7 +71,7 @@ import leadershipThumb from '../assets/work/leadership-main-thumb-v2.svg';
             href="/work/financial-services"
             image={fsThumb}
             tags={['Legacy Modernization', 'FinTech', 'System Architecture']}
-            loading="eager"
+            loading="lazy"
           >
             <strong>Inheriting a monolith.</strong> Redesigning a 300-step compliance workflow by aligning the system’s logic with the user's natural sequential thinking.
           </ProjectCard>
@@ -91,7 +91,7 @@ import leadershipThumb from '../assets/work/leadership-main-thumb-v2.svg';
             href="/work/design-leadership"
             image={leadershipThumb}
             tags={['Design Ops', 'Mentorship', 'Strategy']}
-            loading="eager"
+            loading="lazy"
           >
             <strong>Building infrastructure.</strong> Leading the migration to Figma and restructuring knowledge-sharing chapters to establish operational standards.
           </ProjectCard>
@@ -119,7 +119,7 @@ import leadershipThumb from '../assets/work/leadership-main-thumb-v2.svg';
 
   .hero-sub {
     font-size: 1.25rem;
-    color: #f8fafc; /* Brighter off-white */
+    color: var(--color-text-inverse-subtle);
     max-width: 800px;
     line-height: 1.6;
     margin-bottom: 0;
@@ -176,7 +176,7 @@ import leadershipThumb from '../assets/work/leadership-main-thumb-v2.svg';
 
   .separator {
     border: 0;
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid var(--color-border-strong);
     margin: 3rem 0;
   }
 
@@ -210,7 +210,7 @@ import leadershipThumb from '../assets/work/leadership-main-thumb-v2.svg';
 
     .split-group:first-child {
       padding-left: 0;
-      border-right: 1px solid var(--color-border);
+      border-right: 1px solid var(--color-border-strong);
       padding-right: 1.5rem;
     }
 

@@ -11,8 +11,10 @@ import GridCard from '../components/GridCard.astro';
 import ContentWrapper from '../components/ContentWrapper.astro';
 import FullWidthSection from '../components/FullWidthSection.astro';
 import ContactLink from '../components/ContactLink.astro';
+import Figure from '../components/Figure.astro';
 
 import headshot from '../assets/ketan-headshot.jpg';
+import pagespeed from '../assets/pagespeed-100.jpg';
 
 <div style="margin-top: 4rem;"></div>
 
@@ -21,12 +23,12 @@ import headshot from '../assets/ketan-headshot.jpg';
 <TwoCol reverse={true} style={{ alignItems: 'flex-start' }}>
   <div slot="text">
     <h1 style="margin-top: 0; font-size: 2.5rem; line-height: 1.1; margin-bottom: 1.5rem;">I design with logic, insight, and an innate curiosity.</h1>
-    <p class="lead" style="font-size: 1.25rem; color: #475569; margin-bottom: 2rem;">I am a <strong>Product Designer</strong> who thrives on complexity. My background in Information Science drives me to deconstruct messy problems, but my passion for craft ensures I rebuild them into interfaces that feel <strong>simple, modern, and human</strong>.</p>
-    <p>At <strong>Appian</strong>, I design <strong>Case Management Studio</strong>, a platform that turns abstract business logic into visual tools. My work centers on <strong>extensibility and scale</strong>—building foundational patterns that allow our customers to launch distinct, high-quality applications without reinventing the wheel.</p>
+    <p class="lead" style="font-size: 1.25rem; color: var(--color-text-muted); margin-bottom: 2rem;">I am a <strong>Product Designer</strong> who thrives on complexity. My background in Information Science drives me to deconstruct messy problems, but my passion for design and empathy for users ensures I rebuild them into solutions that feel <strong>simple, modern, and human</strong>.</p>
+    <p>At <strong>Appian</strong>, I design <strong>Case Management Studio</strong>, a platform that turns abstract business logic and processes into visual tools. My work centers on <strong>extensibility and scale</strong>—building foundational patterns that allow our customers to launch distinct, accessible, high-quality applications without .</p>
     
-    <div style="margin-top: 0; padding-top: 1.5rem; border-top: 1px solid #e2e8f0;">
-      <h3 style="margin-top: 0; font-size: 1rem; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.05em; margin-bottom: 1rem;">Offline</h3>
-      <p>When I'm not designing, you can find me hiking, traveling, reading, or diving down a deep Wikipedia rabbit hole. I have always been a naturally curious person with a genuine love for learning about the world around me—whether it’s a new piece of history, a different perspective, or a new skill.</p>
+    <div style="margin-top: 0; padding-top: 1.5rem; border-top: 1px solid var(--color-border-strong);">
+      <h3 style="margin-top: 0; font-size: 1rem; text-transform: uppercase; color: var(--color-brand-blue); letter-spacing: 0.05em; margin-bottom: 1rem;">Other things about me</h3>
+      <p>You can often find me hiking, traveling, reading, or diving down a Wikipedia rabbit hole. I have always been a naturally curious person with a love for learning about the world around me. Exposing myself to the different aspects and perspectives of the world and the people in it is fun, and it helps me develop and improve on myself, too.</p>
       
       <div class="connect-section" style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1.5rem;">
         <ContactLink type="email" href="mailto:kbp_1@live.com" label="kbp_1@live.com" />
@@ -37,7 +39,16 @@ import headshot from '../assets/ketan-headshot.jpg';
   </div>
 
   <div slot="media">
-    <Image src={headshot} alt="Ketan Pandya" loading="eager" style="border-radius: 12px; width: 100%; aspect-ratio: 3/4; object-fit: cover;" />
+    <Image 
+      src={headshot} 
+      alt="Ketan Pandya" 
+      loading="eager" 
+      fetchpriority="high"
+      widths={[400, 800, 1200]}
+      sizes="(max-width: 900px) 100vw, 600px"
+      format="webp"
+      style="border-radius: 12px; width: 100%; aspect-ratio: 3/4; object-fit: cover;" 
+    />
   </div>
 </TwoCol>
 
@@ -85,9 +96,18 @@ import headshot from '../assets/ketan-headshot.jpg';
       <span class="detail">Minors: Japanese Studies & Creative Writing</span>
     </div>
 
-    <div style="margin-top: 6rem; padding-top: 2rem; border-top: 1px solid #cbd5e1; text-align: center;">
-      <h3 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #1e3a8a; margin-top: 0; margin-bottom: 1rem;">Colophon</h3>
-      <p style="font-size: 0.95rem; color: #475569; max-width: 600px; margin: 0 auto;">This portfolio was built with <strong>Astro</strong> for performance and developed interactively using the <strong>Gemini CLI</strong>. It serves as a live experiment in AI-assisted prototyping, demonstrating how modern tooling can accelerate the journey from design to code.</p>
+    <div style="margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--color-border-strong);">
+      <h3 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brand-blue); margin-top: 0; margin-bottom: 1rem;">Colophon</h3>
+      <p style="font-size: 0.95rem; color: var(--color-text-muted); max-width: 600px; margin-bottom: 2rem;">This portfolio was built with <strong>Astro</strong> for performance and developed interactively using the <strong>Gemini CLI</strong>. It serves as a live experiment in AI-assisted prototyping, demonstrating how modern tooling can accelerate the journey from design to code.</p>
+      
+      <div style="max-width: 500px; margin-left: 0;">
+        <Figure 
+          src={pagespeed} 
+          alt="Google PageSpeed Insights score showing 100/100 in Performance, Accessibility, Best Practices, and SEO" 
+          caption="From PageSpeed Insights"
+          shadow={true}
+        />
+      </div>
     </div>
   </div>
 </ContentWrapper>
