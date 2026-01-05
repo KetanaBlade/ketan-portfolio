@@ -108,7 +108,6 @@ body:has(.hero-wrapper) .site-header .nav-link:hover {
   background-attachment: fixed;
   width: 100%;
   padding: 6rem 0 6rem 0; 
-  margin-bottom: 4rem;
   color: white;
   position: relative;
 }
