@@ -6,7 +6,14 @@ const { src, alt, caption, frame = false, shadow = false, loading = "lazy" } = A
 
 <figure class:list={["figure-block", { "framed": frame, "shadow": shadow }]}>
   <div class="image-wrapper">
-    <Image src={src} alt={alt} loading={loading} />
+    <Image 
+      src={src} 
+      alt={alt} 
+      loading={loading} 
+      widths={[400, 800, 1200]}
+      sizes="(max-width: 900px) 100vw, 800px"
+      format="webp"
+    />
   </div>
   {caption && <figcaption>{caption}</figcaption>}
 </figure>
