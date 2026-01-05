@@ -13,12 +13,12 @@ import leadershipThumb from '../assets/work/leadership-main-thumb-v2.svg';
     <div class="hero-container">
       <h1 class="hero-headline">Building clarity from complexity.</h1>
       <p class="hero-sub">
-        I am <strong>Ketan Pandya</strong>, a Product Designer. I specialize in internalizing complex requirements quickly and translating them into <strong>logical</strong> systems driven by user <strong>insight</strong>.
+        I am <strong>Ketan Pandya</strong>, a <strong>Product Designer</strong>. I specialize in internalizing complex requirements quickly and translating them into <strong>logical</strong> systems driven by user <strong>insight</strong>.
       </p>
     </div>
   </div>
 
-  <section class="work-section">
+  <section id="work" class="work-section">
     <!-- Group 1: Appian Case Management Studio (Full Width) -->
     <div class="work-group">
       <div class="group-header">
@@ -69,6 +69,7 @@ import leadershipThumb from '../assets/work/leadership-main-thumb-v2.svg';
             href="/work/financial-services"
             image={fsThumb}
             tags={['Legacy Modernization', 'FinTech', 'System Architecture']}
+            loading="eager"
           >
             <strong>Inheriting a monolith.</strong> Redesigning a 300-step compliance workflow by aligning the system’s logic with the user's natural sequential thinking.
           </ProjectCard>
@@ -88,6 +89,7 @@ import leadershipThumb from '../assets/work/leadership-main-thumb-v2.svg';
             href="/work/design-leadership"
             image={leadershipThumb}
             tags={['Design Ops', 'Mentorship', 'Strategy']}
+            loading="eager"
           >
             <strong>Building infrastructure.</strong> Leading the migration to Figma and restructuring knowledge-sharing chapters to establish operational standards.
           </ProjectCard>
@@ -174,7 +176,6 @@ import leadershipThumb from '../assets/work/leadership-main-thumb-v2.svg';
     border: 0;
     border-top: 1px solid var(--color-border);
     margin: 3rem 0;
-    opacity: 0.5;
   }
 
   .grid-2 {

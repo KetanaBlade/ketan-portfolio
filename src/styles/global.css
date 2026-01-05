@@ -43,6 +43,26 @@ body {
   min-height: 100vh;
 }
 
+/* Accessibility: Skip Link */
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 1rem;
+  z-index: 1000;
+  padding: 1rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 2px solid var(--color-accent);
+  border-radius: 0 0 8px 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 /* Failsafe: If hero wrapper exists, force header to be blue */
 body:has(.hero-wrapper) .site-header {
   background-color: #1e3a8a !important;

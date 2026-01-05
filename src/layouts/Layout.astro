@@ -30,9 +30,10 @@ const effectiveHeaderStyle = isHome || headerStyle === 'blue' ? 'blue' : 'defaul
     </script>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <Header style={effectiveHeaderStyle} />
     <slot name="hero" />
-    <main class="container">
+    <main id="main-content" class="container">
       <slot />
     </main>
     <Footer />

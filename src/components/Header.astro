@@ -9,6 +9,7 @@ const currentPath = pathname.replace(/\/$/, "");
 
 const links = [
   { href: '/', label: 'Home' },
+  { href: '/#work', label: 'Work' },
   { href: '/about', label: 'About' },
 ];
 
@@ -38,7 +39,7 @@ function isActive(href) {
             </a>
           </li>
         ))}
-        <li><a href="/assets/resume.pdf" target="_blank" class="nav-link">Resume</a></li>
+        <li><a href="/resume" target="_blank" class="nav-link">Resume</a></li>
       </ul>
     </nav>
   </div>
@@ -119,7 +120,7 @@ function isActive(href) {
     }
     
     .nav-list {
-      gap: var(--spacing-md);
+      gap: 1.5rem; /* Increased spacing for easier touch targets */
     }
   }
 </style>
