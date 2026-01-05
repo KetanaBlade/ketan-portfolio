@@ -38,7 +38,9 @@ const { title, subtitle, role, timeline, team, image } = Astro.props;
         class="hero-image" 
         loading="eager" 
         fetchpriority="high"
-        width={1600}
+        widths={[400, 800, 1200, 1600]}
+        sizes="(max-width: 900px) 100vw, 800px"
+        format="webp"
       />
     </div>
   </div>

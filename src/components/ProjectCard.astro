@@ -10,8 +10,9 @@ const { href, title, subtitle, image, tags = [], loading = "lazy", fetchpriority
       alt={title} 
       loading={loading} 
       fetchpriority={fetchpriority}
-      width={1200}
-      height={675}
+      widths={[400, 800, 1200]}
+      sizes="(max-width: 768px) 100vw, 600px"
+      format="webp"
     />
   </div>
   <div class="content">
