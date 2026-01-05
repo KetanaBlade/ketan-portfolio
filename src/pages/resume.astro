@@ -12,6 +12,7 @@ import Layout from '../layouts/Layout.astro';
             --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             --color-text: #111827;
             --color-text-light: #4b5563;
+            --color-brand-blue: #1e3a8a;
             --color-accent: #2563eb;
             --spacing-section: 2rem;
         }
@@ -71,6 +72,7 @@ import Layout from '../layouts/Layout.astro';
             display: flex;
             flex-wrap: wrap;
             gap: 1.5rem;
+            font-weight: 500; /* Confident medium weight */
         }
 
         .contact-info a {
@@ -85,11 +87,11 @@ import Layout from '../layouts/Layout.astro';
         }
 
         h2 {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--color-text-light);
-            border-bottom: 1px solid #e5e7eb;
+            letter-spacing: 0.15em;
+            color: var(--color-brand-blue); 
+            border-bottom: 1px solid #cbd5e1;
             padding-bottom: 0.5rem;
             margin: 0 0 1.25rem 0;
             font-weight: 700;
@@ -116,6 +118,7 @@ import Layout from '../layouts/Layout.astro';
             font-size: 0.9rem;
             color: var(--color-text-light);
             text-align: right;
+            font-weight: 600; /* Make dates/locations stand out */
         }
 
         .job-item {
@@ -145,12 +148,13 @@ import Layout from '../layouts/Layout.astro';
         }
 
         .edu-item {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
         
         .edu-header {
             display: flex;
             justify-content: space-between;
+            margin-bottom: 0.1rem;
         }
 
         .degree {
@@ -158,13 +162,19 @@ import Layout from '../layouts/Layout.astro';
         }
 
         .school {
-            
+            font-weight: 500;
         }
 
         .edu-details {
             font-size: 0.9rem;
             color: var(--color-text-light);
-            margin-top: 0.2rem;
+            margin-top: 0.3rem;
+            line-height: 1.4;
+        }
+
+        .edu-details strong {
+            color: var(--color-text);
+            font-weight: 600;
         }
 
         /* Skills Lists */
