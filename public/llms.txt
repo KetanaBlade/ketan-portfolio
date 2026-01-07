@@ -1,0 +1,57 @@
+# Ketan Pandya - Product Designer
+
+## Summary
+Product Designer specializing in Human-Computer Interaction Design and complex systems. Background in Information Science. Focuses on deconstructing messy problems to build solutions that are simple, modern, and human. Currently a User Experience Designer II at Appian Corporation.
+
+## Core Competencies
+- **Design Strategy:** Systems Design, Information Architecture, Complex Logic Visualization, AI Roadmap Definition.
+- **Craft:** Figma, Prototyping, Design Systems (Appian SAIL), Accessibility (WCAG 2.1 AA).
+- **Research:** Usability Testing, Heuristic Evaluation, Evidence-Based Design.
+- **Development:** AI-Assisted Prototyping (Gemini CLI), Low-Code implementation.
+
+## Professional Experience
+
+### Appian Corporation (July 2022 – Present)
+**User Experience Designer II**
+- **Case Management Studio:** Lead designer for a platform turning abstract business logic into visual tools.
+- **Enterprise Impact:** Suite adopted by 92+ enterprise customers, including **Porsche, Pfizer, Vanguard, T. Rowe Price, and the Australian Government**.
+- **Metrics:** Achieved a **60% improvement in usability** and a **50% reduction in implementation time** for customers.
+- **AI Strategy:** Defined the multi-year vision for modular, agent-based AI models within Case Management Studio.
+- **Design System Leadership:** Leads the **Figma SAIL Component Library** working group; published the library to the Figma Community with ~1,000 external users.
+- **Leadership:** Facilitates the "UX Chapter" (100+ designers) for peer-to-peer learning and workshops.
+
+### Virsec Systems (June 2021 – Aug 2021)
+**FE UI and UX Design Intern**
+- Designed dashboards for cybersecurity insights and collaborated on iterative UI prototypes.
+
+## Key Projects & Case Studies
+
+### 1. The Studio Experience (Low-Code Platform)
+- **Problem:** Legacy linear checklists failed to represent complex business lifecycles.
+- **Solution:** A hybrid three-pane interface (Input, Logic, Validation) that bridges spreadsheet efficiency with flowchart visualization.
+- **Outcome:** Reduced engineering dependency, allowing implementation teams to go live in as little as 4 weeks.
+
+### 2. The Workspace Experience (AI & Dynamic Interfaces)
+- **Problem:** Case workers faced fragmented data across emails, documents, and databases.
+- **Solution:** A unified, intelligent front-end aggregating case context with integrated **Private AI** for summarization and discovery.
+- **Accessibility:** 100% WCAG 2.1 AA compliant; mobile-first design for public-facing portals.
+
+### 3. Connected Onboarding (Financial Services)
+- **Problem:** Inherited a monolith with 300+ tasks where users struggled with a "backward" thinking precedent model.
+- **Solution:** Flipped the interaction model to "sequential thinking" (dependents vs. precedents) and built a command-center dashboard for risk/compliance tracking.
+- **Impact:** Adopted by Tier 1 financial institutions with minimal customization.
+
+### 4. Design Leadership & Operations
+- **Figma Migration:** Led the transition from Sketch to Figma, rebuilding the design system to optimize for Auto Layout and Variants.
+- **Mentorship:** Established onboarding curriculum and design rotations for new hires and interns.
+
+## Education
+- **Master of Science, Information Science:** University of North Carolina at Chapel Hill (Specialization: HCI Design). 
+  - **Master's Paper:** [User Preferences for Email Tasks on Different Platforms](https://cdr.lib.unc.edu/concern/masters_papers/2r36v751z?locale=en)
+- **Bachelor of Arts, Philosophy:** Virginia Tech (Minors: Japanese Studies, Creative Writing).
+
+## Contact & Links
+- **Email:** kbp_1@live.com
+- **LinkedIn:** https://www.linkedin.com/in/ketan-pandya-b76832155/
+- **Portfolio:** https://ketanbpandya.com
+- **Resume:** https://ketanbpandya.com/resume
