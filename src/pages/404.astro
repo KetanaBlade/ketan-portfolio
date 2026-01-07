@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+---
+
+<Layout title="Page Not Found - Ketan Pandya">
+  <div class="error-container">
+    <div class="error-code" aria-hidden="true">404</div>
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-message">
+      The page you're looking for has been moved or no longer exists.
+    </p>
+    <Button href="/">Return Home</Button>
+  </div>
+</Layout>
+
+<style>
+  .error-container {
+    text-align: center;
+    padding: 8rem 1rem;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .error-code {
+    font-size: clamp(4rem, 15vw, 8rem);
+    font-weight: 700;
+    color: var(--color-brand-blue);
+    margin: 0;
+    line-height: 1;
+    opacity: 0.35;
+  }
+
+  .error-title {
+    font-size: 2rem;
+    color: var(--color-text);
+    margin-top: -1.5rem; /* Overlap with the big number */
+    margin-bottom: 1rem;
+  }
+
+  .error-message {
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+    max-width: 60ch;
+  }
+</style>
