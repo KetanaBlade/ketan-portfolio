@@ -1,0 +1,204 @@
+---
+---
+
+<div class="priority-matrix-container">
+  <div class="matrix-header">
+    <span class="matrix-title">Strategic Trade-offs</span>
+    <span class="matrix-subtitle">Balancing User Expectation vs. Platform Limits</span>
+  </div>
+
+  <div class="matrix-chart">
+    <!-- Y-Axis Label -->
+    <div class="axis-label y-axis">User Value</div>
+    
+    <!-- Quadrants -->
+    <div class="grid-area">
+      <div class="quadrant q-tl"></div>
+      <div class="quadrant q-tr"></div>
+      <div class="quadrant q-bl"></div>
+      <div class="quadrant q-br"></div>
+
+      <!-- Plotted Items -->
+      <div class="plot-point point-1">
+        <div class="dot"></div>
+        <div class="label">Full Drag & Drop<br/><span class="sub">(Technically Blocked)</span></div>
+      </div>
+
+      <div class="plot-point point-2">
+        <div class="dot highlight"></div>
+        <div class="label highlight">Hybrid Interface<br/><span class="sub">(The Strategic Pivot)</span></div>
+      </div>
+      
+      <div class="plot-point point-3">
+        <div class="dot muted"></div>
+        <div class="label muted">Legacy List<br/><span class="sub">(Low Usability)</span></div>
+      </div>
+    </div>
+
+    <!-- X-Axis Label -->
+    <div class="axis-label x-axis">Technical Effort</div>
+  </div>
+</div>
+
+<style>
+  .priority-matrix-container {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    height: 100%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .matrix-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .matrix-title {
+    font-weight: 700;
+    color: var(--color-text-heading);
+    font-size: 1.1rem;
+  }
+
+  .matrix-subtitle {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .matrix-chart {
+    position: relative;
+    flex: 1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr auto;
+    gap: 0.5rem;
+    min-height: 250px; /* Ensure enough height for the chart */
+  }
+
+  .axis-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .y-axis {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+  }
+
+  .x-axis {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    margin-top: 0.5rem;
+  }
+
+  .grid-area {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    position: relative;
+    border-left: 2px solid var(--color-border);
+    border-bottom: 2px solid var(--color-border);
+    background: white; /* Force white background for contrast */
+    border-radius: 0 4px 0 0;
+  }
+  
+  /* Dark mode override */
+  :global(.dark) .grid-area {
+    background: rgba(255,255,255,0.05);
+  }
+
+  /* Quadrant Grid Lines */
+  .grid-area::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--color-border);
+    border-bottom: 1px dashed var(--color-text-muted);
+    opacity: 0.2;
+  }
+
+  .grid-area::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--color-border);
+    border-right: 1px dashed var(--color-text-muted);
+    opacity: 0.2;
+  }
+
+  /* Plots */
+  .plot-point {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    background: var(--color-text-muted);
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .dot.highlight {
+    background: var(--color-accent);
+    width: 16px;
+    height: 16px;
+  }
+
+  .label {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-body);
+    background: rgba(255,255,255,0.9);
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  
+  :global(.dark) .label {
+    background: rgba(0,0,0,0.8);
+  }
+
+  .label.highlight {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .sub {
+    font-weight: 400;
+    font-size: 0.7rem;
+    opacity: 0.8;
+  }
+
+  /* Positioning (Percentages) */
+  .point-1 { top: 15%; left: 85%; } /* Drag & Drop: High Value, High Effort */
+  .point-2 { top: 20%; left: 45%; } /* Hybrid: High Value, Med Effort */
+  .point-3 { top: 80%; left: 20%; } /* Legacy: Low Value, Low Effort */
+
+</style>

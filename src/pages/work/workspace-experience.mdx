@@ -10,6 +10,9 @@ import WideImage from '../../components/WideImage.astro';
 import TwoCol from '../../components/TwoCol.astro';
 import StepHeader from '../../components/StepHeader.astro';
 import FullWidthSection from '../../components/FullWidthSection.astro';
+import GridSection from '../../components/GridSection.astro';
+import GridCard from '../../components/GridCard.astro';
+import UserVoice from '../../components/UserVoice.astro';
 import Figure from '../../components/Figure.astro';
 
 import heroImage from '../../assets/work/workspace-experience-main.jpg';
@@ -23,6 +26,7 @@ import aiDocs from '../../assets/work/workspace-ai-docs.png';
 import portalHome from '../../assets/work/workspace-portal-home.jpg';
 import portalDashboard from '../../assets/work/workspace-portal-dashboard.jpg';
 import portalSummary from '../../assets/work/workspace-portal-summary.jpg';
+import citizenFlows from '../../assets/work/workspace-citizen-flows.jpg';
 
 <CaseHero 
   title="The Workspace Experience"
@@ -63,6 +67,25 @@ import portalSummary from '../../assets/work/workspace-portal-summary.jpg';
       <Image src={challengeImage} alt="Diagram showing fragmented data sources" loading="lazy" />
     </div>
   </TwoCol>
+
+  <h3 style="margin-top: 3rem;">Key Constraints</h3>
+  <GridSection>
+    <GridCard 
+      icon="🧩"
+      title="Platform Limits"
+      description="Strict adherence to low-code capabilities meant visual design had to focus on layout and hierarchy rather than custom styling."
+    />
+    <GridCard 
+      icon="📦"
+      title="Modularity"
+      description="To avoid the <strong>monolithic</strong> debt of legacy apps, features were designed as optional modules that could be slotted in or out."
+    />
+    <GridCard 
+      icon="🔍"
+      title="Proxy Research"
+      description="Validation relied on proxy users and subject matter experts (Customer Success) rather than direct access to end-users."
+    />
+  </GridSection>
 </FullWidthSection>
 
 <div class="centered-intro" style="margin-top: 4rem;">
@@ -95,6 +118,29 @@ import portalSummary from '../../assets/work/workspace-portal-summary.jpg';
       />
     </div>
   </TwoCol>
+
+  <div class="process-subsection" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+    <h3>Process: Validating the Experience</h3>
+    <TwoCol sticky={true} frame={true}>
+      <div slot="text" style="margin-top: -1.5rem;">
+        <h4>Designing for Relevance</h4>
+        <p>A core tenet of the design was to keep the application focused. We adopted a <strong>modular architecture</strong> as a result of close collaboration between business, development, and design. This ensured that the interface only displays features relevant to a specific configuration, preventing the unnecessary complexity common in legacy software while maintaining a scalable codebase.</p>
+        <ul>
+          <li><strong>Intentional Layouts:</strong> Foundational decisions like navigation placement were validated through testing. While the Studio environment uses a sidebar for its deep hierarchy, users confirmed that a <strong>top navigation</strong> model was better for the Workspace, as it preserved horizontal space for reviewing data and documents.</li>
+          <li><strong>Validation:</strong> Participants in usability studies reacted positively to this streamlined approach. They noted the interface felt cleaner than previous iterations and confirmed that the layout successfully aggregated necessary details without overwhelming the user.</li>
+          <li><strong>Result:</strong> The final design provides a unified interface that remains flexible enough to support diverse business needs while keeping the worker focused on the task at hand.</li>
+        </ul>
+      </div>
+      <div slot="media">
+        <UserVoice quotes={[
+          { text: "I think you guys have nailed it with the way that this is built out.", label: "ARC" },
+            { text: "You did an awesome job of... pushing the limits of the UX.", label: "Product Stakeholder" },
+            { text: "The business user interface design experience will drive widespread adoption.", label: "3E" },
+            { text: "It’s really impressive what we were able to show in the first demos.", label: "Related Fund Management" }
+          ]} />
+      </div>
+    </TwoCol>
+  </div>
 </FullWidthSection>
 
 <FullWidthSection background="grey">
@@ -160,4 +206,27 @@ import portalSummary from '../../assets/work/workspace-portal-summary.jpg';
       />
     </div>
   </TwoCol>
+
+  <div class="process-subsection" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+    <h3>Process: Designing for the Public</h3>
+    <TwoCol reverse={true} sticky={true} frame={true}>
+      <div slot="text">
+        <h4>Shifting the Design Language</h4>
+        <p>While the internal workspace focused on density and efficiency for trained experts, the external portal required a fundamental shift in design language to support novice users.</p>
+        <ul>
+          <li><strong>Consumer-Friendly UX:</strong> We simplified the interaction model, breaking down complex intake forms into guided, bite-sized steps. The visual style was adjusted to be more welcoming and less enterprise, using clearer typography and more generous spacing to reduce cognitive load.</li>
+          <li><strong>Mobile-First Strategy:</strong> Recognizing that citizens often access services via smartphones, the entire self-service experience was designed mobile-first. This ensured that critical flows—like self-registration and case tracking—were fully functional and accessible on smaller touch screens, not just scaled-down desktop views.</li>
+          <li><strong>Seamless Integration:</strong> Special attention was paid to the handoff between unauthenticated public access and authenticated self-service, ensuring that the transition from initial discovery to secure account management felt like a single, cohesive journey.</li>
+        </ul>
+      </div>
+      <div slot="media">
+        <Figure 
+          src={citizenFlows} 
+          alt="User flow diagram for citizen self-registration" 
+          caption="Mapping the user journey from public access to authenticated self-service using user flows and sitemaps."
+          shadow={true}
+        />
+      </div>
+    </TwoCol>
+  </div>
 </FullWidthSection>

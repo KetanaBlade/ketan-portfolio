@@ -1,0 +1,174 @@
+---
+---
+
+<div class="inheritance-diagram">
+  <div class="level global">
+    <div class="level-label">Global Level</div>
+    <div class="rule-card">
+      <span class="icon">🌐</span>
+      <span class="text">SLA = 3 Days</span>
+    </div>
+  </div>
+
+  <div class="connections">
+    <div class="line vertical"></div>
+    <div class="line horizontal"></div>
+    <div class="arrow left"></div>
+    <div class="arrow right"></div>
+  </div>
+
+  <div class="level-row">
+    <div class="level local inherited">
+      <div class="level-label">Case Type A</div>
+      <div class="rule-card dashed">
+        <span class="icon">↳</span>
+        <span class="text">SLA = 3 Days</span>
+        <span class="badge">Inherited</span>
+      </div>
+    </div>
+
+    <div class="level local override">
+      <div class="level-label">Case Type B</div>
+      <div class="rule-card highlight">
+        <span class="icon">⚡</span>
+        <span class="text">SLA = 1 Day</span>
+        <span class="badge">Override</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .inheritance-diagram {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    height: 100%;
+    min-height: 250px;
+    justify-content: center;
+  }
+
+  .level {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .level-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+
+  .rule-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 140px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+    color: var(--color-text-body);
+    font-weight: 500;
+    position: relative;
+  }
+  
+  :global(.dark) .rule-card {
+    background: #1a1a1a;
+  }
+
+  .rule-card.dashed {
+    border-style: dashed;
+    opacity: 0.8;
+  }
+
+  .rule-card.highlight {
+    border-color: var(--color-accent);
+    background: var(--color-bg-surface);
+  }
+
+  .badge {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: auto;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .dashed .badge {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-muted);
+  }
+
+  .highlight .badge {
+    background: var(--color-accent);
+    color: white;
+  }
+
+  .connections {
+    height: 40px;
+    width: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .line {
+    background: var(--color-border);
+    position: absolute;
+  }
+
+  .line.vertical {
+    width: 2px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .line.horizontal {
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  }
+
+  .arrow {
+    position: absolute;
+    bottom: -5px;
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--color-border);
+  }
+
+  .arrow.left { left: 0; transform: translateX(-50%); }
+  .arrow.right { right: 0; transform: translateX(50%); }
+
+  .level-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1rem; /* Space for the arrows */
+  }
+
+  .icon {
+    font-size: 1.1em;
+  }
+
+</style>

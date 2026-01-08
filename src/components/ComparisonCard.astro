@@ -1,0 +1,157 @@
+---
+---
+
+<div class="comparison-card">
+  <div class="header">
+    <span class="title">Mental Model Mismatch</span>
+    <span class="subtitle">Why users failed the legacy task</span>
+  </div>
+
+  <div class="models-container">
+    <!-- User Model -->
+    <div class="model user-model success">
+      <div class="model-header">
+        <span class="icon">🧠</span>
+        <span class="label">User Expectation</span>
+      </div>
+      <div class="diagram flow">
+        <div class="node">Task A</div>
+        <div class="arrow">→</div>
+        <div class="node">Task B</div>
+      </div>
+      <div class="description">Sequential Logic</div>
+    </div>
+
+    <!-- System Model -->
+    <div class="model system-model failure">
+      <div class="model-header">
+        <span class="icon">💻</span>
+        <span class="label">Legacy System</span>
+      </div>
+      <div class="diagram list">
+        <div class="node">Task B</div>
+        <div class="arrow">←</div>
+        <div class="node">Task A</div>
+      </div>
+      <div class="description">Backward Dependency</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .comparison-card {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .title {
+    font-weight: 700;
+    color: var(--color-text-heading);
+    font-size: 1.1rem;
+  }
+
+  .subtitle {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .models-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .models-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .model {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+  }
+  
+  :global(.dark) .model {
+    background: rgba(255,255,255,0.05);
+  }
+
+  .model.success {
+    border-bottom: 4px solid var(--color-accent);
+  }
+
+  .model.failure {
+    border-bottom: 4px solid #ef4444; /* Red for failure */
+    opacity: 0.8;
+  }
+
+  .model-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .diagram {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: monospace;
+    font-size: 0.9rem;
+    background: var(--color-bg-subtle);
+    padding: 0.75rem;
+    border-radius: 6px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .node {
+    background: white;
+    border: 1px solid var(--color-border);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    white-space: nowrap;
+  }
+  
+  :global(.dark) .node {
+    background: #2a2a2a;
+  }
+
+  .arrow {
+    color: var(--color-text-muted);
+    font-weight: 700;
+  }
+
+  .description {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+</style>

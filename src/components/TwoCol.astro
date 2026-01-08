@@ -50,8 +50,9 @@ const { reverse = false, frame = false, sticky = false, style } = Astro.props;
     font-size: 1.1rem;
   }
 
-  .col-text > :first-child {
-    margin-top: 0;
+  .col-text > :first-child,
+  .col-text > :first-child > :first-child {
+    margin-top: 0 !important;
   }
 
   .col-media {

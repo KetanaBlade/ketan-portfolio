@@ -16,7 +16,7 @@ Product Designer specializing in Human-Computer Interaction Design and complex s
 - **Case Management Studio:** Lead designer for a platform turning abstract business logic into visual tools.
 - **Enterprise Impact:** Suite adopted by 92+ enterprise customers, including **Porsche, Pfizer, Vanguard, T. Rowe Price, and the Australian Government**.
 - **Metrics:** Achieved a **60% improvement in usability** and a **50% reduction in implementation time** for customers.
-- **AI Strategy:** Defined the multi-year vision for modular, agent-based AI models within Case Management Studio.
+- **AI Strategy:** Defined the multi-year vision for Case Management Studio, evolving the product into a modular framework of rules-based automation and integrated AI capabilities.
 - **Design System Leadership:** Leads the **Figma SAIL Component Library** working group; published the library to the Figma Community with ~1,000 external users.
 - **Leadership:** Facilitates the "UX Chapter" (100+ designers) for peer-to-peer learning and workshops.
 

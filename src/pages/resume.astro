@@ -71,8 +71,10 @@ import Layout from '../layouts/Layout.astro';
             color: var(--color-text-muted);
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1.25rem;
             font-weight: 500; /* Confident medium weight */
+            list-style: none;
+            padding: 0;
         }
 
         .contact-info a {
@@ -267,12 +269,12 @@ import Layout from '../layouts/Layout.astro';
     <header>
         <h1>Ketan Pandya</h1>
         <div class="title">Product Designer</div>
-        <div class="contact-info">
-            <span>McLean, VA</span>
-            <a href="mailto:kbp_1@live.com">kbp_1@live.com</a>
-            <a href="https://linkedin.com/in/ketan-pandya-b76832155" target="_blank">LinkedIn</a>
-            <a href="https://ketanbpandya.com" target="_blank">Portfolio</a>
-        </div>
+        <ul class="contact-info">
+            <li>McLean, VA</li>
+            <li><a href="mailto:kbp_1@live.com">kbp_1@live.com</a></li>
+            <li><a href="https://ketanbpandya.com" target="_blank">ketanbpandya.com</a></li>
+            <li><a href="https://linkedin.com/in/ketan-pandya-b76832155" target="_blank">LinkedIn</a></li>
+        </ul>
     </header>
 
     <section>
@@ -284,7 +286,7 @@ import Layout from '../layouts/Layout.astro';
                 <div class="location-date">July 2022 – Present</div>
             </div>
             <ul>
-                <li><strong>Strategic AI Roadmap:</strong> Defined the multi-year vision for AI within Case Management Studio, evolving the product from feature-level design to <strong>modular, agent-based AI models</strong> that drive automation.</li>
+                <li><strong>Strategic AI Roadmap:</strong> Defined the multi-year vision for Case Management Studio, evolving the product from feature-level design to a <strong>modular framework of rules-based automation and integrated AI capabilities</strong>.</li>
                 <li><strong>Global Enterprise Impact:</strong> Led end-to-end UX for a product suite adopted by <strong>92 enterprise customers</strong> (e.g., Porsche, Pfizer, T. Rowe Price). Achieved a <strong>60% improvement in usability</strong> and standardized <strong>WCAG 2.1 AA accessibility compliance</strong> across the platform.</li>
                 <li><strong>Operational Efficiency:</strong> Designed a foundational Rules Engine and Workflow framework that saved implementation teams <strong>2–3 sprints of development</strong> per project, enabling partners like DTCC to deliver apps in record time.</li>
                 <li><strong>Scalable Architecture:</strong> Architected the <strong>"Solutions Hub"</strong> theming engine, allowing customers to instantly propagate branding across both internal tools and public-facing portals without custom code.</li>

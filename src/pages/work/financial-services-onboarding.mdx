@@ -10,6 +10,9 @@ import WideImage from '../../components/WideImage.astro';
 import TwoCol from '../../components/TwoCol.astro';
 import StepHeader from '../../components/StepHeader.astro';
 import FullWidthSection from '../../components/FullWidthSection.astro';
+import GridSection from '../../components/GridSection.astro';
+import GridCard from '../../components/GridCard.astro';
+import ComparisonCard from '../../components/ComparisonCard.astro';
 import Figure from '../../components/Figure.astro';
 
 import heroImage from '../../assets/work/fs-onboarding-dashboard.png';
@@ -61,6 +64,25 @@ import addDocuments from '../../assets/work/fs-add-documents.png';
       <Image src={mentalModel} alt="Diagram comparing the user's mental model vs. the legacy system model" loading="lazy" />
     </div>
   </TwoCol>
+
+  <h3 style="margin-top: 3rem;">Key Constraints</h3>
+  <GridSection>
+    <GridCard 
+      icon="🏛️"
+      title="Legacy Monolith"
+      description="Refactoring was high-risk. Changes had to be surgical to avoid breaking years of accumulated logic in the older codebase."
+    />
+    <GridCard 
+      icon="⚖️"
+      title="Compliance"
+      description="Visibility was paramount. Every user action required a granular audit trail to meet strict financial regulations."
+    />
+    <GridCard 
+      icon="⏳"
+      title="Timeline"
+      description="We had a strict one-year deadline to modernize the UX, reach feature parity, and ship the next major version."
+    />
+  </GridSection>
 </FullWidthSection>
 
 <div class="centered-intro" style="margin-top: 4rem;">
@@ -142,6 +164,26 @@ import addDocuments from '../../assets/work/fs-add-documents.png';
       </div>
     </div>
   </TwoCol>
+
+  <div class="process-subsection" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+    <h3>Process: Validating the Logic</h3>
+    <TwoCol reverse={true} sticky={true} frame={true}>
+      <div slot="text" style="margin-top: -1.5rem;">
+        <h4>The Mental Model Wall</h4>
+        <p>A usability study conducted one sprint before implementation confirmed that the legacy ID-based Precedent model was a critical failure point. Results showed that <strong>100% of participants</strong> identified the mental model as their primary source of difficulty.</p>
+        <ul>
+          <li><strong>High Error Rate:</strong> The majority of users failed to complete the task within the time limit or configured conditional branching incorrectly on their first attempt.</li>
+          <li><strong>The Solution Validation:</strong> The switch to a Dependent model and cell-specific inline validations was cited by users as the most significant improvement for reducing cognitive load.</li>
+          <li><strong>Visual Desire:</strong> Nearly half of the participants explicitly requested a visual workflow representation, providing the business case for the next-generation <strong>Hybrid Workflow</strong> later developed for Studio.</li>
+        </ul>
+      </div>
+      <div slot="media">
+        <div style="padding-top: 0.35rem;">
+          <ComparisonCard />
+        </div>
+      </div>
+    </TwoCol>
+  </div>
 </FullWidthSection>
 
 <FullWidthSection>
