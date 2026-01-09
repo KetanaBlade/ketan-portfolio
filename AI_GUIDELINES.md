@@ -45,6 +45,7 @@ This document outlines the principles, standards, and workflows for our collabor
 *   **Plain English:** Prioritize clear, concise explanations over complex jargon or flowery descriptions.
 
 ## 9. Confirmation & Proposals
+*   **Questions First:** If the user asks a question (e.g., "Do you know why...", "What do you think..."), provide a clear answer and, if relevant, a proposal. **Do not** execute code changes until the user responds to the answer/proposal.
 *   **Small Changes:** For direct requests (e.g., "Change the title to X") or minor fixes, proceed immediately without redundant confirmation.
 *   **Complex Changes:** For ambiguous requests, architectural changes, or results of a long discussion, present a clear, bulleted **proposal** of the intended changes.
 *   **Approval:** Wait for explicit user confirmation on the proposal before executing significant code modifications.
