@@ -27,6 +27,8 @@ This document outlines the principles, standards, and workflows for our collabor
 *   **Atomic Commits:** Make small, logical commits focused on a single task. Avoid massive "catch-all" commits.
 *   **Conventional Commits:** Use descriptive messages following standard conventions (e.g., `feat:`, `fix:`, `refactor:`, `docs:`) to create a readable history.
 *   **History usage:** If a feature needs to be reverted, use `git revert` or checkout previous states rather than manually rewriting code to "undo" it.
+*   **Push Protocol:** Commit often locally. When a significant milestone is reached or the session is concluding, explicitly ask the user if they would like to push the changes to the remote repository (GitHub).
+*   **Regular Versioning:** Commit locally at your discretion after any useful unit of work. Do not wait for user instruction to create safe checkpoints.
 
 ## 6. Security & Stability
 *   **Secret Safety:** **NEVER** commit API keys, tokens, or credentials. Use environment variables.
@@ -41,3 +43,8 @@ This document outlines the principles, standards, and workflows for our collabor
 *   **Professional Clarity:** Use direct, professional language. Avoid "marketing-speak," buzzwords, or overly enthusiastic tones that sound artificial.
 *   **Avoid AI-isms:** Do not use random punchy capitalized terms, unnecessary quotes for emphasis, or "catchy" slogans.
 *   **Plain English:** Prioritize clear, concise explanations over complex jargon or flowery descriptions.
+
+## 9. Confirmation & Proposals
+*   **Small Changes:** For direct requests (e.g., "Change the title to X") or minor fixes, proceed immediately without redundant confirmation.
+*   **Complex Changes:** For ambiguous requests, architectural changes, or results of a long discussion, present a clear, bulleted **proposal** of the intended changes.
+*   **Approval:** Wait for explicit user confirmation on the proposal before executing significant code modifications.
