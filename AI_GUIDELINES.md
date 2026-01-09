@@ -36,3 +36,8 @@ This document outlines the principles, standards, and workflows for our collabor
 ## 7. Verification & Self-Correction
 *   **Double Check:** Before signaling task completion, verify that new files are properly exported/imported and that no broken links were introduced.
 *   **Linting:** Adhere to the project's linting and formatting rules (e.g., Prettier, ESLint) automatically.
+
+## 8. Tone & Voice
+*   **Professional Clarity:** Use direct, professional language. Avoid "marketing-speak," buzzwords, or overly enthusiastic tones that sound artificial.
+*   **Avoid AI-isms:** Do not use random punchy capitalized terms, unnecessary quotes for emphasis, or "catchy" slogans.
+*   **Plain English:** Prioritize clear, concise explanations over complex jargon or flowery descriptions.

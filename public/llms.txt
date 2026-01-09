@@ -18,7 +18,7 @@ Product Designer specializing in Human-Computer Interaction Design and complex s
 - **Metrics:** Achieved a **60% improvement in usability** and a **50% reduction in implementation time** for customers.
 - **AI Strategy:** Defined the multi-year vision for Case Management Studio, evolving the product into a modular framework of rules-based automation and integrated AI capabilities.
 - **Design System Leadership:** Leads the **Figma SAIL Component Library** working group; published the library to the Figma Community with ~1,000 external users.
-- **Leadership:** Facilitates the "UX Chapter" (100+ designers) for peer-to-peer learning and workshops.
+- **Leadership:** Facilitates the UX Chapter (30–40 participants, 35 sessions) for peer-to-peer learning and workshops.
 
 ### Virsec Systems (June 2021 – Aug 2021)
 **FE UI and UX Design Intern**
