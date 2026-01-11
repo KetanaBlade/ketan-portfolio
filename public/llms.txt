@@ -1,7 +1,7 @@
 # Ketan Pandya - Product Designer
 
 ## Summary
-Product Designer specializing in Human-Computer Interaction Design and complex systems. Background in Information Science. Focuses on deconstructing messy problems to build solutions that are simple, modern, and human. Currently a User Experience Designer II at Appian Corporation.
+Product Designer with an M.S. in Information Science, specializing in Human-Computer Interaction. Focuses on deconstructing complex systems to build solutions that are simple, modern, and human. Currently a User Experience Designer II at Appian Corporation.
 
 ## Core Competencies
 - **Design Strategy:** Systems Design, Information Architecture, Complex Logic Visualization, AI Roadmap Definition.
@@ -46,7 +46,7 @@ Product Designer specializing in Human-Computer Interaction Design and complex s
 - **Mentorship:** Established onboarding curriculum and design rotations for new hires and interns.
 
 ## Education
-- **Master of Science, Information Science:** University of North Carolina at Chapel Hill (Specialization: HCI Design). 
+- M.S. in Information Science: University of North Carolina at Chapel Hill (Specialization: Human-Computer Interaction). 
   - **Master's Paper:** [User Preferences for Email Tasks on Different Platforms](https://cdr.lib.unc.edu/concern/masters_papers/2r36v751z?locale=en)
 - **Bachelor of Arts, Philosophy:** Virginia Tech (Minors: Japanese Studies, Creative Writing).
 
