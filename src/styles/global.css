@@ -285,6 +285,11 @@ h4 {
   color: var(--color-text);
 }
 
+.process-subsection h3 {
+  color: var(--color-text);
+  font-style: italic;
+}
+
 /* Explicit centering utility */
 .centered-intro h1,
 .centered-intro h2,
