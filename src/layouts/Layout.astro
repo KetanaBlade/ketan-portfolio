@@ -3,6 +3,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Lightbox from '../components/Lightbox.astro';
 import '../styles/global.css';
+import '@fontsource/inter/variable.css';
 
 const { title, description = "Portfolio of Ketan Pandya, a Product Designer specializing in complex systems.", isHome = false, headerStyle = "default", image = "/social-preview.jpg" } = Astro.props;
 const effectiveHeaderStyle = isHome || headerStyle === 'blue' ? 'blue' : 'default';
