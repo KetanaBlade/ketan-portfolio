@@ -49,3 +49,4 @@ This document outlines the principles, standards, and workflows for our collabor
 *   **Small Changes:** For direct requests (e.g., "Change the title to X") or minor fixes, proceed immediately without redundant confirmation.
 *   **Complex Changes:** For ambiguous requests, architectural changes, or results of a long discussion, present a clear, bulleted **proposal** of the intended changes.
 *   **Approval:** Wait for explicit user confirmation on the proposal before executing significant code modifications.
+*   **Explicit Confirmation:** If the user asks to "confirm" an observation, behavior, or plan (e.g., "Can you confirm?"), provide a clear "Yes/No" confirmation and explanation **first**. **Do not** proceed with subsequent actions (like fixes or next steps) until the user explicitly responds to that confirmation.
