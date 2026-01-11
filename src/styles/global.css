@@ -29,6 +29,7 @@
   --container-width: 1100px;
   
   --font-weight-strong: 500;
+  --font-weight-heading: 700;
 }
 
 html {
@@ -272,7 +273,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   margin-top: 2em;
   margin-bottom: 0.5em;
-  font-weight: 600;
+  font-weight: var(--font-weight-heading);
   letter-spacing: -0.02em;
   max-width: 30ch;
   margin-inline: 0;
