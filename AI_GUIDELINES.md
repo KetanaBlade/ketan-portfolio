@@ -25,6 +25,7 @@ This document outlines the principles, standards, and workflows for our collabor
 
 ## 5. Version Control Hygiene
 *   **Atomic Commits:** Make small, logical commits focused on a single task. Avoid massive "catch-all" commits.
+*   **Batched Refinements:** During iterative polishing or sessions involving multiple related small tweaks (e.g., typography, colors, padding across multiple files), **batch** these changes into a single logical commit once a cohesive state is reached to improve token efficiency and maintain a cleaner history.
 *   **Conventional Commits:** Use descriptive messages following standard conventions (e.g., `feat:`, `fix:`, `refactor:`, `docs:`) to create a readable history.
 *   **History usage:** If a feature needs to be reverted, use `git revert` or checkout previous states rather than manually rewriting code to "undo" it.
 *   **Push Protocol:** Commit often locally. When a significant milestone is reached or the session is concluding, explicitly ask the user if they would like to push the changes to the remote repository (GitHub).
