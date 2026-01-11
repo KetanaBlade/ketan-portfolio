@@ -14,6 +14,7 @@ import GridSection from '../../components/GridSection.astro';
 import GridCard from '../../components/GridCard.astro';
 import ComparisonCard from '../../components/ComparisonCard.astro';
 import Figure from '../../components/Figure.astro';
+import ProcessSection from '../../components/ProcessSection.astro';
 
 import heroImage from '../../assets/work/fs-onboarding-dashboard.png';
 import mentalModel from '../../assets/work/fs-mental-model.svg';
@@ -165,8 +166,7 @@ import addDocuments from '../../assets/work/fs-add-documents.png';
     </div>
   </TwoCol>
 
-  <div class="process-subsection">
-    <h3>Process: Validating the Logic</h3>
+  <ProcessSection title="Process: Validating the Logic">
     <TwoCol reverse={true} sticky={true} frame={true}>
       <div slot="text" style="margin-top: -1.5rem;">
         <h4>The Mental Model Wall</h4>
@@ -183,7 +183,7 @@ import addDocuments from '../../assets/work/fs-add-documents.png';
         </div>
       </div>
     </TwoCol>
-  </div>
+  </ProcessSection>
 </FullWidthSection>
 
 <FullWidthSection>

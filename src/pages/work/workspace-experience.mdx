@@ -14,6 +14,7 @@ import GridSection from '../../components/GridSection.astro';
 import GridCard from '../../components/GridCard.astro';
 import UserVoice from '../../components/UserVoice.astro';
 import Figure from '../../components/Figure.astro';
+import ProcessSection from '../../components/ProcessSection.astro';
 
 import heroImage from '../../assets/work/workspace-experience-main.jpg';
 import challengeImage from '../../assets/work/workspace-challenge.svg';
@@ -119,8 +120,7 @@ import citizenFlows from '../../assets/work/workspace-citizen-flows.jpg';
     </div>
   </TwoCol>
 
-  <div class="process-subsection" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
-    <h3>Process: Validating the Experience</h3>
+  <ProcessSection title="Process: Validating the Experience">
     <TwoCol sticky={true} frame={true}>
       <div slot="text" style="margin-top: -1.5rem;">
         <h4>Designing for Relevance</h4>
@@ -140,7 +140,7 @@ import citizenFlows from '../../assets/work/workspace-citizen-flows.jpg';
           ]} />
       </div>
     </TwoCol>
-  </div>
+  </ProcessSection>
 </FullWidthSection>
 
 <FullWidthSection background="grey">
@@ -207,8 +207,7 @@ import citizenFlows from '../../assets/work/workspace-citizen-flows.jpg';
     </div>
   </TwoCol>
 
-  <div class="process-subsection">
-    <h3>Process: Designing for the Public</h3>
+  <ProcessSection title="Process: Designing for the Public">
     <TwoCol reverse={true} sticky={true} frame={true}>
       <div slot="text">
         <h4>Shifting the Design Language</h4>
@@ -228,5 +227,5 @@ import citizenFlows from '../../assets/work/workspace-citizen-flows.jpg';
         />
       </div>
     </TwoCol>
-  </div>
+  </ProcessSection>
 </FullWidthSection>
