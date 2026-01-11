@@ -3,10 +3,10 @@
   --font-heading: var(--font-body);
   
   --color-bg: #ffffff;
-  --color-text: #334155;
+  --color-text: #1f2937;
   --color-text-light: #64748b;
   --color-text-muted: #475569; /* Slate 600 - Standard secondary text */
-  --color-heading: #0f172a;
+  --color-heading: var(--color-brand-blue);
   
   --color-text-inverse: #ffffff;
   --color-text-inverse-subtle: #f8fafc;
@@ -46,7 +46,6 @@ html {
 
 strong, b {
   font-weight: var(--font-weight-strong);
-  color: var(--color-heading);
 }
 
 body {
