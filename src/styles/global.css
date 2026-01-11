@@ -6,7 +6,9 @@
   --color-text: #222222;
   --color-text-light: #64748b;
   --color-text-muted: #475569; /* Slate 600 - Standard secondary text */
-  --color-heading: var(--color-brand-blue);
+  --color-heading-primary: var(--color-brand-blue);
+  --color-heading-secondary: var(--color-text);
+  --color-heading: var(--color-heading-primary); /* Default to primary */
   
   --color-text-inverse: #ffffff;
   --color-text-inverse-subtle: #f8fafc;
