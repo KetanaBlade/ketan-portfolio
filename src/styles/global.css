@@ -286,7 +286,7 @@ h4 {
 }
 
 .process-subsection h3 {
-  color: var(--color-text-light);
+  color: var(--color-text-muted);
   font-style: italic;
 }
 
