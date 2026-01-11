@@ -285,9 +285,17 @@ h4 {
   color: var(--color-text);
 }
 
+.process-subsection {
+  background-color: var(--color-bg-subtle);
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  margin-top: 4rem;
+}
+
 .process-subsection h3 {
   color: var(--color-text-muted);
   font-style: italic;
+  margin-top: 0;
 }
 
 /* Explicit centering utility */
