@@ -281,6 +281,10 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-heading);
 }
 
+h4 {
+  color: var(--color-text);
+}
+
 /* Explicit centering utility */
 .centered-intro h1,
 .centered-intro h2,
