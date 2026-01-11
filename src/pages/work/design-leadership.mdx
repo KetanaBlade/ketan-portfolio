@@ -74,8 +74,8 @@ import growthImage from '../../assets/work/leadership-growth.svg';
   <h2>Onboarding & Growth</h2>
 </div>
 
-<div class="mentorship-layout">
-  <div class="text">
+<TwoCol>
+  <div slot="text">
     <p>As the team expanded, I took an active role in shaping how new designers integrate into the complex world of enterprise software.</p>
     <ul>
       <li><strong>Design Rotations:</strong> I managed rotations for new hires, acting as their primary partner to help them navigate the transition from general UX principles to Appian’s specific low-code constraints.</li>
@@ -83,14 +83,14 @@ import growthImage from '../../assets/work/leadership-growth.svg';
     </ul>
   </div>
   
-  <div class="media">
+  <div slot="media">
     <Figure 
       src={growthImage} 
       alt="Diagram showing career growth trajectory supported by infrastructure" 
       shadow={true}
     />
   </div>
-</div>
+</TwoCol>
 
 <div class="divider"></div>
 
@@ -99,19 +99,19 @@ import growthImage from '../../assets/work/leadership-growth.svg';
   <h2>The UX Chapter</h2>
 </div>
 
-<div class="culture-split">
-  <div class="text">
+<TwoCol>
+  <div slot="text">
     <p>I have led the <strong>UX Chapter</strong>, a monthly internal forum dedicated to raising the team’s collective bar through peer-to-peer learning. Since 2023, I have facilitated 35 sessions.</p>
     <p><strong>The Shift:</strong> I noticed early sessions had become passive lectures with low engagement. I restructured the format to focus on <strong>interactive workshops</strong>, where designers sign up to lead deep dives into new tools, emerging design standards, or conference takeaways.</p>
     <p><strong>The Outcome:</strong> This shift democratized knowledge sharing. Instead of relying on a few seniors to teach, every designer now contributes to the curriculum, fostering a culture where continuous learning is a shared responsibility.</p>
   </div>
-  <div class="image">
+  <div slot="media">
     <Figure 
       src={workshopImage} 
       alt="UX Workshop Session" 
       shadow={true}
     />
   </div>
-</div>
+</TwoCol>
 
 </ContentWrapper>

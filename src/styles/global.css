@@ -242,32 +242,6 @@ body:has(.hero-wrapper) .site-header .nav-link:hover {
   font-size: 2rem;
 }
 
-.mentorship-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-@media (min-width: 900px) {
-  .mentorship-layout {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.culture-split {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-@media (min-width: 900px) {
-  .culture-split {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 /* Center hero text */
 .hero-container h1, 
 .hero-container p {
