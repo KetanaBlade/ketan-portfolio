@@ -3,9 +3,10 @@
   --font-heading: var(--font-body);
   
   --color-bg: #ffffff;
-  --color-text: #1a1a1a;
-  --color-text-light: #595959;
+  --color-text: #334155;
+  --color-text-light: #64748b;
   --color-text-muted: #475569; /* Slate 600 - Standard secondary text */
+  --color-heading: #0f172a;
   
   --color-text-inverse: #ffffff;
   --color-text-inverse-subtle: #f8fafc;
@@ -45,6 +46,7 @@ html {
 
 strong, b {
   font-weight: var(--font-weight-strong);
+  color: var(--color-heading);
 }
 
 body {
@@ -277,6 +279,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
   max-width: 30ch;
   margin-inline: 0;
+  color: var(--color-heading);
 }
 
 /* Explicit centering utility */
