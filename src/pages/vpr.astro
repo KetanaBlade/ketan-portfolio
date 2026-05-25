@@ -1,5 +1,5 @@
 ---
-import { Image, getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 import headshot from '../assets/ketan-headshot.jpg';
 import pagespeed from '../assets/pagespeed-100.jpg';
 
@@ -32,7 +32,6 @@ import semanticMapping from '../assets/work/semantic-mapping.svg';
 import sailOverview from '../assets/work/leadership-figma-library.jpg';
 import growthImage from '../assets/work/leadership-growth.svg';
 import workshopImage from '../assets/work/leadership-community-v2.svg';
-const optimizedHeadshot = await getImage({ src: headshot, format: 'webp' });
 ---
 
 <!DOCTYPE html>
@@ -43,7 +42,6 @@ const optimizedHeadshot = await getImage({ src: headshot, format: 'webp' });
     <title>Ketan Pandya — Portfolio Review</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
-    <link rel="preload" as="image" href={optimizedHeadshot.src} />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -637,7 +635,7 @@ const optimizedHeadshot = await getImage({ src: headshot, format: 'webp' });
                 </div>
                 <div class="col-media">
                     <div class="media-container" style="max-width: 420px; aspect-ratio: 3/4;">
-                        <img src={optimizedHeadshot.src} alt="Ketan Pandya headshot" />
+                        <Image loading="eager" src={headshot} alt="Ketan Pandya headshot" />
                         <span class="media-caption">Product Designer</span>
                     </div>
                 </div>
