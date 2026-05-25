@@ -1522,12 +1522,14 @@ import workshopImage from '../assets/work/leadership-community-v2.svg';
             };
 
             img.addEventListener('click', (e) => {
-                openLightbox(e.target.src, e.target.alt);
+                const target = e.target;
+                openLightbox(target.getAttribute('src'), target.getAttribute('alt'));
             });
             img.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    openLightbox(e.target.src, e.target.alt);
+                    const target = e.target;
+                    openLightbox(target.getAttribute('src'), target.getAttribute('alt'));
                 }
             });
         });
