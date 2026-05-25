@@ -109,12 +109,14 @@ import workshopImage from '../assets/work/leadership-community-v2.svg';
             width: 100vw;
             height: 100vh;
             z-index: 10;
+            display: flex;
+            flex-direction: row;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
         }
 
         .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
+            flex-shrink: 0;
             width: 100vw;
             height: 100vh;
             box-sizing: border-box;
@@ -122,17 +124,6 @@ import workshopImage from '../assets/work/leadership-community-v2.svg';
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
-            z-index: 1;
-        }
-        
-        .slide.active-slide {
-            opacity: 1;
-            visibility: visible;
-            z-index: 2;
-        }
             position: relative;
             overflow: hidden;
         }
@@ -140,12 +131,13 @@ import workshopImage from '../assets/work/leadership-community-v2.svg';
         /* Slide header */
         .slide-header {
             display: flex;
-            flex-direction: row-reverse; /* Title on the left, meta on the right */
+            flex-direction: row;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--color-border);
             padding-bottom: 1.25rem;
             margin-bottom: 1.5rem;
+            width: 100%;
         }
         .slide-meta {
             font-size: 0.85rem;
@@ -164,20 +156,21 @@ import workshopImage from '../assets/work/leadership-community-v2.svg';
             letter-spacing: -0.01em;
         }
         .slide-header .slide-title {
-            position: relative;
-            padding-left: 1.25rem;
             display: inline-flex;
             align-items: center;
         }
-        .slide-header .slide-title::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 15%;
-            bottom: 15%;
-            width: 4px;
-            border-radius: 4px;
-            background: linear-gradient(to bottom, var(--color-brand-blue), var(--color-brand-teal));
+
+        /* Responsive Layouts */
+        @media (max-width: 1024px) {
+            .slide { padding: 2.5rem; }
+            .slide-body { flex-direction: column; gap: 2rem; align-items: flex-start; height: auto; margin-top: 1rem; overflow-y: auto; }
+            .col-text, .col-media { width: 100%; }
+            .slide-header { flex-direction: column-reverse; align-items: flex-start; gap: 0.5rem; }
+            .slide-title { font-size: 1.8rem; }
+        }
+        @media (max-width: 768px) {
+            .slide { padding: 1.5rem; }
+            .slide-title { font-size: 1.5rem; }
         }
 
         /* Slide Content layouts */
@@ -412,6 +405,13 @@ import workshopImage from '../assets/work/leadership-community-v2.svg';
             display: flex;
             gap: 1rem;
             z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .nav-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
         }
         .nav-btn {
             background: var(--color-surface-glass);
@@ -1391,6 +1391,19 @@ import workshopImage from '../assets/work/leadership-community-v2.svg';
         const closeIndexBtn = document.getElementById('close-index-btn');
         const indexContainer = document.getElementById('index-grid-container');
 
+        // Nav Overlay Auto-hide Timer
+        let navTimeout;
+        document.addEventListener('mousemove', () => {
+            const nav = document.querySelector('.nav-overlay');
+            if(nav) {
+                nav.classList.add('visible');
+                clearTimeout(navTimeout);
+                navTimeout = setTimeout(() => {
+                    nav.classList.remove('visible');
+                }, 2000);
+            }
+        });
+
         // Initialize drawers content
         function initIndex() {
             indexContainer.innerHTML = '';
@@ -1417,13 +1430,7 @@ import workshopImage from '../assets/work/leadership-community-v2.svg';
         }
 
         function updateSlide() {
-            slides.forEach((slide, idx) => {
-                if (idx === currentSlide) {
-                    slide.classList.add('active-slide');
-                } else {
-                    slide.classList.remove('active-slide');
-                }
-            });
+            deck.style.transform = 'translateX(-' + (currentSlide * 100) + 'vw)';
             
             // Update progress indicators
             const progressPct = ((currentSlide + 1) / totalSlides) * 100;
@@ -1510,10 +1517,25 @@ import workshopImage from '../assets/work/leadership-community-v2.svg';
 
         // Add click listener to all images inside slides
         document.querySelectorAll('.slide img').forEach(img => {
-            img.addEventListener('click', (e) => {
-                lightboxImage.src = e.target.src;
-                lightboxImage.alt = e.target.alt;
+            img.style.cursor = 'zoom-in';
+            img.setAttribute('tabindex', '0');
+            img.setAttribute('role', 'button');
+            img.setAttribute('aria-label', 'Click to enlarge image');
+
+            const openLightbox = (src, alt) => {
+                lightboxImage.src = src;
+                lightboxImage.alt = alt || 'Enlarged image view';
                 lightboxOverlay.classList.add('open');
+            };
+
+            img.addEventListener('click', (e) => {
+                openLightbox(e.target.src, e.target.alt);
+            });
+            img.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openLightbox(e.target.src, e.target.alt);
+                }
             });
         });
 
