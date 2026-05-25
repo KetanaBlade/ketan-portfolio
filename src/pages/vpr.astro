@@ -655,7 +655,7 @@ import workshopImage from '../assets/work/leadership-community-v2.svg';
             </div>
             <div class="slide-footer">
                 <span>Ketan Pandya | Portfolio Review</span>
-                <div class="controls-helper">Notes: <span class="key-badge">N</span> | Slide list: <span class="key-badge">S</span></div>
+                <div class="controls-helper">Notes: <span class="key-badge">N</span> | Slide list: <span class="key-badge">S</span> | Arrows: <span class="key-badge">A</span></div>
                 <span>Slide 2 of 20</span>
             </div>
         </section>
@@ -1383,19 +1383,6 @@ import workshopImage from '../assets/work/leadership-community-v2.svg';
         const closeIndexBtn = document.getElementById('close-index-btn');
         const indexContainer = document.getElementById('index-grid-container');
 
-        // Nav Overlay Auto-hide Timer
-        let navTimeout;
-        document.addEventListener('mousemove', () => {
-            const nav = document.querySelector('.nav-overlay');
-            if(nav) {
-                nav.classList.add('visible');
-                clearTimeout(navTimeout);
-                navTimeout = setTimeout(() => {
-                    nav.classList.remove('visible');
-                }, 2000);
-            }
-        });
-
         // Initialize drawers content
         function initIndex() {
             indexContainer.innerHTML = '';
@@ -1491,6 +1478,9 @@ import workshopImage from '../assets/work/leadership-community-v2.svg';
                         if (activeItem) activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                     }, 100);
                 }
+            } else if (e.key.toLowerCase() === 'a') {
+                const nav = document.querySelector('.nav-overlay');
+                if (nav) nav.classList.toggle('visible');
             }
         });
 
