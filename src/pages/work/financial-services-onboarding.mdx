@@ -1,0 +1,206 @@
+---
+layout: ../../layouts/Layout.astro
+title: "Connected Onboarding"
+---
+
+import { Image } from 'astro:assets';
+import CaseHero from '../../components/CaseHero.astro';
+import StatGrid from '../../components/StatGrid.astro';
+import WideImage from '../../components/WideImage.astro';
+import TwoCol from '../../components/TwoCol.astro';
+import StepHeader from '../../components/StepHeader.astro';
+import FullWidthSection from '../../components/FullWidthSection.astro';
+import GridSection from '../../components/GridSection.astro';
+import GridCard from '../../components/GridCard.astro';
+import ComparisonCard from '../../components/ComparisonCard.astro';
+import Figure from '../../components/Figure.astro';
+import ProcessSection from '../../components/ProcessSection.astro';
+
+import heroImage from '../../assets/work/fs-onboarding-dashboard.png';
+import mentalModel from '../../assets/work/fs-mental-model.svg';
+import tasksBefore from '../../assets/work/fs-tasks-grid-before.png';
+import tasksAfter from '../../assets/work/fs-tasks-grid-after.png';
+import conditionalConfig from '../../assets/work/fs-conditional-config.png';
+import conditionalLive from '../../assets/work/fs-conditional-live.png';
+import customerTasks from '../../assets/work/fs-customer-tasks.png';
+import onboardingDashboard from '../../assets/work/fs-onboarding-dashboard.png';
+import addDocuments from '../../assets/work/fs-add-documents.png';
+
+<CaseHero 
+  title="Connected Onboarding"
+  subtitle="Simplifying compliance workflows with up to 300 tasks by aligning the system with the user's mental model."
+  timeline="1 Year"
+  team="1 PM, 3 Engineers"
+  image={heroImage}
+/>
+
+<div class="centered-intro">
+  <h2>The Impact</h2>
+  <p style="font-size: 1.25rem; color: var(--color-text-muted);">Institutional Onboarding is a high-stakes domain where <strong>speed is revenue, but accuracy is the law</strong>. This suite of applications replaced fragmented legacy processes with a unified system.</p>
+</div>
+
+<StatGrid stats={[
+  { value: "100%", label: "Usability Success" },
+  { value: "Tier 1", label: "Client Adoption" }
+]} />
+
+<div class="spacer-bottom-section">
+### Visibility & Velocity
+* **Unified Data Architecture:** By interlinking **Customer, Onboarding, Product, and Service Request** records, the solution broke down data silos. Operations teams could finally navigate from a **high-level Customer record** down to a **specific Product fee structure** without losing context.
+* **Client Validation:** The robust architecture allowed major institutions like **T. Rowe Price and Vanguard** to adopt the solution with **significantly fewer customizations**, as the core product successfully handled their complex requirements out of the box.
+* **Compliance & Accessibility:** Strict **WCAG 2.1 AA standards** were advocated for and implemented across the platform. Given the regulatory nature of financial services, ensuring the software was **usable by all employees** and **auditable for compliance** was non-negotiable.
+</div>
+
+<FullWidthSection background="grey">
+  <div class="centered-intro">
+    <h2>The Challenge</h2>
+  </div>
+
+  <TwoCol>
+    <div slot="text">
+      <h3>Inheriting a Monolith</h3>
+      <p>I inherited a massive, highly regulated application suite that had grown into a monolith. The system was powerful but suffered from deep usability debt.</p>
+      <p><strong>The Logic Problem:</strong> Configuring workflows was <strong>error-prone</strong>. Usability studies revealed that the legacy "Precedents" model (defining what came <em>before</em>) <strong>forced users to think backward</strong>. <strong>100% of participants</strong> failed to configure conditional logic correctly in early tests because the UI didn't match their sequential "flowchart" thinking.</p>
+      <p><strong>The Data Problem:</strong> Users had to <strong>manually cross-reference spreadsheets</strong> to know if a specific "Hedge Fund" customer had provided the necessary "KYC Documents" for a specific "Derivatives Product."</p>
+    </div>
+    <div slot="media">
+      <Image src={mentalModel} alt="Diagram comparing the user's mental model vs. the legacy system model" loading="lazy" />
+    </div>
+  </TwoCol>
+
+  <h3 style="margin-top: 3rem;">Key Constraints</h3>
+  <GridSection>
+    <GridCard 
+      icon="🏛️"
+      title="Legacy Monolith"
+      description="Refactoring was high-risk. Changes had to be surgical to avoid breaking years of accumulated logic in the older codebase."
+    />
+    <GridCard 
+      icon="⚖️"
+      title="Compliance"
+      description="Visibility was paramount. Every user action required a granular audit trail to meet strict financial regulations."
+    />
+    <GridCard 
+      icon="⏳"
+      title="Timeline"
+      description="We had a strict one-year deadline to modernize the UX, reach feature parity, and ship the next major version."
+    />
+  </GridSection>
+</FullWidthSection>
+
+<div class="centered-intro" style="margin-top: 4rem;">
+  <h2>The Solution</h2>
+</div>
+
+<FullWidthSection>
+  <StepHeader number="01" title="The Onboarding Dashboard" subtitle="Persistent Context" />
+  
+  <TwoCol reverse={true} frame={true} sticky={true}>
+    <div slot="text">
+      <p>Financial institutions need a command center that balances high-level status with deep compliance tracking. The Onboarding Dashboard was designed to act as this single source of truth.</p>
+      <ul>
+        <li><strong>Unified Risk & Funding:</strong> The dashboard aggregates critical indicators—<strong>overall risk status, funding status, and milestone progress</strong>—into a "at-a-glance" summary, allowing managers to instantly identify at-risk onboardings.</li>
+        <li><strong>Specialized Document Handling:</strong> Compliance relies on documentation. The system treats documents as <strong>first-class citizens</strong>, allowing users to upload, tag, and verify KYC/AML documents directly within the context of the onboarding, complete with version control and audit trails.</li>
+      </ul>
+    </div>
+    <div slot="media">
+      <Figure 
+        src={onboardingDashboard} 
+        alt="The Onboarding Dashboard showing status and details" 
+        caption="The Onboarding Dashboard acts as the command center for the entire lifecycle."
+      />
+      <Figure 
+        src={addDocuments} 
+        alt="The Document Upload interface" 
+        caption="Specialized document handling ensures compliance data is captured accurately."
+      />
+    </div>
+  </TwoCol>
+</FullWidthSection>
+
+<FullWidthSection background="grey">
+  <StepHeader number="02" title="The Logic Engine" subtitle="Redesigning Task Configuration" />
+
+  <TwoCol frame={true} sticky={true}>
+    <div slot="text">
+      <p>To handle the complexity of compliance workflows (KYC/AML), the configuration experience was redesigned to match the user's mental model.</p>
+      <ul>
+        <li><strong>From Precedents to Dependents:</strong> We flipped the interaction model. Instead of asking "What allows this task to start?", the UI now asks "What happens <em>after</em> this task finishes?" We also completely overhauled validations, moving from generic error messages to <strong>precise, targeted feedback</strong> located directly on the affected field.</li>
+        <li><strong>Intuitive Branching:</strong> Complex logic like loops and conditional branches were previously hidden in deep menus. We surfaced these as primary actions, allowing users to easily configure <strong>"If/Then" scenarios</strong> (like loopbacks for missing documents) without needing to understand the underlying code structure.</li>
+      </ul>
+    </div>
+    <div slot="media">
+      {/* Pair 1: Before/After */}
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; align-items: start;">
+         <Figure 
+           src={tasksBefore} 
+           alt="Legacy Task Grid interface" 
+           caption="The legacy task configuration grid using an unintuitive precedent model."
+           frame={true}
+           shadow={true}
+         />
+         <Figure 
+           src={tasksAfter} 
+           alt="Redesigned Task Grid interface" 
+           caption="The task configuration grid redesigned with user feedback."
+           frame={true}
+           shadow={true}
+         />
+      </div>
+
+      {/* Pair 2: Config/Live */}
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;">
+         <Figure 
+           src={conditionalConfig} 
+           alt="Configuring a conditional task" 
+           caption="Configuring a branching path."
+           frame={true}
+           shadow={true}
+         />
+         <Figure 
+           src={conditionalLive} 
+           alt="Live conditional task summary" 
+           caption="The resulting runtime experience."
+           frame={true}
+           shadow={true}
+         />
+      </div>
+    </div>
+  </TwoCol>
+
+  <ProcessSection title="Process: Validating the Logic">
+    <TwoCol reverse={true} sticky={true} frame={true}>
+      <div slot="text" style="margin-top: -1.5rem;">
+        <h4>The Mental Model Wall</h4>
+        <p>A usability study conducted one sprint before implementation confirmed that the legacy ID-based Precedent model was a critical failure point. Results showed that <strong>100% of participants</strong> identified the mental model as their primary source of difficulty.</p>
+        <ul>
+          <li><strong>High Error Rate:</strong> The majority of users <strong>failed to complete the task</strong> within the time limit or configured conditional branching incorrectly on their first attempt.</li>
+          <li><strong>The Solution Validation:</strong> The switch to a <strong>Dependent model</strong> and <strong>cell-specific inline validations</strong> was cited by users as the most significant improvement for reducing cognitive load.</li>
+          <li><strong>Visual Desire:</strong> Nearly half of the participants explicitly requested a visual workflow representation, providing the business case for the next-generation <strong>Hybrid Workflow</strong> later developed for Studio.</li>
+        </ul>
+      </div>
+      <div slot="media">
+        <div style="padding-top: 0.35rem;">
+          <ComparisonCard />
+        </div>
+      </div>
+    </TwoCol>
+  </ProcessSection>
+</FullWidthSection>
+
+<FullWidthSection>
+  <StepHeader number="03" title="The Customer Experience" subtitle="Ensuring Data Quality" />
+
+  <TwoCol reverse={true} frame={true}>
+    <div slot="text">
+      <p>The onboarding process often stalls when waiting for customer input. To reduce friction, a dedicated Customer Portal was designed to give external users a clear, actionable view of their responsibilities.</p>
+      <ul>
+        <li><strong>Transparency:</strong> Instead of relying on email chains, customers can log in to see exactly where they stand in the process. The dashboard highlights <strong>outstanding tasks</strong> and provides a <strong>clear timeline</strong> of next steps.</li>
+        <li><strong>Streamlined Action:</strong> Complex requirements are broken down into bite-sized tasks. Whether it's uploading a proof of address or digitally signing a contract, users can <strong>complete actions directly</strong> within the secure portal without navigating confusing menus.</li>
+      </ul>
+    </div>
+    <div slot="media">
+      <Image src={customerTasks} alt="Customer Portal Dashboard showing outstanding tasks" loading="lazy" />
+    </div>
+  </TwoCol>
+</FullWidthSection>

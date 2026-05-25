@@ -1,0 +1,117 @@
+---
+layout: ../../layouts/Layout.astro
+title: "Design Leadership & Operations"
+---
+
+import StatGrid from '../../components/StatGrid.astro';
+import WideImage from '../../components/WideImage.astro';
+import TwoCol from '../../components/TwoCol.astro';
+import GridSection from '../../components/GridSection.astro';
+import GridCard from '../../components/GridCard.astro';
+import QuoteBlock from '../../components/QuoteBlock.astro';
+import ContentWrapper from '../../components/ContentWrapper.astro';
+import FullWidthSection from '../../components/FullWidthSection.astro';
+import Figure from '../../components/Figure.astro';
+
+import figmaImage from '../../assets/work/leadership-figma-library.jpg';
+import workshopImage from '../../assets/work/leadership-community-v2.svg';
+import growthImage from '../../assets/work/leadership-growth.svg';
+
+<div class="leadership-hero">
+  <h1>Building the infrastructure for design at scale.</h1>
+  <p class="subtitle">Scaling teams, tools, and culture at Appian.</p>
+</div>
+
+<ContentWrapper>
+
+<GridSection>
+  <GridCard 
+    icon="⚙️"
+    title="Operations"
+    description="Streamlining the 'work about work'. Establishing tooling, file structures, and handoff protocols."
+  />
+  <GridCard 
+    icon="🌱"
+    title="Mentorship"
+    description="Growth happens through feedback. Structuring critique loops and career ladders."
+  />
+  <GridCard 
+    icon="🎯"
+    title="Culture"
+    description="Democratizing knowledge. Turning passive meetings into active learning workshops."
+  />
+</GridSection>
+
+<div class="divider"></div>
+
+<div class="section-header">
+  <span class="label">01 Systems & Tooling</span>
+  <h2>The Figma Migration</h2>
+</div>
+
+<TwoCol frame={true} style={{ marginTop: '0' }}>
+  <div slot="text">
+    <p>When I joined, the team relied on Sketch, which created friction in developer handoff and made maintaining our complex UI library difficult. I saw an opportunity to modernize our delivery workflow.</p>
+    <ul>
+      <li><strong>The Strategy:</strong> I initiated a "Figma Hackathon" to evaluate if the tool could streamline building out Appian SAIL as usable design components. We needed to verify that features like <strong>Auto Layout and Variants</strong> offered a tangible efficiency gain over our legacy Sketch symbols.</li>
+      <li><strong>The Execution:</strong> Following the successful pilot, I established and led the <strong>Figma Library Working Group</strong>. We rebuilt our design system from the ground up, optimizing the components to behave like their code counterparts.</li>
+      <li><strong>The Impact:</strong> This initiative grew beyond internal use. We published the <strong>"Appian SAIL Design System"</strong> to the Figma Community, where it has been adopted by nearly <strong>1,000 external users</strong>.</li>
+    </ul>
+  </div>
+  <div slot="media">
+    <Figure 
+      src={figmaImage} 
+      alt="Figma Component Library" 
+      loading="eager"
+    />
+  </div>
+</TwoCol>
+
+<div class="divider"></div>
+
+<div class="section-header">
+  <span class="label">02 Talent Development</span>
+  <h2>Onboarding & Growth</h2>
+</div>
+
+<TwoCol>
+  <div slot="text">
+    <p>As the team expanded, I took an active role in shaping how new designers integrate into the complex world of enterprise software.</p>
+    <ul>
+      <li><strong>Design Rotations:</strong> I managed rotations for new hires, acting as their primary partner to help them navigate the transition from general UX principles to <strong>Appian’s specific low-code constraints</strong>.</li>
+      <li><strong>Intern Program:</strong> During the summer months, I stepped in to facilitate our intern onboarding curriculum. My focus was on operationalizing their ramp-up time—ensuring they could move from "learning the tool" to <strong>"shipping a feature"</strong> within their short tenure.</li>
+    </ul>
+  </div>
+  
+  <div slot="media">
+    <Figure 
+      src={growthImage} 
+      alt="Diagram showing career growth trajectory supported by infrastructure" 
+      shadow={true}
+    />
+  </div>
+</TwoCol>
+
+<div class="divider"></div>
+
+<div class="section-header">
+  <span class="label">03 Community & Knowledge</span>
+  <h2>The UX Chapter</h2>
+</div>
+
+<TwoCol>
+  <div slot="text">
+    <p>I have led the <strong>UX Chapter</strong>, a monthly internal forum dedicated to raising the team’s collective bar through peer-to-peer learning. Since 2023, I have facilitated 35 sessions.</p>
+    <p><strong>The Shift:</strong> I noticed early sessions had become passive lectures with low engagement. I restructured the format to focus on <strong>interactive workshops</strong>, where designers sign up to lead deep dives into new tools, emerging design standards, or conference takeaways.</p>
+    <p><strong>The Outcome:</strong> This shift <strong>democratized knowledge sharing</strong>. Instead of relying on a few seniors to teach, <strong>every designer now contributes</strong> to the curriculum, fostering a culture where continuous learning is a shared responsibility.</p>
+  </div>
+  <div slot="media">
+    <Figure 
+      src={workshopImage} 
+      alt="UX Workshop Session" 
+      shadow={true}
+    />
+  </div>
+</TwoCol>
+
+</ContentWrapper>

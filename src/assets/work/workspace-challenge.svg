@@ -1,0 +1,68 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .node { fill: #fff; stroke: #94a3b8; stroke-width: 2; rx: 8; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); }
+      .orphan { fill: #fff; stroke: #cbd5e1; stroke-width: 1.5; rx: 4; stroke-dasharray: 4 2; }
+      .center-node { fill: #f1f5f9; stroke: #64748b; stroke-width: 2; rx: 50%; }
+      .line { stroke: #cbd5e1; stroke-width: 2; stroke-dasharray: 6 4; fill: none; opacity: 0.6; }
+      .text { font-family: system-ui, sans-serif; fill: #475569; font-size: 14px; text-anchor: middle; font-weight: 500; }
+      .small-text { font-family: system-ui, sans-serif; fill: #94a3b8; font-size: 11px; text-anchor: middle; }
+      .warning { fill: #ef4444; font-size: 20px; font-weight: bold; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc" />
+
+  <!-- Messy Paths (Curved and Tangled) -->
+  <path d="M400 300 Q250 250 180 160" class="line" /> <!-- To Email -->
+  <path d="M400 300 Q550 200 620 160" class="line" /> <!-- To DB -->
+  <path d="M400 300 Q250 450 180 460" class="line" /> <!-- To PDF -->
+  <path d="M400 300 Q550 400 620 460" class="line" /> <!-- To 3rd Party -->
+  
+  <!-- Dead Ends / Confusion -->
+  <path d="M180 160 Q300 100 350 80" class="line" stroke="red" /> <!-- Email -> Orphan -->
+  <path d="M620 460 Q500 550 450 520" class="line" /> <!-- 3rd Party -> Orphan -->
+
+  <!-- Disconnect Indicators -->
+  <text x="280" y="240" class="warning">?</text>
+  <text x="520" y="240" class="warning">!</text>
+  <text x="280" y="380" class="warning">!</text>
+  <text x="520" y="380" class="warning">?</text>
+
+  <!-- Central "Incomplete" Case -->
+  <circle cx="400" cy="300" r="50" class="center-node" stroke-dasharray="4 2" />
+  <text x="400" y="305" class="text" font-weight="bold">THE CASE</text>
+  <text x="400" y="325" class="small-text">???</text>
+
+  <!-- Source 1: Email (Offset) -->
+  <rect x="120" y="120" width="120" height="80" class="node" transform="rotate(-2 180 160)" />
+  <text x="180" y="160" class="text" font-weight="bold">Inbox (14)</text>
+  <text x="180" y="180" class="small-text">Updates?</text>
+
+  <!-- Source 2: Database (Offset) -->
+  <rect x="560" y="120" width="120" height="80" class="node" transform="rotate(3 620 160)" />
+  <text x="620" y="160" class="text" font-weight="bold">Legacy DB</text>
+  <text x="620" y="180" class="small-text">ID: 49201</text>
+
+  <!-- Source 3: PDF (Offset) -->
+  <rect x="120" y="420" width="120" height="80" class="node" transform="rotate(4 180 460)" />
+  <text x="180" y="460" class="text" font-weight="bold">SharePoint</text>
+  <text x="180" y="480" class="small-text">Docs.pdf</text>
+
+  <!-- Source 4: External Portal (Offset) -->
+  <rect x="560" y="420" width="120" height="80" class="node" transform="rotate(-3 620 460)" />
+  <text x="620" y="460" class="text" font-weight="bold">External Site</text>
+  <text x="620" y="480" class="small-text">Login Req.</text>
+
+  <!-- Orphan Nodes (Floating Noise) -->
+  <rect x="320" y="60" width="80" height="50" class="orphan" transform="rotate(10)" />
+  <text x="360" y="90" class="small-text">Sticky Note</text>
+
+  <rect x="420" y="500" width="90" height="40" class="orphan" transform="rotate(-5)" />
+  <text x="465" y="525" class="small-text">Spreadsheet</text>
+
+  <circle cx="700" cy="300" r="25" class="orphan" />
+  <text x="700" y="305" class="small-text">Chat</text>
+
+</svg>

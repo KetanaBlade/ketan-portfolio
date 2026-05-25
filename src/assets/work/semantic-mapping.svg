@@ -1,0 +1,123 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#004977" />
+      <stop offset="100%" stop-color="#007BA7" />
+    </linearGradient>
+    <linearGradient id="govGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="eduGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065f46" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <linearGradient id="finGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9a3412" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6" />
+      <feOffset dx="0" dy="4" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <style>
+      .title { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 700; fill: #004977; }
+      .label-core { font-family: system-ui, -apple-system, sans-serif; font-size: 18px; font-weight: 700; fill: #ffffff; text-anchor: middle; }
+      .label-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; fill: #e0f2fe; text-anchor: middle; opacity: 0.9; }
+      .label-tenant { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 700; fill: #ffffff; }
+      .label-term { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 600; fill: #1e293b; }
+      .label-industry { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 700; fill: #475569; }
+      .conn-line { fill: none; stroke: #cbd5e1; stroke-width: 2; stroke-dasharray: 4 4; }
+      .arrow { fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc" rx="16" />
+
+  <!-- Grid Accents -->
+  <g stroke="#f1f5f9" stroke-width="1">
+    <line x1="100" y1="0" x2="100" y2="600" />
+    <line x1="200" y1="0" x2="200" y2="600" />
+    <line x1="300" y1="0" x2="300" y2="600" />
+    <line x1="400" y1="0" x2="400" y2="600" />
+    <line x1="500" y1="0" x2="500" y2="600" />
+    <line x1="600" y1="0" x2="600" y2="600" />
+    <line x1="700" y1="0" x2="700" y2="600" />
+    <line x1="0" y1="100" x2="800" y2="100" />
+    <line x1="0" y1="200" x2="800" y2="200" />
+    <line x1="0" y1="300" x2="800" y2="300" />
+    <line x1="0" y1="400" x2="800" y2="400" />
+    <line x1="0" y1="500" x2="800" y2="500" />
+  </g>
+
+  <!-- Title -->
+  <text x="40" y="50" class="title">Terminology Translation &amp; Semantic Mapping Engine</text>
+
+  <!-- Connection Lines (Underlay) -->
+  <!-- Central to Gov -->
+  <path d="M230 250 C 330 250, 330 150, 480 150" class="conn-line" />
+  <!-- Central to Edu -->
+  <path d="M230 300 C 330 300, 330 300, 480 300" class="conn-line" />
+  <!-- Central to FinTech -->
+  <path d="M230 350 C 330 350, 330 450, 480 450" class="conn-line" />
+
+  <!-- Core Platform Database Model (Left) -->
+  <g filter="url(#shadow)">
+    <!-- Main Cylinder/Box for Core Model -->
+    <rect x="50" y="180" width="180" height="240" rx="12" fill="url(#coreGrad)" stroke="#004977" stroke-width="2" />
+    
+    <text x="140" y="215" class="label-core" font-size="16">SAIL Core Model</text>
+    <line x1="70" y1="230" x2="210" y2="230" stroke="#ffffff" stroke-width="1" opacity="0.3" />
+
+    <!-- Core Entity 1: Case -->
+    <rect x="70" y="250" width="140" height="45" rx="6" fill="#ffffff" fill-opacity="0.15" stroke="#ffffff" stroke-width="1.5" />
+    <text x="140" y="272" class="label-core" font-size="15">"Case"</text>
+    <text x="140" y="286" class="label-sub">Base Record Type</text>
+
+    <!-- Core Entity 2: Task -->
+    <rect x="70" y="325" width="140" height="45" rx="6" fill="#ffffff" fill-opacity="0.15" stroke="#ffffff" stroke-width="1.5" />
+    <text x="140" y="347" class="label-core" font-size="15">"Task"</text>
+    <text x="140" y="361" class="label-sub">Base Process Model</text>
+    
+    <text x="140" y="400" class="label-sub" font-size="11" opacity="0.7">Single Source of Truth Data</text>
+  </g>
+
+  <!-- Tenant 1: Local Government (Top Right) -->
+  <g filter="url(#shadow)">
+    <rect x="480" y="80" width="270" height="130" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <!-- Tenant Header -->
+    <path d="M480 90 A 10 10 0 0 1 490 80 H 740 A 10 10 0 0 1 750 90 V 115 H 480 Z" fill="url(#govGrad)" />
+    <text x="500" y="102" class="label-tenant">Local Government</text>
+    
+    <text x="500" y="145" class="label-term">Case <tspan fill="#64748b">>→</tspan> Permit Request</text>
+    <text x="500" y="175" class="label-term">Task <tspan fill="#64748b">>→</tspan> Site Inspection</text>
+  </g>
+
+  <!-- Tenant 2: Higher Education (Middle Right) -->
+  <g filter="url(#shadow)">
+    <rect x="480" y="235" width="270" height="130" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <!-- Tenant Header -->
+    <path d="M480 245 A 10 10 0 0 1 490 235 H 740 A 10 10 0 0 1 750 245 V 270 H 480 Z" fill="url(#eduGrad)" />
+    <text x="500" y="257" class="label-tenant">University</text>
+    
+    <text x="500" y="300" class="label-term">Case <tspan fill="#64748b">>→</tspan> Admission Application</text>
+    <text x="500" y="330" class="label-term">Task <tspan fill="#64748b">>→</tspan> Transcript Review</text>
+  </g>
+
+  <!-- Tenant 3: Financial Services (Bottom Right) -->
+  <g filter="url(#shadow)">
+    <rect x="480" y="390" width="270" height="130" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <!-- Tenant Header -->
+    <path d="M480 400 A 10 10 0 0 1 490 390 H 740 A 10 10 0 0 1 750 400 V 425 H 480 Z" fill="url(#finGrad)" />
+    <text x="500" y="412" class="label-tenant">Financial Services</text>
+    
+    <text x="500" y="455" class="label-term">Case <tspan fill="#64748b">>→</tspan> Dispute Claim</text>
+    <text x="500" y="485" class="label-term">Task <tspan fill="#64748b">>→</tspan> Fraud Review</text>
+  </g>
+</svg>

@@ -1,0 +1,236 @@
+---
+layout: ../../layouts/Layout.astro
+title: "The Studio Experience"
+---
+
+import { Image } from 'astro:assets';
+import CaseHero from '../../components/CaseHero.astro';
+import StatGrid from '../../components/StatGrid.astro';
+import WideImage from '../../components/WideImage.astro';
+import TwoCol from '../../components/TwoCol.astro';
+import StepHeader from '../../components/StepHeader.astro';
+import FullWidthSection from '../../components/FullWidthSection.astro';
+import GridSection from '../../components/GridSection.astro';
+import GridCard from '../../components/GridCard.astro';
+import PriorityMatrix from '../../components/PriorityMatrix.astro';
+import Figure from '../../components/Figure.astro';
+import ProcessSection from '../../components/ProcessSection.astro';
+
+import heroImage from '../../assets/work/studio-experience-main.jpg';
+import legacyImage from '../../assets/work/fs-tasks-grid-before.png';
+import workflowConfigured from '../../assets/work/studio-workflow-configured.jpg';
+import workflowConfiguring from '../../assets/work/studio-workflow-configuring.jpg';
+import automationList from '../../assets/work/studio-automation-list.png';
+import automationConfig from '../../assets/work/studio-automation-config.png';
+import automationCardSort from '../../assets/work/studio-automation-card-sort.jpg';
+import automationFlows from '../../assets/work/studio-automation-flows.png';
+import formsList from '../../assets/work/studio-forms-list.png';
+import formsBuilder from '../../assets/work/studio-forms-builder.png';
+import formsAi from '../../assets/work/studio-forms-ai.png';
+
+<CaseHero 
+  title="The Studio Experience"
+  subtitle="Replacing a manual configuration nightmare with a visual, intuitive workflow builder."
+  timeline="2.5 Years"
+  team="2 PMs, 5 Engineers"
+  image={heroImage}
+/>
+
+<div class="centered-intro">
+  <h2>The Impact</h2>
+  <p style="font-size: 1.25rem; color: var(--color-text-muted);">Studio is the configuration environment where business admins define the data, workflows, and rules for their applications.</p>
+</div>
+
+<StatGrid stats={[
+  { value: "50%", label: "Faster Implementation" },
+  { value: "92", label: "Enterprise Customers" }
+]} />
+
+<div class="spacer-bottom-section">
+### Speed and Flexibility
+* **Trusted by Industry Leaders:** The platform is currently used in production by major global enterprises, including **Porsche, Pfizer, Vanguard, T. Rowe Price, and the Australian Government**.
+* **Reduced Engineering Dependency:** Implementation teams can now deliver functional apps in as little as **4 weeks (a 50% reduction)**. By enabling business admins to build intake forms and workflows visually in Studio, the solution eliminated the need for <strong>custom backend coding</strong>.
+* **Scalable Architecture:** The hierarchical logic model allowed the system to scale to **92 enterprise customers**. The architecture proved flexible enough to handle complexities across <strong>vastly different industries</strong>, from **university admissions** to **government permitting**.
+</div>
+
+<FullWidthSection background="grey">
+  <div class="centered-intro">
+    <h2>The Challenge</h2>
+  </div>
+
+  <TwoCol>
+    <div slot="text">
+      <h3>Disconnected Task Lists</h3>
+      <p>In previous solutions, configuring a business process was <strong>restricted to linear checklists</strong>. While this worked for simple to-do lists, it failed for actual case management.</p>
+      <p><strong>The Mismatch:</strong> A case isn't a linear list; it’s a lifecycle. It <strong>moves through stages, branches based on data</strong>, and triggers automated side-effects.</p>
+      <p><strong>The Friction:</strong> User research revealed that users struggled to understand this lifecycle when looking at a simple grid. They had to <strong>mentally track dependencies</strong>. One wrong number in a "Precedents" column could break the flow, and there was <strong>no way to "see" the error until runtime</strong>.</p>
+    </div>
+    <div slot="media">
+      <Figure 
+        src={legacyImage} 
+        alt="Legacy Interface showing complex grid" 
+        caption="The legacy 'Task Grid' interface. Notice the cognitive load of tracking precedents by ID number."
+        loading="lazy"
+      />
+    </div>
+  </TwoCol>
+
+  <h3 style="margin-top: 3rem;">Key Constraints</h3>
+  <GridSection>
+    <GridCard 
+      icon="🧩"
+      title="Platform Limits"
+      description="Restricted to standard Appian OOTB components. We had to innovate within the rigid boundaries of the low-code interface designer."
+    />
+    <GridCard 
+      icon="⚡"
+      title="Performance"
+      description="Rendering speed was critical. We had to prioritize performant patterns (like boring grids) over richer UI cards."
+    />
+    <GridCard 
+      icon="🔍"
+      title="Proxy Research"
+      description="As a 0-to-1 product with no active users, we relied on internal experts, competitive analysis, and proxy studies for validation."
+    />
+  </GridSection>
+</FullWidthSection>
+
+<div class="centered-intro" style="margin-top: 4rem;">
+  <h2>The Solution</h2>
+</div>
+
+<FullWidthSection>
+  <StepHeader number="01" title="The Hybrid Workflow Builder" subtitle="Speed + Validation" />
+  
+  <TwoCol reverse={true} frame={true} sticky={true}>
+    <div slot="text">
+      <p>To solve the visualization problem without sacrificing data entry speed, the solution utilizes a three-pane configuration interface that bridges the gap between a spreadsheet and a flowchart:</p>
+      <ul>
+        <li><strong>Input (Left & Middle):</strong> A list-based input allows for <strong>rapid data entry</strong> of task details.</li>
+        <li><strong>Logic (Middle):</strong> A dedicated configuration area for defining <strong>milestones, SLAs, and—crucially—dependents</strong>.</li>
+        <li><strong>Validation (Right):</strong> As the user configures logic, the right pane updates in <strong>real-time</strong> to <strong>visualize the workflow graph</strong>.</li>
+      </ul>
+      <p><strong>The UX Win:</strong> Users could work quickly in a list format, but the instant visualization allowed them to <strong>verify complex paths immediately</strong>.</p>
+    </div>
+    <div slot="media">
+      <Figure 
+        src={workflowConfigured} 
+        alt="Configured workflow template" 
+        caption="A fully configured workflow template."
+      />
+      <Figure 
+        src={workflowConfiguring} 
+        alt="Workflow configuration in progress" 
+        caption="Defining logic within a workflow step."
+      />
+    </div>
+  </TwoCol>
+
+  <ProcessSection title="Process: Iterative Refinement">
+    <TwoCol reverse={true} sticky={true} frame={true}>
+      <div slot="text" style="margin-top: -1.5rem;">
+        <h4>Bridging the Interaction Gap</h4>
+        <p>While the visual approach to workflow configuration tested well conceptually, early validation revealed a significant gap between user expectation and system capability.</p>
+        <ul>
+          <li><strong>The Drag-and-Drop Expectation:</strong> In early prototypes, users intuitively tried to <strong>drag and drop nodes</strong> on the visualization canvas to reorganize the flow, a standard interaction pattern that the low-code platform did not natively support.</li>
+          <li><strong>The Pivot:</strong> Recognizing this friction, the design was pivoted to a <strong>visualization-first</strong> behavior. We rebuilt the interaction model to support <strong>direct manipulation</strong> where possible and added clear visual cues for selecting and editing tasks where drag-and-drop was technically constrained.</li>
+          <li><strong>Validation:</strong> Despite the initial friction, users reported high confidence in the overall model, validating that the <strong>visual representation</strong> was the correct approach for handling complex case management logic.</li>
+        </ul>
+      </div>
+      <div slot="media">
+        <PriorityMatrix />
+      </div>
+    </TwoCol>
+  </ProcessSection>
+</FullWidthSection>
+
+<FullWidthSection background="grey">
+  <StepHeader number="02" title="Systemic Automation" subtitle="Hierarchy & Inheritance" />
+
+  <TwoCol frame={true} sticky={true}>
+    <div slot="text">
+      <p>User feedback highlighted that automation needs varied based on scope—some rules are global, while others are hyper-specific.</p>
+      <p><strong>The Strategy:</strong> A hierarchical automation engine supports cascading logic: <em>Global Level (All Cases) → Category Level (Permits) → Case Type Level (Plumbing Permit)</em>.</p>
+      <p><strong>Execution Logic:</strong> To handle conflicts, the system executes from the highest level down to the lowest level. This ensures <strong>global compliance is respected</strong> while allowing specific case types to define <strong>exceptions</strong> that take precedence.</p>
+    </div>
+    <div slot="media">
+      <Figure 
+        src={automationList} 
+        alt="Automation rules at different hierarchies" 
+        caption="The high-level view of automated rules across the system hierarchy."
+      />
+      <Figure 
+        src={automationConfig} 
+        alt="Configuring an automation rule action" 
+        caption="Configuring an automation rule action."
+      />
+    </div>
+  </TwoCol>
+
+  <ProcessSection title="Process: Defining the Hierarchy">
+    <TwoCol sticky={true} frame={true}>
+      <div slot="text">
+        <h4>Determining Logical Scope</h4>
+        <p>Early feedback indicated that users found it difficult to determine the appropriate location for automation logic that applied across multiple case types but required local variations.</p>
+        <ul>
+          <li><strong>Card Sort Results:</strong> To define the system architecture, a card sorting activity was conducted with seven participants. The results showed that users intuitively grouped automation needs by <strong>scope (global vs. case-specific)</strong> rather than by the type of trigger or action.</li>
+          <li><strong>The Decision:</strong> These findings led to the development of a <strong>hierarchical inheritance model</strong>. Instead of manual overrides, the system enforces a strict precedence logic: specific rules (case type level) always <strong>take priority</strong> over general rules (global level).</li>
+          <li><strong>Consistency:</strong> This logic was aligned with the existing behavior for user-defined data fields and forms, ensuring that the <strong>"lowest level wins" pattern</strong> remained consistent across the entire Studio configuration experience.</li>
+        </ul>
+      </div>
+      <div slot="media">
+        <Figure 
+          src={automationCardSort} 
+          alt="Card sorting activity results" 
+          caption="Card sorting revealed that users group logic by scope (Global vs. Local)."
+          shadow={true}
+        />
+        <Figure 
+          src={automationFlows} 
+          alt="Potential automation user flows" 
+          caption="Exploring user flows for configuring hierarchical logic."
+          shadow={true}
+        />
+      </div>
+    </TwoCol>
+  </ProcessSection>
+</FullWidthSection>
+
+<FullWidthSection>
+  <StepHeader number="03" title="Integrated Data & Form Designer" subtitle="No-Code Modeling" />
+
+  <TwoCol reverse={true} frame={true} sticky={true}>
+    <div slot="text">
+      <p>A workflow requires data inputs. Previously, adding a form field required an IT ticket to modify the database. The no-code form builder puts this power in the hands of the business admin.</p>
+      <ul>
+        <li><strong>Implicit Data Modeling:</strong> When a user adds a field to a form, the system automatically creates the <strong>backend data structure</strong>.</li>
+        <li><strong>AI Acceleration:</strong> AI integration speeds up data creation. Users can prompt the system (e.g., "Create a dropdown for US States"), and the AI generates the <strong>data type and all options automatically</strong>.</li>
+        <li><strong>Accessibility by Default:</strong> All components automatically meet <strong>WCAG 2.1 AA standards</strong>.</li>
+      </ul>
+    </div>
+    <div slot="media">
+      <Figure 
+        src={formsList} 
+        alt="Configured forms for a Case Type" 
+        caption="The Case Type view showing configured forms."
+      />
+      <Figure 
+        src={formsBuilder} 
+        alt="Form creation interface" 
+        caption="The form creation interface."
+      />
+      <Figure 
+        src={formsAi} 
+        alt="AI-assisted data capture" 
+        caption="AI-assisted data field capture."
+      />
+    </div>
+  </TwoCol>
+</FullWidthSection>
+
+<FullWidthSection background="grey">
+  <StepHeader number="04" title="Built for Extensibility" subtitle="The Platform Mindset" />
+  <p>To support diverse customer needs, the Studio design is agnostic and extensible. The architecture supports custom task types, email templates, and automation rules. Customers can plug in their own <strong>specialized logic</strong> (like a <strong>Fraud Check</strong> rule) and have it render natively within the Studio UI alongside standard features.</p>
+  
+  <p style="margin-top: 2rem;"><strong>Centralized Branding:</strong> A unified location was designed where all colors and styling are defined. By changing a single set of values, customers can <strong>instantly rebrand the entire system</strong>—from the <strong>Studio configuration environment</strong> to the <strong>Workspace front-end</strong>—ensuring every deployed application matches their corporate identity without manual styling updates.</p>
+</FullWidthSection>

@@ -1,0 +1,32 @@
+---
+---
+
+<div class="case-study-content">
+  <slot />
+</div>
+
+<style is:global>
+  /* Force left alignment for content in case studies */
+  .case-study-content p, 
+  .case-study-content h1, 
+  .case-study-content h2, 
+  .case-study-content h3,
+  .case-study-content li {
+    margin-inline: 0 !important;
+    text-align: left;
+  }
+  
+  /* Keep max-width for readability but align left */
+  .case-study-content p,
+  .case-study-content ul,
+  .case-study-content ol {
+    max-width: 70ch;
+  }
+  
+  /* Ensure TwoCol text is also left aligned */
+  .two-col .col-text p,
+  .two-col .col-text h3 {
+    text-align: left;
+    margin-inline: 0;
+  }
+</style>

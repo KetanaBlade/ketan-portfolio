@@ -1,0 +1,67 @@
+---
+const { href, type = 'button', variant = 'primary', class: className, ...rest } = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag 
+  href={href} 
+  type={!href ? type : undefined} 
+  class:list={['btn', `btn-${variant}`, className]} 
+  {...rest}
+>
+  <slot />
+</Tag>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    cursor: pointer;
+    border: 1px solid transparent;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Primary Variant (Brand Blue) */
+  .btn-primary {
+    background-color: var(--color-brand-blue);
+    color: var(--color-text-inverse);
+    border-color: var(--color-brand-blue);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-text-inverse);
+  }
+
+  /* Secondary Variant (Outline) */
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--color-brand-blue);
+    border-color: var(--color-brand-blue);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-bg-subtle);
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  /* Remove default link border if it exists globally */
+  a.btn {
+    border-bottom: 1px solid transparent; /* Override global link style */
+  }
+  
+  a.btn-primary:hover {
+    border-bottom-color: var(--color-accent); /* Match button border */
+  }
+</style>

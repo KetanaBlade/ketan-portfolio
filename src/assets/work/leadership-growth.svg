@@ -1,0 +1,44 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#f8fafc"/>
+  
+  <!-- Grid/Infrastructure Lines -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#grid)" />
+
+  <!-- The Growth Path -->
+  <g stroke="#cbd5e1" stroke-width="3" stroke-dasharray="8 8">
+    <!-- Connecting Line -->
+    <path d="M 200 450 Q 400 450 400 300 T 600 150" fill="none" />
+  </g>
+
+  <!-- Support Structures (Vertical Lines) -->
+  <g stroke="#94a3b8" stroke-width="2">
+    <line x1="200" y1="450" x2="200" y2="550" />
+    <line x1="400" y1="300" x2="400" y2="550" />
+    <line x1="600" y1="150" x2="600" y2="550" />
+  </g>
+
+  <!-- Ground Line -->
+  <line x1="150" y1="550" x2="650" y2="550" stroke="#1e3a8a" stroke-width="4" stroke-linecap="round" />
+
+  <!-- Nodes -->
+  <!-- Start: Intern/Junior -->
+  <circle cx="200" cy="450" r="25" fill="#93c5fd" stroke="white" stroke-width="4"/>
+  
+  <!-- Middle: Mid-Level -->
+  <circle cx="400" cy="300" r="35" fill="#3b82f6" stroke="white" stroke-width="4"/>
+  
+  <!-- End: Senior/Leader -->
+  <circle cx="600" cy="150" r="45" fill="#1e3a8a" stroke="white" stroke-width="4"/>
+
+  <!-- Upward Arrow Indicator -->
+  <g transform="translate(660, 140)">
+     <path d="M0 0 L15 -15 L30 0" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+     <path d="M15 -15 L15 20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+</svg>

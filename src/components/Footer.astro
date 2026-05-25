@@ -1,0 +1,122 @@
+---
+import ContactLink from './ContactLink.astro';
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    
+    <!-- Left: Credits (Top Aligned) -->
+    <div class="copyright">
+      <div>&copy; {currentYear} Ketan Pandya</div>
+      <div class="colophon-hint">Built with Astro & Gemini CLI</div>
+    </div>
+
+    <!-- Right: Sitemap Links -->
+    <nav class="social-links" aria-label="Footer Navigation">
+      
+      <!-- Work Column -->
+      <div class="footer-nav-col">
+        <h4>Selected Work</h4>
+        <ul class="footer-nav-list">
+          <li><a href="/work/studio-experience">The Studio Experience</a></li>
+          <li><a href="/work/workspace-experience">The Workspace Experience</a></li>
+          <li><a href="/work/financial-services-onboarding">Connected Onboarding</a></li>
+          <li><a href="/work/design-leadership">Design Leadership</a></li>
+        </ul>
+      </div>
+
+      <!-- Connect Column -->
+      <div class="footer-nav-col">
+        <h4>Connect</h4>
+        <ul class="footer-nav-list">
+          <li><a href="/about">About</a></li>
+          <li><ContactLink type="email" href="mailto:kbp_1@live.com" label="kbp_1@live.com" /></li>
+          <li><ContactLink type="linkedin" href="https://www.linkedin.com/in/ketan-pandya-b76832155/" label="LinkedIn" isExternal={true} /></li>
+          <li><ContactLink type="resume" href="/resume" label="Resume" isExternal={true} /></li>
+        </ul>
+      </div>
+
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: auto;
+    padding: 4rem 0;
+    border-top: 1px solid var(--color-border-strong);
+    margin-top: var(--spacing-xl);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    background-color: var(--color-bg-subtle);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 5rem;
+  }
+
+  .copyright {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .colophon-hint {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Sitemap Column Styling */
+  .footer-nav-col h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    margin: 0 0 1.25rem 0;
+    font-weight: var(--font-weight-heading);
+  }
+
+  .footer-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-nav-list li {
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-nav-list a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: color 0.2s;
+    border-bottom: 1px solid transparent;
+  }
+
+  .footer-nav-list a:hover {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .footer-inner {
+      flex-direction: column;
+      gap: 3rem;
+      text-align: left;
+    }
+    
+    .social-links {
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+  }
+</style>

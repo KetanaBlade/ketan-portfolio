@@ -1,0 +1,79 @@
+---
+const { reverse = false, frame = false, sticky = false, style } = Astro.props;
+---
+
+<div class:list={["two-col", { "reverse": reverse, "framed": frame, "sticky": sticky }]} style={style}>
+  <div class="col-text">
+    <slot name="text" />
+  </div>
+  <div class="col-media">
+    <slot name="media" />
+  </div>
+</div>
+
+<style>
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin: 4rem 0;
+  }
+
+  /* Sticky Variant: Aligns to top so sticky text can travel down */
+  .two-col.sticky {
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .two-col {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .two-col.reverse .col-text {
+      order: 2;
+    }
+    
+    .two-col.reverse .col-media {
+      order: 1;
+    }
+
+    /* Only apply sticky on desktop where columns exist */
+    .two-col.sticky .col-text {
+      position: sticky;
+      top: 6rem; /* 6rem ensures it doesn't hit the header/top edge */
+      align-self: start;
+    }
+  }
+
+  .col-text {
+    font-size: 1.1rem;
+  }
+
+  .col-text > :first-child,
+  .col-text > :first-child > :first-child {
+    margin-top: 0 !important;
+  }
+
+  .col-media {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between stacked images */
+  }
+
+  /* Ensure images in the media slot fit well */
+  .col-media :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+  }
+
+  /* Browser Frame Style */
+  .two-col.framed .col-media :global(img) {
+    border: 1px solid var(--color-border);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+  }
+</style>

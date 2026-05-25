@@ -1,0 +1,114 @@
+---
+layout: ../layouts/Layout.astro
+title: "About Ketan Pandya"
+description: "Product Designer with an M.S. in Information Science (HCI). Specializing in complex systems, AI-driven workflows, and accessibility."
+---
+
+import { Image } from 'astro:assets';
+import TwoCol from '../components/TwoCol.astro';
+import GridSection from '../components/GridSection.astro';
+import GridCard from '../components/GridCard.astro';
+import ContentWrapper from '../components/ContentWrapper.astro';
+import FullWidthSection from '../components/FullWidthSection.astro';
+import ContactLink from '../components/ContactLink.astro';
+import Figure from '../components/Figure.astro';
+
+import headshot from '../assets/ketan-headshot.jpg';
+import pagespeed from '../assets/pagespeed-100.jpg';
+
+<div style="margin-top: 4rem;"></div>
+
+<ContentWrapper>
+
+<TwoCol reverse={true} style={{ alignItems: 'flex-start' }}>
+  <div slot="text">
+    <h1 style="margin-top: 0; font-size: 2.5rem; line-height: 1.1; margin-bottom: 1.5rem;">I design with logic, insight, and an innate curiosity.</h1>
+    <p>I am a <strong>Product Designer</strong> who thrives on complexity. My <strong>M.S. in Information Science</strong>, specializing in <strong>Human-Computer Interaction</strong>, drives me to deconstruct messy problems, but my passion for design and empathy for users ensures I rebuild them into solutions that feel <strong>simple, modern, and human</strong>.</p>
+    <p>At <strong>Appian</strong>, I design <strong>Case Management Studio</strong>, a platform that turns abstract business logic and processes into visual tools. My work centers on <strong>extensibility and scale</strong>—building foundational patterns that allow our customers to launch distinct, accessible, high-quality applications without starting from scratch.</p>
+    
+    <div style="margin-top: 0; padding-top: 1.5rem; border-top: 1px solid var(--color-border-strong);">
+      <h3 style="margin-top: 0; font-size: 1rem; text-transform: uppercase; color: var(--color-brand-blue); letter-spacing: 0.05em; margin-bottom: 1rem;">Other things about me</h3>
+      <p>You can often find me hiking, traveling, reading, or diving down a Wikipedia rabbit hole. I have always been a naturally curious person with a love for learning about the world around me. Exposing myself to the different aspects and perspectives of the world and the people in it is fun, and it helps me develop and improve on myself, too.</p>
+      
+      <div class="connect-section" style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1.5rem;">
+        <ContactLink type="email" href="mailto:kbp_1@live.com" label="kbp_1@live.com" />
+        <ContactLink type="linkedin" href="https://www.linkedin.com/in/ketan-pandya-b76832155/" label="Ketan Pandya" isExternal={true} />
+        <ContactLink type="resume" href="/resume" label="Resume" isExternal={true} />
+      </div>
+    </div>
+  </div>
+
+  <div slot="media">
+    <Image 
+      src={headshot} 
+      alt="Ketan Pandya" 
+      loading="eager" 
+      fetchpriority="high"
+      widths={[400, 800, 1200]}
+      sizes="(max-width: 900px) 100vw, 600px"
+      format="webp"
+      style="border-radius: 12px; width: 100%; aspect-ratio: 3/4; object-fit: cover;" 
+    />
+  </div>
+</TwoCol>
+
+<div style="margin-top: 6rem; margin-bottom: 0; text-align: center;">
+  <h2>My Approach</h2>
+</div>
+
+<GridSection>
+  <GridCard 
+    icon="🔍"
+    title="Evidence-Based"
+    description="I believe the best design decisions are justified. Whether it's usability testing or heuristic evaluation, I use data and insights to validate my design direction."
+  />
+  <GridCard 
+    icon="🧩"
+    title="Problem Solver"
+    description="I look beyond the immediate request to understand the context. By identifying the root cause of a user's difficulty, I can design a solution that works for the long term."
+  />
+  <GridCard 
+    icon="📐"
+    title="Purposeful Craft"
+    description="I believe that robust architecture and accessibility (WCAG 2.1 AA) are essential to a great experience, working alongside intentional design to make a product feel complete."
+  />
+</GridSection>
+
+</ContentWrapper>
+
+<FullWidthSection background="grey">
+<ContentWrapper>
+  <div style="max-width: 800px;">
+    <h3 class="resume-title">Education</h3>
+    
+    <div class="resume-item" style="margin-bottom: 2rem;">
+      <strong>Master of Science, Information Science</strong>
+      <span>University of North Carolina at Chapel Hill</span>
+      <span class="detail">Specialization: Human-Computer Interaction Design</span>
+      <span class="detail" style="margin-top: 0.5rem; display: block;">
+        <a href="https://cdr.lib.unc.edu/concern/masters_papers/2r36v751z?locale=en" target="_blank" style="font-size: 0.9rem;">Master's Paper: User Preferences for Email Tasks on Different Platforms</a>
+      </span>
+    </div>
+
+    <div class="resume-item">
+      <strong>Bachelor of Arts, Philosophy</strong>
+      <span>Virginia Tech</span>
+      <span class="detail">Minors: Japanese Studies & Creative Writing</span>
+    </div>
+
+    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border-strong);">
+      <h3 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brand-blue); margin-top: 0; margin-bottom: 1rem;">Colophon</h3>
+      <p style="font-size: 0.95rem; color: var(--color-text-muted); max-width: 600px; margin-bottom: 2rem;">This portfolio was built with <strong>Astro</strong> for performance and developed interactively using the <strong>Gemini CLI</strong>. It serves as a live experiment in AI-assisted prototyping, demonstrating how modern tooling can accelerate the journey from design to code.</p>
+      
+      <div style="max-width: 500px; margin-left: 0;">
+        <Figure 
+          src={pagespeed} 
+          alt="Google PageSpeed Insights score showing 100/100 in Performance, Accessibility, Best Practices, and SEO" 
+          caption="From PageSpeed Insights"
+          shadow={true}
+        />
+      </div>
+    </div>
+  </div>
+</ContentWrapper>
+</FullWidthSection>

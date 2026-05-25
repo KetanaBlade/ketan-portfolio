@@ -1,0 +1,233 @@
+---
+layout: ../../layouts/Layout.astro
+title: "The Workspace Experience"
+---
+
+import { Image } from 'astro:assets';
+import CaseHero from '../../components/CaseHero.astro';
+import StatGrid from '../../components/StatGrid.astro';
+import WideImage from '../../components/WideImage.astro';
+import TwoCol from '../../components/TwoCol.astro';
+import StepHeader from '../../components/StepHeader.astro';
+import FullWidthSection from '../../components/FullWidthSection.astro';
+import GridSection from '../../components/GridSection.astro';
+import GridCard from '../../components/GridCard.astro';
+import UserVoice from '../../components/UserVoice.astro';
+import Figure from '../../components/Figure.astro';
+import ProcessSection from '../../components/ProcessSection.astro';
+
+import heroImage from '../../assets/work/workspace-experience-main.jpg';
+import challengeImage from '../../assets/work/workspace-challenge.svg';
+import workspaceThumb from '../../assets/work/workspace-thumb.svg';
+import studioForms from '../../assets/work/studio-forms.svg';
+import caseRecord from '../../assets/work/workspace-case-record.jpg';
+import aiChat from '../../assets/work/workspace-ai-chat.jpg';
+import aiComments from '../../assets/work/workspace-ai-comments.jpg';
+import aiDocs from '../../assets/work/workspace-ai-docs.png';
+import portalHome from '../../assets/work/workspace-portal-home.jpg';
+import portalDashboard from '../../assets/work/workspace-portal-dashboard.jpg';
+import portalSummary from '../../assets/work/workspace-portal-summary.jpg';
+import citizenFlows from '../../assets/work/workspace-citizen-flows.jpg';
+
+<CaseHero 
+  title="The Workspace Experience"
+  subtitle="A unified, intelligent front-end that turns complex backend logic into clarity for case workers."
+  timeline="2.5 Years"
+  team="1 PM, 3 Engineers"
+  image={heroImage}
+/>
+
+<div class="centered-intro">
+  <h2>The Impact</h2>
+  <p style="font-size: 1.25rem; color: var(--color-text-muted);">The Workspace is the front-end interface where case workers review information, make decisions, and interact with external users.</p>
+</div>
+
+<StatGrid stats={[
+  { value: "100%", label: "WCAG 2.1 Compliant" },
+  { value: "92", label: "Enterprise Customers" }
+]} />
+
+<div class="spacer-bottom-section">
+### Adoption and Scale
+* **Global Validation:** The interface drives daily operations for major organizations including **Porsche, Pfizer, and the Australian Government**.
+* **Accelerated Deployment:** Because the workspace UI is dynamically created from Studio configurations, customers avoided the months typically spent designing custom user interfaces. This allowed organizations to go live with a **modern experience** using the latest design patterns **significantly faster than legacy builds**.
+* **Operational Improvement:** The introduction of the authenticated "My Cases" site **offloaded a significant volume of manual "status check" emails**, allowing internal teams to shift focus from support tickets to high-value case resolution.
+</div>
+
+<FullWidthSection background="grey">
+  <div class="centered-intro">
+    <h2>The Challenge</h2>
+  </div>
+
+  <TwoCol>
+    <div slot="text">
+      <h3>Disconnected Data</h3>
+      <p>Case management requires coordinating information from disparate sources—emails, documents, external sites, and internal databases.</p>
+      <p><strong>The Fragmentation:</strong> Employees struggle to find the <strong>single source of truth</strong> needed to make the right decisions. Without a system enforcing specific rules, <strong>cases can fall through the cracks</strong>.</p>
+      <p><strong>The Goal:</strong> Design a unified workspace site that <strong>centralizes all case information</strong>, enforces business logic defined in Studio, and <strong>uses AI to accelerate decision-making</strong>.</p>
+    </div>
+    <div slot="media">
+      <Image src={challengeImage} alt="Diagram showing fragmented data sources" loading="lazy" />
+    </div>
+  </TwoCol>
+
+  <h3 style="margin-top: 3rem;">Key Constraints</h3>
+  <GridSection>
+    <GridCard 
+      icon="🧩"
+      title="Platform Limits"
+      description="Strict adherence to low-code capabilities meant visual design had to focus on layout and hierarchy rather than custom styling."
+    />
+    <GridCard 
+      icon="📦"
+      title="Modularity"
+      description="To avoid the <strong>monolithic</strong> debt of legacy apps, features were designed as optional modules that could be slotted in or out."
+    />
+    <GridCard 
+      icon="🔍"
+      title="Proxy Research"
+      description="Validation relied on proxy users and subject matter experts (Customer Success) rather than direct access to end-users."
+    />
+  </GridSection>
+</FullWidthSection>
+
+<div class="centered-intro" style="margin-top: 4rem;">
+  <h2>The Solution</h2>
+</div>
+
+<FullWidthSection>
+  <StepHeader number="01" title="Centralized Information" subtitle="The Single Source of Truth" />
+  
+  <TwoCol reverse={true} frame={true} sticky={true}>
+    <div slot="text">
+      <p>To solve the fragmentation issue, the case record aggregates all necessary context into one view.</p>
+      <ul>
+        <li><strong>The Case Summary:</strong> Upon opening a case, the user sees a consolidated view of the <strong>description, milestones, watchers, and critical data</strong>.</li>
+        <li><strong>Dynamic Layouts:</strong> While the core navigation structure remains consistent for usability, the system dynamically renders case-specific forms and data fields based on Studio configurations.</li>
+        <li><strong>Industry Agnostic:</strong> The interface is designed to be framework-agnostic. Whether configured for <strong>government permitting</strong> or <strong>commercial insurance</strong>, the workspace <strong>adapts its layout and logic</strong> while maintaining a consistent, accessible user experience.</li>
+      </ul>
+      <p><strong>Inclusive & Accessible:</strong> The entire workspace experience is fully responsive and compliant with <strong>WCAG 2.1 AA standards</strong>, supporting screen readers and keyboard navigation.</p>
+    </div>
+    <div slot="media">
+      <Figure 
+        src={heroImage} 
+        alt="Workspace Landing Page" 
+        caption="The Case Workspace landing page."
+      />
+      <Figure 
+        src={caseRecord} 
+        alt="Full Case Record View" 
+        caption="A unified Case Record view, aggregating all case data."
+      />
+    </div>
+  </TwoCol>
+
+  <ProcessSection title="Process: Validating the Experience">
+    <TwoCol sticky={true} frame={true}>
+      <div slot="text" style="margin-top: -1.5rem;">
+        <h4>Designing for Relevance</h4>
+        <p>A core tenet of the design was to keep the application focused. We adopted a <strong>modular architecture</strong> as a result of close collaboration between business, development, and design. This ensured that the interface only displays <strong>features relevant to a specific configuration</strong>, preventing the unnecessary complexity common in legacy software while maintaining a scalable codebase.</p>
+        <ul>
+          <li><strong>Intentional Layouts:</strong> Foundational decisions like navigation placement were validated through testing. While the Studio environment uses a sidebar for its deep hierarchy, users confirmed that a <strong>top navigation model</strong> was better for the Workspace, as it <strong>preserved horizontal space</strong> for reviewing data and documents.</li>
+          <li><strong>Validation:</strong> Participants in usability studies reacted positively to this streamlined approach. They noted the interface felt cleaner than previous iterations and confirmed that the layout successfully aggregated necessary details without overwhelming the user.</li>
+          <li><strong>Result:</strong> The final design provides a unified interface that remains flexible enough to support diverse business needs while keeping the worker focused on the task at hand.</li>
+        </ul>
+      </div>
+      <div slot="media">
+        <UserVoice quotes={[
+          { text: "I think you guys have nailed it with the way that this is built out.", label: "ARC" },
+            { text: "You did an awesome job of... pushing the limits of the UX.", label: "Product Stakeholder" },
+            { text: "The business user interface design experience will drive widespread adoption.", label: "3E" },
+            { text: "It’s really impressive what we were able to show in the first demos.", label: "Related Fund Management" }
+          ]} />
+      </div>
+    </TwoCol>
+  </ProcessSection>
+</FullWidthSection>
+
+<FullWidthSection background="grey">
+  <StepHeader number="02" title="AI-Powered Assistance" subtitle="Accelerating Decisions" />
+
+  <TwoCol frame={true} sticky={true}>
+    <div slot="text">
+      <p><strong>Private AI</strong> was integrated to help case workers process large volumes of information without leaving the context of the case.</p>
+      <ul>
+        <li><strong>Contextual Chat & Discovery:</strong> A secure AI chat panel allows users to query case history and <strong>automatically surfaces similar past cases</strong> to suggest potential resolutions.</li>
+        <li><strong>Intelligent Summarization:</strong> Users can instantly <strong>summarize lengthy comment threads</strong> or complex PDF documents, extracting key points without manual review.</li>
+        <li><strong>Prompt Engineering:</strong> The underlying prompt strategies were architected and iteratively refined to ensure the AI generated summaries that were <strong>concise, citation-backed</strong>, and structured specifically for <strong>rapid decision-making</strong>.</li>
+      </ul>
+    </div>
+    <div slot="media">
+      <Figure 
+        src={aiChat} 
+        alt="AI Chat Panel and Related Cases" 
+        caption="Contextual AI chat suggesting related cases."
+      />
+      <Figure 
+        src={aiComments} 
+        alt="AI Comment Summary" 
+        caption="Instant summarization of long comment threads."
+      />
+      <Figure 
+        src={aiDocs} 
+        alt="AI Document Summary" 
+        caption="Citation-backed summaries of attached documents."
+      />
+    </div>
+  </TwoCol>
+</FullWidthSection>
+
+<FullWidthSection>
+  <StepHeader number="03" title="Public Access & Self-Service" subtitle="Public Portals & Authenticated Self-Service" />
+
+  <TwoCol reverse={true} frame={true} sticky={true}>
+    <div slot="text">
+      <p>Case management isn't just for internal users. The design of the external experience ensures that public interaction with government and enterprise services is seamless, secure, and accessible on any device.</p>
+      <ul>
+        <li><strong>Public Portals:</strong> A mobile-first entry point for anonymous users to discover services, find information, and begin the application process.</li>
+        <li><strong>Secure Intake:</strong> A guided <strong>"no-login" submission flow</strong> that allows users to submit cases quickly while ensuring data integrity.</li>
+        <li><strong>Authenticated Self-Service:</strong> Once signed up, the "My Cases" dashboard allows users to track their progress, <strong>upload missing documents</strong>, and communicate directly with case workers.</li>
+      </ul>
+      <p><strong>Mobile-First Accessibility:</strong> Since external users often access these services via mobile devices, a responsive design that met <strong>WCAG 2.1 AA standards</strong> was prioritized. This ensured that critical services were usable for everyone, regardless of their device or ability.</p>
+    </div>
+    <div slot="media">
+      <Figure 
+        src={portalHome} 
+        alt="Public Portal Landing Page" 
+        caption="The Public Portal: A mobile-first entry point for citizens."
+      />
+      <Figure 
+        src={portalDashboard} 
+        alt="My Cases Dashboard" 
+        caption="The authenticated 'My Cases' dashboard."
+      />
+      <Figure 
+        src={portalSummary} 
+        alt="Case Summary View" 
+        caption="Detailed status tracking for external users."
+      />
+    </div>
+  </TwoCol>
+
+  <ProcessSection title="Process: Designing for the Public">
+    <TwoCol reverse={true} sticky={true} frame={true}>
+      <div slot="text">
+        <h4>Shifting the Design Language</h4>
+        <p>While the internal workspace focused on density and efficiency for trained experts, the external portal required a fundamental shift in design language to support novice users.</p>
+        <ul>
+          <li><strong>Consumer-Friendly UX:</strong> We simplified the interaction model, breaking down complex intake forms into <strong>guided, bite-sized steps</strong>. The visual style was adjusted to be more welcoming and less enterprise, using <strong>clearer typography and more generous spacing</strong> to reduce cognitive load.</li>
+          <li><strong>Mobile-First Strategy:</strong> Recognizing that citizens often access services via smartphones, the entire self-service experience was designed mobile-first. This ensured that critical flows—like <strong>self-registration and case tracking</strong>—were fully functional and accessible on <strong>smaller touch screens</strong>, not just scaled-down desktop views.</li>
+          <li><strong>Seamless Integration:</strong> Special attention was paid to the handoff between unauthenticated public access and authenticated self-service, ensuring that the transition from initial discovery to secure account management felt like a single, cohesive journey.</li>
+        </ul>
+      </div>
+      <div slot="media">
+        <Figure 
+          src={citizenFlows} 
+          alt="User flow diagram for citizen self-registration" 
+          caption="Mapping the user journey from public access to authenticated self-service using user flows and sitemaps."
+          shadow={true}
+        />
+      </div>
+    </TwoCol>
+  </ProcessSection>
+</FullWidthSection>
