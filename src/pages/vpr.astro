@@ -1234,6 +1234,47 @@ const parsedNotes = rawNotes.split('\n---SLIDE---\n');
         const editNotesBtn = document.getElementById('edit-notes-btn');
         let isEditingNotes = false;
 
+        async function saveCurrentNotes() {
+            isEditingNotes = false;
+            notesText.contentEditable = "false";
+            notesText.style.outline = "none";
+            notesText.style.padding = "0";
+            editNotesBtn.innerText = "✏️ Edit";
+            
+            // Update local array
+            notes[currentSlide] = notesText.innerHTML;
+            
+            // Save to API
+            try {
+                const res = await fetch('/api/save-notes', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ notes })
+                });
+                if (res.ok) {
+                    editNotesBtn.innerText = "✅ Saved!";
+                    setTimeout(() => { if (!isEditingNotes) editNotesBtn.innerText = "✏️ Edit"; }, 2000);
+                } else {
+                    editNotesBtn.innerText = "❌ Error";
+                    setTimeout(() => { if (!isEditingNotes) editNotesBtn.innerText = "✏️ Edit"; }, 2000);
+                }
+            } catch (e) {
+                console.error(e);
+                editNotesBtn.innerText = "❌ Error";
+                setTimeout(() => { if (!isEditingNotes) editNotesBtn.innerText = "✏️ Edit"; }, 2000);
+            }
+        }
+
+        function cancelEditingNotes() {
+            isEditingNotes = false;
+            notesText.contentEditable = "false";
+            notesText.style.outline = "none";
+            notesText.style.padding = "0";
+            editNotesBtn.innerText = "✏️ Edit";
+            // Restore original content
+            notesText.innerHTML = notes[currentSlide] || "No speaker notes for this slide.";
+        }
+
         editNotesBtn.addEventListener('click', async () => {
             if (!isEditingNotes) {
                 // Enter edit mode
@@ -1244,35 +1285,22 @@ const parsedNotes = rawNotes.split('\n---SLIDE---\n');
                 notesText.style.padding = "0.5rem";
                 editNotesBtn.innerText = "💾 Save";
             } else {
-                // Save and exit edit mode
-                isEditingNotes = false;
-                notesText.contentEditable = "false";
-                notesText.style.outline = "none";
-                notesText.style.padding = "0";
-                editNotesBtn.innerText = "✏️ Edit";
-                
-                // Update local array
-                notes[currentSlide] = notesText.innerHTML;
-                
-                // Save to API
-                try {
-                    const res = await fetch('/api/save-notes', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ notes })
-                    });
-                    if (res.ok) {
-                        editNotesBtn.innerText = "✅ Saved!";
-                        setTimeout(() => { if (!isEditingNotes) editNotesBtn.innerText = "✏️ Edit"; }, 2000);
-                    } else {
-                        editNotesBtn.innerText = "❌ Error";
-                        setTimeout(() => { if (!isEditingNotes) editNotesBtn.innerText = "✏️ Edit"; }, 2000);
-                    }
-                } catch (e) {
-                    console.error(e);
-                    editNotesBtn.innerText = "❌ Error";
-                    setTimeout(() => { if (!isEditingNotes) editNotesBtn.innerText = "✏️ Edit"; }, 2000);
-                }
+                await saveCurrentNotes();
+            }
+        });
+
+        notesText.addEventListener('keydown', async (e) => {
+            if (!isEditingNotes) return;
+            
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                cancelEditingNotes();
+            } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+                e.preventDefault();
+                await saveCurrentNotes();
+            } else if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                e.preventDefault();
+                await saveCurrentNotes();
             }
         });
         
@@ -1356,6 +1384,11 @@ const parsedNotes = rawNotes.split('\n---SLIDE---\n');
         
         // Key bindings
         window.addEventListener('keydown', (e) => {
+            // Ignore shortcut keys when typing inside editable fields or inputs
+            if (document.activeElement && (document.activeElement.isContentEditable || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) {
+                return;
+            }
+
             if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key === 'ArrowDown') {
                 e.preventDefault();
                 nextSlide();
