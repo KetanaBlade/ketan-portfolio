@@ -32,7 +32,7 @@ import semanticMapping from '../assets/work/semantic-mapping.svg';
 import sailOverview from '../assets/work/leadership-figma-library.jpg';
 import growthImage from '../assets/work/leadership-growth.svg';
 import workshopImage from '../assets/work/leadership-community-v2.svg';
-const optimizedHeadshot = await getImage({ src: headshot });
+const optimizedHeadshot = await getImage({ src: headshot, format: 'webp' });
 ---
 
 <!DOCTYPE html>
@@ -637,7 +637,7 @@ const optimizedHeadshot = await getImage({ src: headshot });
                 </div>
                 <div class="col-media">
                     <div class="media-container" style="max-width: 420px; aspect-ratio: 3/4;">
-                        <Image loading="eager" src={headshot} alt="Ketan Pandya headshot" />
+                        <img src={optimizedHeadshot.src} alt="Ketan Pandya headshot" />
                         <span class="media-caption">Product Designer</span>
                     </div>
                 </div>
