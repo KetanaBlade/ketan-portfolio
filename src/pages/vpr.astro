@@ -1,1473 +1,2183 @@
 ---
-import fs from 'node:fs';
-import path from 'node:path';
-import { Image } from 'astro:assets';
-import headshot from '../assets/ketan-headshot.jpg';
-import pagespeed from '../assets/pagespeed-100.jpg';
+import fs from "node:fs";
+import path from "node:path";
+import { Image } from "astro:assets";
+import headshot from "../assets/ketan-headshot.jpg";
+import pagespeed from "../assets/pagespeed-100.jpg";
 
 // Project 1 Assets
-import onboardingDashboard from '../assets/work/fs-onboarding-dashboard.png';
-import tasksBefore from '../assets/work/fs-tasks-grid-before.png';
-import tasksAfter from '../assets/work/fs-tasks-grid-after.png';
-import workflowConfigured from '../assets/work/studio-workflow-configured.jpg';
-import workflowConfiguring from '../assets/work/studio-workflow-configuring.jpg';
-import automationCardSort from '../assets/work/studio-automation-card-sort.jpg';
-import studioAutomationList from '../assets/work/studio-automation-list.png';
-import studioAutomationConfig from '../assets/work/studio-automation-config.png';
-import studioFormsList from '../assets/work/studio-forms-list.png';
-import studioFormsBuilder from '../assets/work/studio-forms-builder.png';
-import studioFormsAi from '../assets/work/studio-forms-ai.png';
-import caseRecord from '../assets/work/workspace-case-record.jpg';
-import workspaceExperienceMain from '../assets/work/workspace-experience-main.jpg';
-import workspaceAiChat from '../assets/work/workspace-ai-chat.jpg';
-import workspaceAiComments from '../assets/work/workspace-ai-comments.jpg';
-import workspaceAiDocs from '../assets/work/workspace-ai-docs.png';
-import workspacePortalHome from '../assets/work/workspace-portal-home.jpg';
-import workspacePortalDashboard from '../assets/work/workspace-portal-dashboard.jpg';
-import workspacePortalSummary from '../assets/work/workspace-portal-summary.jpg';
-import citizenFlows from '../assets/work/workspace-citizen-flows.jpg';
-import brandA from '../assets/work/brand-a.png';
-import brandB from '../assets/work/brand-b.png';
-import semanticMapping from '../assets/work/semantic-mapping.svg';
+import onboardingDashboard from "../assets/work/fs-onboarding-dashboard.png";
+import tasksBefore from "../assets/work/fs-tasks-grid-before.png";
+import tasksAfter from "../assets/work/fs-tasks-grid-after.png";
+import workflowConfigured from "../assets/work/studio-workflow-configured.jpg";
+import workflowConfiguring from "../assets/work/studio-workflow-configuring.jpg";
+import automationCardSort from "../assets/work/studio-automation-card-sort.jpg";
+import studioAutomationList from "../assets/work/studio-automation-list.png";
+import studioAutomationConfig from "../assets/work/studio-automation-config.png";
+import studioFormsList from "../assets/work/studio-forms-list.png";
+import studioFormsBuilder from "../assets/work/studio-forms-builder.png";
+import studioFormsAi from "../assets/work/studio-forms-ai.png";
+import caseRecord from "../assets/work/workspace-case-record.jpg";
+import workspaceExperienceMain from "../assets/work/workspace-experience-main.jpg";
+import workspaceAiChat from "../assets/work/workspace-ai-chat.jpg";
+import workspaceAiComments from "../assets/work/workspace-ai-comments.jpg";
+import workspaceAiDocs from "../assets/work/workspace-ai-docs.png";
+import workspacePortalHome from "../assets/work/workspace-portal-home.jpg";
+import workspacePortalDashboard from "../assets/work/workspace-portal-dashboard.jpg";
+import workspacePortalSummary from "../assets/work/workspace-portal-summary.jpg";
+import citizenFlows from "../assets/work/workspace-citizen-flows.jpg";
+import brandA from "../assets/work/brand-a.png";
+import brandB from "../assets/work/brand-b.png";
+import semanticMapping from "../assets/work/semantic-mapping.svg";
 
 // Project 2 Assets
-import sailOverview from '../assets/work/leadership-figma-library.jpg';
-import growthImage from '../assets/work/leadership-growth.svg';
-import workshopImage from '../assets/work/leadership-community-v2.svg';
+import sailOverview from "../assets/work/leadership-figma-library.png";
+import growthImage from "../assets/work/leadership-growth.svg";
+import workshopImage from "../assets/work/leadership-community-v2.svg";
 
-const notesFilePath = path.resolve('./src/data/vpr-notes.md');
-let rawNotes = '';
+const notesFilePath = path.resolve("./src/data/vpr-notes.md");
+let rawNotes = "";
 try {
-    rawNotes = fs.readFileSync(notesFilePath, 'utf-8');
+    rawNotes = fs.readFileSync(notesFilePath, "utf-8");
 } catch (e) {
-    console.error('Failed to read vpr-notes.md', e);
+    console.error("Failed to read vpr-notes.md", e);
 }
-const parsedNotes = rawNotes.split('\n---SLIDE---\n');
+const parsedNotes = rawNotes.split("\n---SLIDE---\n");
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ketan Pandya — Portfolio Review</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-bg: #f8fafc;
-            --color-surface: #ffffff;
-            --color-surface-glass: rgba(255, 255, 255, 0.85);
-            --color-border: rgba(15, 23, 42, 0.08);
-            --color-border-hover: rgba(15, 23, 42, 0.16);
-            --color-text: #0f172a;
-            --color-text-muted: #334155; /* Refined Slate-700 dark gray: pairs with weight 500 for a stunning 8.4:1 contrast ratio */
-            --color-brand-blue: #0369a1;
-            --color-brand-teal: #0f766e;
-            --color-accent: #4f46e5;
-            
-            --font-display: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
-            --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ketan Pandya — Portfolio Review</title>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --color-bg: #f8fafc;
+                --color-surface: #ffffff;
+                --color-surface-glass: rgba(255, 255, 255, 0.85);
+                --color-border: rgba(15, 23, 42, 0.08);
+                --color-border-hover: rgba(15, 23, 42, 0.16);
+                --color-text: #0f172a;
+                --color-text-muted: #334155; /* Refined Slate-700 dark gray: pairs with weight 500 for a stunning 8.4:1 contrast ratio */
+                --color-brand-blue: #0369a1;
+                --color-brand-teal: #0f766e;
+                --color-accent: #4f46e5;
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: var(--color-bg);
-            font-family: var(--font-body);
-            color: var(--color-text);
-            font-weight: 500; /* Set default to 500 (Medium) so body text doesn't look thin */
-            -webkit-font-smoothing: antialiased;
-        }
+                --font-display: "Outfit", "Plus Jakarta Sans", system-ui,
+                    sans-serif;
+                --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+            }
 
-        /* Background grid and glows */
-        .ambient-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        .glow-1 {
-            position: absolute;
-            top: -20%;
-            right: -10%;
-            width: 60%;
-            height: 60%;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.04) 0%, rgba(0,0,0,0) 70%);
-            filter: blur(80px);
-        }
-        .glow-2 {
-            position: absolute;
-            bottom: -20%;
-            left: -10%;
-            width: 60%;
-            height: 60%;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(45, 212, 191, 0.03) 0%, rgba(0,0,0,0) 70%);
-            filter: blur(80px);
-        }
-        
-        /* Main deck container */
-        #deck {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            z-index: 10;
-            display: flex;
-            flex-direction: row;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform;
-        }
+            body,
+            html {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                background-color: var(--color-bg);
+                font-family: var(--font-body);
+                color: var(--color-text);
+                font-weight: 500; /* Set default to 500 (Medium) so body text doesn't look thin */
+                -webkit-font-smoothing: antialiased;
+            }
 
-        .slide {
-            flex-shrink: 0;
-            width: 100vw;
-            height: 100vh;
-            box-sizing: border-box;
-            padding: 4rem 6rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-        }
+            /* Background grid and glows */
+            .ambient-bg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                overflow: hidden;
+                pointer-events: none;
+            }
+            .glow-1 {
+                position: absolute;
+                top: -20%;
+                right: -10%;
+                width: 60%;
+                height: 60%;
+                border-radius: 50%;
+                background: radial-gradient(
+                    circle,
+                    rgba(99, 102, 241, 0.04) 0%,
+                    rgba(0, 0, 0, 0) 70%
+                );
+                filter: blur(80px);
+            }
+            .glow-2 {
+                position: absolute;
+                bottom: -20%;
+                left: -10%;
+                width: 60%;
+                height: 60%;
+                border-radius: 50%;
+                background: radial-gradient(
+                    circle,
+                    rgba(45, 212, 191, 0.03) 0%,
+                    rgba(0, 0, 0, 0) 70%
+                );
+                filter: blur(80px);
+            }
 
-        /* Slide header */
-        .slide-header {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--color-border);
-            padding-bottom: 1.25rem;
-            margin-bottom: 1.5rem;
-            width: 100%;
-        }
-        .slide-meta {
-            font-size: 0.85rem;
-            color: var(--color-brand-blue);
-            font-family: var(--font-display);
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-weight: 600;
-        }
-        .slide-title {
-            font-family: var(--font-display);
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: var(--color-text);
-            margin: 0;
-            letter-spacing: -0.01em;
-        }
-        .slide-header .slide-title {
-            display: inline-flex;
-            align-items: center;
-        }
+            /* Main deck container */
+            #deck {
+                position: relative;
+                width: 100vw;
+                height: 100vh;
+                z-index: 10;
+                display: flex;
+                flex-direction: row;
+                transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+                will-change: transform;
+            }
 
-        /* Responsive Layouts */
-        @media (max-width: 1024px) {
-            .slide { padding: 2.5rem; }
-            .slide-body { flex-direction: column; gap: 2rem; align-items: flex-start; height: auto; margin-top: 1rem; overflow-y: auto; }
-            .col-text, .col-media { width: 100%; }
-            .slide-header { flex-direction: column-reverse; align-items: flex-start; gap: 0.5rem; }
-            .slide-title { font-size: 1.8rem; }
-        }
-        @media (max-width: 768px) {
-            .slide { padding: 1.5rem; }
-            .slide-title { font-size: 1.5rem; }
-        }
+            .slide {
+                flex-shrink: 0;
+                width: 100vw;
+                height: 100vh;
+                box-sizing: border-box;
+                padding: 4rem 6rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                position: relative;
+                overflow: hidden;
+            }
 
-        /* Slide Content layouts */
-        .slide-body {
-            flex-grow: 1;
-            display: flex;
-            gap: 4rem;
-            align-items: center;
-            height: calc(100% - 11rem);
-        }
-        
-        .col-text {
-            flex: 1;
-            max-width: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .col-media {
-            flex: 1;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
+            /* Slide header */
+            .slide-header {
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid var(--color-border);
+                padding-bottom: 1.25rem;
+                margin-bottom: 1.5rem;
+                width: 100%;
+            }
+            .slide-meta {
+                font-size: 0.85rem;
+                color: var(--color-brand-blue);
+                font-family: var(--font-display);
+                text-transform: uppercase;
+                letter-spacing: 0.12em;
+                font-weight: 600;
+            }
+            .slide-title {
+                font-family: var(--font-display);
+                font-size: 2.25rem;
+                font-weight: 700;
+                color: var(--color-text);
+                margin: 0;
+                letter-spacing: -0.01em;
+            }
+            .slide-header .slide-title {
+                display: inline-flex;
+                align-items: center;
+            }
 
-        .col-media.grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            align-items: center;
-        }
+            /* Responsive Layouts */
+            @media (max-width: 1024px) {
+                .slide {
+                    padding: 2.5rem;
+                }
+                .slide-body {
+                    flex-direction: column;
+                    gap: 2rem;
+                    align-items: flex-start;
+                    height: auto;
+                    margin-top: 1rem;
+                    overflow-y: auto;
+                }
+                .col-text,
+                .col-media {
+                    width: 100%;
+                }
+                .slide-header {
+                    flex-direction: column-reverse;
+                    align-items: flex-start;
+                    gap: 0.5rem;
+                }
+                .slide-title {
+                    font-size: 1.8rem;
+                }
+            }
+            @media (max-width: 768px) {
+                .slide {
+                    padding: 1.5rem;
+                }
+                .slide-title {
+                    font-size: 1.5rem;
+                }
+            }
 
-        .col-media.grid-3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 1rem;
-            align-items: center;
-        }
+            /* Slide Content layouts */
+            .slide-body {
+                flex-grow: 1;
+                display: flex;
+                gap: 4rem;
+                align-items: center;
+                height: calc(100% - 11rem);
+            }
 
-        .media-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-        }
+            .col-text {
+                flex: 1;
+                max-width: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
 
-        .media-caption {
-            font-size: 0.85rem;
-            color: var(--color-text-muted);
-            margin-top: 0.75rem;
-            font-family: var(--font-body);
-            text-align: center;
-        }
+            .col-media {
+                flex: 1;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
 
-        img {
-            max-width: 100%;
-            max-height: calc(100% - 2.5rem);
-            height: auto;
-            width: auto;
-            object-fit: contain;
-            border-radius: 8px;
-        }
+            .col-media.grid-2 {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+                align-items: center;
+            }
 
-        /* Bullet points styling */
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
+            .col-media.grid-3 {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 1rem;
+                align-items: center;
+            }
 
-        li {
-            position: relative;
-            padding-left: 2rem;
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: var(--color-text-muted); /* Dark gray for secondary bullet text */
-            font-weight: 500; /* Robust Medium weight for optimal legibility */
-        }
+            .media-container {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                box-sizing: border-box;
+            }
 
-        li strong {
-            color: var(--color-text); /* Slate-900 accessible black for key introductory phrase */
-            font-weight: 700; /* Bold weight for the introductory phrase to keep strong hierarchy */
-        }
+            .media-caption {
+                font-size: 0.85rem;
+                color: var(--color-text-muted);
+                margin-top: 0.75rem;
+                font-family: var(--font-body);
+                text-align: center;
+            }
 
-        li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0.65rem;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: var(--color-brand-blue);
-            box-shadow: 0 0 8px var(--color-brand-blue);
-        }
+            img {
+                max-width: 100%;
+                max-height: calc(100% - 2.5rem);
+                height: auto;
+                width: auto;
+                object-fit: contain;
+                border-radius: 8px;
+            }
 
-        li.highlight-li::before {
-            background-color: var(--color-brand-teal);
-            box-shadow: 0 0 8px var(--color-brand-teal);
-        }
+            /* Bullet points styling */
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
 
-        /* Big callouts and metrics */
-        .metric-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        .metric-card {
-            background: var(--color-surface-glass);
-            border: 1px solid var(--color-border);
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            backdrop-filter: blur(12px);
-        }
-        .metric-val {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--color-brand-blue), var(--color-brand-teal));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.25rem;
-        }
-        .metric-lbl {
-            font-size: 0.95rem;
-            color: var(--color-text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+            li {
+                position: relative;
+                padding-left: 2rem;
+                font-size: 1.2rem;
+                line-height: 1.6;
+                color: var(
+                    --color-text-muted
+                ); /* Dark gray for secondary bullet text */
+                font-weight: 500; /* Robust Medium weight for optimal legibility */
+            }
 
-        /* Slide footer */
-        .slide-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--color-border);
-            padding-top: 1.25rem;
-            font-size: 0.8rem;
-            color: var(--color-text-muted);
-            font-family: var(--font-display);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
+            li strong {
+                color: var(
+                    --color-text
+                ); /* Slate-900 accessible black for key introductory phrase */
+                font-weight: 700; /* Bold weight for the introductory phrase to keep strong hierarchy */
+            }
 
-        /* Layout modifications for Title Slide */
-        .slide-title-layout {
-            justify-content: center;
-            align-items: center;
-            padding: 4rem 10rem;
-        }
-        .title-container {
-            text-align: center;
-            max-width: 800px;
-        }
-        .title-pre {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            color: var(--color-brand-blue);
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-        .title-main {
-            font-family: var(--font-display);
-            font-size: 5.5rem;
-            font-weight: 800;
-            line-height: 1.05;
-            color: var(--color-text);
-            margin: 0 0 1.5rem 0;
-            letter-spacing: -0.03em;
-            background: linear-gradient(to right, #0f172a, #475569);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .title-sub {
-            font-size: 1.8rem;
-            color: var(--color-text-muted);
-            font-weight: 300;
-            margin-bottom: 3rem;
-            line-height: 1.4;
-        }
-        .title-footer {
-            margin-top: 4rem;
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            letter-spacing: 0.15em;
-            color: var(--color-brand-teal);
-            text-transform: uppercase;
-            font-weight: 600;
-        }
+            li::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0.65rem;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background-color: var(--color-brand-blue);
+                box-shadow: 0 0 8px var(--color-brand-blue);
+            }
 
-        /* On-screen navigation layout */
-        .nav-overlay {
-            position: fixed;
-            bottom: 2rem;
-            right: 4rem;
-            display: flex;
-            gap: 1rem;
-            z-index: 100;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-        .nav-overlay.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .nav-btn {
-            background: var(--color-surface-glass);
-            border: 1px solid var(--color-border);
-            color: var(--color-text);
-            width: 3.5rem;
-            height: 3.5rem;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
-        }
-        .nav-btn:hover {
-            border-color: var(--color-brand-blue);
-            background: rgba(56, 189, 248, 0.1);
-            transform: translateY(-2px);
-        }
+            li.highlight-li::before {
+                background-color: var(--color-brand-teal);
+                box-shadow: 0 0 8px var(--color-brand-teal);
+            }
 
-        /* Speaker notes side drawer drawer styles */
-        #notes-drawer {
-            position: fixed;
-            top: 0;
-            right: -450px;
-            width: 450px;
-            height: 100vh;
-            background: #ffffff;
-            border-left: 1px solid var(--color-border);
-            z-index: 200;
-            box-shadow: -20px 0 40px rgba(15, 23, 42, 0.05);
-            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-sizing: border-box;
-            padding: 3rem 2.5rem;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
-        #notes-drawer.open {
-            right: 0;
-        }
-        .drawer-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--color-border);
-            padding-bottom: 1rem;
-        }
-        .drawer-title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-brand-blue);
-        }
-        .notes-content {
-            font-family: var(--font-body);
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--color-text-muted);
-        }
-        .notes-content strong {
-            color: var(--color-text);
-        }
+            /* Big callouts and metrics */
+            .metric-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                margin-bottom: 2rem;
+            }
+            .metric-card {
+                background: var(--color-surface-glass);
+                border: 1px solid var(--color-border);
+                padding: 1.5rem;
+                border-radius: 12px;
+                text-align: center;
+                backdrop-filter: blur(12px);
+            }
+            .metric-val {
+                font-family: var(--font-display);
+                font-size: 3.5rem;
+                font-weight: 800;
+                background: linear-gradient(
+                    135deg,
+                    var(--color-brand-blue),
+                    var(--color-brand-teal)
+                );
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 0.25rem;
+            }
+            .metric-lbl {
+                font-size: 0.95rem;
+                color: var(--color-text-muted);
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
 
-        /* Slide Index interactive drawer */
-        #index-drawer {
-            position: fixed;
-            bottom: -320px;
-            left: 0;
-            width: 100vw;
-            height: 320px;
-            background: #ffffff;
-            border-top: 1px solid var(--color-border);
-            z-index: 150;
-            box-shadow: 0 -20px 40px rgba(15, 23, 42, 0.05);
-            transition: bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-sizing: border-box;
-            padding: 2.5rem 4rem;
-            overflow-x: auto;
-        }
-        #index-drawer.open {
-            bottom: 0;
-        }
-        .index-grid {
-            display: flex;
-            gap: 1.5rem;
-            height: 180px;
-            padding-top: 0.5rem;
-        }
-        .index-item {
-            flex: 0 0 220px;
-            height: 140px;
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            padding: 1rem;
-            box-sizing: border-box;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .index-item:hover {
-            border-color: var(--color-brand-blue);
-            background: rgba(56, 189, 248, 0.05);
-            transform: translateY(-4px);
-        }
-        .index-item.active {
-            border-color: var(--color-brand-teal);
-            background: rgba(45, 212, 191, 0.08);
-        }
-        .index-num {
-            font-family: var(--font-display);
-            font-size: 0.8rem;
-            color: var(--color-brand-blue);
-            font-weight: 600;
-        }
-        .index-title {
-            font-family: var(--font-display);
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--color-text);
-            margin: 0.5rem 0;
-            line-height: 1.3;
-        }
+            /* Slide footer */
+            .slide-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-top: 1px solid var(--color-border);
+                padding-top: 1.25rem;
+                font-size: 0.8rem;
+                color: var(--color-text-muted);
+                font-family: var(--font-display);
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
 
-        /* Top Progress Bar indicator */
-        .progress-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 4px;
-            background: linear-gradient(to right, var(--color-brand-blue), var(--color-brand-teal));
-            z-index: 1000;
-            transition: width 0.3s ease;
-        }
+            /* Layout modifications for Title Slide */
+            .slide-title-layout {
+                justify-content: center;
+                align-items: center;
+                padding: 4rem 10rem;
+            }
+            .title-container {
+                text-align: center;
+                max-width: 800px;
+            }
+            .title-pre {
+                font-family: var(--font-display);
+                font-size: 1rem;
+                color: var(--color-brand-blue);
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                font-weight: 700;
+                margin-bottom: 1.5rem;
+            }
+            .title-main {
+                font-family: var(--font-display);
+                font-size: 5.5rem;
+                font-weight: 800;
+                line-height: 1.05;
+                color: var(--color-text);
+                margin: 0 0 1.5rem 0;
+                letter-spacing: -0.03em;
+                background: linear-gradient(to right, #0f172a, #475569);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .title-sub {
+                font-size: 1.8rem;
+                color: var(--color-text-muted);
+                font-weight: 300;
+                margin-bottom: 3rem;
+                line-height: 1.4;
+            }
+            .title-footer {
+                margin-top: 4rem;
+                font-family: var(--font-display);
+                font-size: 0.9rem;
+                letter-spacing: 0.15em;
+                color: var(--color-brand-teal);
+                text-transform: uppercase;
+                font-weight: 600;
+            }
 
-        /* Image Lightbox Overlay Modal */
-        #lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(3, 7, 18, 0.95);
-            z-index: 2000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            backdrop-filter: blur(16px);
-        }
-        #lightbox-overlay.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        #lightbox-image {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 8px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transform: scale(0.95);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        #lightbox-overlay.open #lightbox-image {
-            transform: scale(1);
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: none;
-            border: none;
-            color: #ffffff;
-            font-size: 2.5rem;
-            cursor: pointer;
-            opacity: 0.7;
-            transition: opacity 0.2s ease;
-        }
-        .lightbox-close:hover {
-            opacity: 1;
-        }
-        .slide img {
-            cursor: zoom-in;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .slide img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
-        }
-    </style>
-</head>
-<body>
+            /* On-screen navigation layout */
+            .nav-overlay {
+                position: fixed;
+                bottom: 2rem;
+                right: 4rem;
+                display: flex;
+                gap: 1rem;
+                z-index: 100;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+            }
+            .nav-overlay.visible {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .nav-btn {
+                background: var(--color-surface-glass);
+                border: 1px solid var(--color-border);
+                color: var(--color-text);
+                width: 3.5rem;
+                height: 3.5rem;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                backdrop-filter: blur(12px);
+                transition: all 0.3s ease;
+            }
+            .nav-btn:hover {
+                border-color: var(--color-brand-blue);
+                background: rgba(56, 189, 248, 0.1);
+                transform: translateY(-2px);
+            }
 
-    <div class="progress-indicator" id="progress-bar"></div>
+            /* Speaker notes side drawer drawer styles */
+            #notes-drawer {
+                position: fixed;
+                top: 0;
+                right: -450px;
+                width: 450px;
+                height: 100vh;
+                background: #ffffff;
+                border-left: 1px solid var(--color-border);
+                z-index: 200;
+                box-shadow: -20px 0 40px rgba(15, 23, 42, 0.05);
+                transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                box-sizing: border-box;
+                padding: 3rem 2.5rem;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+            }
+            #notes-drawer.open {
+                right: 0;
+            }
+            .drawer-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 2rem;
+                border-bottom: 1px solid var(--color-border);
+                padding-bottom: 1rem;
+            }
+            .drawer-title {
+                font-family: var(--font-display);
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--color-brand-blue);
+            }
+            .notes-content {
+                font-family: var(--font-body);
+                font-size: 1.1rem;
+                line-height: 1.7;
+                color: var(--color-text-muted);
+            }
+            .notes-content strong {
+                color: var(--color-text);
+            }
 
-    <div class="ambient-bg">
-        <div class="glow-1"></div>
-        <div class="glow-2"></div>
-    </div>
+            /* Slide Index interactive drawer */
+            #index-drawer {
+                position: fixed;
+                bottom: -320px;
+                left: 0;
+                width: 100vw;
+                height: 320px;
+                background: #ffffff;
+                border-top: 1px solid var(--color-border);
+                z-index: 150;
+                box-shadow: 0 -20px 40px rgba(15, 23, 42, 0.05);
+                transition: bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                box-sizing: border-box;
+                padding: 2.5rem 4rem;
+                overflow-x: auto;
+            }
+            #index-drawer.open {
+                bottom: 0;
+            }
+            .index-grid {
+                display: flex;
+                gap: 1.5rem;
+                height: 180px;
+                padding-top: 0.5rem;
+            }
+            .index-item {
+                flex: 0 0 220px;
+                height: 140px;
+                background: var(--color-surface);
+                border: 1px solid var(--color-border);
+                border-radius: 8px;
+                padding: 1rem;
+                box-sizing: border-box;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .index-item:hover {
+                border-color: var(--color-brand-blue);
+                background: rgba(56, 189, 248, 0.05);
+                transform: translateY(-4px);
+            }
+            .index-item.active {
+                border-color: var(--color-brand-teal);
+                background: rgba(45, 212, 191, 0.08);
+            }
+            .index-num {
+                font-family: var(--font-display);
+                font-size: 0.8rem;
+                color: var(--color-brand-blue);
+                font-weight: 600;
+            }
+            .index-title {
+                font-family: var(--font-display);
+                font-size: 0.95rem;
+                font-weight: 700;
+                color: var(--color-text);
+                margin: 0.5rem 0;
+                line-height: 1.3;
+            }
 
-    <!-- Floating Nav Overlay -->
-    <div class="nav-overlay">
-        <button class="nav-btn" id="prev-btn" aria-label="Previous Slide">←</button>
-        <button class="nav-btn" id="next-btn" aria-label="Next Slide">→</button>
-    </div>
+            /* Top Progress Bar indicator */
+            .progress-indicator {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 4px;
+                background: linear-gradient(
+                    to right,
+                    var(--color-brand-blue),
+                    var(--color-brand-teal)
+                );
+                z-index: 1000;
+                transition: width 0.3s ease;
+            }
 
-    <!-- Slides Deck wrapper -->
-    <div id="deck">
+            /* Image Lightbox Overlay Modal */
+            #lightbox-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(3, 7, 18, 0.95);
+                z-index: 2000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                backdrop-filter: blur(16px);
+            }
+            #lightbox-overlay.open {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            #lightbox-image {
+                max-width: 90%;
+                max-height: 90%;
+                border-radius: 8px;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                transform: scale(0.95);
+                transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            #lightbox-overlay.open #lightbox-image {
+                transform: scale(1);
+            }
+            .lightbox-close {
+                position: absolute;
+                top: 2rem;
+                right: 2rem;
+                background: none;
+                border: none;
+                color: #ffffff;
+                font-size: 2.5rem;
+                cursor: pointer;
+                opacity: 0.7;
+                transition: opacity 0.2s ease;
+            }
+            .lightbox-close:hover {
+                opacity: 1;
+            }
+            .slide img {
+                cursor: zoom-in;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+            .slide img:hover {
+                transform: scale(1.02);
+                box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="progress-indicator" id="progress-bar"></div>
 
-        <!-- Slide 1: Title -->
-        <section class="slide slide-title-layout">
-            <div class="title-container">
-                <div class="title-pre">Portfolio Review</div>
-                <h1 class="title-main">Ketan Pandya</h1>
-                <div class="title-sub">Product Designer specializing in complex systems, evidence-based design, and systematic scaling.</div>
-                <div class="title-footer">Capital One Virtual Portfolio Review</div>
-            </div>
-        </section>
+        <div class="ambient-bg">
+            <div class="glow-1"></div>
+            <div class="glow-2"></div>
+        </div>
 
-        <!-- Slide 2: About Me & My Approach -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Introduction</span>
-                <h2 class="slide-title">About Me & My Approach</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>Education & Background:</strong> M.S. in Information Science from UNC Chapel Hill (specializing in HCI) and a B.A. in Philosophy from Virginia Tech.</li>
-                        <li><strong>Personal Hobbies:</strong> You can usually find me hiking, traveling, reading, or diving down Wikipedia rabbit holes. I love learning about different perspectives.</li>
-                        <li><strong>Evidence-Based Design:</strong> I believe the best design decisions are justified. I use data and user insights to validate where a design is going.</li>
-                        <li><strong>Problem Solver:</strong> I look beyond the immediate feature request to understand the whole context and fix the actual root cause.</li>
-                        <li><strong>Purposeful Craft:</strong> I believe that robust architecture and accessibility (WCAG 2.1 AA) are essential to making a product feel complete.</li>
-                    </ul>
-                </div>
-                <div class="col-media">
-                    <div class="media-container" style="max-width: 420px; aspect-ratio: 3/4;">
-                        <Image loading="eager" src={headshot} alt="Ketan Pandya headshot" />
-                        <span class="media-caption">Product Designer</span>
+        <!-- Floating Nav Overlay -->
+        <div class="nav-overlay">
+            <button class="nav-btn" id="prev-btn" aria-label="Previous Slide"
+                >←</button
+            >
+            <button class="nav-btn" id="next-btn" aria-label="Next Slide"
+                >→</button
+            >
+        </div>
+
+        <!-- Slides Deck wrapper -->
+        <div id="deck">
+            <!-- Slide 1: Title -->
+            <section class="slide slide-title-layout">
+                <div class="title-container">
+                    <div class="title-pre">Portfolio Review</div>
+                    <h1 class="title-main">Ketan Pandya</h1>
+                    <div class="title-sub">
+                        Product Designer specializing in complex systems,
+                        evidence-based design, and systematic scaling.
+                    </div>
+                    <div class="title-footer">
+                        Capital One Virtual Portfolio Review
                     </div>
                 </div>
-            </div>
-            <div class="slide-footer">
-                <span>Ketan Pandya | Portfolio Review</span>
+            </section>
 
-                <span>Slide 2 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 3: Agenda -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Introduction</span>
-                <h2 class="slide-title">Agenda</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul style="gap: 2rem;">
-                        <li>
-                            <strong>Project 1: Case Management Studio</strong>
-                            <p style="margin: 0.5rem 0 0 0; font-size: 1.05rem; color: var(--color-text-muted);">Designing a flexible, visual platform that gives business admins no-code control while providing low-code developers with an extensible, modular object foundation.</p>
-                        </li>
-                        <li>
-                            <strong>Project 2: Figma SAIL Component Library</strong>
-                            <p style="margin: 0.5rem 0 0 0; font-size: 1.05rem; color: var(--color-text-muted);">Leading the end-to-end migration from Sketch to Figma, implementing 1:1 component-to-code parity, setting up strict library governance, and accelerating with Figma MCP.</p>
-                        </li>
-                        <li>
-                            <strong>Q&A & Discussion</strong>
-                            <p style="margin: 0.5rem 0 0 0; font-size: 1.05rem; color: var(--color-text-muted);">Dedicated Q&A checkpoints following both the Case Management Studio case study and the Figma SAIL migration presentation.</p>
-                        </li>
-                    </ul>
+            <!-- Slide 2: About Me & My Approach -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta">Introduction</span>
+                    <h2 class="slide-title">About Me & My Approach</h2>
                 </div>
-            </div>
-            <div class="slide-footer">
-                <span>Ketan Pandya | Portfolio Review</span>
-                <span>Slide 3 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 4: Core Concepts -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 1: Case Management Studio</span>
-                <h2 class="slide-title">Core Concepts: Cases, Workflows, & Tasks</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>What is a "Case"?</strong> A generic term for any business lifecycle or process. For a city government, this is a <em>Permit Request</em>. For a university, it is a student's <em>Major</em>.</li>
-                        <li><strong>What is a "Workflow"?</strong> The sequential tree of tasks and requirements to complete a case. For a permit, this is <em>Doc Upload → Inspection → Legal Review</em>. For a university major, this is the <em>Course Dependency Tree</em>.</li>
-                        <li><strong>What is a "Task"?</strong> An individual, auditable unit of work assigned to a user or system (e.g., 'Submit Transcript' or 'Run Document Check').</li>
-                        <li><strong>The Platform Strategy:</strong> Build a flexible layout engine capable of representing any of these diverse industry workflows out of the box.</li>
-                    </ul>
-                </div>
-                <div class="col-media">
-                    <div class="media-container" style="max-height: 85%;">
-                        <Image loading="eager" src={semanticMapping} alt="Semantic Customization diagram" />
-                        <span class="media-caption">How generic core concepts map to client-specific terminology</span>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>Education & Background:</strong> M.S. in
+                                Information Science from UNC Chapel Hill, specializing
+                                in Human-Computer Interaction, and a B.A. in Philosophy
+                                , minors in Japanese and Creative Writing, from Virginia
+                                Tech.
+                            </li>
+                            <li>
+                                <strong>Personal Hobbies:</strong> You can usually
+                                find me hiking, traveling, reading, or diving down
+                                Wikipedia rabbit holes. I love learning!.
+                            </li>
+                            <li>
+                                <strong>Evidence-Based Design:</strong> I believe
+                                the best design decisions are justified. I use data
+                                and user insights to validate where a design is going.
+                            </li>
+                            <li>
+                                <strong>Problem Solver:</strong> I look beyond the
+                                immediate feature request to understand the whole
+                                context and establish a good foundation in user perspectives
+                                for the design.
+                            </li>
+                            <li>
+                                <strong>Accessibility:</strong> Ensure every design
+                                I make is usable by all users, and advocating for
+                                increments to make that happen is core to my practice.
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-            <div class="slide-footer">
-                <span>Case Management Studio</span>
-                <span>Slide 4 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 5: Monolithic Trap vs. Modularity -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 1: Case Management Studio</span>
-                <h2 class="slide-title">The Challenge: Customizing Monolithic Solutions</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>Sprawling Monolithic Codebases:</strong> Previous pre-built solutions were sprawling monoliths. Customers had to import the entire, massive codebase of intertwined objects even if they only needed a single feature. This made customizations and product upgrades a nightmare.</li>
-                        <li><strong>No-Code Admin Controls:</strong> Establish a visual, visual builder where non-technical admins can configure their own case types, tasks, automation, and branding.</li>
-                        <li><strong>Low-Code Extensible Architecture:</strong> Under the hood, build a decoupled, highly modular structure of Appian OOTB objects (interfaces, record types) that developers can extend.</li>
-                        <li><strong>Modular Design Strategy:</strong> Create a system simple enough for business admins to build apps, but organized enough for developers to open in Appian Designer and extend later.</li>
-                    </ul>
-                </div>
-                <div class="col-media">
-                    <div class="media-container" style="max-height: 85%;">
-                        <Image loading="eager" src={onboardingDashboard} alt="Sprawling legacy onboarding solution dashboard" />
-                        <span class="media-caption">The complex, monolithic financial services onboarding application suite</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-footer">
-                <span>Case Management Studio</span>
-                <span>Slide 5 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 6: Process 1: Connected Onboarding Study -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 1: Case Management Studio</span>
-                <h2 class="slide-title">Usability Research: Connected Onboarding Study</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>Inheriting a Monolith:</strong> Inherited a massive, highly regulated application suite with deep usability debt in workflow configuration.</li>
-                        <li><strong>The Precedent Model:</strong> Defining what tasks came <em>before</em> forced users to think backward, making conditional logic configuration highly error-prone.</li>
-                        <li><strong>Usability Testing:</strong> Evaluated in a usability study one sprint before implementation, where **100% of participants** struggled with the precedents model and failed conditional configuration.</li>
-                        <li><strong>Redesigned Dependent Grid:</strong> Overhauling to a **Dependent model** with cell-specific validations reduced cognitive load, while flowchart requests established the business case for CMS.</li>
-                    </ul>
-                </div>
-                <div class="col-media grid-2" style="max-height: 85%;">
-                    <div class="media-container">
-                        <Image loading="eager" src={tasksBefore} alt="Legacy precedents task grid" />
-                        <span class="media-caption">Before: Legacy ID-based Precedent Grid</span>
-                    </div>
-                    <div class="media-container">
-                        <Image loading="eager" src={tasksAfter} alt="Redesigned dependent task grid" />
-                        <span class="media-caption">After: Overhauled Dependent Grid</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-footer">
-                <span>Case Management Studio</span>
-                <span>Slide 6 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 7: Studio Solution 1: The Hybrid Workflow Builder -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 1: The Studio Experience</span>
-                <h2 class="slide-title">Studio Solution 1: The Hybrid Workflow Builder</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>The Drag-and-Drop Expectation:</strong> In early visual builder tests, users intuitively tried to drag and drop nodes on a canvas.</li>
-                        <li><strong>Platform Constraints:</strong> Drag-and-drop was simply something that could not be done natively in our low-code environment at the time.</li>
-                        <li><strong>Three-Pane Design Strategy:</strong> I designed a three-pane hybrid visual builder:
-                            <p style="margin: 0.25rem 0 0 0; font-size: 1.05rem; color: var(--color-text-muted);">List-based text entry on the left (high input speed) + Logic configurations in the middle + A read-only visual flowchart on the right (real-time verification).</p>
-                        </li>
-                        <li><strong>User Validation:</strong> Users reported high confidence, gaining data entry speed and immediate safety feedback without platform lag.</li>
-                    </ul>
-                </div>
-                <div class="col-media grid-2" style="max-height: 85%;">
-                    <div class="media-container">
-                        <Image loading="eager" src={workflowConfiguring} alt="Configuring a workflow step in the builder" />
-                        <span class="media-caption">Configuring Workflow logic (Middle Pane)</span>
-                    </div>
-                    <div class="media-container">
-                        <Image loading="eager" src={workflowConfigured} alt="Fully configured visual workflow flowchart" />
-                        <span class="media-caption">Visual Flowchart verification (Right Pane)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-footer">
-                <span>The Studio Experience</span>
-                <span>Slide 7 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 8: Studio Solution 2: Systemic Automation -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 1: The Studio Experience</span>
-                <h2 class="slide-title">Studio Solution 2: Systemic Automation</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>Determining Logical Scope:</strong> Early feedback indicated that users found it difficult to determine the appropriate location for automation logic that applied across multiple case types.</li>
-                        <li><strong>Card Sort Results:</strong> Conducted a card sorting activity with seven participants, showing that users naturally group automation needs by **scope (Global vs. Local)** rather than trigger or action.</li>
-                        <li><strong>Precedence Rules:</strong> Designed a hierarchical inheritance model. Conflict resolution executes from the highest level down to the lowest—specific rules (local) always take priority over general rules (global).</li>
-                        <li><strong>Consistency:</strong> This logic matches the existing "lowest level wins" pattern for user-defined data fields and forms, keeping the system logic consistent.</li>
-                    </ul>
-                </div>
-                <div class="col-media grid-2" style="max-height: 85%;">
-                    <div class="media-container">
-                        <Image loading="eager" src={studioAutomationList} alt="Hierarchical list of automated rules" />
-                        <span class="media-caption">Cascading Rules Hierarchy (Global to Local)</span>
-                    </div>
-                    <div class="media-container">
-                        <Image loading="eager" src={automationCardSort} alt="Card sorting activity board" />
-                        <span class="media-caption">Analyzing card sort groupings to define scope</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-footer">
-                <span>The Studio Experience</span>
-                <span>Slide 8 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 9: Studio Solution 3: Integrated Data & Form Designer -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 1: The Studio Experience</span>
-                <h2 class="slide-title">Studio Solution 3: Integrated Form Designer</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>Implicit Data Modeling:</strong> Adding fields to a form automatically creates the backend data structures. Previously, this required an IT ticket to modify the database.</li>
-                        <li><strong>AI Acceleration:</strong> Users can prompt the system (e.g. "Create a dropdown for US States") and secure Private AI generates the data type and all options automatically.</li>
-                        <li><strong>Accessibility by Default:</strong> Built-in drag-and-drop components automatically meet **WCAG 2.1 AA standards** out of the box, ensuring compliance.</li>
-                        <li><strong>Adoption & Scale:</strong> Currently used in production by major global enterprises, including Porsche, Pfizer, Vanguard, T. Rowe Price, and the Australian Government.</li>
-                    </ul>
-                </div>
-                <div class="col-media grid-3" style="max-height: 85%;">
-                    <div class="media-container">
-                        <Image loading="eager" src={studioFormsList} alt="Form templates list" />
-                        <span class="media-caption">Form Templates Manager</span>
-                    </div>
-                    <div class="media-container">
-                        <Image loading="eager" src={studioFormsBuilder} alt="Visual form builder workspace" />
-                        <span class="media-caption">Visual No-Code Form Builder</span>
-                    </div>
-                    <div class="media-container">
-                        <Image loading="eager" src={studioFormsAi} alt="AI assisted form designer" />
-                        <span class="media-caption">AI-Assisted Field Generator</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-footer">
-                <span>The Studio Experience</span>
-                <span>Slide 9 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 10: Workspace Solution 1: Centralized Workspace Experience -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 1: The Workspace Experience</span>
-                <h2 class="slide-title">Workspace Solution 1: Centralized Information</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>Sidebar Navigation Friction:</strong> While the builder used a deep sidebar hierarchy, usability testing showed case workers in the Workspace struggled with sidebars. They needed to review documents side-by-side.</li>
-                        <li><strong>Top Navigation Layout Pivot:</strong> Shifted Workspace navigation to a top-nav layout, preserving horizontal screen space for reviews.</li>
-                        <li><strong>Case Summary Aggregation:</strong> Centralizes all key information—case description, milestones, watchers, dynamic fields—into a single, consolidated view.</li>
-                        <li><strong>Dynamic Rendering:</strong> While the shell remains consistent, the screen dynamically renders case-specific forms and fields defined in Studio, avoiding custom backend code.</li>
-                    </ul>
-                </div>
-                <div class="col-media grid-2" style="max-height: 85%;">
-                    <div class="media-container">
-                        <Image loading="eager" src={workspaceExperienceMain} alt="Workspace home dashboard" />
-                        <span class="media-caption">Case Worker Dashboard Landing Page</span>
-                    </div>
-                    <div class="media-container">
-                        <Image loading="eager" src={caseRecord} alt="Unified case record view with top navigation" />
-                        <span class="media-caption">Workspace: Top navigation for dense layout</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-footer">
-                <span>The Workspace Experience</span>
-                <span>Slide 10 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 11: Workspace Solution 2: AI-Powered Assistance -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 1: The Workspace Experience</span>
-                <h2 class="slide-title">Workspace Solution 2: AI-Powered Assistance</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>Private Contextual Chat:</strong> Integrated secure, private AI chat inside the worker context to query case history, automatically surfacing similar past cases to suggest resolutions.</li>
-                        <li><strong>Intelligent Summarization:</strong> Users can instantly summarize lengthy comment threads or complex attached PDFs, extracting key terms.</li>
-                        <li><strong>Prompt Engineering:</strong> Architected and iteratively refined citation-backed prompt templates to ensure the AI generates structured, audit-compliant summaries.</li>
-                        <li><strong>Efficiency:</strong> Enables case workers to make rapid, evidence-backed decisions without manual review or context-switching.</li>
-                    </ul>
-                </div>
-                <div class="col-media grid-3" style="max-height: 85%;">
-                    <div class="media-container">
-                        <Image loading="eager" src={workspaceAiChat} alt="Contextual AI chat and past cases suggestions" />
-                        <span class="media-caption">Contextual AI Chat &amp; past cases</span>
-                    </div>
-                    <div class="media-container">
-                        <Image loading="eager" src={workspaceAiComments} alt="Thread summarization view" />
-                        <span class="media-caption">Thread Summarization panel</span>
-                    </div>
-                    <div class="media-container">
-                        <Image loading="eager" src={workspaceAiDocs} alt="Document AI summary panel" />
-                        <span class="media-caption">Document Summarization panel</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-footer">
-                <span>The Workspace Experience</span>
-                <span>Slide 11 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 12: Workspace Solution 3: Public Access & Self-Service -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 1: The Workspace Experience</span>
-                <h2 class="slide-title">Workspace Solution 3: Public Access & Self-Service</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>Designing for the Public:</strong> For citizen-facing portals, we completely pivoted design languages—shifting from high expert density to clear typography, guided bite-sized steps, and generous spacing.</li>
-                        <li><strong>Public Portals:</strong> A mobile-first entry point for anonymous users to discover services, find information, and complete guided intake submission flows.</li>
-                        <li><strong>Authenticated Self-Service:</strong> The "My Cases" dashboard allows registered external users to track application timelines, upload missing documents, and communicate with workers.</li>
-                        <li><strong>Mobile-First Priority:</strong> Reconfigured the public portal and self-service dashboards mobile-first to support citizen smartphone use and ensure WCAG AA accessibility.</li>
-                    </ul>
-                </div>
-                <div class="col-media grid-3" style="max-height: 85%;">
-                    <div class="media-container">
-                        <Image loading="eager" src={workspacePortalHome} alt="Public citizen portal home page" />
-                        <span class="media-caption">Citizen Experience: Mobile-First Public Portal</span>
-                    </div>
-                    <div class="media-container">
-                        <Image loading="eager" src={workspacePortalDashboard} alt="External client My Cases dashboard" />
-                        <span class="media-caption">Client Dashboard: Authenticated 'My Cases'</span>
-                    </div>
-                    <div class="media-container">
-                        <Image loading="eager" src={workspacePortalSummary} alt="Detailed tracking timeline for clients" />
-                        <span class="media-caption">Case Tracker: Secure Timeline Tracking</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-footer">
-                <span>The Workspace Experience</span>
-                <span>Slide 12 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 13: Extensibility & Solutions Hub Branding -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 1: Case Management Studio</span>
-                <h2 class="slide-title">Extensibility & Solutions Hub Branding</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>Platform Extensibility:</strong> CMS is completely agnostic and extensible. Customers can easily plug in custom task types, email templates, and specialized logical rules like a Fraud Check.</li>
-                        <li><strong>Solutions Hub Theming Engine:</strong> Architected a unified theming engine in Solutions Hub portal. Defining corporate branding colors, typography, and logos propagates natively.</li>
-                        <li><strong>Instant Rebranding:</strong> Instantly propagate branding across both internal tools (Studio, Workspace) and public portals without custom CSS or manual coding.</li>
-                        <li><strong>Built-in Accessibility:</strong> Developed dynamic color contrast calculations in the theme builder to automatically adjust typography contrast, guaranteeing WCAG AA compliance.</li>
-                    </ul>
-                </div>
-                <div class="col-media grid-2" style="max-height: 85%;">
-                    <div class="media-container">
-                        <Image loading="eager" src={brandA} alt="Case Management brand extension example A" />
-                        <span class="media-caption">Solutions Hub Branding: Corporate Dark Slate Theme</span>
-                    </div>
-                    <div class="media-container">
-                        <Image loading="eager" src={brandB} alt="Case Management brand extension example B" />
-                        <span class="media-caption">Solutions Hub Branding: High Contrast Teal Theme</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-footer">
-                <span>Case Management Studio</span>
-                <span>Slide 13 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 14: Project 1 Q&A -->
-        <section class="slide slide-title-layout">
-            <div class="title-container" style="max-width: 900px;">
-                <div class="title-pre" style="margin-bottom: 1rem;">Checkpoint Q&amp;A</div>
-                <h2 class="slide-title" style="font-size: 3.5rem; margin-bottom: 2rem; color: var(--color-text);">Project 1: Case Management Studio</h2>
-                <div class="title-sub" style="font-size: 1.5rem; color: var(--color-text-muted); margin-bottom: 3rem;">Questions &amp; Discussion</div>
-            </div>
-            <div class="slide-footer" style="width: calc(100% - 12rem); position: absolute; bottom: 4rem; left: 6rem;">
-                <span>Ketan Pandya | Case Management Studio</span>
-                <span>Slide 14 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 15: Evaluating our Design Tools: Sketch vs Figma -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 2: Figma SAIL Component Library</span>
-                <h2 class="slide-title">Evaluating our Design Tools: Sketch vs Figma</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>Sketch Symbol Friction:</strong> Our team was using Sketch, which required complex, nested symbol architectures. It was fragile and very difficult to maintain as our system grew.</li>
-                        <li><strong>Cross-Platform Collaboration:</strong> Customer Success managers and external partners increasingly needed to view our prototypes. Sketch being Mac-only created major accessibility blockers for them.</li>
-                        <li><strong>Internal UX Survey:</strong> A team survey showed a 9-to-4 preference for Figma. Designers highlighted its cleaner interface, faster prototyping capabilities, and browser-based collaboration.</li>
-                    </ul>
-                </div>
-                <div class="col-media">
-                    <div class="media-container" style="max-height: 85%;">
-                        <Image loading="eager" src={sailOverview} alt="Appian Figma Component Library interface" />
-                        <span class="media-caption">SAIL Component Library: Rebuilt with Variants and Auto Layout</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-footer">
-                <span>Figma SAIL Library</span>
-                <span>Slide 15 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 16: The Figma Hackathon: Proving the Concept -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 2: Figma SAIL Component Library</span>
-                <h2 class="slide-title">The Figma Hackathon: Proving the Concept</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>Piloting the Transition:</strong> To evaluate a shift to Figma, we hosted a team-wide hackathon. We set up a shared backlog to distribute the component building work across the team.</li>
-                        <li><strong>Rebuilding from the Source:</strong> Rather than just importing old Sketch files, we used the actual SAIL design system documentation as our absolute source of truth to rebuild cleanly.</li>
-                        <li><strong>Reducing Component Bloat:</strong> The hackathon proved Figma’s Variants were vastly superior. We drastically reduced the total number of components needed by using simple property toggles instead of diving through endless nested Sketch symbols.</li>
-                        <li><strong>Evidence-Based Proposal:</strong> These empirical findings—the survey and the hackathon performance—formed the basis of our formal proposal, securing leadership buy-in and enterprise licenses.</li>
-                    </ul>
-                </div>
-                <div class="col-media">
-                    <div class="media-container" style="max-height: 85%;">
-                        <Image loading="eager" src={growthImage} alt="Design scaling organization diagram" />
-                        <span class="media-caption">Structuring the pipeline for scale and operational growth</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-footer">
-                <span>Figma SAIL Library</span>
-                <span>Slide 16 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 17: Figma Component & SAIL Parameter Parity -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 2: Figma SAIL Component Library</span>
-                <h2 class="slide-title">Figma Component & SAIL Parameter Parity</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>Ease of Use:</strong> Designers can simply bring a library asset onto the canvas and easily toggle states (like active/disabled) via a menu, rather than searching through complex Sketch symbol overrides.</li>
-                        <li><strong>Visual-to-Code Alignment:</strong> Worked with front-end developers to map Figma variants and properties directly to the parameters in the SAIL codebase.</li>
-                        <li><strong>Auto Layout Parity:</strong> Built components with fluid padding, margins, and constraint rules to match browser rendering exactly.</li>
-                    </ul>
-                </div>
-                <div class="col-media">
-                    <div class="media-container" style="max-height: 85%;">
-                        <Image loading="eager" src={sailOverview} alt="SAIL Component Properties view" />
-                        <span class="media-caption">Designing with properties that mirror developer parameters 1:1</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-footer">
-                <span>Figma SAIL Library</span>
-                <span>Slide 17 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 18: Library Maintenance & Standards -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 2: Figma SAIL Component Library</span>
-                <h2 class="slide-title">Design Library Maintenance & Standards</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <ul>
-                        <li><strong>The Library Working Group:</strong> Following the hackathon, we established a working group and a structured backlog to manage bug reports and component requests just like software.</li>
-                        <li><strong>Design Branching Workflows:</strong> Instituted a strict review pipeline in Figma. Designers build library updates in isolated branches.</li>
-                        <li><strong>Peer-Review Merge Protocol:</strong> Every branch is audited by the working group for naming, properties, and Auto Layout structures before merging into the main library.</li>
-                        <li><strong>Regular Component Releases:</strong> Shipped regular versioned releases to ensure designers and developers stayed aligned with code updates.</li>
-                    </ul>
-                </div>
-                <div class="col-media">
-                    <div class="media-container" style="max-height: 85%;">
-                        <Image loading="eager" src={workshopImage} alt="Collaborative design workshop vector diagram" />
-                        <span class="media-caption">DesignOps: A structured branching and peer-review workflow</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-footer">
-                <span>Figma SAIL Library</span>
-                <span>Slide 18 of 20</span>
-            </div>
-        </section>
-
-        <!-- Slide 19: Figma Community Release & AI-Assisted Workflows -->
-        <section class="slide">
-            <div class="slide-header">
-                <span class="slide-meta">Project 2: Figma SAIL Component Library</span>
-                <h2 class="slide-title">Figma Community Release &amp; AI-Assisted Workflows</h2>
-            </div>
-            <div class="slide-body">
-                <div class="col-text">
-                    <div class="metric-grid" style="margin-bottom: 1.5rem; grid-template-columns: 1fr; max-width: 280px; margin-left: 0;">
-                        <div class="metric-card" style="padding: 1rem;">
-                            <div class="metric-val" style="font-size: 2.75rem;">1,000+</div>
-                            <div class="metric-lbl">Figma Downloads</div>
+                    <div class="col-media">
+                        <div
+                            class="media-container"
+                            style="max-width: 420px; aspect-ratio: 3/4;"
+                        >
+                            <Image
+                                loading="eager"
+                                src={headshot}
+                                alt="Ketan Pandya headshot"
+                            />
+                            <span class="media-caption">Product Designer</span>
                         </div>
                     </div>
-                    <ul>
-                        <li><strong>Figma Community Release:</strong> Led the release of our internal library publicly, allowing external clients and partners to accelerate their Appian custom builds.</li>
-                        <li><strong>Integrating Figma MCP (AI):</strong> Connected our design library data directly to AI systems using the Model Context Protocol.</li>
-                        <li><strong>Accelerating Development:</strong> By loading our exact component structures and constraints into AI contexts, we drastically speed up new component creation and library updates.</li>
-                    </ul>
                 </div>
-                <div class="col-media">
-                    <div class="media-container" style="max-height: 85%;">
-                        <Image loading="eager" src={sailOverview} alt="Figma Community card cover" />
-                        <span class="media-caption">Published library adopted by nearly 1,000 community members</span>
+                <div class="slide-footer">
+                    <span>Ketan Pandya | Portfolio Review</span>
+
+                    <span>Slide 2 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 3: Agenda -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta">Introduction</span>
+                    <h2 class="slide-title">Agenda</h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul style="gap: 2rem;">
+                            <li>
+                                <strong
+                                    >Project 1: Case Management Studio</strong
+                                >
+                                <p
+                                    style="margin: 0.5rem 0 0 0; font-size: 1.05rem; color: var(--color-text-muted);"
+                                >
+                                    Designing an extendable, modular platform
+                                    that allows business admins to configure
+                                    data, forms, workflows, and branding without
+                                    using any code.
+                                </p>
+                            </li>
+                            <li>
+                                <strong
+                                    >Project 2: Figma SAIL Component Library</strong
+                                >
+                                <p
+                                    style="margin: 0.5rem 0 0 0; font-size: 1.05rem; color: var(--color-text-muted);"
+                                >
+                                    Leading the migration from Sketch to Figma,
+                                    implementing 1:1 component to component
+                                    parity, setting up strict library
+                                    governance, and accelerating with Figma MCP.
+                                </p>
+                            </li>
+                            <li>
+                                <strong>Q&A & Discussion</strong>
+                                <p
+                                    style="margin: 0.5rem 0 0 0; font-size: 1.05rem; color: var(--color-text-muted);"
+                                >
+                                    Dedicated Q&A following both the case
+                                    studies.
+                                </p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-            <div class="slide-footer">
-                <span>Figma SAIL Library</span>
-                <span>Slide 19 of 20</span>
-            </div>
-        </section>
+                <div class="slide-footer">
+                    <span>Ketan Pandya | Portfolio Review</span>
+                    <span>Slide 3 of 20</span>
+                </div>
+            </section>
 
-        <!-- Slide 20: Q&A / Final Discussion -->
-        <section class="slide slide-title-layout">
-            <div class="title-container" style="max-width: 900px;">
-                <div class="title-pre" style="margin-bottom: 1rem;">Virtual Portfolio Review</div>
-                <h2 class="slide-title" style="font-size: 4rem; margin-bottom: 2rem; color: var(--color-text);">Questions &amp; Discussion</h2>
-                <div class="title-sub" style="font-size: 1.6rem; color: var(--color-text-muted); margin-bottom: 4rem;">Figma SAIL Component Library &amp; General Discussion</div>
+            <!-- Slide 4: Core Concepts -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 1: Case Management Studio</span
+                    >
+                    <h2 class="slide-title">
+                        Core Concepts: Cases, Workflows, & Tasks
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>What is a "Case"?</strong> A generic term
+                                for any business lifecycle or process. For a city
+                                government, this could be a <em
+                                    >Permit Request</em
+                                >. For a university, it could a student's <em
+                                    >Major</em
+                                >.
+                            </li>
+                            <li>
+                                <strong>What is a "Workflow"?</strong> The tasks
+                                and automations to complete a case. For a permit,
+                                this is <em
+                                    >Doc Upload → Inspection → Legal Review</em
+                                >. For a university major, this is the <em
+                                    >courses needed to complete a major</em
+                                >.
+                            </li>
+                            <li>
+                                <strong>What is a "Task"?</strong> An individual,
+                                unit of work assigned to a user or system (in the
+                                case of automation) (e.g., 'Submit Transcript' or
+                                'Run Document Check').
+                            </li>
+                            <li>
+                                <strong>The Strategy:</strong> Establish an easily
+                                extendable foundation capable of representing any
+                                of these and many more diverse industry workflows
+                                out of the box.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media">
+                        <div class="media-container" style="max-height: 85%;">
+                            <Image
+                                loading="eager"
+                                src={semanticMapping}
+                                alt="Semantic Customization diagram"
+                            />
+                            <span class="media-caption"
+                                >How generic core concepts map to
+                                customer-specific terminology</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Case Management Studio</span>
+                    <span>Slide 4 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 5: Monolithic Trap vs. Modularity -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 1: Case Management Studio</span
+                    >
+                    <h2 class="slide-title">
+                        The Challenge: Customizing Solutions
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>Sprawling Monolithic Codebases:</strong>
+                                Previous solutions had monolithic codebases that
+                                made customizations and product upgrades a nightmare,
+                                and required continuous design support.
+                            </li>
+                            <li>
+                                <strong>No-Code Admin Controls:</strong> Establish
+                                a visual builder where non-technical admins can configure
+                                their own case types, tasks, automation, and branding.
+                            </li>
+                            <li>
+                                <strong>Easily extendable:</strong> Make it both
+                                technically and visually easily extendable, with
+                                obvious places and guidance to extend based on use
+                                case.
+                            </li>
+                            <li>
+                                <strong>Modular Design Strategy:</strong> Customers
+                                could just take the features they want with the app
+                                still looking and feeling great regardless of these
+                                choices.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media">
+                        <div class="media-container" style="max-height: 85%;">
+                            <Image
+                                loading="eager"
+                                src={onboardingDashboard}
+                                alt="Sprawling legacy onboarding solution dashboard"
+                            />
+                            <span class="media-caption"
+                                >The complex, monolithic financial services
+                                onboarding application suite</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Case Management Studio</span>
+                    <span>Slide 5 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 6: Process 1: Connected Onboarding Study -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 1: Case Management Studio</span
+                    >
+                    <h2 class="slide-title">
+                        Where It Started: Connected Onboarding Usability Study
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>The Precedent Model:</strong> Defining what
+                                tasks came <em>before</em> intuitively felt like
+                                it forced users to think backward, making conditional
+                                logic configuration highly error-prone.
+                            </li>
+                            <li>
+                                <strong>Usability Testing:</strong> Advocated for
+                                customer usability study: 100% of participants struggled
+                                with the precedents model and failed conditional
+                                configuration.
+                            </li>
+                            <li>
+                                <strong>Redesigned Dependent Grid:</strong> Overhauling
+                                to a Dependent model with cell-specific validations
+                                reduced cognitive load, while flowchart requests
+                                established the business case for CMS.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media grid-2" style="max-height: 85%;">
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={tasksBefore}
+                                alt="Legacy precedents task grid"
+                            />
+                            <span class="media-caption"
+                                >Before: Precedent Grid</span
+                            >
+                        </div>
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={tasksAfter}
+                                alt="Redesigned dependent task grid"
+                            />
+                            <span class="media-caption"
+                                >After: Overhauled Dependent Grid</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Case Management Studio</span>
+                    <span>Slide 6 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 7: Studio Solution 1: The Hybrid Workflow Builder -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 1: The Studio Experience</span
+                    >
+                    <h2 class="slide-title">
+                        Studio Solution 1: The Hybrid Workflow Builder
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong
+                                    >Working Within Platform Limitations:</strong
+                                > In early tests, users intuitively tried to drag
+                                and drop nodes on a canvas.
+                            </li>
+                            <li>
+                                <strong>Platform Constraints:</strong> Drag-and-drop
+                                was something that could not be done in our low-code
+                                environment.
+                            </li>
+                            <li>
+                                <strong>Three-Pane Design Strategy:</strong> I designed
+                                a three-pane hybrid visual builder:
+                                <p
+                                    style="margin: 0.25rem 0 0 0; font-size: 1.05rem; color: var(--color-text-muted);"
+                                >
+                                    Task/Automatin List on the left (with arrows
+                                    for reordering) + task/automation
+                                    configurations in the middle + a read-only
+                                    visual flowchart on the right (real-time
+                                    verification).
+                                </p>
+                            </li>
+                            <li>
+                                <strong>User Validation:</strong> Users reported
+                                high confidence with this method and felt it was
+                                an acceptable compromise.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media grid-2" style="max-height: 85%;">
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={workflowConfiguring}
+                                alt="Configuring a workflow step in the builder"
+                            />
+                            <span class="media-caption"
+                                >Configuring Workflow logic (Middle Pane)</span
+                            >
+                        </div>
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={workflowConfigured}
+                                alt="Fully configured visual workflow flowchart"
+                            />
+                            <span class="media-caption"
+                                >Visual Flowchart verification (Right Pane)</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>The Studio Experience</span>
+                    <span>Slide 7 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 8: Studio Solution 2: Systemic Automation -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 1: The Studio Experience</span
+                    >
+                    <h2 class="slide-title">
+                        Studio Solution 2: Automation Discovery
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>How Automations Fit:</strong> Strong stakeholder
+                                disagreement on where automations should live.
+                            </li>
+                            <li>
+                                <strong>Card Sort Results:</strong> Conducted a card
+                                sorting activity with seven participants, showing
+                                that users naturally group automation needs by scope
+                                (Global vs. Local vs. Workflow).
+                            </li>
+                            <li>
+                                <strong>Hierarchy:</strong> Designed a hierarchical
+                                inheritance model. Local takes precedence over global,
+                                as creators of specific case types have more context
+                                and specific needs than more general global rules.
+                            </li>
+                            <li>
+                                <strong>Consistency:</strong> This logic matches
+                                existing visibility rules for global vs case type
+                                specific forms and data types, keeping the user expectations
+                                consistent.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media grid-2" style="max-height: 85%;">
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={studioAutomationList}
+                                alt="Hierarchical list of automated rules"
+                            />
+                            <span class="media-caption"
+                                >Cascading Rules Hierarchy (Global to Local)</span
+                            >
+                        </div>
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={automationCardSort}
+                                alt="Card sorting activity board"
+                            />
+                            <span class="media-caption"
+                                >Analyzing card sort groupings to define scope</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>The Studio Experience</span>
+                    <span>Slide 8 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 9: Studio Solution 3: Integrated Data & Form Designer -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 1: The Studio Experience</span
+                    >
+                    <h2 class="slide-title">
+                        Studio Solution 3: Integrated Form Designer
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>Implicit Data Modeling:</strong> Adding fields
+                                to a form automatically creates the backend data
+                                structures.
+                            </li>
+                            <li>
+                                <strong>AI Acceleration:</strong> Users can prompt
+                                the system (e.g. "Create a dropdown for US States")
+                                and secure AI generates the data type and all options
+                                automatically.
+                            </li>
+                            <li>
+                                <strong>Adoption & Scale:</strong> Currently used
+                                in production by major global enterprises, including
+                                Porsche, Pfizer, Vanguard, T. Rowe Price, and the
+                                Australian Government.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media grid-3" style="max-height: 85%;">
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={studioFormsList}
+                                alt="Form templates list"
+                            />
+                            <span class="media-caption"
+                                >Form Templates Manager</span
+                            >
+                        </div>
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={studioFormsBuilder}
+                                alt="Visual form builder workspace"
+                            />
+                            <span class="media-caption"
+                                >Visual No-Code Form Builder</span
+                            >
+                        </div>
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={studioFormsAi}
+                                alt="AI assisted form designer"
+                            />
+                            <span class="media-caption"
+                                >AI-Assisted Field Generation</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>The Studio Experience</span>
+                    <span>Slide 9 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 10: Workspace Solution 1: Centralized Workspace Experience -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 1: The Workspace Experience</span
+                    >
+                    <h2 class="slide-title">
+                        Workspace Solution 1: Centralized Information
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>Top Navigation Layout Pivot:</strong> Shifted
+                                Workspace navigation to a top-nav layout, preserving
+                                horizontal screen space for reviews.
+                            </li>
+                            <li>
+                                <strong>Case Summary Aggregation:</strong> Centralizes
+                                all key information, case description, milestones,
+                                watchers, dynamic fields, into a single, consolidated
+                                view.
+                            </li>
+                            <li>
+                                <strong>Dynamic Rendering:</strong> While the shell
+                                remains consistent, the screen dynamically renders
+                                case-specific forms and fields defined in Studio.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media grid-2" style="max-height: 85%;">
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={workspaceExperienceMain}
+                                alt="Workspace home dashboard"
+                            />
+                            <span class="media-caption"
+                                >Case Worker Landing Page</span
+                            >
+                        </div>
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={caseRecord}
+                                alt="Unified case record view with top navigation"
+                            />
+                            <span class="media-caption"
+                                >Workspace: Case Summary</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>The Workspace Experience</span>
+                    <span>Slide 10 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 11: Workspace Solution 2: AI-Powered Assistance -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 1: The Workspace Experience</span
+                    >
+                    <h2 class="slide-title">
+                        Workspace Solution 2: AI-Powered Assistance
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>Contextual Chat:</strong> Integrated secure
+                                AI chat inside the worker context to query case history,
+                                as well as automatically surfacing similar past cases
+                                to suggest resolutions.
+                            </li>
+                            <li>
+                                <strong>Intelligent Summarization:</strong> Users
+                                can instantly summarize lengthy comment threads or
+                                complex attached PDFs, extracting key terms.
+                            </li>
+                            <li>
+                                <strong>Prompt Engineering:</strong> Personally engineered
+                                the prompts for summary generation for comments and
+                                documents.
+                            </li>
+                            <li>
+                                <strong>Efficiency:</strong> Enables case workers
+                                to make rapid, evidence-backed decisions without
+                                manual review or context-switching.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media grid-3" style="max-height: 85%;">
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={workspaceAiChat}
+                                alt="Contextual AI chat and past cases suggestions"
+                            />
+                            <span class="media-caption"
+                                >Contextual AI Chat &amp; past cases</span
+                            >
+                        </div>
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={workspaceAiComments}
+                                alt="Thread summarization view"
+                            />
+                            <span class="media-caption"
+                                >Comment Summarization</span
+                            >
+                        </div>
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={workspaceAiDocs}
+                                alt="Document AI summary"
+                            />
+                            <span class="media-caption"
+                                >Document Summarization</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>The Workspace Experience</span>
+                    <span>Slide 11 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 12: Workspace Solution 3: Public Access & Self-Service -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 1: The Workspace Experience</span
+                    >
+                    <h2 class="slide-title">
+                        Workspace Solution 3: Public Access & Self-Service
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>Designing for the Public:</strong>For
+                                the public portal and authenticated external
+                                user, pivoted design languages-shifting from
+                                high expert density to clear typography, guided
+                                bite-sized steps, and generous spacing.
+                            </li>
+                            <li>
+                                <strong>Public Portals:</strong> A mobile-first entry
+                                point for anonymous users to discover services, find
+                                information, and complete guided intake submission
+                                flows.
+                            </li>
+                            <li>
+                                <strong>Authenticated Self-Service:</strong> The
+                                "My Cases" dashboard allows registered external users
+                                to track application timelines, upload missing documents,
+                                and communicate with workers.
+                            </li>
+                            <li>
+                                <strong>Mobile-First Priority:</strong> Reconfigured
+                                the public portal and self-service dashboards mobile-first
+                                to support public user smartphone use and ensure
+                                accessibility.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media grid-3" style="max-height: 85%;">
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={workspacePortalHome}
+                                alt="Public citizen portal home page"
+                            />
+                            <span class="media-caption"
+                                >Public Portal/span >
+                            </span>
+                        </div>
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={workspacePortalDashboard}
+                                alt="External client My Cases dashboard"
+                            />
+                            <span class="media-caption"
+                                >"My Cases" dashboard for authenticated external
+                                users</span
+                            >
+                        </div>
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={workspacePortalSummary}
+                                alt="Detailed tracking timeline for clients"
+                            />
+                            <span class="media-caption"
+                                >External Case Summary</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>The Workspace Experience</span>
+                    <span>Slide 12 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 13: Extensibility & Solutions Hub Branding -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 1: Case Management Studio</span
+                    >
+                    <h2 class="slide-title">
+                        Extensibility & Solutions Hub Branding
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>Platform Extensibility:</strong> CMS is completely
+                                agnostic and extensible. Customers can easily plug
+                                in custom task types, email templates, and specialized
+                                rules.
+                            </li>
+                            <li>
+                                <strong>Solutions Hub Theming:</strong> Unified interface
+                                for styles, colors, and logos.
+                            </li>
+                            <li>
+                                <strong>Instant Rebranding:</strong> Instantly propagate
+                                branding across interfaces based on site.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media grid-2" style="max-height: 85%;">
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={brandA}
+                                alt="Case Management brand extension example A"
+                            />
+                            <span class="media-caption"
+                                >Solutions Hub Branding: Corporate Dark Slate
+                                Theme</span
+                            >
+                        </div>
+                        <div class="media-container">
+                            <Image
+                                loading="eager"
+                                src={brandB}
+                                alt="Case Management brand extension example B"
+                            />
+                            <span class="media-caption"
+                                >Solutions Hub Branding: High Contrast Teal
+                                Theme</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Case Management Studio</span>
+                    <span>Slide 13 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 14: Project 1 Q&A -->
+            <section class="slide slide-title-layout">
+                <div class="title-container" style="max-width: 900px;">
+                    <div class="title-pre" style="margin-bottom: 1rem;">
+                        Checkpoint Q&amp;A
+                    </div>
+                    <h2
+                        class="slide-title"
+                        style="font-size: 3.5rem; margin-bottom: 2rem; color: var(--color-text);"
+                    >
+                        Project 1: Case Management Studio
+                    </h2>
+                    <div
+                        class="title-sub"
+                        style="font-size: 1.5rem; color: var(--color-text-muted); margin-bottom: 3rem;"
+                    >
+                        Questions &amp; Discussion
+                    </div>
+                </div>
+                <div
+                    class="slide-footer"
+                    style="width: calc(100% - 12rem); position: absolute; bottom: 4rem; left: 6rem;"
+                >
+                    <span>Ketan Pandya | Case Management Studio</span>
+                    <span>Slide 14 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 15: Evaluating our Design Tools: Sketch vs Figma -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 2: Figma SAIL Component Library</span
+                    >
+                    <h2 class="slide-title">
+                        Evaluating our Design Tools: Sketch vs Figma
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>Sketch Symbol Frustrations:</strong> Our
+                                team was using Sketch, which required complex, nested
+                                symbol architectures. It was very difficult to use
+                                and to maintain as our system grew.
+                            </li>
+                            <li>
+                                <strong>Cross-Platform Collaboration:</strong> Customer
+                                Success managers and external partners increasingly
+                                needed to view our prototypes. Sketch being Mac-only
+                                and prototypes being more difficult to access created
+                                major blockers for them.
+                            </li>
+                            <li>
+                                <strong>Internal UX Survey:</strong> A team survey
+                                showed a 9-to-4 preference for Figma. Designers highlighted
+                                its cleaner interface, faster prototyping capabilities,
+                                and browser-based collaboration.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media">
+                        <div class="media-container" style="max-height: 85%;">
+                            <Image
+                                loading="eager"
+                                src={sailOverview}
+                                alt="Appian Figma Component Library interface"
+                            />
+                            <span class="media-caption"
+                                >SAIL Component Library Community Page</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Figma SAIL Library</span>
+                    <span>Slide 15 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 16: The Figma Hackathon: Proving the Concept -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 2: Figma SAIL Component Library</span
+                    >
+                    <h2 class="slide-title">
+                        The Figma Hackathon: Proving the Concept
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>Piloting the Transition:</strong> To evaluate
+                                a shift to Figma, I hosted project to POC Figma during
+                                our engineering hackathon, setting up a shared backlog
+                                to distribute the component building work across
+                                the team.
+                            </li>
+                            <li>
+                                <strong>Rebuilding from the Source:</strong> Rather
+                                than just importing old Sketch files, we used the
+                                actual SAIL design system documentation as our absolute
+                                source of truth to rebuild cleanly.
+                            </li>
+                            <li>
+                                <strong>Reducing Component Bloat:</strong> The hackathon
+                                proved Figma’s variants were vastly superior. We
+                                drastically reduced the total number of components
+                                needed by using things like booleans instead of diving
+                                through endless nested Sketch symbols.
+                            </li>
+                            <li>
+                                <strong>Evidence-Based Proposal:</strong> These empirical
+                                findings—the survey and the hackathon performance—formed
+                                the basis of our formal proposal, securing leadership
+                                buy-in and enterprise licenses.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media">
+                        <div class="media-container" style="max-height: 85%;">
+                            <Image
+                                loading="eager"
+                                src={growthImage}
+                                alt="Design scaling organization diagram"
+                            />
+                            <span class="media-caption"
+                                >Structuring the pipeline for scale and
+                                operational growth</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Figma SAIL Library</span>
+                    <span>Slide 16 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 17: Figma Component & SAIL Parameter Parity -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 2: Figma SAIL Component Library</span
+                    >
+                    <h2 class="slide-title">Figma Component Parity</h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>Ease of Use:</strong> Designers can simply
+                                bring a library asset onto the canvas and easily
+                                toggle states (like active/disabled) via a menu,
+                                rather than searching through complex Sketch symbol
+                                overrides.
+                            </li>
+                            <li>
+                                <strong>Visual-to-Code Alignment:</strong> Worked
+                                with front-end developers to map Figma variants and
+                                properties directly to the parameters in the SAIL
+                                codebase.
+                            </li>
+                            <li>
+                                <strong>Auto Layout Parity:</strong> Built components
+                                with fluid padding, margins, and constraint rules
+                                to match browser rendering exactly.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media">
+                        <div class="media-container" style="max-height: 85%;">
+                            <Image
+                                loading="eager"
+                                src={sailOverview}
+                                alt="SAIL Component Properties view"
+                            />
+                            <span class="media-caption"
+                                >Designing with properties that mirror developer
+                                parameters 1:1</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Figma SAIL Library</span>
+                    <span>Slide 17 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 18: Library Maintenance & Standards -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 2: Figma SAIL Component Library</span
+                    >
+                    <h2 class="slide-title">
+                        Design Library Maintenance & Standards
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>The Library Working Group:</strong> Following
+                                the hackathon, we established a working group and
+                                a structured backlog to manage bug reports and component
+                                requests just like software.
+                            </li>
+                            <li>
+                                <strong>Design Branching Workflows:</strong> Instituted
+                                a strict review pipeline in Figma. Designers build
+                                library updates in isolated branches.
+                            </li>
+                            <li>
+                                <strong>Peer-Review Merge Protocol:</strong> Every
+                                branch is reviewed by other designers for properties
+                                and auto Layout structures before merging into the
+                                main library.
+                            </li>
+                            <li>
+                                <strong>Regular Component Releases:</strong> Shipping
+                                regular versioned releases to ensure designers stayed
+                                aligned with updates.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media">
+                        <div class="media-container" style="max-height: 85%;">
+                            <Image
+                                loading="eager"
+                                src={workshopImage}
+                                alt="Collaborative design workshop vector diagram"
+                            />
+                            <span class="media-caption"
+                                >DesignOps: A structured branching and
+                                peer-review workflow</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Figma SAIL Library</span>
+                    <span>Slide 18 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 19: Figma Community Release & AI-Assisted Workflows -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 2: Figma SAIL Component Library</span
+                    >
+                    <h2 class="slide-title">
+                        Figma Community Release &amp; AI-Assisted Workflows
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <div
+                            class="metric-grid"
+                            style="margin-bottom: 1.5rem; grid-template-columns: 1fr; max-width: 280px; margin-left: 0;"
+                        >
+                            <div class="metric-card" style="padding: 1rem;">
+                                <div
+                                    class="metric-val"
+                                    style="font-size: 2.75rem;"
+                                >
+                                    1,000+
+                                </div>
+                                <div class="metric-lbl">Figma Downloads</div>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>
+                                <strong>Figma Community Release:</strong> Led the
+                                release of our internal library publicly, allowing
+                                external clients and partners to accelerate Appian
+                                development.
+                            </li>
+                            <li>
+                                <strong>Integrating Figma MCP (AI):</strong> Connected
+                                our design library data directly to AI systems using
+                                the Model Context Protocol.
+                            </li>
+                            <li>
+                                <strong>Accelerating Development:</strong> By loading
+                                our exact component structures and constraints into
+                                AI contexts, we drastically speed up new component
+                                creation and library updates.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media">
+                        <div class="media-container" style="max-height: 85%;">
+                            <Image
+                                loading="eager"
+                                src={sailOverview}
+                                alt="Figma Community card cover"
+                            />
+                            <span class="media-caption"
+                                >Published library adopted by nearly 1,000
+                                community members</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Figma SAIL Library</span>
+                    <span>Slide 19 of 20</span>
+                </div>
+            </section>
+
+            <!-- Slide 20: Q&A / Final Discussion -->
+            <section class="slide slide-title-layout">
+                <div class="title-container" style="max-width: 900px;">
+                    <div class="title-pre" style="margin-bottom: 1rem;">
+                        Virtual Portfolio Review
+                    </div>
+                    <h2
+                        class="slide-title"
+                        style="font-size: 4rem; margin-bottom: 2rem; color: var(--color-text);"
+                    >
+                        Questions &amp; Discussion
+                    </h2>
+                    <div
+                        class="title-sub"
+                        style="font-size: 1.6rem; color: var(--color-text-muted); margin-bottom: 4rem;"
+                    >
+                        Figma SAIL Component Library &amp; General Discussion
+                    </div>
+                </div>
+                <div
+                    class="slide-footer"
+                    style="width: calc(100% - 12rem); position: absolute; bottom: 4rem; left: 6rem;"
+                >
+                    <span>Ketan Pandya | Portfolio Review</span>
+                    <span>Slide 20 of 20</span>
+                </div>
+            </section>
+        </div>
+
+        <!-- LIGHTBOX OVERLAY -->
+        <div id="lightbox-overlay" aria-label="Zoomed Image Overlay">
+            <button class="lightbox-close" id="lightbox-close-btn"
+                >&times;</button
+            >
+            <img id="lightbox-image" src="" alt="" />
+        </div>
+
+        <!-- SPEAKER NOTES DRAWER -->
+        <div id="notes-drawer">
+            <div class="drawer-header">
+                <span class="drawer-title">Speaker Script</span>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <button
+                        id="edit-notes-btn"
+                        style="background:none; border:none; color:var(--color-brand-blue); font-size:1rem; cursor:pointer; font-weight: 500;"
+                        >✏️ Edit</button
+                    >
+                    <button
+                        id="close-notes-btn"
+                        style="background:none; border:none; color:var(--color-text); font-size:1.5rem; cursor:pointer; padding-bottom: 2px;"
+                        >&times;</button
+                    >
+                </div>
             </div>
-            <div class="slide-footer" style="width: calc(100% - 12rem); position: absolute; bottom: 4rem; left: 6rem;">
-                <span>Ketan Pandya | Portfolio Review</span>
-                <span>Slide 20 of 20</span>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- LIGHTBOX OVERLAY -->
-    <div id="lightbox-overlay" aria-label="Zoomed Image Overlay">
-        <button class="lightbox-close" id="lightbox-close-btn">&times;</button>
-        <img id="lightbox-image" src="" alt="" />
-    </div>
-
-    <!-- SPEAKER NOTES DRAWER -->
-    <div id="notes-drawer">
-        <div class="drawer-header">
-            <span class="drawer-title">Speaker Script</span>
-            <div style="display: flex; gap: 1rem; align-items: center;">
-                <button id="edit-notes-btn" style="background:none; border:none; color:var(--color-brand-blue); font-size:1rem; cursor:pointer; font-weight: 500;">✏️ Edit</button>
-                <button id="close-notes-btn" style="background:none; border:none; color:var(--color-text); font-size:1.5rem; cursor:pointer; padding-bottom: 2px;">&times;</button>
+            <div class="notes-content" id="notes-text">
+                <!-- Dynamic content injected here -->
             </div>
         </div>
-        <div class="notes-content" id="notes-text">
-            <!-- Dynamic content injected here -->
+
+        <!-- SLIDE INDEX DRAWER -->
+        <div id="index-drawer">
+            <div class="drawer-header" style="margin-bottom: 1rem;">
+                <span
+                    class="drawer-title"
+                    style="color: var(--color-brand-teal);"
+                    >Slide Index (S)</span
+                >
+                <button
+                    id="close-index-btn"
+                    style="background:none; border:none; color:var(--color-text); font-size:1.5rem; cursor:pointer;"
+                    >×</button
+                >
+            </div>
+            <div class="index-grid" id="index-grid-container">
+                <!-- Dynamic items injected here -->
+            </div>
         </div>
-    </div>
 
-    <!-- SLIDE INDEX DRAWER -->
-    <div id="index-drawer">
-        <div class="drawer-header" style="margin-bottom: 1rem;">
-            <span class="drawer-title" style="color: var(--color-brand-teal);">Slide Index (S)</span>
-            <button id="close-index-btn" style="background:none; border:none; color:var(--color-text); font-size:1.5rem; cursor:pointer;">×</button>
-        </div>
-        <div class="index-grid" id="index-grid-container">
-            <!-- Dynamic items injected here -->
-        </div>
-    </div>
+        <script define:vars={{ parsedNotes }}>
+            // Speaker notes data injected from server
+            let notes = parsedNotes;
 
-    <script define:vars={{ parsedNotes }}>
-        // Speaker notes data injected from server
-        let notes = parsedNotes;
+            // Slide navigation controller logic
+            let currentSlide = 0;
+            const slides = document.querySelectorAll(".slide");
+            const totalSlides = slides.length;
+            const deck = document.getElementById("deck");
+            const progressBar = document.getElementById("progress-bar");
 
-        // Slide navigation controller logic
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-        const deck = document.getElementById('deck');
-        const progressBar = document.getElementById('progress-bar');
-        
-        // Drawers
-        const notesDrawer = document.getElementById('notes-drawer');
-        const notesText = document.getElementById('notes-text');
-        const closeNotesBtn = document.getElementById('close-notes-btn');
-        const editNotesBtn = document.getElementById('edit-notes-btn');
-        let isEditingNotes = false;
+            // Drawers
+            const notesDrawer = document.getElementById("notes-drawer");
+            const notesText = document.getElementById("notes-text");
+            const closeNotesBtn = document.getElementById("close-notes-btn");
+            const editNotesBtn = document.getElementById("edit-notes-btn");
+            let isEditingNotes = false;
 
-        async function saveCurrentNotes() {
-            isEditingNotes = false;
-            notesText.contentEditable = "false";
-            notesText.style.outline = "none";
-            notesText.style.padding = "0";
-            editNotesBtn.innerText = "✏️ Edit";
-            
-            // Update local array
-            notes[currentSlide] = notesText.innerHTML;
-            
-            // Save to API
-            try {
-                const res = await fetch('/api/save-notes', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ notes })
-                });
-                if (res.ok) {
-                    editNotesBtn.innerText = "✅ Saved!";
-                    setTimeout(() => { if (!isEditingNotes) editNotesBtn.innerText = "✏️ Edit"; }, 2000);
-                } else {
+            async function saveCurrentNotes() {
+                isEditingNotes = false;
+                notesText.contentEditable = "false";
+                notesText.style.outline = "none";
+                notesText.style.padding = "0";
+                editNotesBtn.innerText = "✏️ Edit";
+
+                // Update local array
+                notes[currentSlide] = notesText.innerHTML;
+
+                // Save to API
+                try {
+                    const res = await fetch("/api/save-notes", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ notes }),
+                    });
+                    if (res.ok) {
+                        editNotesBtn.innerText = "✅ Saved!";
+                        setTimeout(() => {
+                            if (!isEditingNotes)
+                                editNotesBtn.innerText = "✏️ Edit";
+                        }, 2000);
+                    } else {
+                        editNotesBtn.innerText = "❌ Error";
+                        setTimeout(() => {
+                            if (!isEditingNotes)
+                                editNotesBtn.innerText = "✏️ Edit";
+                        }, 2000);
+                    }
+                } catch (e) {
+                    console.error(e);
                     editNotesBtn.innerText = "❌ Error";
-                    setTimeout(() => { if (!isEditingNotes) editNotesBtn.innerText = "✏️ Edit"; }, 2000);
-                }
-            } catch (e) {
-                console.error(e);
-                editNotesBtn.innerText = "❌ Error";
-                setTimeout(() => { if (!isEditingNotes) editNotesBtn.innerText = "✏️ Edit"; }, 2000);
-            }
-        }
-
-        function cancelEditingNotes() {
-            isEditingNotes = false;
-            notesText.contentEditable = "false";
-            notesText.style.outline = "none";
-            notesText.style.padding = "0";
-            editNotesBtn.innerText = "✏️ Edit";
-            // Restore original content
-            notesText.innerHTML = notes[currentSlide] || "No speaker notes for this slide.";
-        }
-
-        editNotesBtn.addEventListener('click', async () => {
-            if (!isEditingNotes) {
-                // Enter edit mode
-                isEditingNotes = true;
-                notesText.contentEditable = "true";
-                notesText.focus();
-                notesText.style.outline = "2px solid var(--color-brand-blue)";
-                notesText.style.padding = "0.5rem";
-                editNotesBtn.innerText = "💾 Save";
-            } else {
-                await saveCurrentNotes();
-            }
-        });
-
-        notesText.addEventListener('keydown', async (e) => {
-            if (!isEditingNotes) return;
-            
-            if (e.key === 'Escape') {
-                e.preventDefault();
-                cancelEditingNotes();
-            } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
-                e.preventDefault();
-                await saveCurrentNotes();
-            } else if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-                e.preventDefault();
-                await saveCurrentNotes();
-            }
-        });
-        
-        const indexDrawer = document.getElementById('index-drawer');
-        const closeIndexBtn = document.getElementById('close-index-btn');
-        const indexContainer = document.getElementById('index-grid-container');
-
-        // Initialize drawers content
-        function initIndex() {
-            indexContainer.innerHTML = '';
-            slides.forEach((slide, idx) => {
-                let titleText = "Slide " + (idx + 1);
-                const titleEl = slide.querySelector('.slide-title');
-                const titleLayoutMain = slide.querySelector('.title-main');
-                
-                if (titleEl) titleText = titleEl.innerText;
-                else if (titleLayoutMain) titleText = titleLayoutMain.innerText;
-                
-                const item = document.createElement('div');
-                item.className = 'index-item ' + (idx === currentSlide ? 'active' : '');
-                item.innerHTML = `
-                    <span class="index-num">Slide ` + (idx + 1) + `</span>
-                    <h4 class="index-title">` + titleText + `</h4>
-                `;
-                item.addEventListener('click', () => {
-                    goToSlide(idx);
-                    indexDrawer.classList.remove('open');
-                });
-                indexContainer.appendChild(item);
-            });
-        }
-
-        function updateSlide() {
-            deck.style.transform = 'translateX(-' + (currentSlide * 100) + 'vw)';
-            
-            // Update progress indicators
-            const progressPct = ((currentSlide + 1) / totalSlides) * 100;
-            progressBar.style.width = progressPct + '%';
-            
-            // Inject notes for current slide
-            notesText.innerHTML = notes[currentSlide] || "No speaker notes for this slide.";
-            
-            // Re-draw active slide in index
-            const indexItems = document.querySelectorAll('.index-item');
-            indexItems.forEach((item, idx) => {
-                if (idx === currentSlide) item.classList.add('active');
-                else item.classList.remove('active');
-            });
-
-            // Update footer counters
-            document.querySelectorAll('.slide').forEach((slide, idx) => {
-                const counter = slide.querySelector('.slide-footer span:last-child');
-                if (counter) counter.innerText = 'Slide ' + (currentSlide + 1) + ' of ' + totalSlides;
-            });
-        }
-
-        function goToSlide(idx) {
-            if (idx >= 0 && idx < totalSlides) {
-                currentSlide = idx;
-                updateSlide();
-            }
-        }
-
-        function nextSlide() {
-            if (currentSlide < totalSlides - 1) {
-                currentSlide++;
-                updateSlide();
-            }
-        }
-
-        function prevSlide() {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateSlide();
-            }
-        }
-
-        // Navigation controls listeners
-        document.getElementById('next-btn').addEventListener('click', nextSlide);
-        document.getElementById('prev-btn').addEventListener('click', prevSlide);
-        
-        // Key bindings
-        window.addEventListener('keydown', (e) => {
-            // Ignore shortcut keys when typing inside editable fields or inputs
-            if (document.activeElement && (document.activeElement.isContentEditable || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) {
-                return;
-            }
-
-            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key === 'ArrowDown') {
-                e.preventDefault();
-                nextSlide();
-            } else if (e.key === 'ArrowLeft' || e.key === 'Backspace' || e.key === 'PageUp' || e.key === 'ArrowUp') {
-                e.preventDefault();
-                prevSlide();
-            } else if (e.key === 'Escape') {
-                closeLightbox();
-            } else if (e.key.toLowerCase() === 'n') {
-                notesDrawer.classList.toggle('open');
-            } else if (e.key.toLowerCase() === 's') {
-                indexDrawer.classList.toggle('open');
-                if (indexDrawer.classList.contains('open')) {
-                    // Center active slide item in horizontal scroll
                     setTimeout(() => {
-                        const activeItem = document.querySelector('.index-item.active');
-                        if (activeItem) activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                    }, 100);
+                        if (!isEditingNotes) editNotesBtn.innerText = "✏️ Edit";
+                    }, 2000);
                 }
-            } else if (e.key.toLowerCase() === 'a') {
-                const nav = document.querySelector('.nav-overlay');
-                if (nav) nav.classList.toggle('visible');
             }
-        });
 
-        // Toggle drawers on click
-        closeNotesBtn.addEventListener('click', () => notesDrawer.classList.remove('open'));
-        closeIndexBtn.addEventListener('click', () => indexDrawer.classList.remove('open'));
+            function cancelEditingNotes() {
+                isEditingNotes = false;
+                notesText.contentEditable = "false";
+                notesText.style.outline = "none";
+                notesText.style.padding = "0";
+                editNotesBtn.innerText = "✏️ Edit";
+                // Restore original content
+                notesText.innerHTML =
+                    notes[currentSlide] || "No speaker notes for this slide.";
+            }
 
-        // Initialize slide layout
-        initIndex();
-        updateSlide();
-
-        // Lightbox Overlay logic
-        const lightboxOverlay = document.getElementById('lightbox-overlay');
-        const lightboxImage = document.getElementById('lightbox-image');
-        const closeLightboxBtn = document.getElementById('lightbox-close-btn');
-
-        // Add click listener to all images inside slides
-        document.querySelectorAll('.slide img').forEach(img => {
-            img.style.cursor = 'zoom-in';
-            img.setAttribute('tabindex', '0');
-            img.setAttribute('role', 'button');
-            img.setAttribute('aria-label', 'Click to enlarge image');
-
-            const openLightbox = (src, alt) => {
-                lightboxImage.src = src;
-                lightboxImage.alt = alt || 'Enlarged image view';
-                lightboxOverlay.classList.add('open');
-            };
-
-            img.addEventListener('click', (e) => {
-                const target = e.target;
-                openLightbox(target.getAttribute('src'), target.getAttribute('alt'));
+            editNotesBtn.addEventListener("click", async () => {
+                if (!isEditingNotes) {
+                    // Enter edit mode
+                    isEditingNotes = true;
+                    notesText.contentEditable = "true";
+                    notesText.focus();
+                    notesText.style.outline =
+                        "2px solid var(--color-brand-blue)";
+                    notesText.style.padding = "0.5rem";
+                    editNotesBtn.innerText = "💾 Save";
+                } else {
+                    await saveCurrentNotes();
+                }
             });
-            img.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
+
+            notesText.addEventListener("keydown", async (e) => {
+                if (!isEditingNotes) return;
+
+                if (e.key === "Escape") {
                     e.preventDefault();
-                    const target = e.target;
-                    openLightbox(target.getAttribute('src'), target.getAttribute('alt'));
+                    cancelEditingNotes();
+                } else if (
+                    (e.ctrlKey || e.metaKey) &&
+                    e.key.toLowerCase() === "s"
+                ) {
+                    e.preventDefault();
+                    await saveCurrentNotes();
+                } else if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+                    e.preventDefault();
+                    await saveCurrentNotes();
                 }
             });
-        });
 
-        function closeLightbox() {
-            lightboxOverlay.classList.remove('open');
-            setTimeout(() => {
-                lightboxImage.src = '';
-                lightboxImage.alt = '';
-            }, 300);
-        }
+            const indexDrawer = document.getElementById("index-drawer");
+            const closeIndexBtn = document.getElementById("close-index-btn");
+            const indexContainer = document.getElementById(
+                "index-grid-container"
+            );
 
-        // Close on clicking close button or background
-        closeLightboxBtn.addEventListener('click', closeLightbox);
-        lightboxOverlay.addEventListener('click', (e) => {
-            if (e.target === lightboxOverlay) {
-                closeLightbox();
+            // Initialize drawers content
+            function initIndex() {
+                indexContainer.innerHTML = "";
+                slides.forEach((slide, idx) => {
+                    let titleText = "Slide " + (idx + 1);
+                    const titleEl = slide.querySelector(".slide-title");
+                    const titleLayoutMain = slide.querySelector(".title-main");
+
+                    if (titleEl) titleText = titleEl.innerText;
+                    else if (titleLayoutMain)
+                        titleText = titleLayoutMain.innerText;
+
+                    const item = document.createElement("div");
+                    item.className =
+                        "index-item " + (idx === currentSlide ? "active" : "");
+                    item.innerHTML =
+                        `
+                    <span class="index-num">Slide ` +
+                        (idx + 1) +
+                        `</span>
+                    <h4 class="index-title">` +
+                        titleText +
+                        `</h4>
+                `;
+                    item.addEventListener("click", () => {
+                        goToSlide(idx);
+                        indexDrawer.classList.remove("open");
+                    });
+                    indexContainer.appendChild(item);
+                });
             }
-        });
-    </script>
-</body>
+
+            function updateSlide() {
+                deck.style.transform =
+                    "translateX(-" + currentSlide * 100 + "vw)";
+
+                // Update progress indicators
+                const progressPct = ((currentSlide + 1) / totalSlides) * 100;
+                progressBar.style.width = progressPct + "%";
+
+                // Inject notes for current slide
+                notesText.innerHTML =
+                    notes[currentSlide] || "No speaker notes for this slide.";
+
+                // Re-draw active slide in index
+                const indexItems = document.querySelectorAll(".index-item");
+                indexItems.forEach((item, idx) => {
+                    if (idx === currentSlide) item.classList.add("active");
+                    else item.classList.remove("active");
+                });
+
+                // Update footer counters
+                document.querySelectorAll(".slide").forEach((slide, idx) => {
+                    const counter = slide.querySelector(
+                        ".slide-footer span:last-child"
+                    );
+                    if (counter)
+                        counter.innerText =
+                            "Slide " +
+                            (currentSlide + 1) +
+                            " of " +
+                            totalSlides;
+                });
+            }
+
+            function goToSlide(idx) {
+                if (idx >= 0 && idx < totalSlides) {
+                    currentSlide = idx;
+                    updateSlide();
+                }
+            }
+
+            function nextSlide() {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateSlide();
+                }
+            }
+
+            function prevSlide() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            }
+
+            // Navigation controls listeners
+            document
+                .getElementById("next-btn")
+                .addEventListener("click", nextSlide);
+            document
+                .getElementById("prev-btn")
+                .addEventListener("click", prevSlide);
+
+            // Key bindings
+            window.addEventListener("keydown", (e) => {
+                // Ignore shortcut keys when typing inside editable fields or inputs
+                if (
+                    document.activeElement &&
+                    (document.activeElement.isContentEditable ||
+                        document.activeElement.tagName === "INPUT" ||
+                        document.activeElement.tagName === "TEXTAREA")
+                ) {
+                    return;
+                }
+
+                if (
+                    e.key === "ArrowRight" ||
+                    e.key === " " ||
+                    e.key === "PageDown" ||
+                    e.key === "ArrowDown"
+                ) {
+                    e.preventDefault();
+                    nextSlide();
+                } else if (
+                    e.key === "ArrowLeft" ||
+                    e.key === "Backspace" ||
+                    e.key === "PageUp" ||
+                    e.key === "ArrowUp"
+                ) {
+                    e.preventDefault();
+                    prevSlide();
+                } else if (e.key === "Escape") {
+                    closeLightbox();
+                } else if (e.key.toLowerCase() === "n") {
+                    notesDrawer.classList.toggle("open");
+                } else if (e.key.toLowerCase() === "s") {
+                    indexDrawer.classList.toggle("open");
+                    if (indexDrawer.classList.contains("open")) {
+                        // Center active slide item in horizontal scroll
+                        setTimeout(() => {
+                            const activeItem =
+                                document.querySelector(".index-item.active");
+                            if (activeItem)
+                                activeItem.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "nearest",
+                                    inline: "center",
+                                });
+                        }, 100);
+                    }
+                } else if (e.key.toLowerCase() === "a") {
+                    const nav = document.querySelector(".nav-overlay");
+                    if (nav) nav.classList.toggle("visible");
+                }
+            });
+
+            // Toggle drawers on click
+            closeNotesBtn.addEventListener("click", () =>
+                notesDrawer.classList.remove("open")
+            );
+            closeIndexBtn.addEventListener("click", () =>
+                indexDrawer.classList.remove("open")
+            );
+
+            // Initialize slide layout
+            initIndex();
+            updateSlide();
+
+            // Lightbox Overlay logic
+            const lightboxOverlay = document.getElementById("lightbox-overlay");
+            const lightboxImage = document.getElementById("lightbox-image");
+            const closeLightboxBtn =
+                document.getElementById("lightbox-close-btn");
+
+            // Add click listener to all images inside slides
+            document.querySelectorAll(".slide img").forEach((img) => {
+                img.style.cursor = "zoom-in";
+                img.setAttribute("tabindex", "0");
+                img.setAttribute("role", "button");
+                img.setAttribute("aria-label", "Click to enlarge image");
+
+                const openLightbox = (src, alt) => {
+                    lightboxImage.src = src;
+                    lightboxImage.alt = alt || "Enlarged image view";
+                    lightboxOverlay.classList.add("open");
+                };
+
+                img.addEventListener("click", (e) => {
+                    const target = e.target;
+                    openLightbox(
+                        target.getAttribute("src"),
+                        target.getAttribute("alt")
+                    );
+                });
+                img.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        const target = e.target;
+                        openLightbox(
+                            target.getAttribute("src"),
+                            target.getAttribute("alt")
+                        );
+                    }
+                });
+            });
+
+            function closeLightbox() {
+                lightboxOverlay.classList.remove("open");
+                setTimeout(() => {
+                    lightboxImage.src = "";
+                    lightboxImage.alt = "";
+                }, 300);
+            }
+
+            // Close on clicking close button or background
+            closeLightboxBtn.addEventListener("click", closeLightbox);
+            lightboxOverlay.addEventListener("click", (e) => {
+                if (e.target === lightboxOverlay) {
+                    closeLightbox();
+                }
+            });
+        </script>
+    </body>
 </html>
