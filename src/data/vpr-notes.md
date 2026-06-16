@@ -13,7 +13,7 @@ Second, I am a <strong>Problem Solver</strong>. And I try to look beyond the imm
 <strong>Slide 3: Agenda</strong><br><br>
 "For our agenda today, I'll start with Case Management Studio. I will show you how we designed a visual system that gives business users no-code control over their applications, and how we built an extensible foundation underneath for low-code developers so that it can be used for any number of use cases. Then we'll have a quick Q&amp;A right after.
 <br><br>
-Then, I'll talk about the Figma component library migration, making the case for transitioning to Figma and then and how I set up governance to keep the library accurate. Then we'll have some more time for Q&amp;A.
+Then, I'll talk about Design Operations and Scaling Design. I'll walk through how we migrated our component library to Figma, how we democratized knowledge through the UX Chapter, and how we innovated our usability testing processes. Then we'll have some more time for Q&amp;A.
 ---SLIDE---
 <strong>Slide 4: Core Concepts: Cases, Workflows, & Tasks</strong><br/><br/>
 "Let's start with Case Management Studio. Since you might not be familiar with this specific product or Appian, I want to start by explaining the simple, core concepts behind it.
@@ -77,48 +77,60 @@ I worked closely on prompt engineering for these models to ensure the AI output 
 ---SLIDE---
 <strong>Slide 12: Workspace Solution 3: Public Access &amp; Self-Service</strong><br><br>
 "But case management doesn't stop inside the organization. We also had to design for external users—the anonymous users and authenticated external users.<br><br>
-We created a seamless, secure external experience divided into two parts: a public portal to submit "cases" and a sign-up experience to transition into Authenticated Self-Service. These were both individual modules, of course, and worked fine with only or the other. For both users, we designed this to be mobile-first. The intake forms here could be configured in the same place in Studio as the intake forms for case workers.<br><br>
-Once registered, the authenticated 'My Cases' dashboard lets users track their application timeline, upload missing documents, and communicate securely with case workers.
-<br><br>
-Since external users overwhelmingly access these portals via mobile devices, I completely pivoted the design language for this space—moving away from dense enterprise grids to clear typography, guided step-by-step progress bars, and generous touch target spacing."
+We created a seamless, secure external experience divided into two parts: a public portal to submit "cases" and a sign-up experience to transition into Authenticated Self-Service. These were both individual modules, of course, and worked fine with only or the other. The intake forms here could be configured in the same place in Studio as the intake forms for case workers.<br><br>
+Once registered, the authenticated 'My Cases' dashboard lets users track their application timeline, upload missing documents, and communicate securely with case workers."
 ---SLIDE---
-<strong>Slide 13: Extensibility &amp; Solutions Hub Branding</strong><br><br>
+<strong>Slide 13: Workspace Solution 3: Mobile-First &amp; Accessibility</strong><br><br>
+"Since external users overwhelmingly access these portals via mobile devices, I completely pivoted the design language for this space—moving away from dense enterprise grids to clear typography, guided step-by-step progress bars, and generous touch target spacing.
+<br><br>
+We also prioritized strict accessibility standards, ensuring that every element was touch-friendly, high-contrast, and fully navigable by screen readers. This ensured the portal was usable for all members of the public, regardless of their device or ability."
+---SLIDE---
+<strong>Slide 14: Extensibility &amp; Solutions Hub Branding</strong><br><br>
 "To complete the platform strategy of Case Management Studio, we made the architecture fully agnostic and extensible. Customers can easily plug in custom task types, email templates, and specialized logical rules like a Fraud Check.
 <br><br>
 To handle brand scaling, we created Solutions Hub.&nbsp;Instead of hardcoded styles, every element used in CMS uses a branding map that maps to a section in Solutions Hub. An administrator can change colors, typography, and logos in a single place.<br><br>
 Once configured, this theme instantly propagates across the entire site, and keeping branding for the Workspace, portal, and authenticated user sites separate as they are all their own modules and they may want separate branding for different users.<br><br>
 In the end, this scalable platform architecture allowed clients to go live in as little as 4 weeks—a 50% implementation reduction—and is currently adopted in production by 92 major enterprises, including Porsche, Pfizer, and Vanguard."
 ---SLIDE---
-<strong>Slide 14: Project 1 Q&A</strong><br/><br/>
-"That concludes our deep dive into Case Management Studio. I want to pause here and open up the floor to the panel. I would love to answer any questions you have regarding our Visual Workflow Builder, the precedents-to-dependents research, B2B proxy research, the top-navigation layout pivot in Workspace, or the Solutions Hub branding engine."
+<strong>Slide 15: Project 1 Q&A</strong><br/><br/>
+"That concludes our deep dive into Case Management Studio. I want to pause here and open up the floor to the panel. I would love to answer any questions you have regarding our Visual Workflow Builder, precedents-to-dependents research, B2B proxy research, top-navigation layout pivot in Workspace, or the Solutions Hub branding engine."
 ---SLIDE---
-<strong>Slide 15: Evaluating our Design Tools: Sketch vs Figma</strong><br><br>
+<strong>Slide 16: Evaluating our Design Tools: Sketch vs Figma</strong><br><br>
 "Now let's transition to the second project, which focuses on our internal design infrastructure: the Appian Figma Component Library.
 <br><br>
 When I joined the team, we were using Sketch, which was creating daily friction. Its complex, nested symbol architecture was frustrating to use and required a lot of work to enhance and maintain. More importantly, we had Customer Success managers and external partners asking to view our prototypes, but Sketch prototypes were not as shareable and it was Mac-only which created a major roadblock.
 <br><br>Seeing the opportunity and being familiar with Figma myself, I initiated and recruited other designers to participate in our company hackathon. We undertook multiple tasks in the 3 days it ran, collecting data and creating a proof of concept. First we wanted to get an understanding of how designers felt about Sketch vs Figma. We ran an internal UX survey and found a 9-to-4 preference for Figma, and those who voted for Sketch did not indicate they were very attached to it. Designers loved Figma's cleaner interface, found it significantly easier to set up clickable prototypes, and the fact that it runs in the browser meant we could seamlessly share prototypes and collaborate across teams and operating systems."
 ---SLIDE---
-<strong>Slide 16: The Figma Hackathon: Proving the Concept</strong><br><br>
+<strong>Slide 17: The Figma Hackathon: Proving the Concept</strong><br><br>
 "Seeing the opportunity and being familiar with Figma myself, I initiated and recruited other designers to participate in our company hackathon. First we wanted to get an understanding of how designers felt about Sketch vs Figma. We ran an internal UX survey and found a 9-to-4 preference for Figma, and those who voted for Sketch did not indicate they were very attached to it. Designers loved Figma's cleaner interface, found it significantly easier to set up clickable prototypes, and the fact that it runs in the browser meant we could seamlessly share prototypes and collaborate across teams and operating systems. <br><br>I also set up a shared backlog and divided the component-building work among the team to see how fast we could move.
 <br><br><div>After I tested the initial sketch to Figma migration tool to decent success, we used our actual SAIL design system and react component as our source of truth. The hackathon was successful in creating a POC. We showed that Figma's components variants were vastly superior to Sketch symbols and symbol trees. Instead of diving through deeply nested Sketch symbols, designers could just drag an asset in and easily toggle properties. This also drastically reduced the number of components we needed to maintain. 
 <br><br>
 These evidence-based findings—both the survey results and the hackathon performance—formed the core of a formal proposal that I drafted that then won leadership buy-in and secured Figma enterprise licenses."</div>
 ---SLIDE---
-<strong>Slide 17: Figma Component & SAIL Parameter Parity</strong><br/><br/>
+<strong>Slide 18: Figma Component & SAIL Parameter Parity</strong><br/><br/>
 "During the build phase, I worked closely with our front-end developers to align our design system with their implementation methods.
 <br/><br/>
 Because Appian developers code using SAIL components, we mapped our Figma variants directly to the parameters in the SAIL codebase. For a designer, this means unparalleled ease of use: you just bring a library asset onto the canvas, and toggle its properties in the right sidebar exactly how a developer configures it in code. We also used Auto Layout constraints so components resized fluidly. This 1:1 parity eliminated guesswork for our developers."
 ---SLIDE---
-<strong>Slide 18: Design Library Maintenance &amp; Standards</strong><br><br>
+<strong>Slide 19: Design Library Maintenance &amp; Standards</strong><br><br>
 "A component library is only useful if it stays clean. Without strict standards, design libraries quickly get cluttered and drift away from the codebase.
 <br><br>
 To prevent this, I created a working group. I maintained a structured backlog to track component requests just like software bugs, and we introduced a strict branching workflow in the Figma library. When a designer updates a component, they work in an isolated branch. That branch is peer-reviewed by the working group before being merged. This ensures our library stays reliable."
 ---SLIDE---
-<strong>Slide 19: Figma Community Release &amp; AI-Assisted Workflows</strong><br><br>
+<strong>Slide 20: Figma Community Release &amp; AI-Assisted Workflows</strong><br><br>
 "Once our internal team was aligned, we realized our external partners who build custom Appian integrations would benefit from this library too.
 <br><br>
 I led the effort to publish our library to the public Figma Community. To date, it has been adopted more than 1,000 external designers and clients, earning praise and garnering many requests for continued enhancements from customers like NASDAQ.<br><br>
 Most recently, I have integrated the Figma MCP, into our design pipeline. This protocol connects our Figma design library data directly to AI tools. By loading our exact component structures and constraints into AI contexts, we drastically speed up new component creation and library updates."
 ---SLIDE---
-<strong>Slide 20: Q&amp;A &amp; Discussion</strong><br><br>
-"That wraps up our Figma SAIL library migration case study and design operations overview. I want to thank you so much for your time today, and I would love to open the floor for any final questions you might have on design systems governance or general portfolio topics. Thank you."
+<strong>Slide 21: The UX Chapter: Peer-to-Peer Knowledge Sharing</strong><br><br>
+"Beyond building the Figma library itself, I wanted to focus on how we scale design knowledge across our entire team. I restructured our monthly internal forum, the UX Chapter, transitioning it from passive lectures to active, designer-led workshops. Since 2023, we have facilitated 35 interactive sessions covering updates like Figma variables, design standards, and AI-assisted workflows. By empowering different designers to lead workshops based on their strengths, we democratized knowledge-sharing and successfully elevated the entire team's skill level, ensuring consistent design practices across our organization."
+---SLIDE---
+<strong>Slide 22: Usability Testing Coded Prototypes</strong><br><br>
+"Another key area of design operations was optimizing our usability testing. We began utilizing high-fidelity vibe-coded HTML/JS prototypes for testing early in the cycle, which allowed us to evaluate complex logic, validations, and database rules that are difficult or impossible to simulate in standard design tools. However, during testing, we identified a critical bottleneck: participants struggled to navigate between the prototype itself and the usability tasks, which were hosted in separate documents. This constant context-switching disrupted their flow and impacted the quality of the usability feedback."
+---SLIDE---
+<strong>Slide 23: Tooling Innovation: Usability Study Overlay</strong><br><br>
+"To address this context-switching issue and elevate our testing standard, I proactively developed a plug-and-play usability study overlay. This lightweight, floating panel is injected directly onto the prototype page, keeping tasks in the participant's immediate focus. It includes task navigation, minimizable controls, and a custom back button that simulates browser history. I contributed this tool back to the UX team as a Kiro power and a standalone script, allowing any designer to spin up structured, high-fidelity usability tests in seconds, reducing duplicated effort, and ensuring our team's output serves as a reliable, high-quality standard."
+---SLIDE---
+<strong>Slide 24: Q&amp;A &amp; Discussion</strong><br><br>
+"And that brings us to the end of my presentation. I want to thank you all so much for your time and attention today. I would love to open up the floor now for any questions or discussion you might have regarding our Figma component library, our Design Operations scaling efforts, the usability study overlay, or anything else about my portfolio and approach. Thank you."

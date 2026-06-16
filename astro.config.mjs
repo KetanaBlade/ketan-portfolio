@@ -37,6 +37,23 @@ export default defineConfig({
             });
             return;
           }
+          if (req.url === '/api/save-slide-text' && req.method === 'POST') {
+            let body = '';
+            req.on('data', chunk => body += chunk);
+            req.on('end', () => {
+              try {
+                const { overrides } = JSON.parse(body);
+                const filePath = path.resolve('./src/data/slide-overrides.json');
+                fs.writeFileSync(filePath, JSON.stringify(overrides, null, 2), 'utf-8');
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: true }));
+              } catch (e) {
+                res.writeHead(500, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ error: e.message }));
+              }
+            });
+            return;
+          }
           next();
         });
       }

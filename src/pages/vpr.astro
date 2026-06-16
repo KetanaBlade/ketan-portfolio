@@ -36,6 +36,8 @@ import semanticMapping from "../assets/work/semantic-mapping.svg";
 import sailOverview from "../assets/work/leadership-figma-library.png";
 import growthImage from "../assets/work/leadership-growth.svg";
 import workshopImage from "../assets/work/leadership-community-v2.svg";
+import kiroPowerSetup from "../assets/work/kiro-power-setup.png";
+import kiroOverlayExample from "../assets/work/kiro-overlay-example.png";
 
 const notesFilePath = path.resolve("./src/data/vpr-notes.md");
 let rawNotes = "";
@@ -44,7 +46,16 @@ try {
 } catch (e) {
     console.error("Failed to read vpr-notes.md", e);
 }
-const parsedNotes = rawNotes.split("\n---SLIDE---\n");
+const parsedNotes = rawNotes.split(/\r?\n---SLIDE---\r?\n/);
+
+const overridesFilePath = path.resolve("./src/data/slide-overrides.json");
+let parsedOverrides = {};
+try {
+    const rawOverrides = fs.readFileSync(overridesFilePath, "utf-8");
+    parsedOverrides = JSON.parse(rawOverrides);
+} catch (e) {
+    console.error("Failed to read slide-overrides.json", e);
+}
 ---
 
 <!DOCTYPE html>
@@ -148,7 +159,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 width: 100vw;
                 height: 100vh;
                 box-sizing: border-box;
-                padding: 4rem 6rem;
+                padding: 3.5rem 5rem;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -227,14 +238,14 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
             .slide-body {
                 flex-grow: 1;
                 display: flex;
-                gap: 4rem;
+                gap: 2.5rem;
                 align-items: center;
                 height: calc(100% - 11rem);
             }
 
             .col-text {
-                flex: 1;
-                max-width: 50%;
+                flex: 0 0 42%;
+                max-width: 42%;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -266,6 +277,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
             .media-container {
                 width: 100%;
                 height: 100%;
+                max-height: 95% !important;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -607,6 +619,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 pointer-events: none;
                 transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
                 backdrop-filter: blur(16px);
+                overflow: hidden;
             }
             #lightbox-overlay.open {
                 opacity: 1;
@@ -618,11 +631,17 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 border-radius: 8px;
                 box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
                 border: 1px solid rgba(255, 255, 255, 0.1);
-                transform: scale(0.95);
+                transform: translate(0px, 0px) scale(0.95);
                 transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                will-change: transform;
+                user-select: none;
+                -webkit-user-drag: none;
+            }
+            #lightbox-image.dragging {
+                transition: none !important;
             }
             #lightbox-overlay.open #lightbox-image {
-                transform: scale(1);
+                transform: translate(0px, 0px) scale(1);
             }
             .lightbox-close {
                 position: absolute;
@@ -634,10 +653,12 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 font-size: 2.5rem;
                 cursor: pointer;
                 opacity: 0.7;
-                transition: opacity 0.2s ease;
+                transition: opacity 0.2s ease, transform 0.2s ease;
+                z-index: 2100;
             }
             .lightbox-close:hover {
                 opacity: 1;
+                transform: scale(1.1);
             }
             .slide img {
                 cursor: zoom-in;
@@ -646,6 +667,59 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
             .slide img:hover {
                 transform: scale(1.02);
                 box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+            }
+            .zoom-controls {
+                position: absolute;
+                bottom: 2rem;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 1rem;
+                z-index: 2100;
+                background: rgba(15, 23, 42, 0.85);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                padding: 0.5rem 1rem;
+                border-radius: 9999px;
+                backdrop-filter: blur(8px);
+                opacity: 0.9;
+                transition: opacity 0.2s ease;
+            }
+            .zoom-controls:hover {
+                opacity: 1;
+            }
+            .zoom-controls button {
+                background: none;
+                border: none;
+                color: #ffffff;
+                font-size: 1.25rem;
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition: background 0.2s ease, transform 0.2s ease;
+            }
+            .zoom-controls button:hover {
+                background: rgba(255, 255, 255, 0.15);
+                transform: scale(1.1);
+            }
+            .zoom-controls button:active {
+                transform: scale(0.9);
+            }
+
+            /* Edit Mode Styles */
+            body.editing-slides [data-edit-id] {
+                outline: 1px dashed var(--color-brand-blue);
+                outline-offset: 4px;
+                transition: outline 0.2s ease, background 0.2s ease;
+            }
+            body.editing-slides [data-edit-id]:hover,
+            body.editing-slides [data-edit-id]:focus {
+                outline: 2px solid var(--color-brand-teal);
+                background: rgba(45, 212, 191, 0.05);
+                border-radius: 4px;
             }
         </style>
     </head>
@@ -740,7 +814,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 <div class="slide-footer">
                     <span>Ketan Pandya | Portfolio Review</span>
 
-                    <span>Slide 2 of 20</span>
+                    <span>Slide 2 of 24</span>
                 </div>
             </section>
 
@@ -768,15 +842,15 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                             </li>
                             <li>
                                 <strong
-                                    >Project 2: Figma SAIL Component Library</strong
+                                    >Project 2: Design Operations &amp; Scaling Design</strong
                                 >
                                 <p
                                     style="margin: 0.5rem 0 0 0; font-size: 1.05rem; color: var(--color-text-muted);"
                                 >
                                     Leading the migration from Sketch to Figma,
-                                    implementing 1:1 component to component
-                                    parity, setting up strict library
-                                    governance, and accelerating with Figma MCP.
+                                    democratizing design knowledge through the
+                                    UX Chapter, and innovating testing with
+                                    coded usability study overlays.
                                 </p>
                             </li>
                             <li>
@@ -793,7 +867,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 </div>
                 <div class="slide-footer">
                     <span>Ketan Pandya | Portfolio Review</span>
-                    <span>Slide 3 of 20</span>
+                    <span>Slide 3 of 24</span>
                 </div>
             </section>
 
@@ -858,7 +932,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 </div>
                 <div class="slide-footer">
                     <span>Case Management Studio</span>
-                    <span>Slide 4 of 20</span>
+                    <span>Slide 4 of 24</span>
                 </div>
             </section>
 
@@ -916,7 +990,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 </div>
                 <div class="slide-footer">
                     <span>Case Management Studio</span>
-                    <span>Slide 5 of 20</span>
+                    <span>Slide 5 of 24</span>
                 </div>
             </section>
 
@@ -978,7 +1052,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 </div>
                 <div class="slide-footer">
                     <span>Case Management Studio</span>
-                    <span>Slide 6 of 20</span>
+                    <span>Slide 6 of 24</span>
                 </div>
             </section>
 
@@ -1051,7 +1125,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 </div>
                 <div class="slide-footer">
                     <span>The Studio Experience</span>
-                    <span>Slide 7 of 20</span>
+                    <span>Slide 7 of 24</span>
                 </div>
             </section>
 
@@ -1117,7 +1191,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 </div>
                 <div class="slide-footer">
                     <span>The Studio Experience</span>
-                    <span>Slide 8 of 20</span>
+                    <span>Slide 8 of 24</span>
                 </div>
             </section>
 
@@ -1188,7 +1262,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 </div>
                 <div class="slide-footer">
                     <span>The Studio Experience</span>
-                    <span>Slide 9 of 20</span>
+                    <span>Slide 9 of 24</span>
                 </div>
             </section>
 
@@ -1248,7 +1322,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 </div>
                 <div class="slide-footer">
                     <span>The Workspace Experience</span>
-                    <span>Slide 10 of 20</span>
+                    <span>Slide 10 of 24</span>
                 </div>
             </section>
 
@@ -1323,7 +1397,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 </div>
                 <div class="slide-footer">
                     <span>The Workspace Experience</span>
-                    <span>Slide 11 of 20</span>
+                    <span>Slide 11 of 24</span>
                 </div>
             </section>
 
@@ -1359,12 +1433,6 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                                 to track application timelines, upload missing documents,
                                 and communicate with workers.
                             </li>
-                            <li>
-                                <strong>Mobile-First Priority:</strong> Reconfigured
-                                the public portal and self-service dashboards mobile-first
-                                to support public user smartphone use and ensure
-                                accessibility.
-                            </li>
                         </ul>
                     </div>
                     <div class="col-media grid-3" style="max-height: 85%;">
@@ -1375,8 +1443,8 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                                 alt="Public citizen portal home page"
                             />
                             <span class="media-caption"
-                                >Public Portal/span >
-                            </span>
+                                >Public Portal</span
+                            >
                         </div>
                         <div class="media-container">
                             <Image
@@ -1403,11 +1471,52 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 </div>
                 <div class="slide-footer">
                     <span>The Workspace Experience</span>
-                    <span>Slide 12 of 20</span>
+                    <span>Slide 12 of 24</span>
                 </div>
             </section>
 
-            <!-- Slide 13: Extensibility & Solutions Hub Branding -->
+            <!-- Slide 13: Workspace Solution 3: Mobile-First & Accessibility -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 1: The Workspace Experience</span
+                    >
+                    <h2 class="slide-title">
+                        Workspace Solution 3: Mobile-First & Accessibility
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>Mobile-First Priority:</strong> Reconfigured
+                                the public portal and self-service dashboards mobile-first
+                                to support public user smartphone use.
+                            </li>
+                            <li>
+                                <strong>Inclusive Design & Accessibility:</strong> Pushed
+                                for strict WCAG 2.1 AA compliance across all external touchpoints,
+                                including generous touch target sizes (minimum 48x48px)
+                                and high-contrast typography to ensure usability for all citizens.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media grid-2" style="max-height: 85%;">
+                        <div class="media-container" style="border: 2px dashed var(--color-border); border-radius: 12px; aspect-ratio: 9/16; max-height: 80%; display: flex; justify-content: center; align-items: center; background: rgba(15, 23, 42, 0.02);">
+                            <span style="color: var(--color-text-muted); font-size: 0.9rem; text-align: center; padding: 1rem;">Mobile Screenshot 1 (Placeholder)</span>
+                        </div>
+                        <div class="media-container" style="border: 2px dashed var(--color-border); border-radius: 12px; aspect-ratio: 9/16; max-height: 80%; display: flex; justify-content: center; align-items: center; background: rgba(15, 23, 42, 0.02);">
+                            <span style="color: var(--color-text-muted); font-size: 0.9rem; text-align: center; padding: 1rem;">Mobile Screenshot 2 (Placeholder)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>The Workspace Experience</span>
+                    <span>Slide 13 of 24</span>
+                </div>
+            </section>
+
+            <!-- Slide 14: Extensibility & Solutions Hub Branding -->
             <section class="slide">
                 <div class="slide-header">
                     <span class="slide-meta"
@@ -1483,11 +1592,11 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 </div>
                 <div class="slide-footer">
                     <span>Case Management Studio</span>
-                    <span>Slide 13 of 20</span>
+                    <span>Slide 14 of 24</span>
                 </div>
             </section>
 
-            <!-- Slide 14: Project 1 Q&A -->
+            <!-- Slide 15: Project 1 Q&A -->
             <section class="slide slide-title-layout">
                 <div class="title-container" style="max-width: 900px;">
                     <div class="title-pre" style="margin-bottom: 1rem;">
@@ -1511,15 +1620,15 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                     style="width: calc(100% - 12rem); position: absolute; bottom: 4rem; left: 6rem;"
                 >
                     <span>Ketan Pandya | Case Management Studio</span>
-                    <span>Slide 14 of 20</span>
+                    <span>Slide 15 of 24</span>
                 </div>
             </section>
 
-            <!-- Slide 15: Evaluating our Design Tools: Sketch vs Figma -->
+            <!-- Slide 16: Evaluating our Design Tools: Sketch vs Figma -->
             <section class="slide">
                 <div class="slide-header">
                     <span class="slide-meta"
-                        >Project 2: Figma SAIL Component Library</span
+                        >Project 2: Design Operations &amp; Scaling Design</span
                     >
                     <h2 class="slide-title">
                         Evaluating our Design Tools: Sketch vs Figma
@@ -1563,16 +1672,16 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                     </div>
                 </div>
                 <div class="slide-footer">
-                    <span>Figma SAIL Library</span>
-                    <span>Slide 15 of 20</span>
+                    <span>Design Operations &amp; Scaling Design</span>
+                    <span>Slide 16 of 24</span>
                 </div>
             </section>
 
-            <!-- Slide 16: The Figma Hackathon: Proving the Concept -->
+            <!-- Slide 17: The Figma Hackathon: Proving the Concept -->
             <section class="slide">
                 <div class="slide-header">
                     <span class="slide-meta"
-                        >Project 2: Figma SAIL Component Library</span
+                        >Project 2: Design Operations &amp; Scaling Design</span
                     >
                     <h2 class="slide-title">
                         The Figma Hackathon: Proving the Concept
@@ -1624,16 +1733,16 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                     </div>
                 </div>
                 <div class="slide-footer">
-                    <span>Figma SAIL Library</span>
-                    <span>Slide 16 of 20</span>
+                    <span>Design Operations &amp; Scaling Design</span>
+                    <span>Slide 17 of 24</span>
                 </div>
             </section>
 
-            <!-- Slide 17: Figma Component & SAIL Parameter Parity -->
+            <!-- Slide 18: Figma Component & SAIL Parameter Parity -->
             <section class="slide">
                 <div class="slide-header">
                     <span class="slide-meta"
-                        >Project 2: Figma SAIL Component Library</span
+                        >Project 2: Design Operations &amp; Scaling Design</span
                     >
                     <h2 class="slide-title">Figma Component Parity</h2>
                 </div>
@@ -1675,16 +1784,16 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                     </div>
                 </div>
                 <div class="slide-footer">
-                    <span>Figma SAIL Library</span>
-                    <span>Slide 17 of 20</span>
+                    <span>Design Operations &amp; Scaling Design</span>
+                    <span>Slide 18 of 24</span>
                 </div>
             </section>
 
-            <!-- Slide 18: Library Maintenance & Standards -->
+            <!-- Slide 19: Library Maintenance & Standards -->
             <section class="slide">
                 <div class="slide-header">
                     <span class="slide-meta"
-                        >Project 2: Figma SAIL Component Library</span
+                        >Project 2: Design Operations &amp; Scaling Design</span
                     >
                     <h2 class="slide-title">
                         Design Library Maintenance & Standards
@@ -1732,16 +1841,16 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                     </div>
                 </div>
                 <div class="slide-footer">
-                    <span>Figma SAIL Library</span>
-                    <span>Slide 18 of 20</span>
+                    <span>Design Operations &amp; Scaling Design</span>
+                    <span>Slide 19 of 24</span>
                 </div>
             </section>
 
-            <!-- Slide 19: Figma Community Release & AI-Assisted Workflows -->
+            <!-- Slide 20: Figma Community Release & AI-Assisted Workflows -->
             <section class="slide">
                 <div class="slide-header">
                     <span class="slide-meta"
-                        >Project 2: Figma SAIL Component Library</span
+                        >Project 2: Design Operations &amp; Scaling Design</span
                     >
                     <h2 class="slide-title">
                         Figma Community Release &amp; AI-Assisted Workflows
@@ -1798,12 +1907,159 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                     </div>
                 </div>
                 <div class="slide-footer">
-                    <span>Figma SAIL Library</span>
-                    <span>Slide 19 of 20</span>
+                    <span>Design Operations &amp; Scaling Design</span>
+                    <span>Slide 20 of 24</span>
                 </div>
             </section>
 
-            <!-- Slide 20: Q&A / Final Discussion -->
+            <!-- Slide 21: The UX Chapter: Peer-to-Peer Knowledge Sharing -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 2: Design Operations & Scaling Design</span
+                    >
+                    <h2 class="slide-title">
+                        The UX Chapter: Peer-to-Peer Knowledge Sharing
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>Interactive Workshops:</strong> Restructured the
+                                monthly internal forum from passive lecture presentations to
+                                interactive, designer-led workshops.
+                            </li>
+                            <li>
+                                <strong>Continuous Education:</strong> Facilitated 35
+                                sessions since 2023, covering topics like Figma variable
+                                updates, design standards, and AI-assisted workflows.
+                            </li>
+                            <li>
+                                <strong>Democratizing Knowledge:</strong> Empowered
+                                every designer to contribute to the curriculum, elevating
+                                the entire team's skills and aligning design practices.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media">
+                        <div class="media-container" style="max-height: 85%;">
+                            <Image
+                                loading="eager"
+                                src={workshopImage}
+                                alt="Collaborative design workshop vector diagram"
+                            />
+                            <span class="media-caption"
+                                >Elevating collective skills through active peer learning</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Design Operations & Scaling Design</span>
+                    <span>Slide 21 of 24</span>
+                </div>
+            </section>
+
+            <!-- Slide 22: Usability Testing Coded Prototypes -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 2: Design Operations & Scaling Design</span
+                    >
+                    <h2 class="slide-title">
+                        Usability Testing Coded Prototypes
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>Testing Coded Prototypes:</strong> Utilized
+                                vibe-coded HTML/JS prototypes for usability testing,
+                                allowing earlier and more rigorous evaluation of complex logic.
+                            </li>
+                            <li>
+                                <strong>Bridging the Fidelity Gap:</strong> Testing in
+                                code captures realistic system behaviors (database rules,
+                                validations) that standard design tools cannot simulate.
+                            </li>
+                            <li>
+                                <strong>Participant Context Bottleneck:</strong> Noted
+                                that participants struggled during testing because instructions
+                                and task lists sat in separate documents, causing context-switching.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media">
+                        <div class="media-container" style="max-height: 85%;">
+                            <Image
+                                loading="eager"
+                                src={kiroPowerSetup}
+                                alt="Kiro interface for setting up usability overlay"
+                            />
+                            <span class="media-caption"
+                                >Vibe-coded prototypes provide high-fidelity testing environments</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Design Operations & Scaling Design</span>
+                    <span>Slide 22 of 24</span>
+                </div>
+            </section>
+
+            <!-- Slide 23: Tooling Innovation: Usability Study Overlay -->
+            <section class="slide">
+                <div class="slide-header">
+                    <span class="slide-meta"
+                        >Project 2: Design Operations & Scaling Design</span
+                    >
+                    <h2 class="slide-title">
+                        Tooling Innovation: Usability Study Overlay
+                    </h2>
+                </div>
+                <div class="slide-body">
+                    <div class="col-text">
+                        <ul>
+                            <li>
+                                <strong>Plug-and-Play Overlay:</strong> Built a
+                                lightweight, floating task panel injected directly onto
+                                prototype pages, displaying tasks directly in the user's focus.
+                            </li>
+                            <li>
+                                <strong>Moderator-Friendly Shell:</strong> Includes task
+                                navigation (Next / Done), minimizable controls, and a custom
+                                back button simulating browser history navigation.
+                            </li>
+                            <li>
+                                <strong>Empowering the UX Team:</strong> Contributed the
+                                overlay as a Kiro custom power and standalone script. Other
+                                designers can set up structured studies in seconds.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-media">
+                        <div class="media-container" style="max-height: 85%;">
+                            <Image
+                                loading="eager"
+                                src={kiroOverlayExample}
+                                alt="Usability study overlay active on prototype"
+                            />
+                            <span class="media-caption"
+                                >The overlay floating on a page, showing task progression</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Design Operations & Scaling Design</span>
+                    <span>Slide 23 of 24</span>
+                </div>
+            </section>
+
+            <!-- Slide 24: Q&A / Final Discussion -->
             <section class="slide slide-title-layout">
                 <div class="title-container" style="max-width: 900px;">
                     <div class="title-pre" style="margin-bottom: 1rem;">
@@ -1819,7 +2075,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                         class="title-sub"
                         style="font-size: 1.6rem; color: var(--color-text-muted); margin-bottom: 4rem;"
                     >
-                        Figma SAIL Component Library &amp; General Discussion
+                        Design Operations, Figma Libraries, &amp; General Discussion
                     </div>
                 </div>
                 <div
@@ -1827,7 +2083,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                     style="width: calc(100% - 12rem); position: absolute; bottom: 4rem; left: 6rem;"
                 >
                     <span>Ketan Pandya | Portfolio Review</span>
-                    <span>Slide 20 of 20</span>
+                    <span>Slide 24 of 24</span>
                 </div>
             </section>
         </div>
@@ -1837,6 +2093,11 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
             <button class="lightbox-close" id="lightbox-close-btn"
                 >&times;</button
             >
+            <div class="zoom-controls">
+                <button id="zoom-out-btn" title="Zoom Out">−</button>
+                <button id="zoom-reset-btn" title="Reset Zoom">⟲</button>
+                <button id="zoom-in-btn" title="Zoom In">+</button>
+            </div>
             <img id="lightbox-image" src="" alt="" />
         </div>
 
@@ -1881,9 +2142,10 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
             </div>
         </div>
 
-        <script define:vars={{ parsedNotes }}>
+        <script define:vars={{ parsedNotes, parsedOverrides }}>
             // Speaker notes data injected from server
             let notes = parsedNotes;
+            const slideOverrides = parsedOverrides || {};
 
             // Slide navigation controller logic
             let currentSlide = 0;
@@ -1891,6 +2153,74 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
             const totalSlides = slides.length;
             const deck = document.getElementById("deck");
             const progressBar = document.getElementById("progress-bar");
+
+            // Edit Slides State & Initialization
+            let isEditingSlides = false;
+
+            function initEditableSlides() {
+                document.querySelectorAll('.slide').forEach((slide, sIdx) => {
+                    const title = slide.querySelector('.slide-title');
+                    if (title) title.dataset.editId = `slide-${sIdx}-title`;
+                    
+                    const subTitle = slide.querySelector('.title-sub');
+                    if (subTitle) subTitle.dataset.editId = `slide-${sIdx}-subtitle`;
+                    
+                    slide.querySelectorAll('.col-text li, .col-text p').forEach((el, elIdx) => {
+                        el.dataset.editId = `slide-${sIdx}-text-${elIdx}`;
+                    });
+                    
+                    slide.querySelectorAll('.metric-val, .metric-lbl').forEach((el, elIdx) => {
+                        el.dataset.editId = `slide-${sIdx}-metric-${elIdx}`;
+                    });
+                });
+
+                document.querySelectorAll('[data-edit-id]').forEach(el => {
+                    const id = el.dataset.editId;
+                    if (slideOverrides[id]) {
+                        el.innerHTML = slideOverrides[id];
+                    }
+                });
+            }
+
+            function toggleEditSlides() {
+                isEditingSlides = !isEditingSlides;
+                if (isEditingSlides) {
+                    document.body.classList.add('editing-slides');
+                    document.querySelectorAll('[data-edit-id]').forEach(el => {
+                        el.contentEditable = "true";
+                    });
+                } else {
+                    document.body.classList.remove('editing-slides');
+                    document.querySelectorAll('[data-edit-id]').forEach(el => {
+                        el.contentEditable = "false";
+                    });
+                }
+            }
+
+            async function saveSlideText() {
+                const overrides = {};
+                document.querySelectorAll('[data-edit-id]').forEach(el => {
+                    overrides[el.dataset.editId] = el.innerHTML;
+                });
+                
+                try {
+                    const res = await fetch("/api/save-slide-text", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ overrides }),
+                    });
+                    if (res.ok) {
+                        const indicator = document.createElement('div');
+                        indicator.innerText = "Slides Saved!";
+                        indicator.style.cssText = "position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--color-brand-teal);color:white;padding:0.5rem 1rem;border-radius:20px;z-index:9999;font-weight:bold;";
+                        document.body.appendChild(indicator);
+                        setTimeout(() => indicator.remove(), 2000);
+                        toggleEditSlides();
+                    }
+                } catch(e) {
+                    console.error(e);
+                }
+            }
 
             // Drawers
             const notesDrawer = document.getElementById("notes-drawer");
@@ -2047,7 +2377,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                     if (counter)
                         counter.innerText =
                             "Slide " +
-                            (currentSlide + 1) +
+                            (idx + 1) +
                             " of " +
                             totalSlides;
                 });
@@ -2084,6 +2414,19 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
 
             // Key bindings
             window.addEventListener("keydown", (e) => {
+                if (isEditingSlides) {
+                    if (e.key === "Escape") {
+                        e.preventDefault();
+                        window.location.reload(); // Quick cancel by refreshing
+                        return;
+                    }
+                    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+                        e.preventDefault();
+                        saveSlideText();
+                        return;
+                    }
+                }
+
                 // Ignore shortcut keys when typing inside editable fields or inputs
                 if (
                     document.activeElement &&
@@ -2129,6 +2472,9 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                                 });
                         }, 100);
                     }
+                } else if (e.key.toLowerCase() === "e") {
+                    e.preventDefault();
+                    toggleEditSlides();
                 } else if (e.key.toLowerCase() === "a") {
                     const nav = document.querySelector(".nav-overlay");
                     if (nav) nav.classList.toggle("visible");
@@ -2144,16 +2490,71 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
             );
 
             // Initialize slide layout
+            initEditableSlides();
             initIndex();
             updateSlide();
 
             // Lightbox Overlay logic
             const lightboxOverlay = document.getElementById("lightbox-overlay");
             const lightboxImage = document.getElementById("lightbox-image");
-            const closeLightboxBtn =
-                document.getElementById("lightbox-close-btn");
+            const closeLightboxBtn = document.getElementById("lightbox-close-btn");
+            const zoomInBtn = document.getElementById("zoom-in-btn");
+            const zoomOutBtn = document.getElementById("zoom-out-btn");
+            const zoomResetBtn = document.getElementById("zoom-reset-btn");
 
-            // Add click listener to all images inside slides
+            // Zoom and Pan States
+            let zoomScale = 1;
+            let panX = 0;
+            let panY = 0;
+            let isPanning = false;
+            let startX = 0;
+            let startY = 0;
+
+            // Touch events states
+            let touchStartDist = 0;
+            let initialScale = 1;
+
+            function updateImageTransform() {
+                if (zoomScale <= 1) {
+                    zoomScale = 1;
+                    panX = 0;
+                    panY = 0;
+                    lightboxImage.style.cursor = "zoom-in";
+                } else {
+                    lightboxImage.style.cursor = isPanning ? "grabbing" : "grab";
+                }
+                lightboxImage.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomScale})`;
+            }
+
+            function resetZoom() {
+                zoomScale = 1;
+                panX = 0;
+                panY = 0;
+                if (lightboxImage) {
+                    lightboxImage.classList.remove("dragging");
+                    updateImageTransform();
+                }
+            }
+
+            function adjustZoom(factor, x = 0, y = 0) {
+                let newScale = zoomScale * factor;
+                newScale = Math.max(1, Math.min(newScale, 8));
+
+                if (newScale === 1) {
+                    resetZoom();
+                    return;
+                }
+
+                const scaleRatio = newScale / zoomScale;
+                panX = x - (x - panX) * scaleRatio;
+                panY = y - (y - panY) * scaleRatio;
+                zoomScale = newScale;
+
+                lightboxImage.classList.remove("dragging");
+                updateImageTransform();
+            }
+
+            // Add click listener to all images inside slides to open lightbox
             document.querySelectorAll(".slide img").forEach((img) => {
                 img.style.cursor = "zoom-in";
                 img.setAttribute("tabindex", "0");
@@ -2161,6 +2562,7 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 img.setAttribute("aria-label", "Click to enlarge image");
 
                 const openLightbox = (src, alt) => {
+                    resetZoom();
                     lightboxImage.src = src;
                     lightboxImage.alt = alt || "Enlarged image view";
                     lightboxOverlay.classList.add("open");
@@ -2190,15 +2592,137 @@ const parsedNotes = rawNotes.split("\n---SLIDE---\n");
                 setTimeout(() => {
                     lightboxImage.src = "";
                     lightboxImage.alt = "";
+                    resetZoom();
                 }, 300);
             }
 
             // Close on clicking close button or background
             closeLightboxBtn.addEventListener("click", closeLightbox);
             lightboxOverlay.addEventListener("click", (e) => {
+                // Only close if clicking the background, not the image or buttons
                 if (e.target === lightboxOverlay) {
                     closeLightbox();
                 }
+            });
+
+            // Zoom buttons listeners
+            zoomInBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                adjustZoom(1.5);
+            });
+            zoomOutBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                adjustZoom(1 / 1.5);
+            });
+            zoomResetBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                resetZoom();
+            });
+
+            // Mouse wheel zoom
+            lightboxImage.addEventListener("wheel", (e) => {
+                e.preventDefault();
+                lightboxImage.classList.add("dragging");
+                
+                // Get mouse position relative to image center
+                const rect = lightboxImage.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left - rect.width / 2;
+                const mouseY = e.clientY - rect.top - rect.height / 2;
+
+                const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+                adjustZoom(factor, mouseX, mouseY);
+            }, { passive: false });
+
+            // Drag to pan (Mouse)
+            lightboxImage.addEventListener("mousedown", (e) => {
+                e.preventDefault();
+                if (zoomScale <= 1) return;
+                
+                isPanning = true;
+                lightboxImage.classList.add("dragging");
+                startX = e.clientX - panX;
+                startY = e.clientY - panY;
+                lightboxImage.style.cursor = "grabbing";
+            });
+
+            window.addEventListener("mousemove", (e) => {
+                if (!isPanning) return;
+                panX = e.clientX - startX;
+                panY = e.clientY - startY;
+                updateImageTransform();
+            });
+
+            window.addEventListener("mouseup", () => {
+                if (isPanning) {
+                    isPanning = false;
+                    lightboxImage.style.cursor = zoomScale > 1 ? "grab" : "zoom-in";
+                }
+            });
+
+            // Double click to toggle zoom
+            lightboxImage.addEventListener("dblclick", (e) => {
+                e.preventDefault();
+                if (zoomScale > 1) {
+                    resetZoom();
+                } else {
+                    const rect = lightboxImage.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left - rect.width / 2;
+                    const clickY = e.clientY - rect.top - rect.height / 2;
+                    
+                    zoomScale = 2.5;
+                    panX = -clickX * 1.5;
+                    panY = -clickY * 1.5;
+                    
+                    lightboxImage.classList.remove("dragging");
+                    updateImageTransform();
+                }
+            });
+
+            // Touch events for mobile/pinch zoom
+            lightboxImage.addEventListener("touchstart", (e) => {
+                if (e.touches.length === 1) {
+                    if (zoomScale > 1) {
+                        isPanning = true;
+                        lightboxImage.classList.add("dragging");
+                        startX = e.touches[0].clientX - panX;
+                        startY = e.touches[0].clientY - panY;
+                    }
+                } else if (e.touches.length === 2) {
+                    isPanning = false;
+                    touchStartDist = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                    initialScale = zoomScale;
+                }
+            });
+
+            lightboxImage.addEventListener("touchmove", (e) => {
+                if (e.touches.length === 1 && isPanning) {
+                    e.preventDefault();
+                    panX = e.touches[0].clientX - startX;
+                    panY = e.touches[0].clientY - startY;
+                    updateImageTransform();
+                } else if (e.touches.length === 2) {
+                    e.preventDefault();
+                    const dist = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                    if (touchStartDist > 0) {
+                        const factor = dist / touchStartDist;
+                        let newScale = initialScale * factor;
+                        newScale = Math.max(1, Math.min(newScale, 8));
+                        
+                        zoomScale = newScale;
+                        updateImageTransform();
+                    }
+                }
+            }, { passive: false });
+
+            lightboxImage.addEventListener("touchend", () => {
+                isPanning = false;
+                touchStartDist = 0;
             });
         </script>
     </body>
