@@ -1,0 +1,392 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ketan Pandya - Transformation Experience Design Lead Resume</title>
+    <style>
+        /* Base Reset & Typography */
+        :root {
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --color-text: #111827;
+            --color-text-muted: #475569;
+            --color-brand-blue: #1e3a8a;
+            --color-accent: #2563eb;
+            --spacing-section: 2rem;
+        }
+
+        html {
+            box-sizing: border-box;
+            font-size: 11pt; /* Optimum print size */
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-text);
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            background: #f3f4f6; /* Light grey background for web view */
+        }
+
+        /* The "Paper" Container */
+        .page {
+            background: white;
+            width: 8.5in;
+            margin: 2rem auto;
+            padding: 0.75in; /* Standard margins */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            min-height: 11in; /* This is for web view to look like paper */
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            margin-top: 0.25rem;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            font-weight: 500; /* Confident medium weight */
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-info a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-brand-blue); 
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 0.5rem;
+            margin: 0 0 1.25rem 0;
+            font-weight: 700;
+        }
+
+        /* Experience Items */
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+        }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .company {
+            font-weight: 600;
+        }
+
+        .location-date {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            text-align: right;
+            font-weight: 600; /* Make dates/locations stand out */
+        }
+
+        .job-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-item ul {
+            margin: 0.5rem 0 0 0;
+            padding-left: 1.2rem;
+        }
+
+        .job-item li {
+            margin-bottom: 0.4rem;
+            color: #374151; /* Slightly lighter text for body */
+        }
+
+        .job-item li strong {
+            color: #111827; /* Darker for emphasized words */
+            font-weight: 600;
+        }
+
+        /* Education & Skills Grid */
+        .grid-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .edu-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.1rem;
+        }
+
+        .degree {
+            font-weight: 700;
+        }
+
+        .school {
+            font-weight: 500;
+        }
+
+        .edu-details {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-top: 0.3rem;
+            line-height: 1.4;
+        }
+
+        .edu-details strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        /* Skills Lists */
+        .skill-group {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .skill-label {
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+        
+        /* Print Overrides */
+        @media print {
+            @page {
+                margin: 0;
+                size: letter;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                overflow: hidden; /* Prevent body from scrolling/page-breaking */
+                /* ATS Optimizations */
+                font-variant-ligatures: none !important;
+                hyphens: none !important;
+            }
+            * {
+                text-rendering: auto !important;
+            }
+            .page {
+                width: 7.5in !important; 
+                max-width: 7.5in !important;
+                margin: 0.35in auto !important;
+                padding: 0 !important;
+                box-shadow: none;
+                border: none;
+                min-height: 0 !important; /* Kill the 11in requirement for print */
+                height: auto !important;
+                overflow: hidden;
+            }
+            
+            /* TIGHTEN SPACING FOR PRINT */
+            header {
+                margin-bottom: 0.85rem !important;
+            }
+            .contact-info {
+                margin-top: 0.3rem !important;
+                gap: 0.85rem !important;
+            }
+            section {
+                margin-bottom: 0.75rem !important;
+            }
+            h2 {
+                margin: 0 0 0.35rem 0 !important;
+                padding-bottom: 0.15rem !important;
+            }
+            .job-item {
+                margin-bottom: 0.6rem !important;
+            }
+            .job-item li {
+                margin-bottom: 0.2rem !important;
+                line-height: 1.32;
+            }
+            .edu-item {
+                margin-bottom: 0.45rem !important;
+            }
+            .edu-item:last-child {
+                margin-bottom: 0 !important;
+            }
+            .edu-details {
+                margin-top: 0.15rem !important;
+                line-height: 1.3 !important;
+            }
+            .skill-group {
+                margin-bottom: 0.25rem !important;
+            }
+            .grid-section {
+                gap: 0.5rem !important;
+            }
+
+            html {
+                font-size: 8.75pt; 
+            }
+            /* Hide web-only elements */
+            .no-print {
+                display: none !important;
+            }
+            a {
+                text-decoration: none;
+                color: black;
+            }
+            a[href^="http"]:after {
+                content: ""; 
+            }
+            ::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <header>
+        <h1>Ketan Pandya</h1>
+        <p class="title">Experience Design Lead | Enterprise AI &amp; Transformation</p>
+        <ul class="contact-info">
+            <li>Fairfax, VA</li>
+            <li><a href="mailto:kbp_1@live.com">kbp_1@live.com</a></li>
+            <li><a href="tel:4342502383">434-250-2383</a></li>
+            <li><a href="https://ketanbpandya.com" target="_blank">www.ketanbpandya.com</a></li>
+            <li><a href="https://linkedin.com/in/ketan-pandya-b76832155" target="_blank">LinkedIn</a></li>
+        </ul>
+    </header>
+
+    <section>
+        <h2>Professional Experience</h2>
+
+        <div class="job-item">
+            <div class="job-header">
+                <div><span class="job-title">User&nbsp;Experience&nbsp;Designer&nbsp;II</span> | <span class="company">Appian Corporation</span></div>
+                <div class="location-date">July 2022 – Present</div>
+            </div>
+            <ul>
+                <li><strong>AI Workflow Transformation &amp; Vision:</strong> Accelerated strategic product transformation cycles from <strong>2 months to 2 weeks</strong> using generative AI workflows and high-fidelity interactive models, rapidly aligning executive stakeholders on multi-year roadmaps.</li>
+                <li><strong>Customer Onboarding &amp; Partner Journeys:</strong> Redesigned end-to-end customer and partner onboarding journeys for <strong>Case Management Studio and Connected Onboarding</strong>, replacing legacy precedents with visual dependency logic to achieve a <strong>60% usability improvement</strong>.</li>
+                <li><strong>Enterprise AI Transformation (ProcureSight):</strong> Leading the UX transformation of <strong>ProcureSight</strong>, Appian’s government acquisition suite; transitioning complex federal workflows from basic search to <strong>generative AI-driven vendor insights and automated recommendations</strong>.</li>
+                <li><strong>Internal AI Tooling &amp; Enablement:</strong> Engineered custom AI tooling—including <strong>plug-and-play usability testing overlays</strong>, automated accessibility audit scripts, and rapid prototyping utilities—accelerating study cycle times by <strong>75%</strong> and scaling testing operations.</li>
+                <li><strong>Design-Led Code Execution:</strong> Owned end-to-end production delivery by directly writing, testing, and <strong>merging frontend code</strong> (React/JS/SAIL), bridging the design-engineering gap to eliminate handoff drift and ensure <strong>100% fidelity to UX specifications</strong>.</li>
+                <li><strong>Scalable Enterprise Architecture:</strong> Architected foundational frameworks (Rules Engine, Workflow system, Solutions Hub) adopted by <strong>92 enterprise customers</strong> (e.g., Porsche, Pfizer, T. Rowe Price) that saved implementation teams <strong>2–3 sprints of development</strong> per project.</li>
+                <li><strong>Design System Scalability &amp; Governance:</strong> Led the <strong>Figma SAIL Component Library</strong> working group, growing external adoption to <strong>over 1,300 users</strong> and establishing consistent UI architecture across multiple business units and partner consultancies.</li>
+                <li><strong>Discovery Research &amp; Usability Labs:</strong> Established in-person usability testing labs at Appian World across <strong>50+ enterprise customer sessions</strong>, translating qualitative and quantitative findings into actionable product redesign priorities.</li>
+                <li><strong>Workshop Facilitation &amp; Change Management:</strong> Facilitated the <strong>UX Chapter</strong> across 35+ monthly interactive workshops (averaging 30–40 participants), driving organizational change, mentoring rotational designers, and standardizing AI-assisted design practices.</li>
+            </ul>
+        </div>
+
+        <div class="job-item">
+            <div class="job-header">
+                <div><span class="job-title">FE&nbsp;UI&nbsp;and&nbsp;UX&nbsp;Design&nbsp;Intern</span> | <span class="company">Virsec Systems</span></div>
+                <div class="location-date">June 2021 – August 2021</div>
+            </div>
+            <ul>
+                <li>Designed <strong>dashboards and admin utilities</strong> for a cybersecurity platform, partnering with Product Owners to translate complex CVE security requirements into <strong>iterative UI prototypes</strong>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        
+        <div class="edu-item">
+            <div class="edu-header">
+                <span class="degree">Master of Business Administration (MBA)</span>
+                <span class="location-date">Expected 2028</span>
+            </div>
+            <div class="school">University of North Carolina at Chapel Hill</div>
+        </div>
+
+        <div class="edu-item">
+            <div class="edu-header">
+                <span class="degree">Master of Science in Information Science</span>
+                <span class="location-date">May 2022</span>
+            </div>
+            <div class="school">University of North Carolina at Chapel Hill</div>
+            <div class="edu-details">
+                <strong>Specialization:</strong> Human-Computer Interaction Design<br>
+                <strong>Research:</strong> Master's Paper: <a href="https://cdr.lib.unc.edu/concern/masters_papers/2r36v751z?locale=en" target="_blank" style="color: var(--color-text); text-decoration: none; border-bottom: 1px solid #e5e7eb;"><em>User Preferences for Email Tasks on Different Platforms</em></a>. A mixed-methods study analyzing mental models to determine task optimization strategies.
+            </div>
+        </div>
+
+        <div class="edu-item">
+            <div class="edu-header">
+                <span class="degree">Bachelor of Arts in Philosophy</span>
+                <span class="location-date">May 2020</span>
+            </div>
+            <div class="school">Virginia Tech</div>
+            <div class="edu-details">
+                <strong>Minors:</strong> Japanese Studies, Creative Writing<br>
+                <em>Summa Cum Laude, Honors Laureate</em>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Skills & Certifications</h2>
+        <div class="skill-group">
+            <span class="skill-label">Experience Design &amp; Transformation:</span> End-to-End Product Design, Customer Onboarding &amp; Journey Mapping, Workshop Facilitation, AI Workflow Transformation, Design Systems, Agile/Scrum.
+        </div>
+        <div class="skill-group">
+            <span class="skill-label">Technical &amp; Prototyping:</span> React, JavaScript, HTML/CSS, Git, Figma (Variables/Tokens), AI-Assisted Prototyping (Gemini, Kiro), Appian SAIL (Low-Code), Adobe Creative Cloud.
+        </div>
+        <div class="skill-group">
+            <span class="skill-label">Research &amp; Certifications:</span> Usability Testing, Heuristic Evaluation, Information Architecture, WCAG 2.1 AA Accessibility, Shift Nudge Interface Design (2023), Google UX (2021), CITI Research Ethics (2021).
+        </div>
+    </section>
+
+    <section style="margin-bottom: 0;">
+        <h2>Activities</h2>
+        <div class="skill-group">
+            <strong>WHEELS Global Foundation</strong> (2025–Present) • <strong>Waffler’s Writing Workshop</strong> (2021–Present, 3 Published Annual Anthologies) • <strong>Eagle Scout</strong> (2016)
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
